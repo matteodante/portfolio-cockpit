@@ -1,0 +1,180 @@
+/* GLOBAL CSS FILE - Contains global styles that shouldn't be reset */
+
+html {
+  --scrollbar-gutter: 0px;
+  scrollbar-gutter: stable; /* This is needed to prevent the scrollbar from jumping */
+
+  &.lenis-stopped {
+    --scrollbar-gutter: var(--scrollbar-width);
+  }
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+html.overflow-hidden {
+  overflow: hidden;
+  touch-action: none;
+}
+
+html,
+body {
+  background-color: var(--color-cockpit-bg);
+  color: var(--color-cockpit-text);
+  /* Block double-tap-to-zoom and remove the 300ms tap delay on iOS.
+     Single tap, pan, and intentional gestures still work. */
+  touch-action: manipulation;
+}
+
+body {
+  min-height: 100dvh;
+  overscroll-behavior: none;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection styling */
+*::selection {
+  background-color: var(--color-contrast);
+  color: var(--color-primary);
+}
+
+/* SVG icon colors */
+svg.icon {
+  path[fill],
+  rect[fill],
+  circle[fill] {
+    fill: currentColor;
+  }
+  path[stroke],
+  rect[stroke],
+  circle[stroke] {
+    stroke: currentColor;
+  }
+}
+
+/* Hover states */
+.link {
+  @media (--hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Focus states */
+*:focus-visible {
+  outline: 2px solid var(--color-contrast);
+}
+
+html.scrollbar-grabbing,
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+button {
+  cursor: pointer;
+  /* Fix vertical text centering by trimming font metric space */
+  text-box-trim: both;
+  text-box-edge: cap alphabetic;
+  user-select: none;
+}
+
+/* Canvas grab cursor */
+canvas:active {
+  cursor: grabbing;
+}
+
+/* Canvas fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Drawer animations */
+@keyframes slideDrawerIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawerBackdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Cockpit shared animations — used across multiple overlays. */
+@keyframes led-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes cockpit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes cockpit-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+html.screenshot {
+  *:not(:has(canvas), canvas, :has(#orchestra), #orchestra, #orchestra *) {
+    /* biome-ignore lint: it's all good */
+    opacity: 0 !important;
+  }
+}
+
+/* Honor user motion preferences: !important is needed to override the
+   inline animation declarations in the cockpit chrome. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: a11y override */
+    animation-duration: 0.001ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: a11y override */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: a11y override */
+    transition-duration: 0.001ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: a11y override */
+    scroll-behavior: auto !important;
+  }
+}

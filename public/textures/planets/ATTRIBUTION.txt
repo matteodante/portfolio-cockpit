@@ -1,0 +1,13 @@
+Planet textures used in this project:
+- Source: Solar System Scope
+- URL: https://www.solarsystemscope.com/textures/
+- License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+- License URL: https://creativecommons.org/licenses/by/4.0/
+
+Files:
+- mercury_2k.jpg
+- mars_2k.jpg
+- jupiter_2k.jpg
+- neptune_2k.jpg
+- earth_day_2k.jpg
+- earth_clouds_2k.jpg

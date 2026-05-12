@@ -1,0 +1,43 @@
+# Matteo Dante
+
+> Senior software engineer, 8+ years building production systems across aviation, high-traffic consumer platforms, and retail. At Pilatus Aircraft Ltd (Chiasso office, previously Stans HQ), one of the principal engineers on a greenfield pilot-training platform that ships on-premise to air-force bases. Italian citizen with Swiss work permit G, based in Ticino. Stack spans TypeScript/Node.js, PHP/Laravel, React, Next.js, React Native, and microfrontends. AI-assisted workflow with Claude Code and Cursor; shipped production LLM agents, RAG pipelines, and structured outputs. Passionate about programming since childhood, with additional interests in finance and stock markets, motorcycles, psychology, and fitness. Open to senior, staff, or principal engineering roles in Ticino, anywhere in Switzerland, or remote globally. Notice period 2 months.
+
+## CV (primary content)
+
+- [Curriculum Vitae (English)](https://matteodante.it/resume/cv.md): Full professional CV in English. Markdown format optimized for AI parsing.
+- [Curriculum Vitae (Italiano)](https://matteodante.it/resume/cv.it.md): Versione completa del CV in italiano.
+- [CV PDF (English)](https://matteodante.it/resume/cv-en.pdf): One-page CV in PDF format.
+- [CV PDF (Italiano)](https://matteodante.it/resume/cv-it.pdf): CV di una pagina in formato PDF.
+
+## Profile
+
+- Name: Matteo Dante
+- Title: Senior Software Engineer · Full-Stack & Backend
+- Current role: Senior Full-Stack Software Engineer at Pilatus Aircraft Ltd (Chiasso office, 2025–Present; previously Stans HQ 2024–2025); one of the principal engineers on a greenfield platform that aggregates pilot-training data across simulator, quiz, and lesson systems. Team of 10 (6 frontend, 4 backend). Platform ships on-premise to Swiss and foreign air-force bases under defense-industry quality and waterfall delivery.
+- Location: Switzerland (Permit G, Italian citizen, cross-border worker)
+- Born: 1998-09-18
+- Languages: Italian (native), English (professional, daily working language)
+- Notice period: 2 months
+- Open to: full remote, hybrid, on-site (Ticino, Switzerland, or remote globally)
+
+## Contact
+
+- Email: matteo.dante659@gmail.com
+- Portfolio: https://matteodante.it
+- GitHub: https://github.com/matteodante
+- LinkedIn: https://linkedin.com/in/matteo-dante-3705b5164
+
+## Tech focus
+
+- Languages & Runtimes: TypeScript, Node.js, PHP, .NET, Java
+- Frontend & Mobile: React 19, Next.js App Router, React Native (Expo); Module Federation microfrontends, React Three Fiber, Tailwind
+- Backend & Data: Laravel, Hono, Express, tRPC, REST; PostgreSQL, MySQL, Microsoft SQL Server, Redis, Prisma; BullMQ; event-driven architectures
+- AI & Search: OpenAI and Anthropic APIs; LLM agents, structured outputs, streaming; RAG with vector embeddings, BM25, Reciprocal Rank Fusion, cross-encoder reranking
+- Infra & Quality: Docker, Turborepo, Vercel, Railway; on-premise and air-gapped deployments; Vitest, Sentry; OWASP, OAuth/JWT
+- AI dev tooling: Claude Code, Cursor as daily development flow
+
+## Notable open-source and projects
+
+- [Portfolio (matteodante.it)](https://github.com/matteodante/portfolio-v2): Next.js 16 interactive 3D portfolio with streaming AI assistant. Stack: React Three Fiber, OpenAI Responses API streaming, i18n EN/IT via middleware.
+- [claude-local-docs](https://github.com/matteodante/claude-local-docs): Open-source Claude Code plugin. Local-first docs indexer with vector embeddings, BM25, Reciprocal Rank Fusion, cross-encoder reranking. TypeScript.
+- GymTree (2025, in App Store review): Solo-built fitness platform: backend API, coach web, trainee mobile app, background workers. Production AI for persistent coach chat and personalized workout/nutrition plans. Stack: TypeScript, Hono, Prisma, PostgreSQL, Redis, BullMQ, React 19, Expo, Stripe, Sentry.
