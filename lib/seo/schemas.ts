@@ -3,7 +3,13 @@
  * Person + WebSite structured data for AI/search-engine ranking.
  */
 
-import type { Person, WebSite, WithContext } from 'schema-dts'
+import type {
+  Person,
+  ProfilePage,
+  WebPage,
+  WebSite,
+  WithContext,
+} from 'schema-dts'
 import { EMAIL_HREF, SOCIAL_URLS } from '@/lib/constants/contact'
 import {
   FAMILY_NAME,
@@ -169,10 +175,68 @@ export function getWebSiteSchema(locale: Locale): WithContext<WebSite> {
     '@id': `${BASE_URL}/#website`,
     name: SITE_NAME,
     url: BASE_URL,
-    description: `${FULL_NAME}'s interactive 3D portfolio with embedded streaming AI assistant. Senior software engineer focused on full-stack and backend.`,
+    description: `${FULL_NAME}'s site — freelance software engineering and AI consulting (websites, apps, custom software), plus an interactive 3D cockpit CV with embedded streaming AI assistant.`,
     inLanguage: BCP47_LOCALE[locale],
     author: { '@id': `${BASE_URL}/#person` },
     publisher: { '@id': `${BASE_URL}/#person` },
+  }
+}
+
+const LANDING_PAGE_NAME: Record<Locale, string> = {
+  en: 'Matteo Dante — Freelance Software Engineer & AI Consultant',
+  it: 'Matteo Dante — Software Engineer Freelance & Consulente AI',
+}
+
+const LANDING_PAGE_DESCRIPTION: Record<Locale, string> = {
+  en: 'Freelance software engineering and consulting: websites, apps, AI integration, custom software. The full CV is playable as an interactive 3D cockpit.',
+  it: 'Ingegneria software freelance e consulenza: siti, app, integrazione AI, software su misura. Il CV completo è giocabile come cockpit 3D interattivo.',
+}
+
+/**
+ * ProfilePage schema for the landing — Google's recommended type for a page
+ * whose main subject is a single person; mainEntity links the Person node.
+ */
+export function getLandingPageSchema(locale: Locale): WithContext<ProfilePage> {
+  return {
+    '@context': SCHEMA_CONTEXT,
+    '@type': 'ProfilePage',
+    '@id': `${BASE_URL}/${locale}`,
+    url: `${BASE_URL}/${locale}`,
+    name: LANDING_PAGE_NAME[locale],
+    description: LANDING_PAGE_DESCRIPTION[locale],
+    inLanguage: BCP47_LOCALE[locale],
+    isPartOf: { '@id': `${BASE_URL}/#website` },
+    mainEntity: { '@id': `${BASE_URL}/#person` },
+  }
+}
+
+const COCKPIT_PAGE_NAME: Record<Locale, string> = {
+  en: 'Cockpit — the playable CV',
+  it: 'Cockpit — il CV giocabile',
+}
+
+const COCKPIT_PAGE_DESCRIPTION: Record<Locale, string> = {
+  en: 'Interactive 3D cockpit CV: fly through the career of Matteo Dante — planets are CV sections (about, experience, projects, skills, contact) — with a streaming AI assistant on board.',
+  it: 'CV interattivo in cockpit 3D: vola attraverso la carriera di Matteo Dante — i pianeti sono le sezioni del CV (profilo, esperienza, progetti, competenze, contatti) — con assistente AI in streaming a bordo.',
+}
+
+/**
+ * WebPage schema for /cockpit — marks the playable CV as the page about
+ * the Person, so the CV identity stays first-class next to the freelance
+ * landing.
+ */
+export function getCockpitPageSchema(locale: Locale): WithContext<WebPage> {
+  return {
+    '@context': SCHEMA_CONTEXT,
+    '@type': 'WebPage',
+    '@id': `${BASE_URL}/${locale}/cockpit`,
+    url: `${BASE_URL}/${locale}/cockpit`,
+    name: COCKPIT_PAGE_NAME[locale],
+    description: COCKPIT_PAGE_DESCRIPTION[locale],
+    inLanguage: BCP47_LOCALE[locale],
+    isPartOf: { '@id': `${BASE_URL}/#website` },
+    about: { '@id': `${BASE_URL}/#person` },
+    mainEntity: { '@id': `${BASE_URL}/#person` },
   }
 }
 

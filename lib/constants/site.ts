@@ -9,7 +9,7 @@ export const SITE_TITLE = 'Matteo Dante · Senior Software Engineer'
 export const ICON_PATH = '/icon.png'
 /** Square portrait used for schema.org Person.image (Google rich-results
  *  spec wants ≥600×600). `/icon.png` is too small for this purpose. */
-export const PERSON_IMAGE_PATH = '/images/profile-pic.jpeg'
+export const PERSON_IMAGE_PATH = '/images/profile-photo.jpeg'
 
 export const CV_MARKDOWN_PATHS: Record<Locale, string> = {
   en: '/resume/cv.md',

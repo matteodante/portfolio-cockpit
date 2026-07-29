@@ -3,10 +3,10 @@ import { ICON_PATH } from '@/lib/constants/site'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Matteo Dante — Cockpit Portfolio',
+    name: 'Matteo Dante — Freelance Software Engineer',
     short_name: 'Matteo Dante',
     description:
-      'Interactive 3D cockpit portfolio with streaming AI assistant.',
+      'Websites, apps, AI consulting and custom software — plus a playable 3D cockpit CV.',
     start_url: '/',
     display: 'standalone',
     background_color: '#05060a',

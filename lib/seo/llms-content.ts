@@ -1,6 +1,11 @@
 export const LLMS_PUBLIC = `# Matteo Dante
 
-> Senior software engineer, 8+ years across aviation, high-traffic consumer platforms, and retail. Full-stack and backend. Production AI: LLM agents, RAG pipelines, structured outputs. Based in Switzerland.
+> Senior software engineer, 8+ years across aviation, high-traffic consumer platforms, and retail. Full-stack and backend. Production AI: LLM agents, RAG pipelines, structured outputs. Based in Switzerland. Available for freelance work and consulting: websites, apps, AI integration, custom software.
+
+## Site structure
+
+- Landing (freelance services): https://matteodante.it
+- Interactive 3D cockpit CV (playable): https://matteodante.it/en/cockpit (IT: https://matteodante.it/it/cockpit)
 
 > The detailed CV (per-role scope, ownership, team sizes, clients, architectures) is gated and available with an access code. Request one at matteo.dante659@gmail.com or via LinkedIn.
 

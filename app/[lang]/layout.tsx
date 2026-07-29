@@ -23,22 +23,21 @@ import '@/lib/styles/css/index.css'
 
 const META: Record<Locale, { title: string; description: string }> = {
   en: {
-    title: 'Matteo Dante · Cockpit Portfolio',
+    title: 'Matteo Dante · Freelance Software Engineer & AI Consultant',
     description:
-      'Senior software engineer, 8+ years across aviation, telecom, and consumer platforms. Interactive 3D cockpit portfolio with streaming AI assistant. EN/IT.',
+      'Websites, apps, AI consulting and custom software. Senior engineer, 8+ years across aviation, telecom, and consumer platforms — plus a playable 3D cockpit CV. EN/IT.',
   },
   it: {
-    title: 'Matteo Dante · Cockpit Portfolio',
+    title: 'Matteo Dante · Software Engineer Freelance & Consulente AI',
     description:
-      'Senior software engineer, 8+ anni tra aviazione, telco e piattaforme consumer. Portfolio 3D cockpit interattivo con assistente AI in streaming. EN/IT.',
+      'Siti, app, consulenza AI e software su misura. Senior engineer, 8+ anni tra aviazione, telco e piattaforme consumer — con un CV giocabile in cockpit 3D. EN/IT.',
   },
 }
 
-const KEYWORDS = [
+const SHARED_KEYWORDS = [
   'Matteo Dante',
-  'Senior Software Engineer',
-  'Full-Stack Developer',
-  'Backend Engineer',
+  'CV',
+  'Curriculum Vitae',
   'TypeScript',
   'Next.js',
   'React',
@@ -49,8 +48,36 @@ const KEYWORDS = [
   'Anthropic',
   'Three.js',
   'WebGL',
-  'Switzerland',
 ]
+
+const KEYWORDS: Record<Locale, string[]> = {
+  en: [
+    ...SHARED_KEYWORDS,
+    'Freelance Software Engineer',
+    'AI Consultant',
+    'Web Development',
+    'App Development',
+    'Interactive CV',
+    'Cockpit Portfolio',
+    'Senior Software Engineer',
+    'Full-Stack Developer',
+    'Backend Engineer',
+    'Switzerland',
+  ],
+  it: [
+    ...SHARED_KEYWORDS,
+    'Software Engineer Freelance',
+    'Sviluppatore Freelance',
+    'Consulente AI',
+    'Sviluppo Siti Web',
+    'Sviluppo App',
+    'CV Interattivo',
+    'Portfolio Cockpit',
+    'Senior Software Engineer',
+    'Sviluppatore Full-Stack',
+    'Svizzera',
+  ],
+}
 
 const orbitron = Orbitron({
   subsets: ['latin'],
@@ -92,7 +119,7 @@ export async function generateMetadata({
     authors: [{ name: NAME, url: BASE_URL }],
     creator: NAME,
     publisher: NAME,
-    keywords: KEYWORDS,
+    keywords: KEYWORDS[locale],
     category: 'technology',
     formatDetection: {
       email: false,
@@ -138,8 +165,8 @@ export async function generateMetadata({
 }
 
 const NOSCRIPT_COPY: Record<Locale, string> = {
-  en: 'This portfolio requires JavaScript for the 3D scene.',
-  it: 'Questo portfolio richiede JavaScript per la scena 3D.',
+  en: 'This site requires JavaScript for the interactive experience.',
+  it: 'Questo sito richiede JavaScript per l’esperienza interattiva.',
 }
 
 function renderNoscriptHtml(locale: Locale): string {
@@ -178,15 +205,6 @@ export default async function RootLayout({ children, params }: LayoutProps) {
   return (
     <html lang={lang} dir="ltr" className={className} suppressHydrationWarning>
       <head>
-        {/* Preload the astronaut GLB so the network fetch runs in parallel
-            with the JS bundle instead of after the cockpit chunk arrives. */}
-        <link
-          rel="preload"
-          as="fetch"
-          href="/models/astronaut.glb"
-          type="model/gltf-binary"
-          crossOrigin="anonymous"
-        />
         <link
           rel="alternate"
           type="text/markdown"
@@ -217,8 +235,6 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         style={{
           background: '#05060a',
           color: '#d4cfc5',
-          overflow: 'hidden',
-          height: '100dvh',
           margin: 0,
         }}
       >

@@ -16,8 +16,10 @@ matteodante.it
                                   └── comm-chat ──► /api/chat (streaming)
 ```
 
-No CMS, no database, no marketing pages. The site is a single 3D
-interactive scene plus a streaming chat endpoint.
+No CMS, no database. Two page routes: a scroll-cinematic freelance
+landing at `/` (vendored scroll-world scrub engine + AI-generated scene
+stills) and the 3D interactive cockpit scene at `/cockpit`, plus a
+streaming chat endpoint.
 
 ## Stack
 

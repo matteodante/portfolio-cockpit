@@ -33,13 +33,22 @@ directly. No Jest, no Vitest layer.
 
 ## What this is
 
-One page route. One Three.js scene. Chat + unlock + gated CV /
-translations APIs. No CMS, no DB, no marketing pages.
+Two page routes: a scroll-cinematic freelance landing at `/` and the
+Three.js cockpit game (the playable CV) at `/cockpit`. Chat + unlock +
+gated CV / translations APIs. No CMS, no DB.
 
 ## Routing
 
-- `app/[lang]/page.tsx` → `CockpitLauncher` → dynamic-imports
-  `CockpitApp` with `ssr: false`. Scene is client-only.
+- `app/[lang]/page.tsx` → landing: server-rendered `sr-only` SEO block +
+  `LandingWorld` (client), which mounts the vendored scroll-world scrub
+  engine (`lib/vendor/scrub-engine.js` — vendored, Biome-excluded,
+  injects its CSS unlayered because reset.css's unlayered `all: unset`
+  beats `@layer` rules). Scene stills live in `public/scroll-world/`.
+- `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → dynamic-imports
+  `CockpitApp` with `ssr: false`. Scene is client-only. The page wraps
+  it in `<div data-viewport-lock>`; `global.css` locks body scroll via
+  `body:has([data-viewport-lock])` (the landing must scroll, so the
+  layout no longer hardcodes `overflow: hidden` on body).
 - `proxy.ts` (root) — Next 16 middleware. Detects locale from
   `Accept-Language` via `@formatjs/intl-localematcher` + `negotiator`
   and redirects `/foo` → `/{locale}/foo`. Matcher excludes `_next`,

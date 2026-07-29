@@ -18,6 +18,14 @@ html.overflow-hidden {
   touch-action: none;
 }
 
+/* Routes that render a fixed-viewport experience (the cockpit) lock the page
+   scroll by mounting a [data-viewport-lock] wrapper; scrollable routes (the
+   landing) simply don't. SSR-safe — no JS class toggling, no flash. */
+body:has([data-viewport-lock]) {
+  overflow: hidden;
+  height: 100dvh;
+}
+
 html,
 body {
   background-color: var(--color-cockpit-bg);
@@ -35,6 +43,37 @@ body {
   font-family: var(--font-mono, ui-monospace, monospace);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Landing (scroll-world) dark-theme fixes: the vendored engine's defaults
+   assume a light page; its pills stay white-ish, so their text must be dark.
+   Unlayered rules here always beat the engine's @layer sw defaults. */
+.sw-root .sw-route__label,
+.sw-root .sw-nav__item:hover {
+  color: #1a1721;
+}
+
+/* Brand mark: swap the engine's CSS-gradient square for the cartoon logo —
+   the transparent-background bust as generated, uncropped, no frame. */
+.sw-root .sw-brand__mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 0;
+  background: url("/images/logo.webp") center / contain no-repeat;
+  box-shadow: none;
+}
+
+/* PLAY actions: the engine paints primary buttons with --sw-ink as background
+   and white text — unreadable with our light ink. Brand orange instead. */
+.sw-root .sw-topcta,
+.sw-root .sw-btn--primary {
+  background: var(--color-cockpit-accent, #ff6b35);
+  color: #0b0812;
+  font-weight: 700;
+}
+
+.sw-root .sw-btn--ghost {
+  color: #f2ede3;
 }
 
 /* Selection styling */
