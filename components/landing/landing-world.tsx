@@ -45,6 +45,9 @@ export default function LandingWorld({ locale }: { locale: Locale }) {
         id,
         label: t(`landing.${id}.label`),
         still: `/scroll-world/${id}.webp`,
+        stillMobile: `/scroll-world/${id}-m.webp`,
+        clip: `/scroll-world/vid/dive-${id}.mp4`,
+        clipMobile: `/scroll-world/vid/dive-${id}-m.mp4`,
         accent: ACCENTS[id],
         eyebrow: t(`landing.${id}.eyebrow`),
         title: t(`landing.${id}.title`),
@@ -72,8 +75,20 @@ export default function LandingWorld({ locale }: { locale: Locale }) {
       cta: { label: t('landing.nav.play'), href: cockpitHref },
       hint: t('landing.hint'),
       diveScroll: 1.4,
+      connScroll: 0.9,
       sections,
-      connectors: [],
+      connectors: [
+        '/scroll-world/vid/conn1.mp4',
+        '/scroll-world/vid/conn2.mp4',
+        '/scroll-world/vid/conn3.mp4',
+        '/scroll-world/vid/conn4.mp4',
+      ],
+      connectorsMobile: [
+        '/scroll-world/vid/conn1-m.mp4',
+        '/scroll-world/vid/conn2-m.mp4',
+        '/scroll-world/vid/conn3-m.mp4',
+        '/scroll-world/vid/conn4-m.mp4',
+      ],
     })
     return destroy
   }, [locale])
