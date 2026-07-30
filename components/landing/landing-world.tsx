@@ -53,8 +53,11 @@ export default function LandingWorld({ locale }: { locale: Locale }) {
         title: t(`landing.${id}.title`),
         body: t(`landing.${id}.body`),
       }
+      if (id === 'intro') {
+        section.linger = 0.3
+      }
       if (id === 'contact') {
-        section.scroll = 1.8
+        section.scroll = 2.8
         section.linger = 0.4
         section.cta = {
           primary: { label: t('landing.cta.primary'), href: cockpitHref },
@@ -74,8 +77,8 @@ export default function LandingWorld({ locale }: { locale: Locale }) {
       brand: { name: NAME, href: `/${locale}` },
       cta: { label: t('landing.nav.play'), href: cockpitHref },
       hint: t('landing.hint'),
-      diveScroll: 1.4,
-      connScroll: 0.9,
+      diveScroll: 2.2,
+      connScroll: 1.2,
       sections,
       connectors: [
         '/scroll-world/vid/conn1.mp4',
