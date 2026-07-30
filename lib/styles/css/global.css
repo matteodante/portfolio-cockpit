@@ -3,6 +3,12 @@
 html {
   --scrollbar-gutter: 0px;
   scrollbar-gutter: stable; /* This is needed to prevent the scrollbar from jumping */
+  /* Blocks bounce/pull-to-refresh. Must live on html (the viewport), NOT on
+     body: with body as an independent scroll container (any non-visible
+     overflow makes it one), overscroll-behavior:none on body traps mouse-wheel
+     events — body has nothing to scroll, chaining to the viewport is blocked,
+     and the wheel does nothing. */
+  overscroll-behavior: none;
 
   &.lenis-stopped {
     --scrollbar-gutter: var(--scrollbar-width);
@@ -37,7 +43,6 @@ body {
 
 body {
   min-height: 100dvh;
-  overscroll-behavior: none;
   display: flex;
   flex-direction: column;
   font-family: var(--font-mono, ui-monospace, monospace);
