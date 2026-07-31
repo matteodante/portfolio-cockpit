@@ -31,6 +31,13 @@ export type ScrollWorldConfig = {
   diveScroll?: number
   connScroll?: number
   crossfade?: number
+  /** Source frame rate of the clips. Seeks are quantised to this grid. Default 24. */
+  fps?: number
+  /**
+   * Segments either side of the current one that keep a live <video>; the rest fall
+   * back to their still. Default 2 (1 on touch) — browsers cap concurrent decoders.
+   */
+  keepClips?: number
   hint?: string
   nav?: boolean
   atmosphere?: boolean

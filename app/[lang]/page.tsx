@@ -26,6 +26,26 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
+      {/* The first scene's still is the LCP element, but the scroll world builds its
+          DOM client-side, so the preload scanner can never discover it. Emit the hint
+          server-side instead. Split on ORIENTATION, not width: the engine picks the
+          portrait encode via `isMobile() && innerHeight >= innerWidth`, so a
+          width-only query preloads the wrong file (and double-downloads) on a
+          landscape phone and on a portrait tablet. */}
+      <link
+        rel="preload"
+        as="image"
+        href="/scroll-world/intro.webp"
+        media="(orientation: landscape)"
+        fetchPriority="high"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/scroll-world/intro-m.webp"
+        media="(orientation: portrait)"
+        fetchPriority="high"
+      />
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD requires raw <script> injection (Next.js docs pattern)
