@@ -3,6 +3,15 @@
 import type { CSSProperties } from 'react'
 import { useEffect, useRef } from 'react'
 import { EMAIL_HREF, NAME } from '@/lib/constants/contact'
+import {
+  SCROLL_WORLD_CONNECTORS,
+  SCROLL_WORLD_CONNECTORS_MOBILE,
+  SCROLL_WORLD_SECTION_IDS as SECTION_IDS,
+  swClip,
+  swClipMobile,
+  swStill,
+  swStillMobile,
+} from '@/lib/constants/scroll-world'
 import { COCKPIT_ACCENT } from '@/lib/constants/theme'
 import type { Locale } from '@/lib/i18n/config'
 import en from '@/lib/i18n/translations/en.json'
@@ -11,8 +20,6 @@ import type { ScrollWorldSection } from '@/lib/vendor/scrub-engine'
 import { mountScrollWorld } from '@/lib/vendor/scrub-engine'
 
 const MESSAGES: Record<Locale, Record<string, string>> = { en, it }
-
-const SECTION_IDS = ['intro', 'webapp', 'ai', 'web', 'contact'] as const
 
 const ACCENTS: Record<(typeof SECTION_IDS)[number], string> = {
   intro: COCKPIT_ACCENT,
@@ -26,20 +33,6 @@ const DIVE_SCROLL = 2.2
 const CONN_SCROLL = 1.2
 const CONTACT_SCROLL = 2.8
 
-const CONNECTORS = [
-  '/scroll-world/vid/conn1.mp4',
-  '/scroll-world/vid/conn2.mp4',
-  '/scroll-world/vid/conn3.mp4',
-  '/scroll-world/vid/conn4.mp4',
-]
-
-const CONNECTORS_MOBILE = [
-  '/scroll-world/vid/conn1-m.mp4',
-  '/scroll-world/vid/conn2-m.mp4',
-  '/scroll-world/vid/conn3-m.mp4',
-  '/scroll-world/vid/conn4-m.mp4',
-]
-
 // Total scroll length of the flight, in viewport-heights, mirroring what the engine
 // computes from the config below. Reserved on the container so the page is scrollable
 // from first paint instead of only once the client effect has mounted the engine —
@@ -47,7 +40,7 @@ const CONNECTORS_MOBILE = [
 const TRACK_VH =
   DIVE_SCROLL * (SECTION_IDS.length - 1) +
   CONTACT_SCROLL +
-  CONN_SCROLL * CONNECTORS.length +
+  CONN_SCROLL * SCROLL_WORLD_CONNECTORS.length +
   1
 
 const THEME = {
@@ -76,10 +69,10 @@ export default function LandingWorld({ locale }: { locale: Locale }) {
       const section: ScrollWorldSection = {
         id,
         label: t(`landing.${id}.label`),
-        still: `/scroll-world/${id}.webp`,
-        stillMobile: `/scroll-world/${id}-m.webp`,
-        clip: `/scroll-world/vid/dive-${id}.mp4`,
-        clipMobile: `/scroll-world/vid/dive-${id}-m.mp4`,
+        still: swStill(id),
+        stillMobile: swStillMobile(id),
+        clip: swClip(id),
+        clipMobile: swClipMobile(id),
         accent: ACCENTS[id],
         eyebrow: t(`landing.${id}.eyebrow`),
         title: t(`landing.${id}.title`),
@@ -113,8 +106,8 @@ export default function LandingWorld({ locale }: { locale: Locale }) {
       connScroll: CONN_SCROLL,
       fps: 24,
       sections,
-      connectors: CONNECTORS,
-      connectorsMobile: CONNECTORS_MOBILE,
+      connectors: SCROLL_WORLD_CONNECTORS,
+      connectorsMobile: SCROLL_WORLD_CONNECTORS_MOBILE,
     })
     // The engine owns the scroll length from here on (.sw-track), so drop the
     // placeholder height reserved for the pre-hydration gap.

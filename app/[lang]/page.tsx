@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import LandingWorld from '@/components/landing/landing-world'
 import { EMAIL, EMAIL_HREF } from '@/lib/constants/contact'
+import { swStill, swStillMobile } from '@/lib/constants/scroll-world'
 import type { Locale } from '@/lib/i18n/config'
 import { isValidLocale } from '@/lib/i18n/config'
 import en from '@/lib/i18n/translations/en.json'
@@ -35,14 +36,14 @@ export default async function Page({ params }: PageProps) {
       <link
         rel="preload"
         as="image"
-        href="/scroll-world/intro.webp"
+        href={swStill('intro')}
         media="(orientation: landscape)"
         fetchPriority="high"
       />
       <link
         rel="preload"
         as="image"
-        href="/scroll-world/intro-m.webp"
+        href={swStillMobile('intro')}
         media="(orientation: portrait)"
         fetchPriority="high"
       />
