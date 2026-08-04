@@ -73,7 +73,7 @@ export function useChatStream(locale: Locale): ChatStream {
         body: JSON.stringify({
           locale,
           messages: nextHistory
-            .filter((m) => m.id !== assistantId)
+            .filter((m) => m.id !== assistantId && m.content.trim().length > 0)
             .map((m) => ({ role: m.role, content: m.content })),
         }),
       })
@@ -97,6 +97,12 @@ export function useChatStream(locale: Locale): ChatStream {
             )
           )
         }
+      }
+      // Inside the try on purpose: an abort jumps to the catch, so a
+      // user-cancelled stream never shows the error banner.
+      if (!accumulated.trim()) {
+        setMessages((prev) => prev.filter((m) => m.id !== assistantId))
+        setError(t('cockpit.comm.error'))
       }
     } catch (err) {
       if ((err as Error)?.name === 'AbortError') return

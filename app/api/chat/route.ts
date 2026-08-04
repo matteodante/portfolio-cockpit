@@ -196,7 +196,7 @@ const INSTRUCTIONS_BY_LANGUAGE_PUBLIC = new Map<string, string>(
 let privateInflight: Promise<Map<string, string>> | undefined
 function getPrivateInstructions(): Promise<Map<string, string>> {
   if (privateInflight) return privateInflight
-  privateInflight = (async () => {
+  const pending = (async () => {
     const profile = await loadDecryptedText(CHAT_PROFILE_ENC)
     const base = `${INSTRUCTIONS_HEAD}\n\n${profile}\n\n${INSTRUCTIONS_TAIL}`
     return new Map(
@@ -206,17 +206,30 @@ function getPrivateInstructions(): Promise<Map<string, string>> {
       ])
     )
   })()
-  return privateInflight
+  privateInflight = pending
+  // Drop the memo on failure so the next request retries; the identity
+  // guard keeps a concurrent request's fresh memo from being cleared.
+  pending.catch(() => {
+    if (privateInflight === pending) privateInflight = undefined
+  })
+  return pending
 }
 
 async function resolveInstructions(
   language: string,
   variant: AccessVariant
 ): Promise<string> {
-  const map =
-    variant === 'private'
-      ? await getPrivateInstructions()
-      : INSTRUCTIONS_BY_LANGUAGE_PUBLIC
+  let map = INSTRUCTIONS_BY_LANGUAGE_PUBLIC
+  if (variant === 'private') {
+    try {
+      map = await getPrivateInstructions()
+    } catch (err) {
+      console.error(
+        'chat.route: private profile unavailable, using public',
+        err
+      )
+    }
+  }
   return map.get(language) ?? map.get('English') ?? INSTRUCTIONS_PUBLIC
 }
 

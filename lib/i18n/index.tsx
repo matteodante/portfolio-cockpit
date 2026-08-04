@@ -59,9 +59,15 @@ export function I18nProvider({
     }
   }, [locale])
 
+  // Every private override key belongs to the cockpit, but the provider wraps
+  // the landing too — and /api/translations is force-dynamic, so mounting it
+  // there burned one invocation per pageview on a guaranteed 401.
+  const onCockpit = pathname.endsWith('/cockpit')
+
   useEffect(() => {
+    if (!onCockpit) return
     void fetchPrivate()
-  }, [fetchPrivate])
+  }, [fetchPrivate, onCockpit])
 
   const setLocale = (newLocale: Locale) => {
     const newPath = pathname.replace(LOCALE_PREFIX_RE, `/${newLocale}`)
