@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-04T16:35:56Z",
+  "title": "Design System: Portfolio Cockpit",
+  "extensions": {
+    "colorMeta": {
+      "thruster-orange": {
+        "role": "primary",
+        "displayName": "Thruster Orange",
+        "canonical": "#ff6b35",
+        "tonalRamp": [
+          "#331207",
+          "#66240f",
+          "#993617",
+          "#cc481f",
+          "#ff6b35",
+          "#ff8d63",
+          "#ffb092",
+          "#ffd5c2"
+        ]
+      },
+      "deep-space": {
+        "role": "neutral",
+        "displayName": "Deep Space",
+        "canonical": "#05060a",
+        "tonalRamp": [
+          "#020304",
+          "#05060a",
+          "#0b0d16",
+          "#151827",
+          "#232741",
+          "#3b4062",
+          "#6a6f92",
+          "#b9bccf"
+        ]
+      },
+      "ivory-suit": {
+        "role": "neutral",
+        "displayName": "Ivory Suit",
+        "canonical": "#f2ede3",
+        "tonalRamp": [
+          "#2e2b26",
+          "#565049",
+          "#7d766c",
+          "#a49b8f",
+          "#cbc2b4",
+          "#e4ddd2",
+          "#f2ede3",
+          "#faf8f3"
+        ]
+      },
+      "instrument-bone": {
+        "role": "neutral",
+        "displayName": "Instrument Bone",
+        "canonical": "#d4cfc5",
+        "tonalRamp": [
+          "#2a2823",
+          "#4f4b43",
+          "#757064",
+          "#9a9486",
+          "#bcb6aa",
+          "#d4cfc5",
+          "#e6e2da",
+          "#f5f3ef"
+        ]
+      },
+      "nebula-grey": {
+        "role": "neutral",
+        "displayName": "Nebula Grey",
+        "canonical": "#8f8a97",
+        "tonalRamp": [
+          "#1c1b1f",
+          "#38363e",
+          "#55525e",
+          "#726e7d",
+          "#8f8a97",
+          "#aca8b6",
+          "#c9c6d2",
+          "#e6e4eb"
+        ]
+      },
+      "dust-grey": {
+        "role": "neutral",
+        "displayName": "Dust Grey",
+        "canonical": "#8a8680",
+        "tonalRamp": [
+          "#1b1a19",
+          "#363431",
+          "#524f4a",
+          "#6e6a63",
+          "#8a8680",
+          "#a6a29b",
+          "#c3c0ba",
+          "#e1dfdb"
+        ]
+      },
+      "panel-char": {
+        "role": "neutral",
+        "displayName": "Panel Char",
+        "canonical": "#14120f",
+        "tonalRamp": [
+          "#0a0908",
+          "#14120f",
+          "#241f1a",
+          "#3a332b",
+          "#57493c",
+          "#7a695a",
+          "#a3907e",
+          "#cfc0b0"
+        ]
+      },
+      "panel-char-light": {
+        "role": "neutral",
+        "displayName": "Panel Char Light",
+        "canonical": "#1f1c18",
+        "tonalRamp": [
+          "#0f0d0b",
+          "#1f1c18",
+          "#2f2a24",
+          "#453e35",
+          "#5f554a",
+          "#7d7264",
+          "#a29684",
+          "#ccc2b3"
+        ]
+      },
+      "void-ink": {
+        "role": "neutral",
+        "displayName": "Void Ink",
+        "canonical": "#0b0812",
+        "tonalRamp": [
+          "#060409",
+          "#0b0812",
+          "#171024",
+          "#291d40",
+          "#423263",
+          "#665492",
+          "#948bbd",
+          "#c9c4e0"
+        ]
+      },
+      "hud-green": {
+        "role": "tertiary",
+        "displayName": "HUD Green",
+        "canonical": "#6aff9e",
+        "tonalRamp": [
+          "#123322",
+          "#1f5c3c",
+          "#2e8a58",
+          "#3fb975",
+          "#6aff9e",
+          "#8fffb6",
+          "#b5ffce",
+          "#dcffe7"
+        ]
+      },
+      "hud-amber": {
+        "role": "tertiary",
+        "displayName": "HUD Amber",
+        "canonical": "#ffb347",
+        "tonalRamp": [
+          "#33230e",
+          "#66461c",
+          "#99692a",
+          "#cc8c38",
+          "#ffb347",
+          "#ffc46e",
+          "#ffd696",
+          "#ffe9c8"
+        ]
+      },
+      "hud-red": {
+        "role": "tertiary",
+        "displayName": "HUD Red",
+        "canonical": "#ff5252",
+        "tonalRamp": [
+          "#331010",
+          "#661f1f",
+          "#992f2f",
+          "#cc4040",
+          "#ff5252",
+          "#ff7d7d",
+          "#ffa8a8",
+          "#ffd4d4"
+        ]
+      },
+      "hud-blue": {
+        "role": "tertiary",
+        "displayName": "HUD Blue",
+        "canonical": "#00d9ff",
+        "tonalRamp": [
+          "#00262e",
+          "#004c5c",
+          "#00738a",
+          "#0099b8",
+          "#00d9ff",
+          "#4de3ff",
+          "#8fedff",
+          "#ccf7ff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display — the hull",
+        "purpose": "Hero headline only. Uppercase Orbitron, em-capped width for 2-3 monumental lines."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Landing section titles. Uppercase Orbitron."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Mid-tier statements: hero mid-flight line, cockpit intro subtitle. Uppercase."
+      },
+      "body": {
+        "displayName": "Body — the pilot",
+        "purpose": "Rajdhani sentence-case paragraphs, max-width 560px on the landing."
+      },
+      "label": {
+        "displayName": "Label — the instruments",
+        "purpose": "Mono uppercase eyebrows (0.32em tracking), chips and hints (0.18em)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "halo-rest",
+        "value": "0 0 10px #ff6b3555, inset 0 1px 0 rgba(255,255,255,0.2)",
+        "purpose": "Primary controls at rest — backlit instrument glow."
+      },
+      {
+        "name": "halo-hover",
+        "value": "0 0 18px #ff6b35aa, inset 0 1px 0 rgba(255,255,255,0.3)",
+        "purpose": "Primary controls on hover/focus, paired with translateY(-1px)."
+      },
+      {
+        "name": "halo-ambient",
+        "value": "0 0 42px #ff6b3555",
+        "purpose": "Large landing CTAs; giant headlines use text-shadow 0 0 48-64px #ff6b352e."
+      },
+      {
+        "name": "instrument-edge",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.8)",
+        "purpose": "Secondary cockpit controls at rest — machined edge, no glow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "transition-state",
+        "value": "all 0.15s",
+        "purpose": "Default state transition on controls (hover, focus, fill)."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.19, 1, 0.22, 1)",
+        "purpose": "Entrances and reveals."
+      },
+      {
+        "name": "ease-gleasing",
+        "value": "cubic-bezier(0.4, 0, 0, 1)",
+        "purpose": "House easing for larger UI moves."
+      },
+      {
+        "name": "scrub-lerp",
+        "value": "k = 1 - (1 - 0.18)^(dt/16.7)",
+        "purpose": "dt-normalised smoothing for scroll-scrubbed media; snaps (k=1) under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      { "name": "dt", "value": "800px" },
+      {
+        "name": "mobile-predicate",
+        "value": "portrait and ((hover: none) and (pointer: coarse) or max-width: 860px)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (landing CTA)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The big persuade action — PLAY, enter the cockpit.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">PLAY — ENTER THE COCKPIT</a>",
+      "css": ".ds-btn-primary { display: inline-block; background: var(--color-cockpit-accent, #ff6b35); color: #0b0812; font-family: var(--font-orbitron), Orbitron, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 999px; padding: 18px 34px; box-shadow: 0 0 42px #ff6b3555; transition: all 0.15s; } .ds-btn-primary:hover, .ds-btn-primary:focus-visible { box-shadow: 0 0 56px #ff6b35aa; transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid #ff6b35; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button (landing)",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Quiet secondary action — email me.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">EMAIL ME</a>",
+      "css": ".ds-btn-ghost { display: inline-block; background: transparent; color: #f2ede3; font-family: var(--font-jetbrains-mono), monospace; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(242, 237, 227, 0.28); border-radius: 999px; padding: 17px 30px; transition: all 0.15s; } .ds-btn-ghost:hover, .ds-btn-ghost:focus-visible { border-color: #ff6b35; color: #ff6b35; box-shadow: 0 0 12px #ff6b3555; } .ds-btn-ghost:focus-visible { outline: 2px solid #ff6b35; outline-offset: 3px; }"
+    },
+    {
+      "name": "Nav PLAY Pill",
+      "kind": "nav",
+      "refersTo": "button-nav",
+      "description": "Fixed-header shortcut into the cockpit.",
+      "html": "<a class=\"ds-btn-nav\" href=\"#\">PLAY</a>",
+      "css": ".ds-btn-nav { display: inline-block; background: #ff6b35; color: #0b0812; font-family: var(--font-orbitron), Orbitron, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-radius: 999px; padding: 10px 22px; transition: all 0.15s; } .ds-btn-nav:hover, .ds-btn-nav:focus-visible { box-shadow: 0 0 18px #ff6b35aa; transform: translateY(-1px); }"
+    },
+    {
+      "name": "Tech Chip",
+      "kind": "chip",
+      "refersTo": "chip-tag",
+      "description": "Static tech tag under a landing section.",
+      "html": "<span class=\"ds-chip\">NEXT.JS</span>",
+      "css": ".ds-chip { display: inline-block; color: #f2ede3; font-family: var(--font-jetbrains-mono), monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid rgba(242, 237, 227, 0.22); border-radius: 999px; padding: 7px 14px; white-space: nowrap; }"
+    },
+    {
+      "name": "Eyebrow Label",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Mono uppercase kicker above every headline; number + slash pattern in sections.",
+      "html": "<p class=\"ds-eyebrow\">01 <span class=\"ds-eyebrow-dim\">/</span> WEB APPS &amp; APPS</p>",
+      "css": ".ds-eyebrow { color: #ff6b35; font-family: var(--font-jetbrains-mono), monospace; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; margin: 0; } .ds-eyebrow-dim { color: #8f8a97; }"
+    },
+    {
+      "name": "Cockpit Button — Primary",
+      "kind": "button",
+      "refersTo": "cockpit-button-primary",
+      "description": "Hard-edged instrument command inside the cockpit chrome.",
+      "html": "<button class=\"ds-cockpit-btn-primary\">LAUNCH</button>",
+      "css": ".ds-cockpit-btn-primary { background: #ff6b35; color: #000; font-family: var(--font-orbitron), Orbitron, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; border: 1px solid #ff6b35; border-radius: 0; padding: 14px 28px; cursor: pointer; box-shadow: 0 0 10px #ff6b3555, inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.15s; } .ds-cockpit-btn-primary:hover, .ds-cockpit-btn-primary:focus-visible { box-shadow: 0 0 18px #ff6b35aa, inset 0 1px 0 rgba(255,255,255,0.3); transform: translateY(-1px); }"
+    },
+    {
+      "name": "Cockpit Button — Secondary",
+      "kind": "button",
+      "refersTo": "cockpit-button-secondary",
+      "description": "Quiet instrument command; fills on hover.",
+      "html": "<button class=\"ds-cockpit-btn-secondary\">DOCK</button>",
+      "css": ".ds-cockpit-btn-secondary { background: rgba(20, 18, 15, 0.6); color: #ff6b35; font-family: var(--font-orbitron), Orbitron, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; border: 1px solid #ff6b35; border-radius: 0; padding: 14px 22px; cursor: pointer; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.8); transition: all 0.15s; } .ds-cockpit-btn-secondary:hover, .ds-cockpit-btn-secondary:focus-visible { background: #1f1c18; box-shadow: 0 0 12px #ff6b3555; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Toy Cockpit",
+    "overview": "A toy spaceship cockpit whose instruments really work. Everything in this system holds two truths at once: the material is playful — glossy vinyl-toy surfaces, a chunky orange astronaut, pill-shaped candy buttons — while the function is precise — real gauges, mono labels, exact tracking, a scene that runs at 60fps. The playfulness is never sloppy and the precision is never cold. Bold, essential, technical.\n\nThe visual field is almost entirely dark, quiet space (#05060a) punctured by very few, very large, very finished elements: one giant uppercase headline, one glowing character or planet, one orange action. The confirmed anti-reference is the verbose multi-section portfolio — many medium-sized blocks of copy and cards. This site says few things, enormously.",
+    "keyCharacteristics": [
+      "Dark near-black canvas with warm, glossy subjects lit like backlit toys",
+      "One accent color (Thruster Orange) carrying every action and highlight",
+      "Giant uppercase Orbitron paired with tiny wide-tracked mono labels",
+      "Depth through glow and inset light, never grey drop shadows",
+      "Motion is narrative (scroll-scrubbed flight, orbiting planets), honors prefers-reduced-motion globally"
+    ],
+    "rules": [
+      {
+        "name": "The Single Flame Rule",
+        "body": "Thruster Orange is the only voice of attention on any surface. If two unrelated elements glow orange at once, one of them is wrong. HUD colors never leave the instruments.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warm Dark Rule",
+        "body": "Darks lean warm (char, not slate); lights lean ivory (never #fff). Pure white and pure black appear only as text-on-accent (#000 in cockpit buttons) and inset shadow lines.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Voices Rule",
+        "body": "Every text element speaks as hull (Orbitron uppercase), instrument (mono uppercase, wide tracking), or pilot (Rajdhani sentence case). No fourth font, no Orbitron body copy, no mono paragraphs.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glow, Not Shadow Rule",
+        "body": "No neutral/grey box-shadow anywhere. If an element needs separation, it either glows orange (interactive), gains an inset light edge (physical control), or steps up one panel tone (surface).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do set every heading in uppercase Orbitron and every eyebrow/label in uppercase JetBrains Mono with 0.18–0.32em tracking.",
+      "Do use Thruster Orange alpha halos (55/aa hex alpha) plus inset top light for all interactive depth, with transition: all 0.15s.",
+      "Do keep the canvas exactly Deep Space #05060a and add faint ivory starfield specks (1–1.5px radial gradients at ≤0.5 alpha) when a static section needs to read as sky.",
+      "Do honor prefers-reduced-motion for every animation and scrub smoothing (snap instead of lerp).",
+      "Do put Void Ink (#0b0812) or #000 text on orange — never white."
+    ],
+    "donts": [
+      "Don't use grey/neutral drop shadows, or any box-shadow that isn't orange glow or inset light.",
+      "Don't introduce mid-size border radii (8–16px cards): pills or hard edges only.",
+      "Don't let HUD Green/Amber/Red/Blue out of the cockpit instruments, and don't add a second accent color anywhere.",
+      "Don't compose surfaces as grids of medium cards with medium copy — few enormous elements, generous void, prose capped at 560px.",
+      "Don't use stock photography or white-background imagery; every image belongs to the glossy toy-space world (see the Replicate pipeline in CLAUDE.md)."
+    ]
+  }
+}

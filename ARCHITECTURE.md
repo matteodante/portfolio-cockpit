@@ -7,7 +7,7 @@ is written for Claude Code agents and is terser).
 
 ```
 matteodante.it
-├── /[lang]           → LandingWorld (vendored scroll-world engine)
+├── /[lang]           → LandingHero (scroll-scrubbed clip) + sections
 └── /[lang]/cockpit   → CockpitApp
     ├── CockpitScene  (React shell) ──► build-world.ts (imperative Three.js)
     ├── chrome/*      (HUD panels + interactive consoles)
@@ -17,11 +17,11 @@ matteodante.it
 ```
 
 No CMS, no database. Two page routes: a scroll-cinematic freelance
-landing at `/` (vendored scroll-world scrub engine over `.webp` stills
-and scrubbed `.mp4` fly-overs — ~37 MB under `public/scroll-world/`,
-36 MB of it video, URLs versioned from
-`lib/constants/scroll-world.ts`) and the 3D interactive cockpit scene
-at `/cockpit`, plus a streaming chat endpoint.
+landing at `/` (a single AI-generated ascent clip scrubbed by scroll —
+~4 MB under `public/hero/`, URLs versioned from
+`lib/constants/hero.ts` — plus server-rendered editorial sections) and
+the 3D interactive cockpit scene at `/cockpit`, plus a streaming chat
+endpoint.
 
 ## Stack
 
@@ -172,7 +172,8 @@ COMM button in the bottom console.
 ## Routing & locale
 
 - `app/[lang]/page.tsx` → the landing: server-rendered `sr-only` SEO
-  block + `LandingWorld` (client).
+  block + `LandingHeader`/`LandingSections` (server) + `LandingHero`
+  (client scrub).
 - `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → `CockpitApp`
   (client-only, `ssr: false`), wrapped in `<div data-viewport-lock>`
   so `global.css` can lock body scroll via

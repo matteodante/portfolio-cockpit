@@ -1,7 +1,9 @@
 # TODO — matteodante.it
 
-Stato: landing scroll-world stills-only in produzione (commit `196cd1a`).
-Prossima milestone: fase video (scroll-scrub cinematico).
+Stato: landing rifatta — singola hero clip AI (astronauta in ascesa)
+scrubbata dallo scroll + sezioni editorial; scroll-world rimosso.
+La roadmap sotto (fase video multi-scena) è superata e resta solo
+come storico costi.
 
 ## Pre-video (gratis, via Codex image_gen)
 

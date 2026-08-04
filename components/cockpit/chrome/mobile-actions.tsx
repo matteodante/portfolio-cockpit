@@ -1,5 +1,6 @@
 'use client'
 
+import type { Route } from 'next'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { cvPdfPath } from '@/lib/constants/site'
@@ -140,6 +141,8 @@ const STYLES = `
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -264,9 +267,9 @@ export default function MobileActions({
             </Link>
           </span>
 
-          <button type="button" onClick={close} className="menu-back">
-            {t('cockpit.mobile.backToGame')}
-          </button>
+          <Link href={`/${locale}` as Route} className="menu-back">
+            {t('cockpit.mobile.backToHome')}
+          </Link>
         </div>
       ) : null}
     </>

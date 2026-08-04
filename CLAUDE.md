@@ -40,16 +40,21 @@ gated CV / translations APIs. No CMS, no DB.
 ## Routing
 
 - `app/[lang]/page.tsx` → landing: server-rendered `sr-only` SEO block +
-  `LandingWorld` (client), which mounts the vendored scroll-world scrub
-  engine (`lib/vendor/scrub-engine.js` — vendored, Biome-excluded,
-  injects its CSS unlayered because reset.css's unlayered `all: unset`
-  beats `@layer` rules). Assets in `public/scroll-world/`: ~37 MB, of
-  which 36 MB is `vid/` — 9 mp4 clips (5 dives + 4 connectors), each
-  with a `-m` mobile encode; the `.webp` stills are the small part.
-  Paths and the `?v=` cache-busting token come from
-  `lib/constants/scroll-world.ts` (bump `VERSION` on any re-encode);
-  `next.config.ts` gives `/scroll-world/:path*` a 24h `Cache-Control`
-  with a week of stale-while-revalidate.
+  poster preload hints + `LandingHeader`/`LandingSections` (server) +
+  `LandingHero` (the only client component). The hero is a single
+  AI-generated ascent clip (toy astronaut, clouds → deep space) scrubbed
+  by scroll: sticky 100svh viewport inside a 500svh track, rAF loop with
+  dt-normalised lerp, frame-grid quantised `currentTime` seeks, WebKit
+  play()+pause() priming. Assets in `public/hero/`: `ascent.mp4` (1080p
+  30fps GOP-8, ~3 MB) + `ascent-m.mp4` (9:16 centre crop) + webp
+  posters. Paths and the `?v=` cache-busting token come from
+  `lib/constants/hero.ts` (bump `VERSION` on any re-encode);
+  `next.config.ts` gives `/hero/:path*` a 24h `Cache-Control` with a
+  week of stale-while-revalidate. The hero's `isMobile()` predicate and
+  the page's preload media queries must stay in sync. Regeneration
+  pipeline (Replicate): nano-banana-pro still → nano-banana-pro edit
+  (end frame) → wan-2.7-i2v first+last frame, then ffmpeg re-encode
+  (`-g 8 -bf 0`) for scrub-smooth seeking.
 - `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → dynamic-imports
   `CockpitApp` with `ssr: false`. Scene is client-only. The page wraps
   it in `<div data-viewport-lock>`; `global.css` locks body scroll via
@@ -246,8 +251,8 @@ Preferred, but **not** machine-enforced (`biome.json` has no
 - `@/*` for cross-area imports. Sibling `../` imports inside a
   component folder exist and are fine.
 - `next/link` for internal navigation. Legit `<a>`s remain: the
-  `mailto:` on the landing, the `<noscript>` fallback markup in
-  `app/[lang]/layout.tsx`, and the vendored scrub engine.
+  `mailto:`s on the landing and the `<noscript>` fallback markup in
+  `app/[lang]/layout.tsx`.
 - No `forwardRef`. React 19 + React Compiler accept `ref` as a prop.
 
 Enforced by tooling (Biome + tsconfig):

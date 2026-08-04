@@ -54,13 +54,13 @@ const nextConfig: NextConfig = {
       ],
     },
     {
-      // Landing scene assets: ~39 MB of clips + stills that change only when they
+      // Landing hero assets: the ascent clips + posters change only when they
       // are re-rendered. Without this they carry Next's default no-cache for
-      // unfingerprinted /public files, so every return visit re-validates all nine
-      // clips before anything can play. Filenames are stable, so this is a
-      // deliberate day-long cache with a week of stale-while-revalidate rather than
-      // `immutable` — a re-encode still propagates within a day.
-      source: '/scroll-world/:path*',
+      // unfingerprinted /public files, so every return visit re-validates the
+      // clip before anything can play. Filenames are stable, so this is a
+      // deliberate day-long cache with a week of stale-while-revalidate rather
+      // than `immutable` — a re-encode still propagates within a day.
+      source: '/hero/:path*',
       headers: [
         {
           key: 'Cache-Control',

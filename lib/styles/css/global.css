@@ -41,33 +41,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Landing (scroll-world) overrides. The engine injects its <style> last in <head>,
-   so it wins any tie on source order — every rule below is scoped `.sw-root <sel>`
-   (0,2,0) to outrank the engine's own (0,1,0). */
-
-/* Brand mark: swap the engine's CSS-gradient square for the cartoon logo —
-   the transparent-background bust as generated, uncropped, no frame. */
-.sw-root .sw-brand__mark {
-  width: 42px;
-  height: 42px;
-  border-radius: 0;
-  background: url("/images/logo.webp") center / contain no-repeat;
-  box-shadow: none;
-}
-
-/* PLAY actions: the engine paints primary buttons with --sw-ink as background
-   and white text — unreadable with our light ink. Brand orange instead. */
-.sw-root .sw-topcta,
-.sw-root .sw-btn--primary {
-  background: var(--color-cockpit-accent, #ff6b35);
-  color: #0b0812;
-  font-weight: 700;
-}
-
-.sw-root .sw-btn--ghost {
-  color: #f2ede3;
-}
-
 /* Selection styling */
 *::selection {
   background-color: var(--color-contrast);
@@ -100,15 +73,6 @@ svg.icon {
 /* Focus states */
 *:focus-visible {
   outline: 2px solid var(--color-contrast);
-}
-
-/* The landing doesn't define --color-contrast, so the ring above resolves to
-   nothing there. Pin it to the section accent instead — keyboard focus has to be
-   visible against the scene. Placed after the generic rule to satisfy Biome's
-   no-descending-specificity lint; it outranks it on specificity either way. */
-.sw-root *:focus-visible {
-  outline: 2px solid var(--sw-accent, #ff6b35);
-  outline-offset: 3px;
 }
 
 img {

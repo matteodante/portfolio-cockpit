@@ -21,8 +21,7 @@
       "!**/*.md",
       "!**/*.mdx",
       "!**/tailwind.css",
-      "!**/root.css",
-      "!lib/vendor"
+      "!**/root.css"
     ]
   },
 
