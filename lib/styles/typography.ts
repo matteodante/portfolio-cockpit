@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 
 const fonts = {
   display: '--font-orbitron',
-  mono: '--font-mono',
+  mono: '--font-jetbrains-mono',
   alt: '--font-rajdhani',
 } as const
 

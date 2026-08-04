@@ -7,19 +7,21 @@ is written for Claude Code agents and is terser).
 
 ```
 matteodante.it
-└── one route: /[lang]
-    └── CockpitApp
-        ├── CockpitScene  (vanilla Three.js, imperative)
-        ├── chrome/*      (HUD panels, read from Zustand)
-        └── DockOverlay   (full-screen modal, section bodies)
+├── /[lang]           → LandingWorld (vendored scroll-world engine)
+└── /[lang]/cockpit   → CockpitApp
+    ├── CockpitScene  (React shell) ──► build-world.ts (imperative Three.js)
+    ├── chrome/*      (HUD panels + interactive consoles)
+    └── DockOverlay   (modal shell) ──► DockContent (section switch)
                                   │
                                   └── comm-chat ──► /api/chat (streaming)
 ```
 
 No CMS, no database. Two page routes: a scroll-cinematic freelance
-landing at `/` (vendored scroll-world scrub engine + AI-generated scene
-stills) and the 3D interactive cockpit scene at `/cockpit`, plus a
-streaming chat endpoint.
+landing at `/` (vendored scroll-world scrub engine over `.webp` stills
+and scrubbed `.mp4` fly-overs — ~37 MB under `public/scroll-world/`,
+36 MB of it video, URLs versioned from
+`lib/constants/scroll-world.ts`) and the 3D interactive cockpit scene
+at `/cockpit`, plus a streaming chat endpoint.
 
 ## Stack
 
@@ -39,9 +41,20 @@ Node 22 (`.nvmrc`). Bilingual EN/IT.
 
 ## Three layers
 
-### 1. The scene (`components/cockpit/scene/cockpit-scene.tsx`)
+### 1. The scene (`components/cockpit/scene/`)
 
-~1150 lines of imperative Three.js inside a single `useEffect`. It:
+`cockpit-scene.tsx` is a ~120-line React shell: it holds the refs,
+mounts the canvas div, and calls `buildWorld` once inside a single
+`useEffect`. All the Three.js lives below it:
+
+- `build-world.ts` (~450 lines) — the world build + the RAF loop
+- `three/*` — renderer, planets, asteroids, lights, god rays,
+  backdrop text, explosion, textures, dispose helpers
+- `player/*` — astronaut, thrusters, input controller, physics
+- `camera/*` — follow camera + constants
+- `blackhole/*` — simulation, shader, config
+
+`buildWorld`:
 
 - builds the WebGL world on mount, tears it down on unmount
 - owns a `requestAnimationFrame` loop independent from React
@@ -80,7 +93,9 @@ Two channels:
 1. **Callbacks** — `onNearChange`, `onDockRequest`. Used for
    transitions (rare).
 2. **Zustand `useHud`** — `speed`, `coords`, `gravity`, `landed`,
-   `phase`, `nearestId`. Used for per-frame gauges. Writes go through
+   `phase`, `nearestId`, `orbitAngle` (quantized; the mini radar
+   rotates the static blip positions by it so they track the orbiting
+   meshes). Used for per-frame gauges. Writes go through
    `setHud`, which diffs before calling `setState`, so 60 Hz calls
    produce React renders only on actual changes.
 
@@ -116,19 +131,30 @@ Forceable via `?quality=low|mid|high`.
 
 ### 2. The chrome (`components/cockpit/chrome/`)
 
-Non-interactive HUD panels: top bar, side consoles, bottom console,
-the cockpit frame bezel. All read from `useHud` and update only when
-their slice changes. None of them write back to the scene.
+Two kinds of panel:
+
+- **Read-only gauges** — top bar, left/right consoles, mini radar, the
+  cockpit frame bezel. They subscribe to `useHud` and re-render only
+  when their slice changes. They never write back.
+- **Interactive controls** — `bottom-console/*` (DOCK / COMM /
+  actions), `intro-overlay` (access code + start), `language-switcher`,
+  `music-toggle`, `mobile-actions`, `mobile-game-controls`,
+  `death-overlay`. They call back into `cockpit-app.tsx` or dispatch
+  player events; none of them mutate the Three.js world directly.
 
 ### 3. The dock (`components/cockpit/dock/`)
 
-Full-screen overlay shown when `docked !== null`. Section bodies in
-`dock/sections/*.tsx`:
+`dock-overlay.tsx` is the full-screen modal shell shown when
+`docked !== null` (focus trap + focus return). It delegates the
+per-section switch to `dock-content.tsx`, which picks a body from
+`dock/sections/`:
 
 - `about`, `experience`, `projects`, `skills`, `contact` — static
   content driven by translations
-- `comm-chat` — reads the stream from `/api/chat` and renders via
-  `react-markdown`
+- `comm-chat/` — a directory, not a file: `index.tsx` (shell),
+  `use-chat-stream.ts` (POST + stream reader + history trimming),
+  `message-list.tsx`, `message-bubble.tsx` (`react-markdown`),
+  `chat-header.tsx`, `chat-composer.tsx`
 
 `COMM_SECTION` is dock-only: not a 3D planet. It's reached via the
 COMM button in the bottom console.
@@ -141,12 +167,20 @@ COMM button in the bottom console.
 | `docked` (CockpitSection \| null) | `cockpit-app.tsx` (React) | Drives overlay mount |
 | `started` (boolean) | `cockpit-app.tsx` (React) | Camera framing + input gating |
 | HUD gauges | `lib/hooks/cockpit-store.ts` (Zustand) | Updated 60 Hz from the scene, read by chrome |
-| Player physics state | `cockpit-scene.tsx` (ref inside effect) | Mutated every frame, never crosses React |
+| Player physics state | `build-world.ts` (closure inside the effect) | Mutated every frame, never crosses React |
 
 ## Routing & locale
 
-- `app/[lang]/page.tsx` → `CockpitLauncher` → `CockpitApp`
-  (client-only).
+- `app/[lang]/page.tsx` → the landing: server-rendered `sr-only` SEO
+  block + `LandingWorld` (client).
+- `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → `CockpitApp`
+  (client-only, `ssr: false`), wrapped in `<div data-viewport-lock>`
+  so `global.css` can lock body scroll via
+  `body:has([data-viewport-lock])`.
+- `app/[lang]/[...rest]/page.tsx` calls `notFound()` so unknown paths
+  under a valid locale render `app/[lang]/not-found.tsx` instead of
+  the root `/_not-found`, which sits outside the locale layout (no
+  fonts, no theme).
 - `proxy.ts` at the repo root is Next 16's middleware (renamed from
   `middleware.ts`). It uses `@formatjs/intl-localematcher` and
   `negotiator` to pick a locale from `Accept-Language` and redirects
@@ -164,9 +198,16 @@ enforced by tests in `lib/i18n/translations.test.ts`.
 
 The chat backend.
 
-- `runtime = 'nodejs'` (no `force-dynamic` — cookie reads already
-  opt the route into dynamic rendering)
-- Caps via Zod: 20 messages, 500 chars per message, 4000 chars total
+- `runtime = 'nodejs'` and `dynamic = 'force-dynamic'`, both declared
+  explicitly (the cookie read alone would already opt the route into
+  dynamic rendering)
+- Caps via Zod: 8 messages, 500 chars per message, 4000 chars total.
+  The numbers live in `lib/ai/limits.ts` (`CHAT_MAX_MESSAGES`,
+  `CHAT_MAX_MESSAGE_LENGTH`, `CHAT_MAX_TOTAL_INPUT_CHARS`) and are
+  imported by the client too, so history trimming and the composer
+  counter can never drift from the server. The message cap is
+  intentionally tight: a shorter history is a smaller surface for
+  forged-assistant-turn injection
 - Roles validated against `['user', 'assistant']` (no system
   injection); content NFKC-normalized and stripped of invisibles
   before the length check
@@ -190,7 +231,14 @@ The system prompt is built from three pieces:
 unlocked, it lazy-loads `lib/ai/chat-profile.enc` via
 `loadDecryptedText` (cached per function instance), and builds a
 per-language Map of full instructions. `{{LOCALE_LANGUAGE}}` is
-templated from the request body.
+templated from the request body. If that load throws (missing blob,
+bad key) the request degrades to the public profile instead of 500,
+and the memoized in-flight promise is dropped so the next request
+retries.
+
+Failure modes, none of them cookie-related: 400 (bad JSON, bad body,
+or moderation block), 413 (over the total-chars cap), 429 (rate
+limit), 503 (upstream OpenAI error).
 
 ## CV access gate
 
@@ -246,7 +294,7 @@ All call `await hasAccess()` and 401 on failure:
 - `GET /api/translations/[locale]` — private translations JSON,
   merged into the i18n context client-side.
 
-Routes that branch on the cookie (always 200, content varies):
+Routes that branch on the cookie (never 401; only the content varies):
 
 - `POST /api/chat` — public vs private system prompt.
 
@@ -263,9 +311,12 @@ never leaks via a cached private response.
 - `components/cockpit/chrome/intro-overlay.tsx` has an access-code
   input that POSTs `/api/unlock`. On success it calls
   `applyUnlock()` from the i18n provider.
-- `lib/i18n/index.tsx` provider mounts and fetches
-  `/api/translations/[locale]` once. 200 → store overrides and set
-  `unlocked: true`. 401 → stay in public mode.
+- `lib/i18n/index.tsx` provider fetches `/api/translations/[locale]`
+  once, and only on `/cockpit` — every private override key is a
+  cockpit key, and the route is `force-dynamic`, so mounting the fetch
+  on the landing burned an invocation per pageview on a guaranteed
+  401. 200 → store overrides and set `unlocked: true`. 401 → stay in
+  public mode.
 - `lib/constants/site.ts:cvPdfPath(locale, unlocked)` picks
   `/api/cv/pdf/<locale>` when unlocked (Vercel decrypts on the fly)
   or falls back to the static skeletal `/resume/cv-<locale>.pdf`
@@ -292,8 +343,9 @@ private-src/cv-en.tex`) before encrypting.
   → CSS variables
 - `app/sitemap.ts`, `robots.ts`, `manifest.ts`, plus per-locale OG /
   Twitter image generators
-- CV: **skeletal** `.md` and `.pdf` in `/public/resume/` (public).
-  The full versions are gated `.enc` blobs (see CV access gate).
+- CV: **skeletal** `.md` and `.pdf` in `/public/resume/` (public,
+  alongside the `cv-en.tex` / `cv-it.tex` sources). The full versions
+  are gated `.enc` blobs (see CV access gate).
 
 ## Styles pipeline
 
@@ -312,7 +364,7 @@ private-src/cv-en.tex`) before encrypting.
 2. Add `cockpit.sections.<id>.{label,title,sub}` to both translation
    files
 3. Add a case to the switch in
-   `components/cockpit/dock/dock-overlay.tsx` returning a section body
+   `components/cockpit/dock/dock-content.tsx` returning a section body
 
 The scene picks up the new entry automatically.
 

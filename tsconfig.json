@@ -30,15 +30,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@/hooks/*": ["./lib/hooks/*"],
-      "@/styles/*": ["./lib/styles/*"],
-      "@/integrations/*": ["./lib/integrations/*"],
-      "@/webgl/*": ["./lib/webgl/*"],
-      "@/utils/*": ["./lib/utils/*"],
-      "@/config": ["./lib/styles/config.ts"],
-      "@/dev": ["./lib/dev"],
-      "@/dev/*": ["./lib/dev/*"]
+      "@/*": ["./*"]
     }
   },
   "include": [

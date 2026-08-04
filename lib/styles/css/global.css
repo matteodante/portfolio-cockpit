@@ -9,19 +9,10 @@ html {
      events — body has nothing to scroll, chaining to the viewport is blocked,
      and the wheel does nothing. */
   overscroll-behavior: none;
-
-  &.lenis-stopped {
-    --scrollbar-gutter: var(--scrollbar-width);
-  }
 }
 
 * {
   scrollbar-width: thin;
-}
-
-html.overflow-hidden {
-  overflow: hidden;
-  touch-action: none;
 }
 
 /* Routes that render a fixed-viewport experience (the cockpit) lock the page
@@ -120,7 +111,6 @@ svg.icon {
   outline-offset: 3px;
 }
 
-html.scrollbar-grabbing,
 img {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

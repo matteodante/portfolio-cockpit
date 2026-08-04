@@ -38,6 +38,11 @@ export type ScrollWorldConfig = {
    * back to their still. Default 2 (1 on touch) — browsers cap concurrent decoders.
    */
   keepClips?: number
+  /**
+   * Segments either side of the current one to DOWNLOAD ahead (wider than
+   * keepClips — bytes are cheap, decoders are not). Default keepClips + 2.
+   */
+  prefetch?: number
   hint?: string
   nav?: boolean
   atmosphere?: boolean

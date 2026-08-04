@@ -89,7 +89,7 @@ const orbitron = Orbitron({
 const mono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
-  variable: '--font-mono',
+  variable: '--font-jetbrains-mono',
   display: 'swap',
 })
 
@@ -200,10 +200,16 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
   const locale = lang as Locale
   const jsonLd = getJsonLdGraph(locale)
-  const className = `${orbitron.variable} ${mono.variable} ${rajdhani.variable} dark`
+  const className = `${orbitron.variable} ${mono.variable} ${rajdhani.variable}`
 
   return (
-    <html lang={lang} dir="ltr" className={className} suppressHydrationWarning>
+    <html
+      lang={lang}
+      dir="ltr"
+      data-theme="cockpit"
+      className={className}
+      suppressHydrationWarning
+    >
       <head>
         <link
           rel="alternate"

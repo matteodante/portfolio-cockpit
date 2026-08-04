@@ -43,7 +43,13 @@ gated CV / translations APIs. No CMS, no DB.
   `LandingWorld` (client), which mounts the vendored scroll-world scrub
   engine (`lib/vendor/scrub-engine.js` — vendored, Biome-excluded,
   injects its CSS unlayered because reset.css's unlayered `all: unset`
-  beats `@layer` rules). Scene stills live in `public/scroll-world/`.
+  beats `@layer` rules). Assets in `public/scroll-world/`: ~37 MB, of
+  which 36 MB is `vid/` — 9 mp4 clips (5 dives + 4 connectors), each
+  with a `-m` mobile encode; the `.webp` stills are the small part.
+  Paths and the `?v=` cache-busting token come from
+  `lib/constants/scroll-world.ts` (bump `VERSION` on any re-encode);
+  `next.config.ts` gives `/scroll-world/:path*` a 24h `Cache-Control`
+  with a week of stale-while-revalidate.
 - `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → dynamic-imports
   `CockpitApp` with `ssr: false`. Scene is client-only. The page wraps
   it in `<div data-viewport-lock>`; `global.css` locks body scroll via
@@ -53,28 +59,49 @@ gated CV / translations APIs. No CMS, no DB.
   `Accept-Language` via `@formatjs/intl-localematcher` + `negotiator`
   and redirects `/foo` → `/{locale}/foo`. Matcher excludes `_next`,
   `api`, paths with extensions.
+- `app/[lang]/[...rest]/page.tsx` — calls `notFound()`. Without it an
+  unknown path under a valid locale falls through to Next's root
+  `/_not-found`, which renders outside `app/[lang]/layout.tsx` (no
+  fonts, no theme). This routes it to `app/[lang]/not-found.tsx`.
 - `lib/i18n/config.ts` — `'en' | 'it'`. Invalid locale → `notFound()`.
 - `lib/i18n/index.tsx` — flat-key React context. `useT()` falls back
   to the key. Dotted keys: `cockpit.sections.about.label`.
 
 ## Cockpit
 
-`components/cockpit/cockpit-app.tsx` owns two state vars:
+`components/cockpit/cockpit-app.tsx` owns three state vars:
 
 - `near` — planet within docking range
 - `docked` — section in overlay (or `null`)
+- `started` — intro gate. `false` until the player launches; gates the
+  chrome, the background music, gameplay input and camera framing.
 
-Composition (single `position: fixed` container):
+Composition (single `position: relative` container, `100vw` ×
+`100dvh`, `overflow: hidden`):
 
-- `scene/cockpit-scene.tsx` — ~1150 lines of imperative Three.js. Owns
-  its RAF loop, physics constants, post-processing (`EffectComposer`
-  + `UnrealBloomPass`, custom god rays). Pushes to React via
+- `scene/cockpit-scene.tsx` — ~120-line React shell. Holds the refs,
+  mounts the canvas div, calls `buildWorld` once in a `useEffect`, and
+  re-applies labels on language change. No Three.js logic.
+- `scene/build-world.ts` — ~450 lines: the actual world build, the RAF
+  loop, post-processing (`EffectComposer` + `UnrealBloomPass`, custom
+  god rays), adaptive quality, teardown. Pushes to React via
   `onNearChange` / `onDockRequest` callbacks AND via the Zustand HUD
   store (`setHud`).
-- `chrome/*` — non-interactive HUD panels (top bar, side consoles,
-  bottom console, frame). Read from `useHud`.
-- `dock/dock-overlay.tsx` — full-screen overlay. Section bodies in
-  `dock/sections/*`.
+- `scene/three/*` — renderer, planets, asteroids, lights, god rays,
+  backdrop text, explosion, textures, dispose helpers.
+- `scene/player/*` — astronaut, thrusters, input controller, pure
+  physics steps + constants.
+- `scene/camera/*` — follow camera + constants.
+- `scene/blackhole/*` — simulation, shader, config.
+- `chrome/*` — HUD. Read-only gauges (top bar, left/right consoles,
+  mini radar, cockpit frame) subscribe to `useHud`; `bottom-console/*`
+  (DOCK / COMM / actions), `intro-overlay` (access code + start),
+  `language-switcher`, `music-toggle`, `mobile-actions`,
+  `mobile-game-controls` and `death-overlay` are interactive and call
+  back into `cockpit-app.tsx` (or dispatch player events).
+- `dock/dock-overlay.tsx` — full-screen modal shell (focus trap, focus
+  return). The per-section switch lives in `dock/dock-content.tsx`;
+  bodies in `dock/sections/*`.
 - `COMM_SECTION` — dock-only. Not a planet. Reached via the
   bottom-console COMM button.
 
@@ -82,11 +109,12 @@ Composition (single `position: fixed` container):
 
 ## State
 
-- React state (`near`, `docked`) lives in `cockpit-app.tsx`.
+- React state (`near`, `docked`, `started`) lives in `cockpit-app.tsx`.
 - `lib/hooks/cockpit-store.ts` — `useHud` (Zustand) for HUD gauges
-  (`speed`, `coords`, `gravity`, `landed`, `phase`, `nearestId`).
-  `setHud` diffs before `setState` so the scene can call it every
-  frame without renders. Use `setHud(patch)`, not `useHud.setState`.
+  (`speed`, `coords`, `gravity`, `landed`, `phase`, `nearestId`,
+  `orbitAngle`). `setHud` diffs before `setState` so the RAF loop in
+  `build-world.ts` can call it every frame without renders. Use
+  `setHud(patch)`, not `useHud.setState`.
 
 ## Sections data
 
@@ -98,15 +126,19 @@ To add a planet:
 
 1. Add an entry to `SECTIONS`.
 2. Add `cockpit.sections.<id>.*` keys to both translation files.
-3. Add a case in `dock/dock-overlay.tsx`.
+3. Add a case to the switch in `dock/dock-content.tsx`.
 
 ## Chat API
 
 `app/api/chat/route.ts` is the only chat backend.
 
-- `runtime = 'nodejs'`. No `force-dynamic` — cookie reads already
-  opt the route into dynamic rendering.
-- Zod caps: 20 messages, 500 chars each, 4000 chars total.
+- `runtime = 'nodejs'` and `dynamic = 'force-dynamic'`, both explicit
+  (the cookie read alone would already opt the route into dynamic
+  rendering).
+- Zod caps: 8 messages, 500 chars each, 4000 chars total — all three
+  from `lib/ai/limits.ts` (`CHAT_MAX_*`), shared with the client for
+  history trimming and the composer counter. The tight message cap is
+  deliberate: less room for forged-assistant-turn injection.
 - Rate limit via `lib/api/rate-limit.ts` (`createRateLimiter`):
   chat 10/60s/IP, unlock 5/60s/IP. Uses Upstash Redis when
   `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` are set,
@@ -126,8 +158,10 @@ To add a planet:
 - Model `gpt-5.4-nano` is real and intentional. Do not "fix" it to
   `gpt-5-nano` or any variant. Confirmed by the project owner.
 
-Client: `dock/sections/comm-chat.tsx` reads the stream and renders
-markdown via `react-markdown`.
+Client: `dock/sections/comm-chat/` — `index.tsx` (shell),
+`use-chat-stream.ts` (POST + stream reader + history trimming),
+`message-list.tsx`, `message-bubble.tsx` (markdown via
+`react-markdown`), `chat-header.tsx`, `chat-composer.tsx`.
 
 ## CV access gate
 
@@ -169,14 +203,21 @@ Gated endpoints (all return 401 without a valid cookie):
 - `GET /api/cv/pdf/[locale]` — full CV PDF.
 - `GET /api/translations/[locale]` — private translations JSON,
   merged into the i18n context client-side.
-- `POST /api/chat` — always responds; not gated (returns 200 regardless).
-  System prompt swaps: `PROFILE_PUBLIC` inline vs. decrypted
-  `lib/ai/chat-profile.enc` depending on `await hasAccess()`.
+- `POST /api/chat` — not gated by the cookie: it answers either way,
+  only the system prompt swaps (`PROFILE_PUBLIC` inline vs. decrypted
+  `lib/ai/chat-profile.enc`, per `await hasAccess()`). It still fails
+  on its own terms: 400 (bad JSON / bad body / moderation block),
+  413 (input over the total-chars cap), 429 (rate limit), 503
+  (upstream OpenAI error). A missing private profile degrades to the
+  public one instead of erroring.
 
 UI: `components/cockpit/chrome/intro-overlay.tsx` has the password
-input. `lib/i18n/index.tsx` provider mounts and fetches
-`/api/translations/[locale]` once; 200 → merge overrides + set
-`unlocked`. The `cvPdfPath(locale, unlocked)` helper picks
+input. The `lib/i18n/index.tsx` provider fetches
+`/api/translations/[locale]` once, and only on `/cockpit` — every
+private override key is a cockpit key, and the route is
+`force-dynamic`, so mounting the fetch on the landing burned an
+invocation per pageview on a guaranteed 401. 200 → merge overrides +
+set `unlocked`. The `cvPdfPath(locale, unlocked)` helper picks
 `/api/cv/pdf/<locale>` (gated) or `/resume/cv-<locale>.pdf` (static
 skeletal) for the Download CV button.
 
@@ -188,22 +229,32 @@ To update private content: edit files in `private-src/`, run
 - `app/[lang]/layout.tsx` injects JSON-LD from `lib/seo/schemas.ts`
   via `dangerouslySetInnerHTML`. Keep the `// biome-ignore`.
 - Fonts via `next/font/google` (Orbitron, JetBrains Mono, Rajdhani)
-  → CSS vars `--font-orbitron`, `--font-mono`, `--font-rajdhani`.
+  → CSS vars `--font-orbitron`, `--font-jetbrains-mono`,
+  `--font-rajdhani` (consumed via `lib/styles/typography.ts`).
 - `app/sitemap.ts`, `robots.ts`, `manifest.ts`, plus per-locale OG /
   Twitter image generators.
 - CV: **public skeletal** versions in `/public/resume/` (cv.md,
-  cv.it.md, cv-en.pdf, cv-it.pdf). The full / gated versions live
-  as `.enc` blobs under `/private/resume/` — see the CV access
-  gate section.
+  cv.it.md, cv-en.pdf, cv-it.pdf, plus the cv-en.tex / cv-it.tex
+  sources). The full / gated versions live as `.enc` blobs under
+  `/private/resume/` — see the CV access gate section.
 
 ## Conventions
 
-- `@/*` imports only. No `../`. Enforced by Biome plugin.
-- `next/link`, never `<a>`. Enforced.
+Preferred, but **not** machine-enforced (`biome.json` has no
+`plugins` key):
+
+- `@/*` for cross-area imports. Sibling `../` imports inside a
+  component folder exist and are fine.
+- `next/link` for internal navigation. Legit `<a>`s remain: the
+  `mailto:` on the landing, the `<noscript>` fallback markup in
+  `app/[lang]/layout.tsx`, and the vendored scrub engine.
 - No `forwardRef`. React 19 + React Compiler accept `ref` as a prop.
-- No `<img>`. Use `next/image`.
+
+Enforced by tooling (Biome + tsconfig):
+
+- No `<img>` (`noImgElement` is `error`). Use `next/image`.
 - Type imports/exports: `useImportType` / `useExportType` are
-  `error`.
+  `error` in the `.tsx`/`.jsx` override.
 - Filenames: kebab-case or camelCase.
 - No nested ternaries. Extract to IIFE or helper.
 - TS strict + `exactOptionalPropertyTypes`,
@@ -227,3 +278,8 @@ To update private content: edit files in `private-src/`, run
   literals get cast to `` `/${string}` `` (see `lib/i18n/index.tsx`).
 - `COMM_SECTION` exists in `cockpit-sections.ts` but is excluded
   from `SECTIONS` on purpose — dock-only, reached via COMM button.
+- `next.config.ts` `outputFileTracingIncludes` is load-bearing: it
+  ships the `.enc` blobs into the serverless bundles for
+  `/api/cv/**`, `/api/translations/**` and `/api/chat`. Drop it and
+  those routes ENOENT in production while working fine locally. Add
+  an entry for every new encrypted asset.
