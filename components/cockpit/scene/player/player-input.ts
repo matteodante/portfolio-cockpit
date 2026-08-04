@@ -53,6 +53,17 @@ function isTypingTarget(): boolean {
   return false
 }
 
+// True if focus is on something the browser activates with Space — the key
+// must reach the control instead of triggering a landing. Anchors are
+// excluded: they don't activate on Space.
+function isActivatableTarget(): boolean {
+  const el = document.activeElement as HTMLElement | null
+  if (!el) return false
+  const tag = el.tagName
+  if (tag === 'BUTTON' || tag === 'SUMMARY') return true
+  return el.getAttribute('role') === 'button'
+}
+
 export function createInputController({
   onDockKey,
   touchTarget,
@@ -80,6 +91,7 @@ export function createInputController({
     if (isTypingTarget()) return
 
     if (e.code === 'Space') {
+      if (isActivatableTarget()) return
       if (!spaceHeld) spaceEdge = true
       spaceHeld = true
       e.preventDefault()

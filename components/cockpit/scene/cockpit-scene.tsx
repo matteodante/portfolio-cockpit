@@ -49,6 +49,9 @@ type Props = {
   /** `false` during the intro cinematic; `true` once the player has
    *  begun flying. Drives camera framing and input gating. */
   started: boolean
+  /** `true` while a dock overlay is open. The world keeps rendering but
+   *  gameplay input and dock requests are ignored. */
+  docked: boolean
   /** Called when the locked section changes (entering or leaving the
    *  docking range of a planet). Pass `null` to clear. */
   onNearChange: (section: PlanetSection | null) => void
@@ -61,6 +64,7 @@ export function CockpitScene({
   sections,
   sectionLabels,
   started,
+  docked,
   onNearChange,
   onDockRequest,
 }: Props) {
@@ -78,6 +82,9 @@ export function CockpitScene({
   const startedRef = useRef(started)
   startedRef.current = started
 
+  const dockedRef = useRef(docked)
+  dockedRef.current = docked
+
   const mountLabelsRef = useRef(sectionLabels)
   // Captured at mount — re-renders must not tear down the WebGL context.
   const initialSectionsRef = useRef(sections)
@@ -90,6 +97,7 @@ export function CockpitScene({
       sections: initialSectionsRef.current,
       initialLabels: mountLabelsRef.current,
       startedRef,
+      dockedRef,
       handlersRef,
       refs: {
         astronaut: astronautRef,

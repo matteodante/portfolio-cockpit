@@ -5,7 +5,7 @@ import type {
   CockpitSectionId,
   PlanetSection,
 } from '@/lib/data/cockpit-sections'
-import { setHud } from '@/lib/hooks/cockpit-store'
+import { resetHud, setHud } from '@/lib/hooks/cockpit-store'
 import {
   getInitialQuality,
   nextLowerPreset,
@@ -26,6 +26,7 @@ import { createInputController } from './player/player-input'
 import {
   createPlayerState,
   lerpUpToWorld,
+  type PlayerInput,
   projectForwardOntoUp,
   stepFlight,
   stepLanded,
@@ -74,6 +75,9 @@ export type BuildWorldArgs = {
   sections: readonly PlanetSection[]
   initialLabels: Record<CockpitSectionId, string>
   startedRef: RefObject<boolean>
+  /** `true` while the dock overlay is open: the world keeps rendering,
+   *  but gameplay input and dock requests are ignored. */
+  dockedRef: RefObject<boolean>
   handlersRef: RefObject<BuildWorldHandlers>
   refs: BuildWorldRefs
 }
@@ -95,6 +99,21 @@ const ADAPTIVE_COOLDOWN_MS = 2000
 
 const PLAYER_COLLISION_R = 1.6
 
+// Fed to the physics step while docked: the player keeps being pinned to
+// its orbiting planet, but nothing behind the overlay drives it.
+const NEUTRAL_INPUT: PlayerInput = {
+  forward: false,
+  back: false,
+  turnLeft: false,
+  turnRight: false,
+  run: false,
+}
+
+// Radar blip rotation is published in half-degree steps — enough to track
+// a 4°/s orbit without waking React on every frame.
+const ORBIT_QUANT = (Math.PI / 180) * 0.5
+const quantizeAngle = (a: number) => Math.round(a / ORBIT_QUANT) * ORBIT_QUANT
+
 /**
  * Build the entire Three.js world inside `mount` and start the
  * requestAnimationFrame loop. Returns a cleanup function that
@@ -102,7 +121,15 @@ const PLAYER_COLLISION_R = 1.6
  * GPU-backed resource. Designed to be called from a `useEffect`.
  */
 export function buildWorld(args: BuildWorldArgs): () => void {
-  const { mount, sections, initialLabels, startedRef, handlersRef, refs } = args
+  const {
+    mount,
+    sections,
+    initialLabels,
+    startedRef,
+    dockedRef,
+    handlersRef,
+    refs,
+  } = args
 
   const initialQuality = getInitialQuality()
   let currentQuality: SceneQuality = initialQuality
@@ -167,6 +194,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
   const inputCtrl = createInputController({
     onDockKey: () => {
       if (player.phase === 'dead') return
+      if (dockedRef.current) return
       const locked = refs.locked.current
       if (locked) handlersRef.current.onDockRequest(locked)
     },
@@ -224,15 +252,20 @@ export function buildWorld(args: BuildWorldArgs): () => void {
   ) => {
     if (player.phase === 'flying') lerpUpToWorld(player, CAM_UP_LERP)
 
-    if (inputCtrl.consumeSpaceEdge()) {
+    // Drained even while docked so a Space press behind the overlay can't
+    // fire a landing the instant the player undocks.
+    const spaceEdge = inputCtrl.consumeSpaceEdge()
+    if (spaceEdge && !dockedRef.current) {
       if (player.phase === 'flying') tryLand(player)
       else if (player.phase === 'landed') tryTakeoff(player)
     }
 
     projectForwardOntoUp(player)
 
+    const activeInput = dockedRef.current ? NEUTRAL_INPUT : inputCtrl.input
+
     if (player.phase === 'flying') {
-      stepFlight(player, inputCtrl.input, dt, planets.planets)
+      stepFlight(player, activeInput, dt, planets.planets)
       const hitIdx = asteroids.checkCollision(
         player.position,
         PLAYER_COLLISION_R
@@ -248,7 +281,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
       return
     }
     if (player.phase === 'landed' && nearest) {
-      stepLanded(player, inputCtrl.input, dt, nearest)
+      stepLanded(player, activeInput, dt, nearest)
       return
     }
     if (player.phase === 'transitioning') {
@@ -356,6 +389,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
       landed: player.phase === 'landed',
       phase: player.phase,
       nearestId: nowNearId,
+      orbitAngle: quantizeAngle(planets.getOrbitAngle()),
     })
 
     rendererBundle.composer.render()
@@ -392,6 +426,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
 
   return () => {
     cancelAnimationFrame(raf)
+    resetHud()
     resizeObserver.disconnect()
 
     inputCtrl.dispose()

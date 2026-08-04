@@ -8,7 +8,12 @@ const SCALE = 0.15
 
 export default function MiniRadar() {
   const coords = useHud((s) => s.coords)
+  const orbitAngle = useHud((s) => s.orbitAngle)
   const [px, pz] = coords
+  // Planets orbit the black hole, so the static section positions have to
+  // be rotated by the angle the scene has swept before they're plotted.
+  const cos = Math.cos(orbitAngle)
+  const sin = Math.sin(orbitAngle)
 
   return (
     <div
@@ -58,8 +63,10 @@ export default function MiniRadar() {
       />
       {/* sections */}
       {SECTIONS.map((s) => {
-        const dx = (s.pos[0] - px) * SCALE
-        const dz = (s.pos[2] - pz) * SCALE
+        const wx = s.pos[0] * cos - s.pos[2] * sin
+        const wz = s.pos[0] * sin + s.pos[2] * cos
+        const dx = (wx - px) * SCALE
+        const dz = (wz - pz) * SCALE
         const d = Math.hypot(dx, dz)
         if (d > 36) return null
         return (

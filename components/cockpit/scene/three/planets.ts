@@ -34,9 +34,16 @@ export type PlanetEntry = {
 type PlanetsBundle = {
   planets: PlanetEntry[]
   update(dt: number): void
+  /** Angle every planet has swept since mount. The mini radar rotates the
+   *  static section positions by it so blips track the meshes. */
+  getOrbitAngle(): number
   updateLabels(labels: Record<CockpitSectionId, string>): void
   dispose(): void
 }
+
+// Uniform angular speed for every planet — keeps relative angles constant
+// so orbits never cross. One lap ≈ 90s.
+const ORBIT_ANGULAR_SPEED = (2 * Math.PI) / 90
 
 function buildPlanet(
   section: PlanetSection,
@@ -130,10 +137,12 @@ function buildPlanet(
   const z = section.pos[2]
   const radius = Math.hypot(x, z)
   const phase = Math.atan2(z, x)
-  // Uniform angular speed for every planet — keeps relative angles constant
-  // so orbits never cross. One lap ≈ 90s.
-  const angularSpeed = (2 * Math.PI) / 90
-  const orbit = { radius, phase, angularSpeed, y: section.pos[1] }
+  const orbit = {
+    radius,
+    phase,
+    angularSpeed: ORBIT_ANGULAR_SPEED,
+    y: section.pos[1],
+  }
 
   return {
     group,
@@ -162,6 +171,7 @@ export function createPlanets(
   const textureLoader = new THREE.TextureLoader()
   const loadedTextures: THREE.Texture[] = []
   const planets: PlanetEntry[] = []
+  let orbitAngle = 0
 
   for (const section of sections) {
     const label = labels[section.id] ?? section.id
@@ -175,6 +185,7 @@ export function createPlanets(
   return {
     planets,
     update(dt) {
+      orbitAngle = (orbitAngle + ORBIT_ANGULAR_SPEED * dt) % (Math.PI * 2)
       for (const p of planets) {
         p.prevRotationY = p.group.rotation.y
         p.prevPosition.copy(p.group.position)
@@ -187,6 +198,9 @@ export function createPlanets(
           p.orbit.radius * Math.sin(p.orbit.phase)
         )
       }
+    },
+    getOrbitAngle() {
+      return orbitAngle
     },
     updateLabels(next) {
       for (const p of planets) {

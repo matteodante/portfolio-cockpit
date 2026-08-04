@@ -26,6 +26,10 @@ import { CockpitScene } from './scene/cockpit-scene'
 
 type Props = { locale: Locale }
 
+// Module scope: `sectionLabels` identity drives a full label-texture
+// rebuild in the scene, so nothing here may be re-allocated per render.
+const ALL_SECTIONS: readonly CockpitSection[] = [...SECTIONS, COMM_SECTION]
+
 /**
  * Top-level cockpit orchestrator.
  *
@@ -58,7 +62,7 @@ export default function CockpitApp({ locale }: Props) {
 
   const sectionLabels: Record<CockpitSectionId, string> = (() => {
     const out = {} as Record<CockpitSectionId, string>
-    for (const s of SECTIONS) {
+    for (const s of ALL_SECTIONS) {
       out[s.id] = t(`${s.i18nKey}.label` as TranslationKey)
     }
     return out
@@ -78,6 +82,7 @@ export default function CockpitApp({ locale }: Props) {
         sections={SECTIONS}
         sectionLabels={sectionLabels}
         started={started}
+        docked={docked !== null}
         onNearChange={setNear}
         onDockRequest={setDocked}
       />
@@ -115,7 +120,7 @@ export default function CockpitApp({ locale }: Props) {
           {near && !docked ? <ApproachBanner near={near} /> : null}
         </>
       )}
-      <DeathOverlay />
+      {started && <DeathOverlay />}
       {started && !docked && (
         <MusicToggle
           muted={muted}
