@@ -1,9 +1,17 @@
 import { ImageResponse } from 'next/og'
+import { locales } from '@/lib/i18n/config'
 
-export const runtime = 'edge'
 export const alt = 'Matteo Dante · Cockpit Portfolio'
 export const size = { width: 1200, height: 600 }
 export const contentType = 'image/png'
+
+// Metadata images are route handlers: they never pass through
+// app/[lang]/layout.tsx, so its generateStaticParams does not reach them.
+// Every string on this card reads the same in both locales, so the two
+// prerenders are byte-identical on purpose.
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }))
+}
 
 export default function TwitterImage() {
   return new ImageResponse(

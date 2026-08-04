@@ -10,7 +10,7 @@ import type {
   WebSite,
   WithContext,
 } from 'schema-dts'
-import { EMAIL_HREF, SOCIAL_URLS } from '@/lib/constants/contact'
+import { EMAIL, SOCIAL_URLS } from '@/lib/constants/contact'
 import {
   FAMILY_NAME,
   FULL_NAME,
@@ -59,7 +59,7 @@ export function getPersonSchema(locale: Locale): WithContext<Person> {
     jobTitle: JOB_TITLE_LONG,
     description: PERSON_DESCRIPTION[locale],
     url: BASE_URL,
-    email: EMAIL_HREF,
+    email: EMAIL,
     image: `${BASE_URL}${PERSON_IMAGE_PATH}`,
     address: {
       '@type': 'PostalAddress',

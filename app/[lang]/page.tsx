@@ -3,7 +3,11 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import LandingWorld from '@/components/landing/landing-world'
 import { EMAIL, EMAIL_HREF } from '@/lib/constants/contact'
-import { swStill, swStillMobile } from '@/lib/constants/scroll-world'
+import {
+  SCROLL_WORLD_SECTION_IDS,
+  swStill,
+  swStillMobile,
+} from '@/lib/constants/scroll-world'
 import type { Locale } from '@/lib/i18n/config'
 import { isValidLocale } from '@/lib/i18n/config'
 import en from '@/lib/i18n/translations/en.json'
@@ -11,8 +15,6 @@ import it from '@/lib/i18n/translations/it.json'
 import { getLandingPageSchema } from '@/lib/seo/schemas'
 
 const MESSAGES: Record<Locale, Record<string, string>> = { en, it }
-
-const SEO_SECTION_IDS = ['intro', 'webapp', 'ai', 'web', 'contact'] as const
 
 type PageProps = { params: Promise<{ lang: string }> }
 
@@ -29,22 +31,26 @@ export default async function Page({ params }: PageProps) {
     <>
       {/* The first scene's still is the LCP element, but the scroll world builds its
           DOM client-side, so the preload scanner can never discover it. Emit the hint
-          server-side instead. Split on ORIENTATION, not width: the engine picks the
-          portrait encode via `isMobile() && innerHeight >= innerWidth`, so a
-          width-only query preloads the wrong file (and double-downloads) on a
-          landscape phone and on a portrait tablet. */}
+          server-side instead. The media queries mirror the engine's own predicate
+          (scrub-engine.js:85-89 — portrait AND (coarse pointer OR ≤860px)); keep them
+          in sync if isMobile() changes, or the preload fetches a file the engine never
+          asks for and the LCP image is downloaded twice. Written as comma-separated
+          plain queries on purpose: the MQ4 `not (…)` complement is unparsable in
+          Safari < 16.4, which invalidates the whole media list and silently drops the
+          preload. Uncovered corner: portrait ≥861px with no hover and no pointer
+          (TV, keyboard-only) matches neither link — no preload, still loads at mount. */}
       <link
         rel="preload"
         as="image"
         href={swStill('intro')}
-        media="(orientation: landscape)"
+        media="(orientation: landscape), (orientation: portrait) and (min-width: 861px) and (pointer: fine), (orientation: portrait) and (min-width: 861px) and (hover: hover)"
         fetchPriority="high"
       />
       <link
         rel="preload"
         as="image"
         href={swStillMobile('intro')}
-        media="(orientation: portrait)"
+        media="(orientation: portrait) and (hover: none) and (pointer: coarse), (orientation: portrait) and (max-width: 860px)"
         fetchPriority="high"
       />
       <script
@@ -59,7 +65,7 @@ export default async function Page({ params }: PageProps) {
           bots. Same translation keys as the world — no drift. */}
       <div className="sr-only">
         <h1>{t('landing.seo.h1')}</h1>
-        {SEO_SECTION_IDS.map((id) => (
+        {SCROLL_WORLD_SECTION_IDS.map((id) => (
           <section key={id}>
             <h2>{t(`landing.${id}.title`)}</h2>
             <p>{t(`landing.${id}.body`)}</p>

@@ -1,11 +1,33 @@
 import { ImageResponse } from 'next/og'
+import type { Locale } from '@/lib/i18n/config'
+import { defaultLocale, isValidLocale, locales } from '@/lib/i18n/config'
 
-export const runtime = 'edge'
 export const alt = 'Matteo Dante · Cockpit Portfolio'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-export default function OGImage() {
+// Metadata images are route handlers: they never pass through
+// app/[lang]/layout.tsx, so its generateStaticParams does not reach them.
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }))
+}
+
+const OVERLINE: Record<Locale, string> = {
+  en: '◉ Cockpit · System online',
+  it: '◉ Cockpit · Sistema online',
+}
+
+const ROLE: Record<Locale, string> = {
+  en: 'Senior Software Engineer · 8+ years',
+  it: 'Senior Software Engineer · 8+ anni',
+}
+
+type ImageProps = { params: Promise<{ lang: string }> }
+
+export default async function OGImage({ params }: ImageProps) {
+  const { lang } = await params
+  const locale = isValidLocale(lang) ? lang : defaultLocale
+
   return new ImageResponse(
     <div
       style={{
@@ -51,7 +73,7 @@ export default function OGImage() {
             marginBottom: 24,
           }}
         >
-          ◉ Cockpit · System online
+          {OVERLINE[locale]}
         </div>
 
         {/* Name */}
@@ -88,7 +110,7 @@ export default function OGImage() {
             textTransform: 'uppercase',
           }}
         >
-          Senior Software Engineer · 8+ years
+          {ROLE[locale]}
         </div>
       </div>
 
