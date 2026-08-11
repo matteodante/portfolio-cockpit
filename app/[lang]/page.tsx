@@ -1,23 +1,13 @@
-import type { Route } from 'next'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { makeT } from '@/components/landing/i18n'
 import LandingHero from '@/components/landing/landing-hero'
 import LandingSections, {
   LandingHeader,
 } from '@/components/landing/landing-sections'
-import { EMAIL, EMAIL_HREF } from '@/lib/constants/contact'
-import {
-  HERO_POSTER,
-  HERO_POSTER_MOBILE,
-  LANDING_SECTION_IDS,
-} from '@/lib/constants/hero'
+import { HERO_POSTER, HERO_POSTER_MOBILE } from '@/lib/constants/hero'
 import type { Locale } from '@/lib/i18n/config'
 import { isValidLocale } from '@/lib/i18n/config'
-import en from '@/lib/i18n/translations/en.json'
-import it from '@/lib/i18n/translations/it.json'
 import { getLandingPageSchema } from '@/lib/seo/schemas'
-
-const MESSAGES: Record<Locale, Record<string, string>> = { en, it }
 
 type PageProps = { params: Promise<{ lang: string }> }
 
@@ -25,8 +15,7 @@ export default async function Page({ params }: PageProps) {
   const { lang } = await params
   if (!isValidLocale(lang)) notFound()
   const locale = lang as Locale
-  const m = MESSAGES[locale]
-  const t = (key: string) => m[key] ?? key
+  const t = makeT(locale)
 
   const pageSchema = getLandingPageSchema(locale)
 
@@ -65,20 +54,13 @@ export default async function Page({ params }: PageProps) {
           __html: JSON.stringify(pageSchema).replace(/</g, '\\u003c'),
         }}
       />
-      {/* Server-rendered copy for crawlers: the hero overlay and the visible
-          sections use the same translation keys as this block — no drift. */}
+      {/* Only copy with no visible counterpart lives here now: the GSAP
+          sections server-render their own headings and body text, so
+          duplicating them sr-only would read every heading twice. The SEO h1
+          (name + role) and the intro pitch are the two orphans. */}
       <div className="sr-only">
         <h1>{t('landing.seo.h1')}</h1>
-        {LANDING_SECTION_IDS.map((id) => (
-          <section key={id}>
-            <h2>{t(`landing.${id}.title`)}</h2>
-            <p>{t(`landing.${id}.body`)}</p>
-          </section>
-        ))}
-        <Link href={`/${locale}/cockpit` as Route}>
-          {t('landing.cta.primary')}
-        </Link>
-        <a href={EMAIL_HREF}>{EMAIL}</a>
+        <p>{t('landing.intro.body')}</p>
       </div>
       <LandingHeader locale={locale} />
       <main>

@@ -7,6 +7,10 @@ export const GITHUB_USER = 'matteodante'
 export const GITHUB_URL = `https://github.com/${GITHUB_USER}` as const
 export const GITHUB_DISPLAY = `github.com/${GITHUB_USER}` as const
 
+export const CLAUDE_LOCAL_DOCS_REPO_URL =
+  `${GITHUB_URL}/claude-local-docs` as const
+export const PORTFOLIO_REPO_URL = `${GITHUB_URL}/portfolio-cockpit` as const
+
 const LINKEDIN_SLUG = 'matteo-dante-3705b5164'
 export const LINKEDIN_URL = `https://linkedin.com/in/${LINKEDIN_SLUG}` as const
 export const LINKEDIN_DISPLAY = 'linkedin.com/in/matteo-dante' as const

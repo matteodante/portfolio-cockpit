@@ -3,8 +3,10 @@
 import type { Route } from 'next'
 import Link from 'next/link'
 import {
+  CLAUDE_LOCAL_DOCS_REPO_URL,
   GYMTREE_APP_STORE_URL,
   MAESTRO_APP_STORE_URL,
+  PORTFOLIO_REPO_URL,
 } from '@/lib/constants/contact'
 import { type TranslationKey, useT } from '@/lib/i18n'
 import SectionCard from '../primitives/section-card'
@@ -36,14 +38,14 @@ const PROJECTS: readonly Project[] = [
     titleKey: 'projects.claudeLocalDocs.title',
     descKey: 'projects.claudeLocalDocs.desc',
     badgeKey: 'projects.claudeLocalDocs.badge',
-    href: 'https://github.com/matteodante/claude-local-docs',
+    href: CLAUDE_LOCAL_DOCS_REPO_URL,
     linkKey: 'projects.claudeLocalDocs.link',
   },
   {
     titleKey: 'projects.portfolio.title',
     descKey: 'projects.portfolio.desc',
     badgeKey: 'projects.portfolio.badge',
-    href: 'https://github.com/matteodante/portfolio-cockpit',
+    href: PORTFOLIO_REPO_URL,
     linkKey: 'projects.portfolio.link',
   },
 ] as const

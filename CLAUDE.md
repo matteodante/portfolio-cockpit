@@ -39,22 +39,35 @@ gated CV / translations APIs. No CMS, no DB.
 
 ## Routing
 
-- `app/[lang]/page.tsx` → landing: server-rendered `sr-only` SEO block +
-  poster preload hints + `LandingHeader`/`LandingSections` (server) +
-  `LandingHero` (the only client component). The hero is a single
-  AI-generated ascent clip (toy astronaut, clouds → deep space) scrubbed
-  by scroll: sticky 100svh viewport inside a 500svh track, rAF loop with
-  dt-normalised lerp, frame-grid quantised `currentTime` seeks, WebKit
-  play()+pause() priming. Assets in `public/hero/`: `ascent.mp4` (1080p
-  30fps GOP-8, ~3 MB) + `ascent-m.mp4` (9:16 centre crop) + webp
-  posters. Paths and the `?v=` cache-busting token come from
-  `lib/constants/hero.ts` (bump `VERSION` on any re-encode);
-  `next.config.ts` gives `/hero/:path*` a 24h `Cache-Control` with a
-  week of stale-while-revalidate. The hero's `isMobile()` predicate and
-  the page's preload media queries must stay in sync. Regeneration
-  pipeline (Replicate): nano-banana-pro still → nano-banana-pro edit
-  (end frame) → wan-2.7-i2v first+last frame, then ffmpeg re-encode
-  (`-g 8 -bf 0`) for scrub-smooth seeking.
+- `app/[lang]/page.tsx` → landing: server-rendered `sr-only` SEO block
+  (only copy with no visible counterpart — the sections SSR their own) +
+  poster preload hints + `LandingHeader`/`LandingSections` (server
+  shells) + client sections. The hero clip is ONE timeline in two acts:
+  a 5s seamless idle loop (first frame == last frame == the ascent's
+  first frame), then the 10s ascent. At rest the video PLAYS the loop
+  natively (scrubbing 30fps footage slowly steps visibly — playback is
+  the only smooth idle) and wraps at the seam; scrolling accelerates
+  playback to the seam, then the scroll scrub owns
+  `[HERO_LOOP_SECONDS, duration]` — every handover lands on the shared
+  seam frame, so there is never a cut or fade. Engine in
+  `landing-hero.tsx`: sticky 100svh in a 500svh track, rAF with
+  dt-normalised lerp, two clocks (`cur` drives overlays instantly,
+  `vcur` drives seeks), frame-grid quantised `currentTime`,
+  IntersectionObserver parking with hard resync on re-entry, WebKit
+  priming. Below the hero: GSAP sections (`components/landing/
+  sections/` — marquee, services triptych, pinned horizontal projects
+  bay, contact finale) built on `components/landing/motion.ts` (single
+  plugin registration, `MQ` conditions, `idleGate`, `fontsSettled`) —
+  reduced-motion branch is mandatory in every section. Assets:
+  `public/hero/` (combined clips + posters, `lib/constants/hero.ts`,
+  bump `VERSION` on re-encode) and `public/landing/` (toy renders,
+  `lib/constants/landing-assets.ts`); both dirs get the 24h
+  Cache-Control from `next.config.ts`, and `images.localPatterns` must
+  allow any dir served to `next/image` with `?v=` tokens. The hero's
+  `isMobile()` predicate and the page's preload media queries must stay
+  in sync. Regeneration (Replicate): nano-banana-pro stills/edits →
+  wan-2.7-i2v (first+last frame for loops and ascents) → ffmpeg
+  `-g 8 -bf 0` re-encode, loop concatenated before the ascent.
 - `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → dynamic-imports
   `CockpitApp` with `ssr: false`. Scene is client-only. The page wraps
   it in `<div data-viewport-lock>`; `global.css` locks body scroll via

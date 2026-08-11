@@ -32,6 +32,10 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // The landing artwork carries a `?v=` cache-busting token (see
+    // lib/constants/landing-assets.ts); Next 16 blocks query strings on
+    // local next/image sources unless the pattern allows them.
+    localPatterns: [{ pathname: '/landing/**' }, { pathname: '/images/**' }],
   },
   headers: async () => [
     {
@@ -60,7 +64,7 @@ const nextConfig: NextConfig = {
       // clip before anything can play. Filenames are stable, so this is a
       // deliberate day-long cache with a week of stale-while-revalidate rather
       // than `immutable` — a re-encode still propagates within a day.
-      source: '/hero/:path*',
+      source: '/:dir(hero|landing)/:path*',
       headers: [
         {
           key: 'Cache-Control',
