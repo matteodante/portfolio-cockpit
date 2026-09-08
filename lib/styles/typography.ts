@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react'
 
 const fonts = {
-  display: '--font-orbitron',
+  display: '--font-unbounded',
   mono: '--font-jetbrains-mono',
-  alt: '--font-rajdhani',
+  alt: '--font-body',
 } as const
 
 const typography: TypeStyles = {

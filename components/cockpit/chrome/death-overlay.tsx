@@ -26,7 +26,7 @@ export default function DeathOverlay() {
     >
       <div
         style={{
-          fontFamily: 'var(--font-orbitron), sans-serif',
+          fontFamily: 'var(--font-body), sans-serif',
           fontSize: 'clamp(28px, 5vw, 64px)',
           color: '#ff3b3b',
           letterSpacing: '0.3em',

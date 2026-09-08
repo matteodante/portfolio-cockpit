@@ -54,7 +54,7 @@ const LINK_STYLE = {
   display: 'inline-flex',
   marginTop: 10,
   color: 'var(--color-cockpit-accent)',
-  fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+  fontFamily: 'var(--font-body), sans-serif',
   fontSize: 11,
   letterSpacing: 1.2,
   textDecoration: 'none',
@@ -78,7 +78,7 @@ export default function ProjectsSection() {
           >
             <div
               style={{
-                fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
+                fontFamily: 'var(--font-body), sans-serif',
                 fontSize: 17,
                 fontWeight: 600,
                 color: 'var(--color-cockpit-accent)',
@@ -88,7 +88,7 @@ export default function ProjectsSection() {
             </div>
             <div
               style={{
-                fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+                fontFamily: 'var(--font-body), sans-serif',
                 fontSize: 10,
                 color: 'var(--color-cockpit-text-dim)',
                 letterSpacing: 1,

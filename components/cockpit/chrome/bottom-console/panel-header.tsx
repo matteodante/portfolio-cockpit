@@ -7,9 +7,9 @@ type PanelHeaderProps = {
 }
 
 const STYLE: CSSProperties = {
-  fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
-  fontSize: 9,
-  letterSpacing: 2,
+  fontFamily: 'var(--font-body), sans-serif',
+  fontSize: 11,
+  letterSpacing: 0,
   display: 'flex',
   justifyContent: 'space-between',
   color: COCKPIT_ACCENT,
@@ -22,7 +22,7 @@ const STYLE: CSSProperties = {
 export default function PanelHeader({ title, right }: PanelHeaderProps) {
   return (
     <div style={STYLE}>
-      <span>◉ {title}</span>
+      <span>{title}</span>
       {right}
     </div>
   )

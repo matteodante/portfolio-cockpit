@@ -25,7 +25,7 @@ export default function SectionKicker({
   return (
     <div
       style={{
-        fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+        fontFamily: 'var(--font-body), sans-serif',
         fontSize: SIZE_PX[size],
         letterSpacing: 2,
         color: 'var(--color-cockpit-accent)',

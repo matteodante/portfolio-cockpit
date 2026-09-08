@@ -1,8 +1,8 @@
 'use client'
 
-import type { Route } from 'next'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import LanguageSwitcher from '@/components/shared/language-switcher'
 import { cvPdfPath } from '@/lib/constants/site'
 import { COCKPIT_ACCENT } from '@/lib/constants/theme'
 import { useT, useUnlock } from '@/lib/i18n'
@@ -42,7 +42,7 @@ const STYLES = `
 .menu-sheet {
   position: fixed;
   inset: 0;
-  z-index: 60;
+  z-index: 70;
   display: flex;
   flex-direction: column;
   padding: env(safe-area-inset-top, 24px) 22px env(safe-area-inset-bottom, 24px) 22px;
@@ -58,23 +58,27 @@ const STYLES = `
   padding: 24px 4px 32px;
 }
 .menu-head-title {
-  font-family: var(--font-orbitron), Orbitron, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: #d4cfc5;
+  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-cockpit-text);
 }
 .menu-close {
   appearance: none;
   background: transparent;
   border: 0;
-  color: #8a8680;
-  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+  color: var(--color-cockpit-text-dim);
+  font-family: var(--font-body), sans-serif;
   font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 8px 4px;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 8px;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -90,12 +94,12 @@ const STYLES = `
   border: 0;
   border-bottom: 1px solid rgba(255,255,255,0.06);
   padding: 22px 4px;
-  font-family: var(--font-orbitron), Orbitron, sans-serif;
-  font-size: 16px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 20px;
   font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #d4cfc5;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-cockpit-text);
   text-align: left;
   text-decoration: none;
   cursor: pointer;
@@ -108,27 +112,6 @@ const STYLES = `
   color: var(--accent);
 }
 
-.menu-lang {
-  display: inline-flex;
-  margin-top: 36px;
-  border: 1px solid rgba(255,255,255,0.1);
-  align-self: flex-start;
-}
-.menu-lang a {
-  font-family: var(--font-mono), 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
-  font-weight: 600;
-  padding: 8px 14px;
-  text-decoration: none;
-  color: #8a8680;
-  transition: color 160ms ease, background 160ms ease;
-}
-.menu-lang a[data-active='true'] {
-  background: var(--accent);
-  color: #0a0706;
-}
-
 .menu-back {
   margin-top: auto;
   padding: 18px;
@@ -136,11 +119,11 @@ const STYLES = `
   background: var(--accent);
   border: 0;
   color: #0a0706;
-  font-family: var(--font-orbitron), Orbitron, sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -175,14 +158,34 @@ export default function MobileActions({
   const t = useT()
   const { unlocked } = useUnlock()
   const [open, setOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     if (!open) return
+    const previous = document.activeElement as HTMLElement | null
+    closeRef.current?.focus()
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false)
+      if (e.key !== 'Tab') return
+      const controls =
+        menuRef.current?.querySelectorAll<HTMLElement>('button, a[href]')
+      const first = controls?.[0]
+      const last = controls?.[controls.length - 1]
+      if (!(first && last)) return
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      previous?.focus()
+    }
   }, [open])
 
   const close = () => setOpen(false)
@@ -210,6 +213,7 @@ export default function MobileActions({
       {open ? (
         <div
           className="menu-sheet"
+          ref={menuRef}
           style={{ ['--accent' as string]: COCKPIT_ACCENT }}
           role="dialog"
           aria-modal="true"
@@ -220,6 +224,7 @@ export default function MobileActions({
             <button
               type="button"
               onClick={close}
+              ref={closeRef}
               className="menu-close"
               aria-label={t('cockpit.mobile.backToGame')}
             >
@@ -258,16 +263,11 @@ export default function MobileActions({
             </button>
           </div>
 
-          <span className="menu-lang">
-            <Link href="/en" prefetch={false} data-active={locale === 'en'}>
-              EN
-            </Link>
-            <Link href="/it" prefetch={false} data-active={locale === 'it'}>
-              IT
-            </Link>
-          </span>
+          <div style={{ marginTop: 28 }}>
+            <LanguageSwitcher locale={locale} cockpit />
+          </div>
 
-          <Link href={`/${locale}` as Route} className="menu-back">
+          <Link href={`/${locale}`} className="menu-back">
             {t('cockpit.mobile.backToHome')}
           </Link>
         </div>

@@ -4,9 +4,9 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Deploy: Vercel](https://img.shields.io/badge/deploy-vercel-black.svg)](https://matteodante.it)
 
-3D cockpit portfolio. One route, one Three.js scene, a streaming chat
-endpoint, and a password-gated CV (AES-256-GCM encrypted at rest in
-the repo). EN/IT.
+Freelance portfolio with two experiences: a cinematic landing for web,
+mobile and AI projects, and a playable 3D cockpit CV. Streaming AI chat
+and a password-gated full CV (AES-256-GCM encrypted at rest). EN/IT.
 
 **Live demo:** <https://matteodante.it>
 
@@ -60,6 +60,10 @@ bun run typecheck        # tsgo --noEmit
 bun run test             # bun test
 bun run encrypt:private  # re-encrypt private-src/ → .enc blobs
 bun run analyze          # bundle analyzer
+bun run design:context   # load product, design and landing brief
+bun run design:doctor    # validate Impeccable context/config schemas
+bun run design:check     # static design checks for the landing
+bun run design:update    # update only the global Impeccable skill via npx skills
 ```
 
 `setup:styles` regenerates `lib/styles/css/{tailwind,root}.css` from
@@ -67,10 +71,30 @@ bun run analyze          # bundle analyzer
 
 Single test: `bun test path/to/file.test.ts -t "name"`.
 
+## Design and conversion
+
+Start with [`PRODUCT.md`](./PRODUCT.md) for confirmed product facts,
+[`DESIGN.md`](./DESIGN.md) for the existing visual system, and the
+[landing brief](./.impeccable/surfaces/app-lang-page-tsx.md) for the
+redesign's conversion goals and open decisions.
+
+[`docs/design-workflow.md`](./docs/design-workflow.md) explains the
+Impeccable setup, how to choose a command, and the checks required for
+shipping a visual change. [`docs/redesign-roadmap.md`](./docs/redesign-roadmap.md)
+records the starting evidence, priorities, and measurement plan.
+
+Impeccable is a global skill managed with `npx skills -g`, under
+`~/.agents/skills/impeccable`; no copy or application dependency is
+installed in this repo. Product context, design config and surface
+briefs are versioned. The design commands use that global installation
+on macOS/Linux. See the workflow guide for first-time installation.
+
 ## Layout
 
-- `app/[lang]/page.tsx` → `CockpitLauncher` → `CockpitApp` (client-only)
+- `app/[lang]/page.tsx` → landing hero, services, projects, contact
+- `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → `CockpitApp`
 - `proxy.ts` — Next 16 middleware. Locale detect + redirect.
+- `components/landing/` — server-rendered sections, scoped CSS and Canvas 2D motion
 - `components/cockpit/` — scene, HUD, dock overlay
 - `app/api/chat/route.ts` — streaming chat with public / gated prompt
 - `app/api/unlock/route.ts` — POST password → sets HMAC access cookie
@@ -83,7 +107,7 @@ Single test: `bun test path/to/file.test.ts -t "name"`.
 
 Architecture tour: [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 Contributor guide: [`CONTRIBUTING.md`](./CONTRIBUTING.md).
-Notes for Claude Code agents: [`CLAUDE.md`](./CLAUDE.md).
+Shared agent instructions: [`AGENTS.md`](./AGENTS.md).
 
 ## CV access gate
 
@@ -158,7 +182,7 @@ Third-party assets bundled in `public/`:
 - **Video** `public/videos/jet-1.mp4` — Grigoriy Bunkov via
   [Pexels](https://www.pexels.com/video/private-jet-flying-through-clear-blue-skies-32301926/)
   ([Pexels License](https://www.pexels.com/license/))
-- **Fonts** Orbitron, JetBrains Mono, Rajdhani — loaded via `next/font/google`
+- **Fonts** Unbounded, Space Grotesk, JetBrains Mono — loaded via `next/font/google`
   (SIL OFL 1.1). Inter and Instrument Serif self-hosted in
   `public/fonts/` (SIL OFL 1.1).
 

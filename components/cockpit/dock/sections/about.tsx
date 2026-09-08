@@ -52,7 +52,7 @@ export default function AboutSection() {
       <SectionCard
         style={{
           marginTop: 20,
-          fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+          fontFamily: 'var(--font-body), sans-serif',
           fontSize: 12,
         }}
       >

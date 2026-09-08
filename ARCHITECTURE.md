@@ -1,13 +1,13 @@
 # Architecture
 
-Tour of the codebase for contributors. Pairs with `CLAUDE.md` (which
-is written for Claude Code agents and is terser).
+Tour of the codebase for contributors. Pairs with `AGENTS.md`, the
+shared instructions for coding agents. `CLAUDE.md` imports that file.
 
 ## Shape
 
 ```
 matteodante.it
-├── /[lang]           → LandingHero (scroll-scrubbed clip) + sections
+├── /[lang]           → LandingPage (SSR) + LandingMotion
 └── /[lang]/cockpit   → CockpitApp
     ├── CockpitScene  (React shell) ──► build-world.ts (imperative Three.js)
     ├── chrome/*      (HUD panels + interactive consoles)
@@ -16,12 +16,26 @@ matteodante.it
                                   └── comm-chat ──► /api/chat (streaming)
 ```
 
-No CMS, no database. Two page routes: a scroll-cinematic freelance
-landing at `/` (a single AI-generated ascent clip scrubbed by scroll —
-~4 MB under `public/hero/`, URLs versioned from
-`lib/constants/hero.ts` — plus server-rendered editorial sections) and
-the 3D interactive cockpit scene at `/cockpit`, plus a streaming chat
-endpoint.
+No CMS, no database. The freelance landing at `/` renders its offer,
+services, two shipped apps and contact links on the server. A small
+client shell adds Canvas 2D stars and GSAP ScrollTrigger depth transitions
+on desktop and mobile. Hero/work scenes use CSS sticky stages; scroll
+sets CSS progress variables with a 0.3-second scrub response. Other
+sections stay in normal flow. Pause, reduced motion and no JavaScript
+retain static imagery and normal flow. No Three.js or video is loaded
+on this route.
+The separate `/cockpit` route contains the interactive 3D CV and chat.
+
+Both routes share Unbounded / Space Grotesk fonts from the locale layout,
+JetBrains Mono for instrumentation, color tokens and `brand.css` controls.
+The landing retains scoped
+`components/landing/landing.css`. Its optimized portrait and localized
+App Store captures live in `public/landing-v2/`, alongside a transparent
+Image Gen astronaut based on a render of the cockpit model, an original
+generated lunar background, and a circular avatar from the same personal
+portrait. The hero includes a localized link to the playable CV. See `docs/design/brand-media.md`.
+Contact destinations
+are centralized in `lib/constants/contact.ts`.
 
 ## Stack
 
@@ -171,9 +185,9 @@ COMM button in the bottom console.
 
 ## Routing & locale
 
-- `app/[lang]/page.tsx` → the landing: server-rendered `sr-only` SEO
-  block + `LandingHeader`/`LandingSections` (server) + `LandingHero`
-  (client scrub).
+- `app/[lang]/page.tsx` → visible server-rendered `LandingPage` plus
+  JSON-LD. `LandingMotion` adds stars and scroll depth as progressive
+  enhancement; the page has a single visible H1 and native links.
 - `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → `CockpitApp`
   (client-only, `ssr: false`), wrapped in `<div data-viewport-lock>`
   so `global.css` can lock body scroll via
@@ -340,7 +354,7 @@ private-src/cv-en.tex`) before encrypting.
 - `app/[lang]/layout.tsx` injects JSON-LD from `lib/seo/schemas.ts`
   via `dangerouslySetInnerHTML` (Next docs pattern; the
   `// biome-ignore` is intentional)
-- Fonts via `next/font/google` (Orbitron, JetBrains Mono, Rajdhani)
+- Shared fonts via `next/font/google` (Unbounded, Space Grotesk, JetBrains Mono)
   → CSS variables
 - `app/sitemap.ts`, `robots.ts`, `manifest.ts`, plus per-locale OG /
   Twitter image generators

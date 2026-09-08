@@ -1,0 +1,85 @@
+/* Shared identity: landing and playable cockpit. */
+.brand-languages {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  color: var(--color-cockpit-text-dim);
+}
+.brand-languages a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  min-height: 40px;
+  color: inherit;
+  text-decoration: none;
+}
+.brand-languages a[aria-current="page"],
+.brand-languages a:hover {
+  color: var(--color-cockpit-text);
+}
+.brand-languages span {
+  opacity: 0.6;
+}
+.brand-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 1px solid var(--color-cockpit-accent);
+  border-radius: 2px;
+  background: var(--color-cockpit-accent);
+  color: var(--color-cockpit-bg);
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4;
+  transition:
+    background 180ms ease-out,
+    transform 180ms ease-out,
+    border-color 180ms ease-out;
+}
+.brand-button[data-variant="secondary"] {
+  background: transparent;
+  border-color: var(--color-cockpit-border);
+  color: var(--color-cockpit-text);
+}
+.brand-button:hover {
+  background: #ff8457;
+  transform: translateY(-2px);
+}
+.brand-button[data-variant="secondary"]:hover {
+  background: var(--color-cockpit-panel-light);
+  border-color: var(--color-cockpit-accent);
+}
+.brand-button:disabled {
+  background: #d77845;
+  border-color: #d77845;
+  cursor: not-allowed;
+  transform: none;
+}
+.brand-languages a:focus-visible,
+.brand-button:focus-visible {
+  outline: 2px solid var(--color-cockpit-accent);
+  outline-offset: 5px;
+}
+
+.brand-avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 799px) {
+  .brand-avatar {
+    width: 32px;
+    height: 32px;
+  }
+}

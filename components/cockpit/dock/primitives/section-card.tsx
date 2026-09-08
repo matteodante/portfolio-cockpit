@@ -23,7 +23,7 @@ export default function SectionCard({
         padding,
         marginBottom,
         background: 'var(--color-cockpit-panel-light)',
-        border: '1px solid #000',
+        border: '1px solid var(--color-cockpit-border)',
         ...style,
       }}
     >

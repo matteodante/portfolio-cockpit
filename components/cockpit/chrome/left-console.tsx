@@ -43,7 +43,7 @@ export default function LeftConsole() {
     >
       <div
         style={{
-          fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
+          fontFamily: 'var(--font-body), sans-serif',
           fontSize: 9,
           letterSpacing: 2,
           color: COCKPIT_ACCENT,

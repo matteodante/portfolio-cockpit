@@ -32,10 +32,12 @@ scene / HUD / chrome you can ignore the gated routes entirely.
 
 ```bash
 bun run check
+bun run build
 ```
 
-Runs Biome, `tsgo` (fast TS check), and `bun test`. CI runs the same
-command. If it passes locally it passes in CI.
+`check` runs Biome, `tsgo` (fast TS check), and `bun test`. CI also
+runs a production build. Run both locally; environment differences
+can still affect CI.
 
 If Biome flags style:
 
@@ -78,6 +80,19 @@ private translations.
 
 Heavy WebGL code is not unit-tested. Visual regression is manual.
 
+## Design changes
+
+Read `PRODUCT.md`, `DESIGN.md`, and the matching brief under
+`.impeccable/surfaces/`. Shared agent instructions live in `AGENTS.md`.
+Use the global Impeccable skill with `design:context`, `design:doctor`,
+and `design:check` as described in
+[`docs/design-workflow.md`](./docs/design-workflow.md).
+
+Include desktop/mobile evidence for UI changes, check both languages
+and reduced motion, and verify the intended contact or CV path. A
+clean detector report does not prove usability or conversion. Record
+existing findings separately from regressions introduced by the change.
+
 ## PRs
 
 - Branch from `main`. One topic per PR.
@@ -114,8 +129,8 @@ Out of scope:
 
 ## Things that look weird, are intentional
 
-See the "Things that look weird, is intentional" section in
-`CLAUDE.md` before "fixing" something that seems off — chances are
+See the "Looks weird, is intentional" section in
+`AGENTS.md` before "fixing" something that seems off — chances are
 it's load-bearing.
 
 ## License

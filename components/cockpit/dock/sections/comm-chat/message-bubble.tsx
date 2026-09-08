@@ -34,7 +34,7 @@ const MD_COMPONENTS: Components = {
       target="_blank"
       rel="noreferrer"
       style={{
-        color: 'var(--color-cockpit-hud-green)',
+        color: 'var(--color-cockpit-accent)',
         textDecoration: 'underline',
       }}
     >
@@ -44,11 +44,12 @@ const MD_COMPONENTS: Components = {
   code: ({ children }) => (
     <code
       style={{
-        background: '#0a0908',
-        border: '1px solid #2a2824',
+        background: 'var(--color-cockpit-bg)',
+        border: '1px solid var(--color-cockpit-border)',
         padding: '0 4px',
         borderRadius: 2,
         fontSize: 12,
+        fontFamily: 'var(--font-mono), monospace',
       }}
     >
       {children}
@@ -57,12 +58,13 @@ const MD_COMPONENTS: Components = {
   pre: ({ children }) => (
     <pre
       style={{
-        background: '#0a0908',
-        border: '1px solid #2a2824',
+        background: 'var(--color-cockpit-bg)',
+        border: '1px solid var(--color-cockpit-border)',
         padding: 8,
         margin: '0 0 8px',
         overflowX: 'auto',
         fontSize: 12,
+        fontFamily: 'var(--font-mono), monospace',
       }}
     >
       {children}
@@ -71,7 +73,7 @@ const MD_COMPONENTS: Components = {
   h1: ({ children }) => (
     <div
       style={{
-        fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
+        fontFamily: 'var(--font-body), sans-serif',
         fontSize: 14,
         margin: '4px 0 6px',
         color: '#eae2d3',
@@ -83,7 +85,7 @@ const MD_COMPONENTS: Components = {
   h2: ({ children }) => (
     <div
       style={{
-        fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
+        fontFamily: 'var(--font-body), sans-serif',
         fontSize: 13,
         margin: '4px 0 6px',
         color: '#eae2d3',
@@ -95,7 +97,7 @@ const MD_COMPONENTS: Components = {
   h3: ({ children }) => (
     <div
       style={{
-        fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
+        fontFamily: 'var(--font-body), sans-serif',
         fontSize: 12,
         margin: '4px 0 6px',
         color: '#eae2d3',
@@ -109,7 +111,7 @@ const MD_COMPONENTS: Components = {
       style={{
         margin: '0 0 8px',
         paddingLeft: 10,
-        borderLeft: '2px solid #2a2824',
+        borderLeft: '1px solid var(--color-cockpit-border)',
         color: 'var(--color-cockpit-text-dim)',
       }}
     >
@@ -144,7 +146,9 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
         style={{
           maxWidth: '85%',
           padding: '8px 12px',
-          background: isUser ? '#1f1c18' : '#14120f',
+          background: isUser
+            ? 'var(--color-cockpit-panel-light)'
+            : 'var(--color-cockpit-panel)',
           border: `1px solid ${isUser ? COCKPIT_ACCENT : '#2a2824'}`,
           color: 'var(--color-cockpit-text)',
           wordBreak: 'break-word',

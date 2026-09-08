@@ -64,7 +64,7 @@ function ExperienceCard({ id, t }: CardProps) {
       >
         <div
           style={{
-            fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
+            fontFamily: 'var(--font-body), sans-serif',
             fontWeight: 600,
             fontSize: 17,
             color: 'var(--color-cockpit-text)',
@@ -74,7 +74,7 @@ function ExperienceCard({ id, t }: CardProps) {
         </div>
         <div
           style={{
-            fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+            fontFamily: 'var(--font-body), sans-serif',
             fontSize: 10,
             color: 'var(--color-cockpit-text-dim)',
             letterSpacing: 1,
@@ -89,7 +89,7 @@ function ExperienceCard({ id, t }: CardProps) {
           color: 'var(--color-cockpit-text-dim)',
           fontStyle: 'italic',
           marginBottom: 8,
-          fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+          fontFamily: 'var(--font-body), sans-serif',
         }}
       >
         {role} · {location}
@@ -99,8 +99,8 @@ function ExperienceCard({ id, t }: CardProps) {
         <div
           style={{
             marginBottom: 10,
-            border: '1px solid #000',
-            background: '#0a0908',
+            border: '1px solid var(--color-cockpit-border)',
+            background: 'var(--color-cockpit-bg)',
             overflow: 'hidden',
           }}
         >
@@ -128,7 +128,7 @@ function ExperienceCard({ id, t }: CardProps) {
           fontSize: 11,
           color: 'var(--color-cockpit-text-dim)',
           marginBottom: 6,
-          fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+          fontFamily: 'var(--font-body), sans-serif',
           letterSpacing: 1,
         }}
       >

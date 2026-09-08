@@ -5,9 +5,7 @@ import {
   type KeyboardEvent as ReactKeyboardEvent,
   useState,
 } from 'react'
-import MetalPanel from '@/components/cockpit/chrome/primitives/metal-panel'
 import { CHAT_MAX_MESSAGE_LENGTH } from '@/lib/ai/limits'
-import { COCKPIT_ACCENT } from '@/lib/constants/theme'
 import { useT } from '@/lib/i18n'
 
 type ChatComposerProps = {
@@ -38,7 +36,7 @@ export default function ChatComposer({ sending, onSend }: ChatComposerProps) {
 
   return (
     <form onSubmit={submit}>
-      <MetalPanel style={{ padding: 8 }} showRivets={false}>
+      <div style={{ paddingTop: 8 }}>
         <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end' }}>
           <textarea
             value={input}
@@ -53,39 +51,29 @@ export default function ChatComposer({ sending, onSend }: ChatComposerProps) {
             style={{
               flex: 1,
               resize: 'none',
-              background: '#0a0908',
-              border: '1px solid #000',
+              background: 'var(--color-cockpit-bg)',
+              border: '1px solid var(--color-cockpit-border)',
               color: 'var(--color-cockpit-text)',
               padding: '8px 10px',
-              fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
-              fontSize: 13,
+              fontFamily: 'var(--font-body), sans-serif',
+              fontSize: 16,
               lineHeight: 1.5,
-              outline: 'none',
             }}
           />
           <button
             type="submit"
             disabled={!canSubmit}
             aria-busy={sending}
-            style={{
-              padding: '10px 16px',
-              background: canSubmit ? COCKPIT_ACCENT : '#2a2824',
-              border: '1px solid #000',
-              color: canSubmit ? '#000' : '#8a8680',
-              fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: 2,
-              cursor: canSubmit ? 'pointer' : 'not-allowed',
-            }}
+            className="brand-button"
+            style={{ padding: '10px 16px', minHeight: 44, fontSize: 13 }}
           >
-            {t('cockpit.comm.send').toUpperCase()}
+            {t('cockpit.comm.send')}
           </button>
         </div>
         <div
           style={{
             marginTop: 4,
-            fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+            fontFamily: 'var(--font-body), sans-serif',
             fontSize: 9,
             color: 'var(--color-cockpit-text-dim)',
             letterSpacing: 1,
@@ -98,7 +86,7 @@ export default function ChatComposer({ sending, onSend }: ChatComposerProps) {
             {input.length}/{CHAT_MAX_MESSAGE_LENGTH}
           </span>
         </div>
-      </MetalPanel>
+      </div>
     </form>
   )
 }

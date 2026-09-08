@@ -24,12 +24,15 @@
     "analyze": "ANALYZE=true bun run build",
     "test": "bun test",
     "setup:styles": "bun ./lib/styles/scripts/setup-styles.ts",
+    "design:update": "npx --yes skills update impeccable --global --yes",
+    "design:context": "\"$HOME/.agents/skills/impeccable/scripts/impeccable\" context --target 'app/[lang]/page.tsx'",
+    "design:doctor": "\"$HOME/.agents/skills/impeccable/scripts/impeccable\" doctor --json",
+    "design:check": "\"$HOME/.agents/skills/impeccable/scripts/impeccable\" detect 'app/[lang]/page.tsx' components/landing lib/styles/css/global.css",
     "encrypt:private": "bun ./scripts/encrypt-private.ts",
     "prepare": "lefthook install"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.8.3",
-    "@gsap/react": "^2.1.2",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
     "@vercel/analytics": "^2.0.1",

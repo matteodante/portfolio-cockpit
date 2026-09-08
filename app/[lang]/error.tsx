@@ -89,8 +89,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
 
         <h1
           style={{
-            fontFamily:
-              'var(--font-orbitron), var(--font-rajdhani), sans-serif',
+            fontFamily: 'var(--font-display), sans-serif',
             fontSize: 'clamp(32px, 5vw, 56px)',
             fontWeight: 700,
             letterSpacing: '0.06em',

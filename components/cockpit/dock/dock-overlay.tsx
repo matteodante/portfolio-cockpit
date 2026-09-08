@@ -1,13 +1,12 @@
 'use client'
 
 import { useEffect, useId, useRef } from 'react'
+import DockContent from '@/components/cockpit/dock/dock-content'
 import { COCKPIT_ACCENT } from '@/lib/constants/theme'
 import type { CockpitSection } from '@/lib/data/cockpit-sections'
 import { useIsMobile } from '@/lib/hooks/use-is-mobile'
 import { type TranslationKey, useT } from '@/lib/i18n'
 import type { Locale } from '@/lib/i18n/config'
-import Screw from '../chrome/primitives/screw'
-import DockContent from './dock-content'
 
 type DockOverlayProps = {
   section: CockpitSection | null
@@ -109,17 +108,14 @@ export default function DockOverlay({
         aria-labelledby={titleId}
         style={{
           background: 'var(--color-cockpit-panel)',
-          border: isMobile ? 'none' : `1px solid ${COCKPIT_ACCENT}`,
-          boxShadow: isMobile
-            ? 'none'
-            : `0 0 60px ${COCKPIT_ACCENT}4d, inset 0 1px 0 rgba(255,255,255,0.08)`,
+          border: isMobile ? 'none' : '1px solid var(--color-cockpit-border)',
           width: isMobile ? '100vw' : 'min(760px, 92vw)',
           height: isMobile ? '100dvh' : undefined,
           maxHeight: isMobile ? '100dvh' : '85vh',
           padding: 0,
           position: 'relative',
           color: 'var(--color-cockpit-text)',
-          fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+          fontFamily: 'var(--font-body), sans-serif',
           zIndex: 1,
           display: 'flex',
           flexDirection: 'column',
@@ -131,7 +127,7 @@ export default function DockOverlay({
             padding: isMobile
               ? 'calc(env(safe-area-inset-top, 0px) + 10px) 16px 10px'
               : '12px 20px',
-            borderBottom: '1px solid #000',
+            borderBottom: '1px solid var(--color-cockpit-border)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -152,11 +148,11 @@ export default function DockOverlay({
               background: 'transparent',
               border: '1px solid #444',
               color: 'var(--color-cockpit-text-dim)',
-              fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+              fontFamily: 'var(--font-body), sans-serif',
               fontSize: 11,
-              padding: '4px 10px',
+              padding: '10px 14px',
               cursor: 'pointer',
-              letterSpacing: 1,
+              letterSpacing: 0,
             }}
           >
             {t('cockpit.controls.undockBtn')}
@@ -178,9 +174,9 @@ export default function DockOverlay({
           <h2
             id={titleId}
             style={{
-              fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
-              fontSize: isMobile ? 26 : 34,
-              fontWeight: 600,
+              fontFamily: 'var(--font-display), sans-serif',
+              fontSize: isMobile ? 24 : 32,
+              fontWeight: 700,
               letterSpacing: -0.5,
               color: 'var(--color-cockpit-text)',
               margin: 0,
@@ -193,7 +189,7 @@ export default function DockOverlay({
             style={{
               fontSize: 12,
               color: 'var(--color-cockpit-text-dim)',
-              letterSpacing: 1,
+              letterSpacing: 0,
               marginBottom: 20,
             }}
           >
@@ -214,27 +210,6 @@ export default function DockOverlay({
             <DockContent section={section} locale={locale} />
           </div>
         </div>
-
-        {isMobile ? null : (
-          <>
-            <Screw
-              size={14}
-              style={{ position: 'absolute', top: 10, left: 10 }}
-            />
-            <Screw
-              size={14}
-              style={{ position: 'absolute', top: 10, right: 10 }}
-            />
-            <Screw
-              size={14}
-              style={{ position: 'absolute', bottom: 10, left: 10 }}
-            />
-            <Screw
-              size={14}
-              style={{ position: 'absolute', bottom: 10, right: 10 }}
-            />
-          </>
-        )}
       </div>
     </div>
   )

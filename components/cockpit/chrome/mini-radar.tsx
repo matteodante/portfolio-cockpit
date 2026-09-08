@@ -80,7 +80,7 @@ export default function MiniRadar() {
               width: 6,
               height: 6,
               borderRadius: '50%',
-              background: '#d4cfc5',
+              background: 'var(--color-cockpit-text)',
               boxShadow: '0 0 4px #fff',
             }}
           />

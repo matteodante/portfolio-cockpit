@@ -1,0 +1,183 @@
+.cockpit-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: linear-gradient(90deg, #05060aed, #05060a65 46%, transparent 75%);
+}
+.cockpit-intro-header {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 20px);
+  left: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: auto;
+}
+.cockpit-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--color-cockpit-text);
+  text-decoration: none;
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+}
+.cockpit-intro-copy {
+  position: absolute;
+  left: 6vw;
+  bottom: max(7vh, 28px);
+  width: min(580px, 50vw);
+  max-height: calc(100dvh - 110px);
+  overflow-y: auto;
+  pointer-events: auto;
+}
+.cockpit-intro h1 {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(28px, 3.5vw, 50px);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.17;
+  white-space: pre-line;
+  color: var(--color-cockpit-text);
+  margin: 0 0 28px;
+  text-wrap: balance;
+}
+.cockpit-intro form {
+  max-width: 420px;
+}
+.cockpit-access-label {
+  display: block;
+  font-size: 12px;
+  color: var(--color-cockpit-text);
+  margin-bottom: 10px;
+}
+.cockpit-access-row {
+  display: flex;
+  gap: 8px;
+}
+.cockpit-access-row input {
+  min-width: 0;
+  flex: 1;
+  background: var(--color-cockpit-panel);
+  border: 1px solid var(--color-cockpit-border);
+  border-radius: 2px;
+  padding: 10px 12px;
+  color: var(--color-cockpit-text);
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
+}
+.cockpit-access-row .brand-button {
+  min-height: 44px;
+  padding: 10px 16px;
+  font-size: 13px;
+}
+.cockpit-access-hint {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--color-cockpit-text-dim);
+  margin: 10px 0 0;
+}
+.cockpit-intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+.cockpit-action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  min-height: 44px;
+  text-align: left;
+  border: 1px solid var(--color-cockpit-border);
+  border-radius: 2px;
+  background: var(--color-cockpit-panel);
+  color: var(--color-cockpit-text);
+  font-family: var(--font-body), sans-serif;
+  transition:
+    border-color 180ms ease-out,
+    background 180ms ease-out;
+}
+.cockpit-action:hover {
+  border-color: var(--color-cockpit-accent);
+  background: var(--color-cockpit-panel-light);
+}
+.cockpit-action > span {
+  flex: 1;
+  min-width: 0;
+}
+.cockpit-action strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+}
+.cockpit-action small {
+  display: block;
+  font-size: 10px;
+  color: var(--color-cockpit-text-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 5px;
+}
+[data-viewport-lock] :focus-visible {
+  outline: 2px solid var(--color-cockpit-accent);
+  outline-offset: 4px;
+}
+[data-viewport-lock] {
+  scrollbar-color: var(--color-cockpit-accent) var(--color-cockpit-bg);
+}
+@media (max-width: 799px) {
+  .cockpit-intro {
+    background: linear-gradient(
+      0deg,
+      #05060a 0%,
+      #05060ad9 40%,
+      transparent 85%
+    );
+  }
+  .cockpit-intro-header {
+    left: 22px;
+    right: 22px;
+    top: calc(env(safe-area-inset-top, 0px) + 14px);
+  }
+  .cockpit-brand {
+    font-size: 13px;
+    gap: 10px;
+  }
+  .cockpit-intro-copy {
+    left: 25px;
+    right: 25px;
+    width: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 28px);
+  }
+  .cockpit-intro h1 {
+    font-size: clamp(25px, 7vw, 36px);
+    margin-bottom: 24px;
+  }
+  .cockpit-intro-actions {
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .cockpit-intro-actions .brand-button {
+    padding-inline: 17px;
+    font-size: 13px;
+  }
+}
+@media (max-height: 600px) {
+  .cockpit-intro h1 {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+  .cockpit-intro-copy {
+    bottom: 20px;
+  }
+  .cockpit-intro-actions {
+    margin-top: 14px;
+  }
+}

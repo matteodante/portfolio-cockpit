@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
-import { JetBrains_Mono, Orbitron, Rajdhani } from 'next/font/google'
+import { JetBrains_Mono, Space_Grotesk, Unbounded } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import {
   EMAIL_HREF,
@@ -79,10 +79,10 @@ const KEYWORDS: Record<Locale, string[]> = {
   ],
 }
 
-const orbitron = Orbitron({
+const display = Unbounded({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-orbitron',
+  weight: ['400', '700', '900'],
+  variable: '--font-unbounded',
   display: 'swap',
 })
 
@@ -93,10 +93,10 @@ const mono = JetBrains_Mono({
   display: 'swap',
 })
 
-const rajdhani = Rajdhani({
+const body = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-rajdhani',
+  weight: ['400', '500', '600'],
+  variable: '--font-body',
   display: 'swap',
 })
 
@@ -171,7 +171,7 @@ const NOSCRIPT_COPY: Record<Locale, string> = {
 
 function renderNoscriptHtml(locale: Locale): string {
   const message = NOSCRIPT_COPY[locale]
-  return `<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;font-family:system-ui,sans-serif"><div style="max-width:480px"><h1 style="font-size:1.5rem;margin-bottom:1rem">${NAME}</h1><p style="margin-bottom:1rem;opacity:0.8">${message}</p><ul style="list-style:none;padding:0;line-height:1.8"><li><a href="${CV_MARKDOWN_PATHS[locale]}">CV (Markdown)</a></li><li><a href="${LINKEDIN_URL}">LinkedIn</a></li><li><a href="${GITHUB_URL}">GitHub</a></li><li><a href="${EMAIL_HREF}">Email</a></li></ul></div></div>`
+  return `<div data-cockpit-noscript style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;font-family:system-ui,sans-serif"><div style="max-width:480px"><h1 style="font-size:1.5rem;margin-bottom:1rem">${NAME}</h1><p style="margin-bottom:1rem;opacity:0.8">${message}</p><ul style="list-style:none;padding:0;line-height:1.8"><li><a href="${CV_MARKDOWN_PATHS[locale]}">CV (Markdown)</a></li><li><a href="${LINKEDIN_URL}">LinkedIn</a></li><li><a href="${GITHUB_URL}">GitHub</a></li><li><a href="${EMAIL_HREF}">Email</a></li></ul></div></div>`
 }
 
 export const viewport: Viewport = {
@@ -200,7 +200,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
   const locale = lang as Locale
   const jsonLd = getJsonLdGraph(locale)
-  const className = `${orbitron.variable} ${mono.variable} ${rajdhani.variable}`
+  const className = `${display.variable} ${mono.variable} ${body.variable}`
 
   return (
     <html
@@ -240,7 +240,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       <body
         style={{
           background: '#05060a',
-          color: '#d4cfc5',
+          color: '#f2ede3',
           margin: 0,
         }}
       >

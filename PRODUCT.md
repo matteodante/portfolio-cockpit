@@ -8,7 +8,8 @@ web
 
 ## Users
 
-Four confirmed audiences, all primary targets of the landing:
+The homepage primarily serves potential clients (confirmed 2026-09-08).
+Recruiters retain the separate playable CV:
 
 - **PMI e imprenditori italiani** — cercano un fornitore unico per sito,
   app o AI; spesso arrivano da passaparola o ricerca.
@@ -24,9 +25,9 @@ Four confirmed audiences, all primary targets of the landing:
 
 Sito personale di Matteo Dante, software engineer freelance & consulente
 AI (8+ anni di ingegneria in produzione). Due superfici: una landing
-scroll-cinematica che converte visitatori in contatti, e il "cockpit" —
-un gioco 3D nello spazio che È il CV giocabile. Successo = il visitatore
-scrive via email o entra nel cockpit e arriva al contatto/al CV.
+per clienti con prenotazione diretta su Cal.com, e il "cockpit" —
+un gioco 3D nello spazio che È il CV giocabile. Successo della landing = una call prenotata per discutere un progetto.
+Email resta un contatto alternativo; il cockpit serve il percorso CV.
 
 ## Positioning
 
@@ -53,9 +54,15 @@ demo" resta un supporto veritiero già presente nel copy.)
   performance, pagamenti).
 - Stack del sito: Next.js 16 App Router, React 19 + Compiler, Three.js
   vanilla (non R3F), Tailwind v4, Bun. Nessun CMS, nessun DB.
-- Landing hero: singola clip AI-generata (astronauta toy in ascesa)
-  scrubbata dallo scroll; pipeline di rigenerazione documentata in
-  CLAUDE.md (Replicate: nano-banana-pro + wan-2.7-i2v).
+- Homepage: sostituzione della vecchia landing autorizzata il 2026-09-08.
+  Reference scelta: https://www.dungyov.com/, struttura e composizione
+  molto fedeli, contenuti propri, brevi e orientati ai clienti.
+  Correzione successiva: Oakley Axiom Space come reference per grandi media,
+  parallasse 3D e scene legate allo scroll, anche su telefono. Placeholder
+  fotografici ora; media originali e video in una fase successiva.
+- Foto personale fornita dall’utente, utilizzabile come riferimento per
+  un ritratto generato. CTA diretta a Cal.com; configurazione esplicitamente
+  rimandata dall’utente a una sessione successiva insieme.
 - Terminologia ricorrente: decollo/takeoff, PLAY, cockpit, COMM, DOCK.
 
 ## Brand Commitments
@@ -64,17 +71,23 @@ Vincolanti (confermati dall'utente):
 
 - **Mondo spaziale + astronauta**: tema spazio, astronauta toy glossy,
   metafora decollo/cockpit — identità permanente.
-- **Tono giocoso ma tecnico**: registro "PLAY", CV-gioco, linguaggio
-  diretto.
+- **Landing più seria e diretta per clienti**: poco testo, offerta
+  comprensibile, contatto immediato. Il tono giocoso rimane nel cockpit.
 - **Bilinguismo EN/IT alla pari**, sempre.
+- Unificazione approvata: stessa identità per landing e cockpit; stesso
+  identità dell’astronauta, tipografia e controlli comuni. La landing usa
+  una reinterpretazione Image Gen basata sul render del modello esistente. L’esperienza del gioco rimane
+  più giocosa, con strumenti leggibili e dettagli decorativi ridotti.
 
 Non vincolante (esplicitamente lasciato libero di evolvere): la palette
 attuale dark `#05060a` + accento arancio `#ff6b35`. È l'incumbent, non un
 impegno.
 
-Asset di identità: nome "Matteo Dante", logo cartoon bust
-(`public/images/logo.webp`), font Orbitron / Rajdhani / JetBrains Mono
-(incumbent, non dichiarati vincolanti).
+Asset di identità: nome "Matteo Dante", astronauta toy e foto reale fornita
+dall’utente. Avatar circolare e ritratto sono elaborazioni della stessa foto,
+con volto realistico e riconoscibile. Il simbolo orbitale negli header e nei
+servizi è stato rimosso su richiesta; la hero include il link al CV giocabile.
+Font e trattamento dei controlli sono documentati in DESIGN.md.
 
 ## Evidence on Hand
 
@@ -105,4 +118,5 @@ Asset di identità: nome "Matteo Dante", logo cartoon bust
 
 Nessun requisito normativo specifico stabilito. Prassi già in essere da
 preservare: `prefers-reduced-motion` onorato globalmente, focus states
-visibili, blocco SEO `sr-only` server-rendered per crawler/no-JS.
+visibili, contenuti significativi e link server-rendered e utilizzabili
+anche senza animazioni o JavaScript.

@@ -42,7 +42,7 @@ function ErrorBanner({ message }: { message: string }) {
         background: '#1a0808',
         border: '1px solid #ff5252',
         color: 'var(--color-cockpit-hud-red)',
-        fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+        fontFamily: 'var(--font-body), sans-serif',
         fontSize: 11,
         letterSpacing: 1,
       }}

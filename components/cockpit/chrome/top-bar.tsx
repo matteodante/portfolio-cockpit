@@ -1,5 +1,6 @@
 'use client'
 
+import BrandAvatar from '@/components/shared/brand-avatar'
 import { COCKPIT_ACCENT } from '@/lib/constants/theme'
 import type { CockpitSection } from '@/lib/data/cockpit-sections'
 import { useHud } from '@/lib/hooks/cockpit-store'
@@ -31,13 +32,14 @@ export default function TopBar({ near }: TopBarProps) {
     >
       {/* Ship id */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        <BrandAvatar />
         <div>
           <div
             style={{
-              fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
+              fontFamily: 'var(--font-body), sans-serif',
               fontSize: 14,
               fontWeight: 600,
-              letterSpacing: 3,
+              letterSpacing: 0,
               color: 'var(--color-cockpit-text)',
             }}
           >
@@ -48,7 +50,7 @@ export default function TopBar({ near }: TopBarProps) {
               fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
               fontSize: 9,
               color: 'var(--color-cockpit-text-dim)',
-              letterSpacing: 2,
+              letterSpacing: 0.5,
             }}
           >
             {t('cockpit.vessel.id')}
@@ -107,10 +109,9 @@ export function ApproachBanner({ near }: ApproachBannerProps) {
             background: 'rgba(5,6,10,0.75)',
             border: `1px solid ${color}`,
             color,
-            fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
-            letterSpacing: 3,
+            fontFamily: 'var(--font-body), sans-serif',
+            letterSpacing: 0,
             fontSize: 12,
-            textShadow: `0 0 8px ${color}`,
           }}
         >
           {t('cockpit.banner.landed').replace('{label}', label)}
@@ -120,7 +121,7 @@ export function ApproachBanner({ near }: ApproachBannerProps) {
             fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
             fontSize: 10,
             color: 'rgba(244,241,234,0.75)',
-            letterSpacing: 2,
+            letterSpacing: 0.5,
           }}
         >
           {t('cockpit.banner.takeoffHint')}
@@ -140,13 +141,12 @@ export function ApproachBanner({ near }: ApproachBannerProps) {
         background: 'rgba(5,6,10,0.75)',
         border: `1px solid ${COCKPIT_ACCENT}`,
         color: COCKPIT_ACCENT,
-        fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
-        letterSpacing: 3,
+        fontFamily: 'var(--font-body), sans-serif',
+        letterSpacing: 0,
         fontSize: 12,
         pointerEvents: 'none',
         zIndex: 20,
         animation: 'fade-in 0.3s ease',
-        textShadow: `0 0 8px ${COCKPIT_ACCENT}`,
       }}
     >
       {t('cockpit.banner.approaching').replace('{label}', label)}

@@ -14,12 +14,12 @@ const LIST_STYLE: CSSProperties = {
   WebkitOverflowScrolling: 'touch',
   overscrollBehavior: 'contain',
   padding: 12,
-  background: '#0a0908',
-  border: '1px solid #000',
+  background: 'var(--color-cockpit-bg)',
+  border: '1px solid var(--color-cockpit-border)',
   display: 'flex',
   flexDirection: 'column',
   gap: 10,
-  fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+  fontFamily: 'var(--font-body), sans-serif',
   fontSize: 13,
   lineHeight: 1.6,
 }
@@ -28,8 +28,6 @@ const GREETING_STYLE: CSSProperties = {
   color: 'var(--color-cockpit-text-dim)',
   fontStyle: 'italic',
   padding: '12px 14px',
-  background: 'var(--color-cockpit-panel)',
-  border: '1px dashed #2a2824',
 }
 
 /**

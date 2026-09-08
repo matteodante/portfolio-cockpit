@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-04T16:35:56Z",
+  "generatedAt": "2026-09-08T16:16:40.276580+00:00",
   "title": "Design System: Portfolio Cockpit",
   "extensions": {
     "colorMeta": {
@@ -47,96 +47,6 @@
           "#e4ddd2",
           "#f2ede3",
           "#faf8f3"
-        ]
-      },
-      "instrument-bone": {
-        "role": "neutral",
-        "displayName": "Instrument Bone",
-        "canonical": "#d4cfc5",
-        "tonalRamp": [
-          "#2a2823",
-          "#4f4b43",
-          "#757064",
-          "#9a9486",
-          "#bcb6aa",
-          "#d4cfc5",
-          "#e6e2da",
-          "#f5f3ef"
-        ]
-      },
-      "nebula-grey": {
-        "role": "neutral",
-        "displayName": "Nebula Grey",
-        "canonical": "#8f8a97",
-        "tonalRamp": [
-          "#1c1b1f",
-          "#38363e",
-          "#55525e",
-          "#726e7d",
-          "#8f8a97",
-          "#aca8b6",
-          "#c9c6d2",
-          "#e6e4eb"
-        ]
-      },
-      "dust-grey": {
-        "role": "neutral",
-        "displayName": "Dust Grey",
-        "canonical": "#8a8680",
-        "tonalRamp": [
-          "#1b1a19",
-          "#363431",
-          "#524f4a",
-          "#6e6a63",
-          "#8a8680",
-          "#a6a29b",
-          "#c3c0ba",
-          "#e1dfdb"
-        ]
-      },
-      "panel-char": {
-        "role": "neutral",
-        "displayName": "Panel Char",
-        "canonical": "#14120f",
-        "tonalRamp": [
-          "#0a0908",
-          "#14120f",
-          "#241f1a",
-          "#3a332b",
-          "#57493c",
-          "#7a695a",
-          "#a3907e",
-          "#cfc0b0"
-        ]
-      },
-      "panel-char-light": {
-        "role": "neutral",
-        "displayName": "Panel Char Light",
-        "canonical": "#1f1c18",
-        "tonalRamp": [
-          "#0f0d0b",
-          "#1f1c18",
-          "#2f2a24",
-          "#453e35",
-          "#5f554a",
-          "#7d7264",
-          "#a29684",
-          "#ccc2b3"
-        ]
-      },
-      "void-ink": {
-        "role": "neutral",
-        "displayName": "Void Ink",
-        "canonical": "#0b0812",
-        "tonalRamp": [
-          "#060409",
-          "#0b0812",
-          "#171024",
-          "#291d40",
-          "#423263",
-          "#665492",
-          "#948bbd",
-          "#c9c4e0"
         ]
       },
       "hud-green": {
@@ -198,185 +108,305 @@
           "#8fedff",
           "#ccf7ff"
         ]
+      },
+      "thruster-orange-hover": {
+        "role": "primary",
+        "displayName": "Thruster Orange Hover",
+        "canonical": "#ff8458",
+        "tonalRamp": [
+          "oklch(15% 0.1610 40.00)",
+          "oklch(26% 0.1610 40.00)",
+          "oklch(38% 0.1610 40.00)",
+          "oklch(49% 0.1610 40.00)",
+          "oklch(61% 0.1610 40.00)",
+          "oklch(72% 0.1610 40.00)",
+          "oklch(84% 0.1610 40.00)",
+          "oklch(95% 0.1610 40.00)"
+        ]
+      },
+      "thruster-orange-disabled": {
+        "role": "primary",
+        "displayName": "Thruster Orange Disabled",
+        "canonical": "#d77845",
+        "tonalRamp": [
+          "oklch(15% 0.1356 47.40)",
+          "oklch(26% 0.1356 47.40)",
+          "oklch(38% 0.1356 47.40)",
+          "oklch(49% 0.1356 47.40)",
+          "oklch(61% 0.1356 47.40)",
+          "oklch(72% 0.1356 47.40)",
+          "oklch(84% 0.1356 47.40)",
+          "oklch(95% 0.1356 47.40)"
+        ]
+      },
+      "muted-text": {
+        "role": "neutral",
+        "displayName": "Muted Text",
+        "canonical": "#a7a5a1",
+        "tonalRamp": [
+          "oklch(15% 0.0062 84.57)",
+          "oklch(26% 0.0062 84.57)",
+          "oklch(38% 0.0062 84.57)",
+          "oklch(49% 0.0062 84.57)",
+          "oklch(61% 0.0062 84.57)",
+          "oklch(72% 0.0062 84.57)",
+          "oklch(84% 0.0062 84.57)",
+          "oklch(95% 0.0062 84.57)"
+        ]
+      },
+      "frame-line": {
+        "role": "neutral",
+        "displayName": "Frame Line",
+        "canonical": "#f2ede333",
+        "tonalRamp": [
+          "oklch(15% 0.0144 84.58)",
+          "oklch(26% 0.0144 84.58)",
+          "oklch(38% 0.0144 84.58)",
+          "oklch(49% 0.0144 84.58)",
+          "oklch(61% 0.0144 84.58)",
+          "oklch(72% 0.0144 84.58)",
+          "oklch(84% 0.0144 84.58)",
+          "oklch(95% 0.0144 84.58)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "canonical": "#0c0d11",
+        "tonalRamp": [
+          "oklch(15% 0.0086 274.31)",
+          "oklch(26% 0.0086 274.31)",
+          "oklch(38% 0.0086 274.31)",
+          "oklch(49% 0.0086 274.31)",
+          "oklch(61% 0.0086 274.31)",
+          "oklch(72% 0.0086 274.31)",
+          "oklch(84% 0.0086 274.31)",
+          "oklch(95% 0.0086 274.31)"
+        ]
+      },
+      "panel-light": {
+        "role": "neutral",
+        "displayName": "Panel Light",
+        "canonical": "#14161c",
+        "tonalRamp": [
+          "oklch(15% 0.013 272)",
+          "oklch(26% 0.013 272)",
+          "oklch(38% 0.013 272)",
+          "oklch(49% 0.013 272)",
+          "oklch(61% 0.013 272)",
+          "oklch(72% 0.013 272)",
+          "oklch(84% 0.013 272)",
+          "oklch(95% 0.013 272)"
+        ]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Display — the hull",
-        "purpose": "Hero headline only. Uppercase Orbitron, em-capped width for 2-3 monumental lines."
+        "displayName": "Display",
+        "purpose": "Shared Unbounded title family; this token records the landing desktop name size. Cockpit intro and dock sizes are recorded in DESIGN.md."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Landing section titles. Uppercase Orbitron."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Mid-tier statements: hero mid-flight line, cockpit intro subtitle. Uppercase."
+        "purpose": "Landing services heading; work and contact use their own scene/display hierarchy."
       },
       "body": {
-        "displayName": "Body — the pilot",
-        "purpose": "Rajdhani sentence-case paragraphs, max-width 560px on the landing."
+        "displayName": "Body",
+        "purpose": "Shared Space Grotesk reading family; the landing base is 16px/1.5 and cockpit dock prose is 14px/1.7."
       },
       "label": {
-        "displayName": "Label — the instruments",
-        "purpose": "Mono uppercase eyebrows (0.32em tracking), chips and hints (0.18em)."
+        "displayName": "Label",
+        "purpose": "Space Grotesk for navigation, labels and actions across both routes; sizes vary with control context."
+      },
+      "title": {
+        "displayName": "Service Title",
+        "purpose": "Space Grotesk service labels; project titles retain Unbounded."
+      },
+      "lead": {
+        "displayName": "Supporting Lead",
+        "purpose": "Landing supporting prose; reduces to 16px on mobile."
+      },
+      "body-copy": {
+        "displayName": "Description",
+        "purpose": "Shared service and project descriptions at desktop widths."
+      },
+      "body-copy-mobile": {
+        "displayName": "Mobile Description",
+        "purpose": "Shared service and project descriptions below 800px."
+      },
+      "instrument": {
+        "displayName": "Telemetry and Code",
+        "purpose": "JetBrains Mono for instrument values, keyboard codes and telemetry; body copy and commands use Space Grotesk."
       }
     },
-    "shadows": [
-      {
-        "name": "halo-rest",
-        "value": "0 0 10px #ff6b3555, inset 0 1px 0 rgba(255,255,255,0.2)",
-        "purpose": "Primary controls at rest — backlit instrument glow."
-      },
-      {
-        "name": "halo-hover",
-        "value": "0 0 18px #ff6b35aa, inset 0 1px 0 rgba(255,255,255,0.3)",
-        "purpose": "Primary controls on hover/focus, paired with translateY(-1px)."
-      },
-      {
-        "name": "halo-ambient",
-        "value": "0 0 42px #ff6b3555",
-        "purpose": "Large landing CTAs; giant headlines use text-shadow 0 0 48-64px #ff6b352e."
-      },
-      {
-        "name": "instrument-edge",
-        "value": "inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.8)",
-        "purpose": "Secondary cockpit controls at rest — machined edge, no glow."
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
-        "name": "transition-state",
-        "value": "all 0.15s",
-        "purpose": "Default state transition on controls (hover, focus, fill)."
+        "name": "landing-control",
+        "value": "background 0.2s, border-color 0.2s, transform 0.2s",
+        "purpose": "Enabled booking hover; reduced motion removes transitions."
       },
       {
-        "name": "ease-out-expo",
-        "value": "cubic-bezier(0.19, 1, 0.22, 1)",
-        "purpose": "Entrances and reveals."
+        "name": "landing-project",
+        "value": "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "App captures lift on project hover."
       },
       {
-        "name": "ease-gleasing",
-        "value": "cubic-bezier(0.4, 0, 0, 1)",
-        "purpose": "House easing for larger UI moves."
+        "name": "brand-control",
+        "value": "background 180ms ease-out, transform 180ms ease-out, border-color 180ms ease-out",
+        "purpose": "Shared flat command feedback; hover shifts two pixels with fill and border changes."
       },
       {
-        "name": "scrub-lerp",
-        "value": "k = 1 - (1 - 0.18)^(dt/16.7)",
-        "purpose": "dt-normalised smoothing for scroll-scrubbed media; snaps (k=1) under prefers-reduced-motion."
+        "name": "landing-depth",
+        "value": "GSAP ScrollTrigger scrub: 0.3, ease: none",
+        "purpose": "Independent scene and parallax progress over native scroll at every viewport size. CSS sticky stages use 300svh hero and 230svh work sections. Pause and reduced motion restore static flow; no application-owned RAF loop."
       }
     ],
     "breakpoints": [
-      { "name": "dt", "value": "800px" },
       {
-        "name": "mobile-predicate",
-        "value": "portrait and ((hover: none) and (pointer: coarse) or max-width: 860px)"
+        "name": "landing-mobile",
+        "value": "800px"
+      },
+      {
+        "name": "landing-compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "landing-small-phone",
+        "value": "360px"
+      },
+      {
+        "name": "landing-short-viewport",
+        "value": "600px"
+      },
+      {
+        "name": "cockpit-intro-mobile",
+        "value": "799px"
       }
     ]
   },
   "components": [
     {
-      "name": "Primary Button (landing CTA)",
+      "name": "Landing Booking Control",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The big persuade action — PLAY, enter the cockpit.",
-      "html": "<a class=\"ds-btn-primary\" href=\"#\">PLAY — ENTER THE COCKPIT</a>",
-      "css": ".ds-btn-primary { display: inline-block; background: var(--color-cockpit-accent, #ff6b35); color: #0b0812; font-family: var(--font-orbitron), Orbitron, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 999px; padding: 18px 34px; box-shadow: 0 0 42px #ff6b3555; transition: all 0.15s; } .ds-btn-primary:hover, .ds-btn-primary:focus-visible { box-shadow: 0 0 56px #ff6b35aa; transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid #ff6b35; outline-offset: 3px; }"
+      "description": "Full-opacity muted orange disabled state; the owner explicitly deferred Cal.com setup. Enabled hover is defined in source.",
+      "html": "<button class=\"ds-booking\" disabled>Book a call<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-booking{display:inline-flex;align-items:center;justify-content:center;gap:28px;min-height:52px;padding:14px 24px;border:1px solid #ff6b35;border-radius:2px;background:#ff6b35;color:#05060a;font-size:15px;font-weight:500;letter-spacing:.015em;font-family:var(--font-body,\"Space Grotesk\"),sans-serif;transition:background .2s,border-color .2s,transform .2s}.ds-booking:disabled{cursor:default;background:#d77845;border-color:#d77845}.ds-booking:not(:disabled):hover{background:#ff8458;border-color:#ff8458;transform:translateY(-2px)}.ds-booking:focus-visible{outline:2px solid #ff6b35;outline-offset:6px;}.ds-booking svg{transition:transform .2s}.ds-booking:not(:disabled):hover svg{transform:translateX(3px)}@media(prefers-reduced-motion:reduce){.ds-booking,.ds-booking svg{transition:none}}"
     },
     {
-      "name": "Ghost Button (landing)",
+      "name": "Hero Play Link",
       "kind": "button",
-      "refersTo": "button-ghost",
-      "description": "Quiet secondary action — email me.",
-      "html": "<a class=\"ds-btn-ghost\" href=\"#\">EMAIL ME</a>",
-      "css": ".ds-btn-ghost { display: inline-block; background: transparent; color: #f2ede3; font-family: var(--font-jetbrains-mono), monospace; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(242, 237, 227, 0.28); border-radius: 999px; padding: 17px 30px; transition: all 0.15s; } .ds-btn-ghost:hover, .ds-btn-ghost:focus-visible { border-color: #ff6b35; color: #ff6b35; box-shadow: 0 0 12px #ff6b3555; } .ds-btn-ghost:focus-visible { outline: 2px solid #ff6b35; outline-offset: 3px; }"
+      "refersTo": "hero-play",
+      "description": "Secondary hero action to the localized cockpit, beside booking. The source restores the hero copy on focus-within during scroll.",
+      "html": "<a class=\"ds-hero-play\" href=\"/en/cockpit\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"m8 5 11 7-11 7V5Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/></svg>Play my CV</a>",
+      "css": ".ds-hero-play{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 4px;color:var(--landing-ink,#f2ede3);font-family:var(--font-body,\"Space Grotesk\"),sans-serif;font-size:14px;text-decoration:none;border-bottom:1px solid var(--landing-line,#f2ede333);transition:color 180ms ease-out,border-color 180ms ease-out}.ds-hero-play:hover{color:var(--landing-accent,#ff6b35);border-color:var(--landing-accent,#ff6b35)}.ds-hero-play:focus-visible{outline:2px solid var(--landing-accent,#ff6b35);outline-offset:6px}@media(max-width:799px){.ds-hero-play{font-size:12px;gap:7px;min-height:46px;padding-inline:0}}@media(max-width:359px){.ds-hero-play{font-size:11px}}@media(prefers-reduced-motion:reduce){.ds-hero-play{transition:none}}"
     },
     {
-      "name": "Nav PLAY Pill",
+      "name": "Landing Section Menu",
       "kind": "nav",
-      "refersTo": "button-nav",
-      "description": "Fixed-header shortcut into the cockpit.",
-      "html": "<a class=\"ds-btn-nav\" href=\"#\">PLAY</a>",
-      "css": ".ds-btn-nav { display: inline-block; background: #ff6b35; color: #0b0812; font-family: var(--font-orbitron), Orbitron, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-radius: 999px; padding: 10px 22px; transition: all 0.15s; } .ds-btn-nav:hover, .ds-btn-nav:focus-visible { box-shadow: 0 0 18px #ff6b35aa; transform: translateY(-1px); }"
+      "description": "Rectangular section navigation with orange current state and a faint ivory hover tint.",
+      "html": "<nav class=\"ds-section-menu\" aria-label=\"Sections\"><a href=\"#intro\" aria-current=\"location\">Intro</a><a href=\"#services\">Services</a><a href=\"#work\">Work</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-section-menu{min-width:224px;padding:12px 0;border:1px solid #f2ede333;background:#0c0d11;font-family:var(--font-body,\"Space Grotesk\"),sans-serif}.ds-section-menu a{display:block;padding:12px 20px;font-size:13px;color:#f2ede3;text-decoration:none}.ds-section-menu a[aria-current]{color:#ff6b35}.ds-section-menu a:focus-visible{outline:2px solid #ff6b35;outline-offset:6px}@media(hover:hover){.ds-section-menu a:hover{background:#f2ede310}}"
     },
     {
-      "name": "Tech Chip",
-      "kind": "chip",
-      "refersTo": "chip-tag",
-      "description": "Static tech tag under a landing section.",
-      "html": "<span class=\"ds-chip\">NEXT.JS</span>",
-      "css": ".ds-chip { display: inline-block; color: #f2ede3; font-family: var(--font-jetbrains-mono), monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid rgba(242, 237, 227, 0.22); border-radius: 999px; padding: 7px 14px; white-space: nowrap; }"
-    },
-    {
-      "name": "Eyebrow Label",
+      "name": "Shared Outlined Name",
       "kind": "custom",
-      "refersTo": "label",
-      "description": "Mono uppercase kicker above every headline; number + slash pattern in sections.",
-      "html": "<p class=\"ds-eyebrow\">01 <span class=\"ds-eyebrow-dim\">/</span> WEB APPS &amp; APPS</p>",
-      "css": ".ds-eyebrow { color: #ff6b35; font-family: var(--font-jetbrains-mono), monospace; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; margin: 0; } .ds-eyebrow-dim { color: #8f8a97; }"
+      "description": "Landing outlined first name and solid surname with orange punctuation; the cockpit CanvasTexture repeats the Unbounded outline/solid treatment.",
+      "html": "<h1 class=\"ds-name\"><span>Matteo</span><strong>Dante<b>.</b></strong></h1>",
+      "css": ".ds-name{margin:0;background:#05060a;color:#f2ede3;font-family:var(--font-unbounded,Unbounded),sans-serif;font-size:clamp(62px,7.2vw,96px);font-weight:900;line-height:1.1;letter-spacing:.005em;text-transform:uppercase}.ds-name>span{display:block;color:#05060a;paint-order:stroke fill;-webkit-text-stroke:2px #f2ede3}.ds-name strong{display:block;font-weight:inherit}.ds-name b{color:#ff6b35}@media(width<1100px) and (width>=800px){.ds-name{font-size:72px}}@media(width<800px){.ds-name{font-size:clamp(38px,12vw,65px)}}@media(width<360px){.ds-name{font-size:38px}}@media(height<600px){.ds-name{font-size:44px}}"
     },
     {
-      "name": "Cockpit Button — Primary",
+      "name": "Shared Command — Primary",
       "kind": "button",
-      "refersTo": "cockpit-button-primary",
-      "description": "Hard-edged instrument command inside the cockpit chrome.",
-      "html": "<button class=\"ds-cockpit-btn-primary\">LAUNCH</button>",
-      "css": ".ds-cockpit-btn-primary { background: #ff6b35; color: #000; font-family: var(--font-orbitron), Orbitron, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; border: 1px solid #ff6b35; border-radius: 0; padding: 14px 28px; cursor: pointer; box-shadow: 0 0 10px #ff6b3555, inset 0 1px 0 rgba(255,255,255,0.2); transition: all 0.15s; } .ds-cockpit-btn-primary:hover, .ds-cockpit-btn-primary:focus-visible { box-shadow: 0 0 18px #ff6b35aa, inset 0 1px 0 rgba(255,255,255,0.3); transform: translateY(-1px); }"
+      "refersTo": "brand-button-primary",
+      "description": "Flat orange command used for cockpit launch and chat submission.",
+      "html": "<button class=\"ds-brand-button\">Launch</button>",
+      "css": ".ds-brand-button{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;padding:12px 24px;border:1px solid var(--color-cockpit-accent,#ff6b35);border-radius:2px;background:var(--color-cockpit-accent,#ff6b35);color:var(--color-cockpit-bg,#05060a);font-family:var(--font-body,\"Space Grotesk\"),sans-serif;font-size:14px;font-weight:500;letter-spacing:0;line-height:1.4;transition:background 180ms ease-out,transform 180ms ease-out,border-color 180ms ease-out}.ds-brand-button:hover{background:#ff8457;transform:translateY(-2px)}.ds-brand-button:disabled{background:#d77845;border-color:#d77845;cursor:not-allowed;transform:none}.ds-brand-button:focus-visible{outline:2px solid var(--color-cockpit-accent,#ff6b35);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-brand-button{transition:none}}"
     },
     {
-      "name": "Cockpit Button — Secondary",
+      "name": "Shared Command — Secondary",
       "kind": "button",
-      "refersTo": "cockpit-button-secondary",
-      "description": "Quiet instrument command; fills on hover.",
-      "html": "<button class=\"ds-cockpit-btn-secondary\">DOCK</button>",
-      "css": ".ds-cockpit-btn-secondary { background: rgba(20, 18, 15, 0.6); color: #ff6b35; font-family: var(--font-orbitron), Orbitron, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; border: 1px solid #ff6b35; border-radius: 0; padding: 14px 22px; cursor: pointer; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.8); transition: all 0.15s; } .ds-cockpit-btn-secondary:hover, .ds-cockpit-btn-secondary:focus-visible { background: #1f1c18; box-shadow: 0 0 12px #ff6b3555; }"
+      "refersTo": "brand-button-secondary",
+      "description": "Quiet ivory command with a thin frame; hover adds the lighter panel fill and orange border.",
+      "html": "<button class=\"ds-brand-secondary\">Download CV</button>",
+      "css": ".ds-brand-secondary{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;padding:12px 24px;border:1px solid var(--color-cockpit-border,#f2ede333);border-radius:2px;background:transparent;color:var(--color-cockpit-text,#f2ede3);font-family:var(--font-body,\"Space Grotesk\"),sans-serif;font-size:14px;font-weight:500;letter-spacing:0;line-height:1.4;transition:background 180ms ease-out,transform 180ms ease-out,border-color 180ms ease-out}.ds-brand-secondary:hover{background:var(--color-cockpit-panel-light,#14161c);border-color:var(--color-cockpit-accent,#ff6b35);transform:translateY(-2px)}.ds-brand-secondary:focus-visible{outline:2px solid var(--color-cockpit-accent,#ff6b35);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-brand-secondary{transition:none}}"
+    },
+    {
+      "name": "Access Field",
+      "kind": "input",
+      "refersTo": "access-input",
+      "description": "Readable access-code field with a quiet frame and the shared body font.",
+      "html": "<label class=\"ds-access-label\" for=\"ds-access\">Access code</label><input class=\"ds-access\" id=\"ds-access\" type=\"password\" placeholder=\"Access code\"/>",
+      "css": ".ds-access-label{display:block;font-family:var(--font-body,\"Space Grotesk\"),sans-serif;font-size:12px;color:var(--color-cockpit-text,#f2ede3);margin-bottom:10px}.ds-access{min-width:0;background:var(--color-cockpit-panel,#0c0d11);border:1px solid var(--color-cockpit-border,#f2ede333);border-radius:2px;padding:10px 12px;color:var(--color-cockpit-text,#f2ede3);font-family:var(--font-body,\"Space Grotesk\"),sans-serif;font-size:16px}.ds-access:focus-visible{outline:2px solid var(--color-cockpit-accent,#ff6b35);outline-offset:4px}"
+    },
+    {
+      "name": "Shared Language Navigation",
+      "kind": "nav",
+      "description": "Equal IT/EN route navigation; the current language is ivory and cockpit links retain the cockpit path.",
+      "html": "<nav class=\"ds-languages\" aria-label=\"Language\"><a href=\"/it/cockpit\" lang=\"it\" hreflang=\"it\" aria-label=\"Italiano\">IT</a><span aria-hidden=\"true\">/</span><a href=\"/en/cockpit\" lang=\"en\" hreflang=\"en\" aria-label=\"English\" aria-current=\"page\">EN</a></nav>",
+      "css": ".ds-languages{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body,\"Space Grotesk\"),sans-serif;font-size:11px;color:var(--color-cockpit-text-dim,#a7a5a1)}.ds-languages a{display:inline-flex;align-items:center;justify-content:center;min-width:30px;min-height:40px;color:inherit;text-decoration:none}.ds-languages a[aria-current=\"page\"],.ds-languages a:hover{color:var(--color-cockpit-text,#f2ede3)}.ds-languages span{opacity:.6}.ds-languages a:focus-visible{outline:2px solid var(--color-cockpit-accent,#ff6b35);outline-offset:5px}"
+    },
+    {
+      "name": "Dock Panel",
+      "kind": "card",
+      "description": "Rectangular content surface with a lighter header, thin ivory separation and readable body text. The runtime dialog owns its focus and scrolling behavior.",
+      "html": "<section class=\"ds-dock\"><header class=\"ds-dock-bar\"><span>DOCKED · CONTACT</span><button type=\"button\">Undock</button></header><div class=\"ds-dock-body\"><h2>Contact</h2><p>Matteo Dante</p></div></section>",
+      "css": ".ds-dock{width:min(760px,92vw);background:var(--color-cockpit-panel,#0c0d11);border:1px solid var(--color-cockpit-border,#f2ede333);color:var(--color-cockpit-text,#f2ede3);font-family:var(--font-body,\"Space Grotesk\"),sans-serif}.ds-dock-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--color-cockpit-panel-light,#14161c);border-bottom:1px solid var(--color-cockpit-border,#f2ede333)}.ds-dock-bar>span{font-size:10px;letter-spacing:2px;color:var(--color-cockpit-accent,#ff6b35)}.ds-dock-bar button{background:transparent;border:1px solid #444;color:var(--color-cockpit-text-dim,#a7a5a1);font-family:inherit;font-size:11px;padding:10px 14px;cursor:pointer}.ds-dock-bar button:focus-visible{outline:2px solid var(--color-cockpit-accent,#ff6b35);outline-offset:4px}.ds-dock-body{padding:28px;font-size:14px;line-height:1.7}.ds-dock-body h2{font-family:var(--font-unbounded,Unbounded),sans-serif;font-size:32px;font-weight:700;letter-spacing:-.5px;margin:0 0 2px}"
+    },
+    {
+      "name": "Shared Brand Avatar",
+      "kind": "custom",
+      "description": "Circular avatar shared by the landing and cockpit; uses the same natural photographic edit as the larger services portrait.",
+      "html": "<span class=\"ds-brand-avatar\" aria-hidden=\"true\"></span>",
+      "css": ".ds-brand-avatar{display:inline-block;width:36px;height:36px;flex-shrink:0;border-radius:50%;background-image:url(\"data:image/webp;base64,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\");background-size:cover;background-position:center}@media(max-width:799px){.ds-brand-avatar{width:32px;height:32px}}",
+      "refersTo": "brand-avatar"
     }
   ],
   "narrative": {
-    "northStar": "The Toy Cockpit",
-    "overview": "A toy spaceship cockpit whose instruments really work. Everything in this system holds two truths at once: the material is playful — glossy vinyl-toy surfaces, a chunky orange astronaut, pill-shaped candy buttons — while the function is precise — real gauges, mono labels, exact tracking, a scene that runs at 60fps. The playfulness is never sloppy and the precision is never cold. Bold, essential, technical.\n\nThe visual field is almost entirely dark, quiet space (#05060a) punctured by very few, very large, very finished elements: one giant uppercase headline, one glowing character or planet, one orange action. The confirmed anti-reference is the verbose multi-section portfolio — many medium-sized blocks of copy and cards. This site says few things, enormously.",
+    "northStar": "A Personal Introduction Suspended in Space",
+    "overview": "The landing and playable cockpit share monumental Unbounded titles, Space\nGrotesk text and actions, warm ivory on near-black, orange commands and thin\nrectangular frames. The accepted landing supplies the visual authority for\nthis shared system. Dungyov informs the outlined/solid lettering; Oakley\nAxiom Space informs media scale and native-scroll depth, not asset identity.\n\nThe glossy toy astronaut connects an original generated landing image with\nthe existing model in the vanilla Three.js cockpit. A natural photographic\navatar and services portrait share one edit of the owner’s real photograph.\nThe landing is spacious and direct; the cockpit is playful and\ninstrument-dense. Flat controls, the shared avatar and equal EN/IT treatment\nconnect them while scrolling and gameplay retain their functional layouts.",
     "keyCharacteristics": [
-      "Dark near-black canvas with warm, glossy subjects lit like backlit toys",
-      "One accent color (Thruster Orange) carrying every action and highlight",
-      "Giant uppercase Orbitron paired with tiny wide-tracked mono labels",
-      "Depth through glow and inset light, never grey drop shadows",
-      "Motion is narrative (scroll-scrubbed flight, orbiting planets), honors prefers-reduced-motion globally"
+      "Near-black space, warm ivory text and orange actions.",
+      "Shared Unbounded display lettering and Space Grotesk prose and actions.",
+      "Thin rectangular frames, flat controls and restrained two-pixel corners.",
+      "A consistent toy astronaut character and recognizable photographic identity.",
+      "Native-scroll depth on the landing; readable telemetry in the playable CV."
     ],
     "rules": [
       {
-        "name": "The Single Flame Rule",
-        "body": "Thruster Orange is the only voice of attention on any surface. If two unrelated elements glow orange at once, one of them is wrong. HUD colors never leave the instruments.",
+        "name": "The Shared Identity Rule",
+        "body": "Use the same palette, display/body roles and\nflat control language across both routes; reserve signal colors for working\ninstruments and status.",
         "section": "colors"
       },
       {
-        "name": "The Warm Dark Rule",
-        "body": "Darks lean warm (char, not slate); lights lean ivory (never #fff). Pure white and pure black appear only as text-on-accent (#000 in cockpit buttons) and inset shadow lines.",
-        "section": "colors"
-      },
-      {
-        "name": "The Three Voices Rule",
-        "body": "Every text element speaks as hull (Orbitron uppercase), instrument (mono uppercase, wide tracking), or pilot (Rajdhani sentence case). No fourth font, no Orbitron body copy, no mono paragraphs.",
+        "name": "The Type Roles Rule",
+        "body": "Use Unbounded for titles, Space Grotesk for reading\nand actions, and JetBrains Mono for telemetry and code on either surface.",
         "section": "typography"
       },
       {
-        "name": "The Glow, Not Shadow Rule",
-        "body": "No neutral/grey box-shadow anywhere. If an element needs separation, it either glows orange (interactive), gains an inset light edge (physical control), or steps up one panel tone (surface).",
-        "section": "elevation"
+        "name": "The Flat Controls Rule",
+        "body": "Use fill, hairline borders and clear state\nchanges for interface depth; keep physical light in the space scene.",
+        "section": "elevation & depth"
+      },
+      {
+        "name": "The Optional Motion Rule",
+        "body": "Readable content and usable navigation are\nthe base layer; depth travel enhances them without intercepting scrolling.",
+        "section": "elevation & depth"
       }
     ],
     "dos": [
-      "Do set every heading in uppercase Orbitron and every eyebrow/label in uppercase JetBrains Mono with 0.18–0.32em tracking.",
-      "Do use Thruster Orange alpha halos (55/aa hex alpha) plus inset top light for all interactive depth, with transition: all 0.15s.",
-      "Do keep the canvas exactly Deep Space #05060a and add faint ivory starfield specks (1–1.5px radial gradients at ≤0.5 alpha) when a static section needs to read as sky.",
-      "Do honor prefers-reduced-motion for every animation and scrub smoothing (snap instead of lerp).",
-      "Do put Void Ink (#0b0812) or #000 text on orange — never white."
+      "Do share Unbounded titles, Space Grotesk reading/actions and JetBrains Mono telemetry/code across landing and cockpit.",
+      "Do use thin frames, flat controls, small control corners and clear outline/solid display contrast across both routes.",
+      "Do preserve keyboard focus, native anchors, readable content and reduced-motion behavior in both languages.",
+      "Do preserve the toy character across the existing cockpit model and original generated landing artwork, with recorded provenance.",
+      "Do use the matching natural avatar and services portrait derived from the owner’s photograph, alongside actual shipped product imagery."
     ],
     "donts": [
-      "Don't use grey/neutral drop shadows, or any box-shadow that isn't orange glow or inset light.",
-      "Don't introduce mid-size border radii (8–16px cards): pills or hard edges only.",
-      "Don't let HUD Green/Amber/Red/Blue out of the cockpit instruments, and don't add a second accent color anywhere.",
-      "Don't compose surfaces as grids of medium cards with medium copy — few enormous elements, generous void, prose capped at 560px.",
-      "Don't use stock photography or white-background imagery; every image belongs to the glossy toy-space world (see the Replicate pipeline in CLAUDE.md)."
+      "Don't restore the orbit brand symbol, service-row icons or raw GLB renders as landing artwork.",
+      "Don't restore the separate Orbitron/Rajdhani font system or decorative cockpit glow, scanlines and metal fasteners.",
+      "Don't turn HUD signal colors into general marketing accents or monospace telemetry styles into body and action typography.",
+      "Don't make reading or contact depend on animation, JavaScript or completing the cockpit.",
+      "Don't represent the disabled booking controls as working until the owner's exact destination is supplied and verified."
     ]
   }
 }

@@ -1,333 +1,445 @@
 ---
 name: Portfolio Cockpit
-description: Matteo Dante's space-toy portfolio — a glossy toy cockpit that really flies
+description: One stellar identity for Matteo Dante’s client landing and playable cockpit
 colors:
-  thruster-orange: "#ff6b35"
-  deep-space: "#05060a"
-  ivory-suit: "#f2ede3"
-  instrument-bone: "#d4cfc5"
-  nebula-grey: "#8f8a97"
-  dust-grey: "#8a8680"
-  panel-char: "#14120f"
-  panel-char-light: "#1f1c18"
-  void-ink: "#0b0812"
-  hud-green: "#6aff9e"
-  hud-amber: "#ffb347"
-  hud-red: "#ff5252"
-  hud-blue: "#00d9ff"
+  thruster-orange: '#ff6b35'
+  deep-space: '#05060a'
+  ivory-suit: '#f2ede3'
+  panel-light: '#14161c'
+  hud-green: '#6aff9e'
+  hud-amber: '#ffb347'
+  hud-red: '#ff5252'
+  hud-blue: '#00d9ff'
+  thruster-orange-hover: '#ff8458'
+  thruster-orange-disabled: '#d77845'
+  muted-text: '#a7a5a1'
+  frame-line: '#f2ede333'
+  panel: '#0c0d11'
 typography:
   display:
-    fontFamily: "var(--font-orbitron), Orbitron, sans-serif"
-    fontSize: "clamp(38px, 7.4vw, 118px)"
-    fontWeight: 700
-    lineHeight: 1.04
-    letterSpacing: "0.01em"
-  headline:
-    fontFamily: "var(--font-orbitron), Orbitron, sans-serif"
-    fontSize: "clamp(34px, 6.6vw, 104px)"
-    fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "0.01em"
-  title:
-    fontFamily: "var(--font-orbitron), Orbitron, sans-serif"
-    fontSize: "clamp(26px, 4.6vw, 72px)"
-    fontWeight: 600
+    fontFamily: var(--font-unbounded), Unbounded, sans-serif
+    fontSize: clamp(62px, 7.2vw, 96px)
+    fontWeight: 900
     lineHeight: 1.1
-    letterSpacing: "0.04em"
+    letterSpacing: 0.005em
+  headline:
+    fontFamily: var(--font-unbounded), Unbounded, sans-serif
+    fontSize: clamp(27px, 3vw, 42px)
+    fontWeight: 400
+    lineHeight: 1.3
+  title:
+    fontFamily: var(--font-body), Space Grotesk, sans-serif
+    fontSize: 20px
+    fontWeight: 500
+  lead:
+    fontFamily: var(--font-body), Space Grotesk, sans-serif
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.65
+  body-copy:
+    fontFamily: var(--font-body), Space Grotesk, sans-serif
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.65
+  body-copy-mobile:
+    fontFamily: var(--font-body), Space Grotesk, sans-serif
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.65
   body:
-    fontFamily: "var(--font-rajdhani), system-ui, sans-serif"
-    fontSize: "clamp(17px, 1.6vw, 21px)"
+    fontFamily: var(--font-body), Space Grotesk, sans-serif
+    fontSize: 16px
     fontWeight: 400
-    lineHeight: 1.55
-    letterSpacing: "normal"
+    lineHeight: 1.5
   label:
-    fontFamily: "var(--font-jetbrains-mono), monospace"
-    fontSize: "clamp(11px, 1.1vw, 14px)"
+    fontFamily: var(--font-body), Space Grotesk, sans-serif
+    fontSize: 12px
     fontWeight: 400
-    lineHeight: 1.4
-    letterSpacing: "0.32em"
+  instrument:
+    fontFamily: var(--font-jetbrains-mono), JetBrains Mono, monospace
 rounded:
-  none: "0px"
-  pill: "999px"
+  none: 0px
+  control: 2px
+  screenshot: 4px
+  circle: 50%
 spacing:
-  content-x: "6vw"
-  chrome-x: "5vw"
-  section-y: "16vh"
+  xs: 8px
+  sm: 12px
+  md: 16px
+  lg: 24px
+  xl: 32px
 components:
   button-primary:
-    backgroundColor: "{colors.thruster-orange}"
-    textColor: "{colors.void-ink}"
-    rounded: "{rounded.pill}"
-    padding: "18px 34px"
-  button-ghost:
-    textColor: "{colors.ivory-suit}"
-    rounded: "{rounded.pill}"
-    padding: "17px 30px"
+    backgroundColor: '{colors.thruster-orange}'
+    textColor: '{colors.deep-space}'
+    rounded: '{rounded.control}'
+    padding: 14px 24px
+  button-primary-hover:
+    backgroundColor: '{colors.thruster-orange-hover}'
+  button-primary-disabled:
+    backgroundColor: '{colors.thruster-orange-disabled}'
+    textColor: '{colors.deep-space}'
   button-nav:
-    backgroundColor: "{colors.thruster-orange}"
-    textColor: "{colors.void-ink}"
-    rounded: "{rounded.pill}"
-    padding: "10px 22px"
-  chip-tag:
-    textColor: "{colors.ivory-suit}"
-    rounded: "{rounded.pill}"
-    padding: "7px 14px"
-  cockpit-button-primary:
-    backgroundColor: "{colors.thruster-orange}"
-    textColor: "#000000"
-    rounded: "{rounded.none}"
-    padding: "14px 28px"
-  cockpit-button-secondary:
-    backgroundColor: "rgba(20, 18, 15, 0.6)"
-    textColor: "{colors.thruster-orange}"
-    rounded: "{rounded.none}"
-    padding: "14px 22px"
+    backgroundColor: '{colors.thruster-orange}'
+    textColor: '{colors.deep-space}'
+    rounded: '{rounded.control}'
+    padding: 10px 16px
+  link-text:
+    textColor: '{colors.ivory-suit}'
+    padding: 12px 0
+  hero-play:
+    textColor: '{colors.ivory-suit}'
+    padding: 12px 4px
+  brand-avatar:
+    rounded: '{rounded.circle}'
+    width: 36px
+    height: 36px
+  project-frame:
+    backgroundColor: '{colors.panel}'
+    rounded: '{rounded.none}'
+    padding: 30px 30px 0
+  brand-button-primary:
+    backgroundColor: '{colors.thruster-orange}'
+    textColor: '{colors.deep-space}'
+    rounded: '{rounded.control}'
+    padding: 12px 24px
+  brand-button-secondary:
+    backgroundColor: transparent
+    textColor: '{colors.ivory-suit}'
+    rounded: '{rounded.control}'
+    padding: 12px 24px
+  access-input:
+    backgroundColor: '{colors.panel}'
+    textColor: '{colors.ivory-suit}'
+    rounded: '{rounded.control}'
+    padding: 10px 12px
 ---
 
 # Design System: Portfolio Cockpit
 
 ## Overview
 
-**Creative North Star: "The Toy Cockpit"**
+**Creative North Star: "A Personal Introduction Suspended in Space"**
 
-A toy spaceship cockpit whose instruments really work. Everything in this
-system holds two truths at once: the *material* is playful — glossy vinyl-toy
-surfaces, a chunky orange astronaut, pill-shaped candy buttons — while the
-*function* is precise — real gauges, mono labels, exact tracking, a scene
-that runs at 60fps. The playfulness is never sloppy and the precision is
-never cold. Bold, essential, technical.
+The landing and playable cockpit share monumental Unbounded titles, Space
+Grotesk text and actions, warm ivory on near-black, orange commands and thin
+rectangular frames. The accepted landing supplies the visual authority for
+this shared system. Dungyov informs the outlined/solid lettering; Oakley
+Axiom Space informs media scale and native-scroll depth, not asset identity.
 
-The visual field is almost entirely dark, quiet space (`deep-space`,
-#05060a) punctured by very few, very large, very finished elements: one
-giant uppercase headline, one glowing character or planet, one orange
-action. The confirmed anti-reference is the verbose multi-section
-portfolio — many medium-sized blocks of copy and cards. This site says few
-things, enormously.
+The glossy toy astronaut connects an original generated landing image with
+the existing model in the vanilla Three.js cockpit. A natural photographic
+avatar and services portrait share one edit of the owner’s real photograph.
+The landing is spacious and direct; the cockpit is playful and
+instrument-dense. Flat controls, the shared avatar and equal EN/IT treatment
+connect them while scrolling and gameplay retain their functional layouts.
 
 **Key Characteristics:**
 
-- Dark near-black canvas with warm, glossy subjects lit like backlit toys
-- One accent color (Thruster Orange) carrying every action and highlight
-- Giant uppercase Orbitron paired with tiny wide-tracked mono labels
-- Depth through glow and inset light, never grey drop shadows
-- Motion is narrative (scroll-scrubbed flight, orbiting planets), honors
-  `prefers-reduced-motion` globally
+- Near-black space, warm ivory text and orange actions.
+- Shared Unbounded display lettering and Space Grotesk prose and actions.
+- Thin rectangular frames, flat controls and restrained two-pixel corners.
+- A consistent toy astronaut character and recognizable photographic identity.
+- Native-scroll depth on the landing; readable telemetry in the playable CV.
 
 ## Colors
 
-A single warm flame against deep space: one orange voice, ivory and bone
-neutrals, and four HUD signal colors that exist only inside instruments.
+One warm orange accent sits against deep space and ivory; cockpit status
+colors retain their instrument roles. Values in the frontmatter are
+normative.
 
 ### Primary
 
-- **Thruster Orange** (#ff6b35): the only accent. Every CTA, active state,
-  eyebrow label, focus ring, progress hairline, and glow halo. Its alpha
-  variants (`#ff6b3555`, `#ff6b352e`) are the glow vocabulary of the whole
-  system.
-
-### Neutral
-
-- **Deep Space** (#05060a): the page canvas everywhere — landing sky,
-  cockpit void, section backgrounds. Never pure black.
-- **Ivory Suit** (#f2ede3): landing text — headlines, chips, ghost buttons.
-  Warm, like the astronaut's cream straps.
-- **Instrument Bone** (#d4cfc5): cockpit body text on panels.
-- **Nebula Grey** (#8f8a97): landing secondary text (body copy, hints,
-  footer).
-- **Dust Grey** (#8a8680): cockpit dim text (inactive labels, captions).
-- **Panel Char** (#14120f) / **Panel Char Light** (#1f1c18): cockpit panel
-  surfaces; Light is the hover step.
-- **Void Ink** (#0b0812): text sitting ON Thruster Orange (buttons, pills).
+- **Thruster Orange:** landing booking controls, selected navigation,
+  name punctuation and focus outlines; cockpit actions.
+- **Thruster Orange Hover:** the landing's enabled booking hover fill and
+  border, a lighter state of the same accent.
+- **Thruster Orange Disabled:** the booking controls' muted orange fill and
+  border while setup is deferred; text retains full opacity.
 
 ### Tertiary
 
-- **HUD Green** (#6aff9e), **HUD Amber** (#ffb347), **HUD Red** (#ff5252),
-  **HUD Blue** (#00d9ff): instrument readouts only — gauges, radar,
-  status LEDs inside the cockpit chrome. Never used as marketing accents,
-  never on the landing.
+- **HUD Green, Amber, Red and Blue:** cockpit instrument readouts, gauges,
+  radar and status signals. They do not become landing marketing accents.
 
-### Named Rules
+### Neutral
 
-**The Single Flame Rule.** Thruster Orange is the only voice of attention
-on any surface. If two unrelated elements glow orange at once, one of them
-is wrong. HUD colors never leave the instruments.
+- **Deep Space:** both surfaces' canvas and landing text on orange.
+- **Ivory Suit:** headings, primary text and outlined letter strokes.
+- **Muted Text:** supporting copy, metadata and quiet navigation.
+- **Frame Line:** translucent ivory dividers, project frames and instruments.
+- **Panel:** the subtle fill behind app captures, menus and cockpit panels.
+- **Panel Light:** the cockpit header and quiet control hover step.
 
-**The Warm Dark Rule.** Darks lean warm (char, not slate); lights lean
-ivory (never #fff). Pure white and pure black appear only as text-on-accent
-(#000 in cockpit buttons) and inset shadow lines.
+**The Shared Identity Rule.** Use the same palette, display/body roles and
+flat control language across both routes; reserve signal colors for working
+instruments and status.
 
 ## Typography
 
-**Display Font:** Orbitron (via `--font-orbitron`, fallback sans-serif)
-**Body Font:** Rajdhani (via `--font-rajdhani`, fallback system-ui)
-**Label/Mono Font:** JetBrains Mono (via `--font-jetbrains-mono`)
+**Display Font:** Unbounded via `--font-unbounded`; the generated
+`--font-display` alias resolves to `var(--font-unbounded)`.
+**Body and Action Font:** Space Grotesk via `--font-body`.
+**Instrument Font:** JetBrains Mono via `--font-jetbrains-mono`, exposed
+through `--font-mono` for telemetry and code.
 
-**Character:** Orbitron shouts in giant geometric uppercase — the voice of
-the hull. JetBrains Mono whispers in tiny, wide-tracked uppercase — the
-voice of the instruments. Rajdhani explains in relaxed sentence case — the
-voice of the pilot.
+All three load once in the shared locale layout through `next/font/google`.
+Unbounded loads 400, 700 and 900; Space Grotesk loads 400, 500 and 600;
+JetBrains Mono loads 400, 500 and 700. Orbitron and Rajdhani are retired.
+The loaded font variables and generated aliases must remain distinct.
 
-### Hierarchy
+The landing name is uppercase, weight 900, with an outlined first name and
+solid surname. Contact repeats the outline/solid contrast. Outlined glyphs
+use a two-pixel ivory stroke, Deep Space fill and `paint-order: stroke fill`
+to keep contours clean. Services use the lighter headline weight 400;
+the photographic work heading uses 700 and the closing display uses 900.
+Prose and navigation remain in Space Grotesk, mostly sentence case.
 
-- **Display** (700, clamp(38px, 7.4vw, 118px), 1.04): hero headline only.
-  Uppercase, `max-width` in `em` so it wraps to 2–3 monumental lines.
-- **Headline** (700, clamp(34px, 6.6vw, 104px), 1.05): section titles on
-  the landing; uppercase.
-- **Title** (600, clamp(26px, 4.6vw, 72px), 1.1): mid-tier statements
-  (hero mid-flight line, cockpit intro subtitle); uppercase.
-- **Body** (400, clamp(17px, 1.6vw, 21px), 1.55): Rajdhani paragraphs,
-  `max-width: 560px` on the landing. Sentence case.
-- **Label** (400, clamp(11px, 1.1vw, 14px), tracking 0.18–0.32em,
-  UPPERCASE): mono eyebrows, chips, nav brand, hints, footer. Eyebrows use
-  0.32em; chips and buttons 0.12–0.18em.
+The frontmatter display scale describes the desktop name. On mobile it is
+`clamp(38px, 12vw, 65px)`, with 38px below 360px. Contact uses
+`clamp(40px, 6vw, 80px)` on desktop and `clamp(27px, 8.6vw, 50px)` on mobile.
+The work scene uses `clamp(32px, 5.5vw, 72px)` at line-height 1.2,
+changing to `clamp(31px, 9vw, 54px)` on mobile. Services reduce to 26px on
+mobile. The hero offer uses `clamp(22px, 2.2vw, 29px)` at line-height 1.45,
+then 21px on mobile and 19px below 360px.
 
-### Named Rules
+Supporting leads use 18px/1.65, reducing to 16px on mobile; service and
+project descriptions use 15px, reducing to 14px. Service titles use 20px
+and 18px on mobile; project titles use Unbounded 400 at 23px and 20px.
+Compact metadata and controls vary by function and viewport; this is not
+a single mathematical type scale. Existing 9–10px helper and role text is
+not a default for new content. Below 600px viewport height, the hero name
+becomes 44px and the offer 18px to preserve the complete introduction.
 
-**The Three Voices Rule.** Every text element speaks as hull (Orbitron
-uppercase), instrument (mono uppercase, wide tracking), or pilot (Rajdhani
-sentence case). No fourth font, no Orbitron body copy, no mono paragraphs.
+Cockpit intro titles use Unbounded 900 at `clamp(28px, 3.5vw, 50px)` and
+line-height 1.17, reducing to `clamp(25px, 7vw, 36px)` on mobile. Dock titles
+use Unbounded 700 at 32px desktop and 24px mobile. Dock body copy is Space
+Grotesk 14px/1.7; shared commands use 14px/500 with no uppercase tracking.
+Access and chat fields use Space Grotesk at 16px. Monospace remains for
+instrument values, keyboard codes and telemetry rather than prose.
+
+**The Type Roles Rule.** Use Unbounded for titles, Space Grotesk for reading
+and actions, and JetBrains Mono for telemetry and code on either surface.
 
 ## Layout
 
-Two spatial models, one system:
+The landing uses native document flow, with two photographic scenes and
+centered content sections. With motion enabled, the hero occupies 300svh
+and the work introduction 230svh; each contains a sticky 100svh stage.
+Services, the real project cards after the work scene, and contact remain
+in normal flow. Their panels have a 100svh minimum height, 140px 70px
+padding and 1040px composition width. The hero composition caps at 1160px
+and uses 110px 40px 80px padding. These are the current homepage's
+compositions, not compulsory templates for every future surface.
 
-- **Landing (cinematic scroll):** full-viewport scenes. The hero is a
-  sticky 100svh viewport inside a 500svh scrub track; the clip is the
-  layout. Editorial sections below breathe at `16vh` vertical / `6vw`
-  horizontal padding, alternate left/right alignment per section
-  (01 left, 02 right, 03 left), and cap prose at 560px. Fixed chrome
-  (brand + PLAY pill) floats at `5vw` gutters over everything.
-- **Cockpit (locked viewport):** a single `100vw × 100dvh` stage
-  (`data-viewport-lock` freezes body scroll). HUD chrome pins to the
-  edges; the 3D scene owns the center. Overlays (dock, intro) are
-  full-screen modals over the scene.
+A close crop of the generated astronaut fills the hero foreground over lunar
+terrain; the 220px framed portrait introduces services. Services form three columns
+and shipped products a two-column pair. Below 800px, the hero copy sits
+near the bottom of its stage with 100px 25px 104px padding. The astronaut and
+landscape crop widen while retaining the same depth travel. The portrait
+becomes 150px above the services copy; services and products stack into
+one column. Content panels use 100px 25px padding, with 22px side padding
+below 360px. The header has a stable dark backing (`#05060aeb`) at every
+scroll position and width, with safe-area top padding on mobile. Its Work
+shortcut hides while language and booking controls remain. Below
+360px, the header booking arrow hides and the name may wrap to preserve
+the controls without horizontal overflow.
 
-Safe-area insets (`env(safe-area-inset-*)`) wrap every fixed edge.
-Single breakpoint `dt: 800px`; the mobile predicate is portrait AND
-(coarse pointer OR ≤860px) — keep it in sync between preload hints and
-runtime. Fluid `clamp()`/`vw` typography does most responsive work;
-layout changes are rare and deliberate.
+Motion works at every viewport width and height. Reduced motion or pause
+removes the tall scene lengths and sticky positioning, retaining static
+100svh imagery and normal content flow. Short viewports adapt the hero's
+type and padding without disabling animation. Section anchors remain
+native; sections are never fixed or made inert. Without JavaScript, the
+same static content remains available and enhancement-only controls hide.
+
+The cockpit remains a locked 100vw × 100dvh stage. HUD chrome pins to the
+edges, the Three.js scene owns the center, and dock/intro overlays cover
+the scene. Keep its viewport lock scoped to the cockpit route.
 
 ## Elevation & Depth
 
-**Glow, not shadows.** This system casts light, not grey drop shadows.
-Depth outside the 3D scene is conveyed by: (1) orange halos radiating from
-active elements, (2) a 1px inset top highlight (`inset 0 1px 0
-rgba(255,255,255,0.2)`) that makes controls read as backlit physical
-buttons, and (3) warm panel layering (`panel-char` → `panel-char-light`)
-for surface steps. Text over imagery uses dark soft text-shadows for
-legibility only.
+Landing depth comes from separate raster planes: the closely framed
+astronaut moves past the viewer as the lunar terrain approaches, typography
+recedes, and the same full figure pulls back before the real app cards.
+Portrait, project pair and contact landscape have separate parallax travel.
+CSS perspective, translation, rotation, clipping and opacity create depth.
+GSAP 3.15 ScrollTrigger maps native scroll to scene and parallax progress,
+with a 0.3-second scrub response and linear progress. CSS owns sticky
+positioning; there are no pin spacers or application-owned animation loop.
 
-### Shadow Vocabulary
+The Canvas 2D background uses 700 subtle points, a 1.5 DPR cap and 0.5 layer
+opacity. It redraws with scroll/layout updates, with no autonomous star
+animation. Photographic shading protects text contrast. No WebGL or
+animation is required to read content or reach email and project links.
+Landing controls have no glow or drop shadow; hover moves enabled booking
+controls by two pixels and project captures by seven pixels.
 
-- **Halo rest** (`0 0 10px #ff6b3555`): primary controls at rest.
-- **Halo hover** (`0 0 18px #ff6b35aa`): primary controls on
-  hover/focus, paired with `translateY(-1px)`.
-- **Halo ambient** (`0 0 42px #ff6b3555` / `0 0 64px #ff6b352e`): large
-  CTAs and giant headlines' `text-shadow` breathing room.
-- **Instrument edge** (`inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px
-  0 rgba(0,0,0,0.8)`): secondary cockpit controls at rest.
+Cockpit chrome uses the same flat dark panels, ivory hairlines and orange
+state feedback. Decorative halos, scanlines, metal fasteners and inset
+metal highlights have been removed. The 3D scene retains its lighting,
+planet effects and functional signals; those are scene depth, not a control
+material. The Unbounded outline/solid world wordmark is a CanvasTexture
+with a steady warm light, without an extruded or pulsing sign.
 
-### Named Rules
+Dock overlays separate from the scene through a translucent near-black
+backdrop and 12px blur. Panels do not need a glow to establish hierarchy.
 
-**The Glow, Not Shadow Rule.** No neutral/grey `box-shadow` anywhere. If
-an element needs separation, it either glows orange (interactive), gains
-an inset light edge (physical control), or steps up one panel tone
-(surface).
+**The Flat Controls Rule.** Use fill, hairline borders and clear state
+changes for interface depth; keep physical light in the space scene.
+
+**The Optional Motion Rule.** Readable content and usable navigation are
+the base layer; depth travel enhances them without intercepting scrolling.
 
 ## Shapes
 
-Two silhouettes, chosen by surface register: **pills** (999px) for the
-landing's persuade layer — CTAs, chips, the PLAY nav — friendly and
-toy-like; **hard rectangles** (0px) for cockpit instruments — buttons,
-panels, gauges — crisp like switchgear. Both share 1px borders: Thruster
-Orange on controls, `rgba(242,237,227,0.22–0.28)` on quiet chips and ghost
-buttons. There is deliberately no middle ground: no 8–12px "card radius"
-exists in this system. Ornament comes from the material (glow, inset
-light), never from corner softening.
+Controls on both surfaces are almost square with two-pixel corners. Screenshot
+images use four-pixel top corners; their surrounding project frames and
+section menu remain rectangular. Thin one-pixel ivory strokes define
+frames and separators. The portrait's offset outline is an empty frame,
+not a hard offset shadow. The circular photographic avatar and project-open
+indicator supply the round geometry.
+
+Cockpit panels retain rectangular edges; access fields and shared command
+buttons use the same restrained control radius. Circular geometry belongs
+to the avatar, status points and gameplay controls where it has a role.
 
 ## Components
 
-Every control feels like a physical cockpit command: crisp border, mono or
-Orbitron uppercase with wide tracking, immediate luminous feedback.
-
 ### Buttons
 
-- **Shape:** pill (999px) on the landing; hard rectangle (0px) in the
-  cockpit.
-- **Primary (landing CTA):** Thruster Orange fill, Void Ink text, Orbitron
-  700 uppercase 0.12em tracking, `18px 34px`, ambient halo
-  (`0 0 42px #ff6b3555`).
-- **Primary (cockpit):** Thruster Orange fill, #000 text, Orbitron 700,
-  letterspacing 3px, `14px 28px`, 1px orange border, halo rest → halo
-  hover + `translateY(-1px)`, `transition: all 0.15s`.
-- **Secondary (cockpit):** translucent char fill (`rgba(20,18,15,0.6)`),
-  orange text, same border; hover fills to Panel Char Light with a soft
-  halo.
-- **Ghost (landing, e.g. "Email me"):** transparent, Ivory Suit mono
-  uppercase, 1px `rgba(242,237,227,0.28)` border, `17px 30px`.
-- **Focus:** `:focus-visible` outline 2px in the accent — never removed.
+Landing booking controls use orange fill/border, Deep Space text, Space
+Grotesk 500 and the control radius. Standard controls have a 52px minimum
+height; compact header controls use 43px. Mobile standard controls use
+46px and the header uses 38px. Enabled hover lightens the fill and border,
+lifts the control, and shifts its SVG arrow. Focus-visible uses a two-pixel
+orange outline with six-pixel offset across landing links and buttons.
 
-### Chips
+The hero pairs booking with the secondary “Play my CV” / “Gioca al mio CV”
+link to the current locale’s cockpit. It has an outlined SVG play symbol,
+ivory text and an understated bottom hairline; hover turns text and line
+orange. Minimum height is 48px on desktop and 46px on mobile. The flexible
+action row can wrap; the play label reduces from 14px to 12px on mobile and
+11px below 360px. Keyboard focus restores the hero copy’s visibility and
+position during scroll, keeping the link reachable even after its scene fades.
 
-- **Style:** transparent pill, 1px `rgba(242,237,227,0.22)` border, Ivory
-  Suit JetBrains Mono 11px, uppercase, 0.18em tracking, `7px 14px`.
-- **Role:** static tech tags — no selected state exists.
+**Booking state:** all three booking controls are currently disabled at
+full opacity, with the muted orange state fill and border. The owner has
+explicitly deferred Cal.com setup; this is an accepted state for this
+phase. Their labels and styling do not establish an operational booking
+path. Connecting the approved URL later does not change this visual world.
 
-### Cards / Containers
-
-No card component exists on the landing — sections sit directly on Deep
-Space. In the cockpit, containers are hard-edged Panel Char surfaces with
-inset light edges (see Elevation); internal padding 14–22px.
+The shared `brand-button` used by cockpit commands and chat uses Space
+Grotesk 500, a 48px minimum height and 12px 24px padding. Primary is orange
+with Deep Space text; secondary is transparent with an ivory hairline and
+ivory text. Hover lifts two pixels; secondary hover adds the Panel Light
+fill and orange border. Transitions use 180ms ease-out. Compact submit
+controls use a 44px minimum height and 10px 16px padding. Focus outlines
+remain two pixels, with a four-to-six-pixel offset by context.
 
 ### Inputs / Fields
 
-- **Style (cockpit access code):** dark translucent field on Panel Char,
-  1px border, mono text; label in Label style above.
-- **Focus:** border/glow shifts to Thruster Orange.
-- **Error:** message line in #ff6b6b-family red, never a red fill.
+Access-code and chat fields use dark fills, thin ivory borders and readable
+16px Space Grotesk text. The access field uses the control radius and
+10px 12px padding; the multiline composer stays rectangular with 8px 10px
+padding. Labels, error feedback and disabled/sending state remain explicit.
+The composer is a simple field/action row without an extra framed panel.
+There is no landing form.
+
+### Cards / Containers
+
+Project evidence uses thin rectangular dark frames containing two real
+localized App Store captures, staggered vertically. The whole project is
+a link, with a circular ivory arrow indicator and text below the frame.
+Frames are 380px tall with 30px 30px 0 padding, changing to 310px with
+24px 25px 0 padding on mobile. Hover brightens the border and lifts the
+captures. Services use open text rows with top hairlines and no icons or
+filled card backgrounds.
+Cockpit containers use the shared Panel fill and thin Frame Line border.
+Dock headers use Panel Light; content remains in a readable scroll area.
+The dialog is `min(760px, 92vw)` wide and capped at 85vh on desktop; mobile
+uses a full 100vw × 100dvh surface with safe-area padding. Focus trapping,
+focus return, Escape and direct section/contact/CV access remain functional
+requirements. Public/private access state changes the available content.
 
 ### Navigation
 
-- **Style:** fixed bar, transparent over the scene; brand = 34×42px logo
-  bust + name in mono uppercase 0.24em tracking; PLAY pill right (see
-  button-nav). `pointer-events` pass through except on links.
+The landing header combines the circular photographic avatar/name, a quiet
+Work link, the shared EN/IT control and a compact booking control. A bottom-left section picker
+uses a dark rectangular menu; its current item is orange, and hover
+adds a faint ivory tint behind the existing text. Menu links use 13px
+type and 12px 20px padding. Escape closes the picker and returns
+focus. A slim right-side progress rail and bottom motion toggle remain
+secondary to the content. Enhancement-only navigation is absent without
+JavaScript.
 
-### Signature: The Ascent Hero
+The same `BrandAvatar` and `LanguageSwitcher` appear in the cockpit. Language
+links preserve the current landing/cockpit route, use an ivory current
+state and retain clear focus. The cockpit intro brand and Website action
+return to the localized landing. HUD controls preserve direct DOCK, COMM,
+section, contact and CV routes alongside the flight controls.
 
-The landing hero is a single AI-generated clip (toy astronaut rising from
-night clouds to planet-dotted space) scrubbed by scroll: frame-grid
-quantised seeks, dt-normalised lerp smoothing, 30fps GOP-8 encode. Overlay
-text phases fade against scrub progress (intro out by 26%, mid line
-38–76%); a 2px orange progress hairline tracks the top edge. Regeneration
-pipeline documented in CLAUDE.md. This is the template for any future
-"one clip, one journey" surface.
+### Signature: Astronaut, photographic identity and outlined display
+
+`public/landing-v2/astronaut.webp` is an original Image Gen reinterpretation
+based on a reference render of the existing `public/models/astronaut.glb`.
+The octagonal helmet, opaque visor, ivory suit, chest controls, hoses and
+orange fittings preserve the toy character. The runtime model is unchanged.
+The landing asset has true transparency at 1122 × 1402: the hero uses a 1.7
+CSS scale for a close crop, and the work scene shows the same full figure.
+Raw GLB renders were reference inputs only and are no longer public landing
+assets. The generated lunar landscape remains behind the character and
+contact. Temporary Oakley rasters were removed. Media provenance is in
+`docs/design/brand-media.md` and adjacent asset metadata. The landing
+animates still-image layers; it does not scrub video or require WebGL.
+
+The cockpit world wordmark uses the same outlined first name and solid
+surname, rendered with Unbounded into a CanvasTexture. The scene updates
+that texture after fonts load; its warm light remains steady.
+
+The shared `BrandAvatar` uses `matteo-avatar-v2.webp` (200 × 200), displayed
+as a 36px circle on desktop and 32px below 800px. It replaces the former
+orbit brand symbol. Services and contact no longer repeat that symbol.
+The services portrait uses `matteo-portrait-v2.webp` (768 × 768), cropped in
+a 7:8 frame at 220px desktop and 150px mobile with a thin offset outline.
+
+Both personal images derive from the same identity-preserving Image Gen
+edit of the owner’s real photograph. Natural skin tone and texture, amber
+glasses, curly hair, stubble and the earring retain a recognizable face
+with a relaxed, confident expression. The dark background and lighting are
+edited; these are generated photographic edits, not untouched originals.
+Their provenance is in `docs/design/portrait-provenance.md`. Official app
+captures retain their actual UI and colors, documented in
+`docs/design/project-assets.md`; they need not imitate the site's palette.
+
+**Not canonized:** compact role/navigation labels and remaining tiny helper
+text are not templates for decorative kickers or a new small-text scale.
+Static detector advisories do not define new rules; isolated legacy values
+are not promoted to shared tokens.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** set every heading in uppercase Orbitron and every eyebrow/label in
-  uppercase JetBrains Mono with 0.18–0.32em tracking.
-- **Do** use Thruster Orange alpha halos (`55`/`aa` hex alpha) plus inset
-  top light for all interactive depth, with `transition: all 0.15s`.
-- **Do** keep the canvas exactly Deep Space #05060a and add faint ivory
-  starfield specks (1–1.5px radial gradients at ≤0.5 alpha) when a static
-  section needs to read as sky.
-- **Do** honor `prefers-reduced-motion` for every animation and scrub
-  smoothing (snap instead of lerp).
-- **Do** put Void Ink (#0b0812) or #000 text on orange — never white.
+- **Do** share Unbounded titles, Space Grotesk reading/actions and JetBrains
+  Mono telemetry/code across landing and cockpit.
+- **Do** use thin frames, flat controls, small control corners and clear
+  outline/solid display contrast across both routes.
+- **Do** preserve keyboard focus, native anchors, readable content and
+  reduced-motion behavior in both languages.
+- **Do** preserve the toy character across the existing cockpit model and
+  original generated landing artwork, with recorded provenance.
+- **Do** use the matching natural avatar and services portrait derived from
+  the owner’s photograph, alongside actual shipped product imagery.
 
 ### Don't:
 
-- **Don't** use grey/neutral drop shadows, or any `box-shadow` that isn't
-  orange glow or inset light.
-- **Don't** introduce mid-size border radii (8–16px cards): pills or hard
-  edges only.
-- **Don't** let HUD Green/Amber/Red/Blue out of the cockpit instruments,
-  and don't add a second accent color anywhere.
-- **Don't** compose surfaces as grids of medium cards with medium copy —
-  few enormous elements, generous void, prose capped at 560px.
-- **Don't** use stock photography or white-background imagery; every image
-  belongs to the glossy toy-space world (see the Replicate pipeline in
-  CLAUDE.md).
+- **Don't** restore the orbit brand symbol, service-row icons or raw GLB
+  renders as landing artwork.
+- **Don't** restore the separate Orbitron/Rajdhani font system or decorative
+  cockpit glow, scanlines and metal fasteners.
+- **Don't** turn HUD signal colors into general marketing accents or
+  monospace telemetry styles into body and action typography.
+- **Don't** make reading or contact depend on animation, JavaScript or
+  completing the cockpit.
+- **Don't** represent the disabled booking controls as working until the
+  owner's exact destination is supplied and verified.

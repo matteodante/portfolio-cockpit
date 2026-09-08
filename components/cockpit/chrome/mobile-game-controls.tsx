@@ -45,7 +45,7 @@ const STYLES = `
   cursor: default;
 }
 .mg-label {
-  font-family: var(--font-orbitron), Orbitron, sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 8px;
   font-weight: 600;
   letter-spacing: 1.4px;

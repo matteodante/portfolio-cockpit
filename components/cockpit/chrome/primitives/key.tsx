@@ -8,7 +8,7 @@ export default function Key({ children }: PropsWithChildren) {
         padding: '1px 6px',
         minWidth: 14,
         textAlign: 'center',
-        background: '#0a0908',
+        background: 'var(--color-cockpit-bg)',
         border: '1px solid #3a3630',
         borderBottom: '2px solid #1a1816',
         fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',

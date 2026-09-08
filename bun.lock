@@ -6,7 +6,6 @@
       "name": "@darkroom.engineering/satus",
       "dependencies": {
         "@formatjs/intl-localematcher": "^0.8.3",
-        "@gsap/react": "^2.1.2",
         "@upstash/ratelimit": "^2.0.8",
         "@upstash/redis": "^1.37.0",
         "@vercel/analytics": "^2.0.1",
@@ -196,8 +195,6 @@
     "@formatjs/fast-memoize": ["@formatjs/fast-memoize@3.1.2", "", {}, "sha512-vPnriihkfK0lzoQGaXq+qXH23VsYyansRTkTgo2aTG0k1NjLFyZimFVdfj4C9JkSE5dm7CEngcQ5TTc1yAyBfQ=="],
 
     "@formatjs/intl-localematcher": ["@formatjs/intl-localematcher@0.8.3", "", { "dependencies": { "@formatjs/fast-memoize": "3.1.2" } }, "sha512-pHUjWb9NuhnMs8+PxQdzBtZRFJHlGhrURGAbm6Ltwl82BFajeuiIR3jblSa7ia3r62rXe/0YtVpUG3xWr5bFCA=="],
-
-    "@gsap/react": ["@gsap/react@2.1.2", "", { "peerDependencies": { "gsap": "^3.12.5", "react": ">=17" } }, "sha512-JqliybO1837UcgH2hVOM4VO+38APk3ECNrsuSM4MuXp+rbf+/2IG2K1YJiqfTcXQHH7XlA0m3ykniFYstfq0Iw=="],
 
     "@img/colour": ["@img/colour@1.1.0", "", {}, "sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ=="],
 

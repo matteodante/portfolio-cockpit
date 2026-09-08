@@ -66,4 +66,9 @@ next-env.d.ts
 
 # claude
 .claude
-AGENTS.md
+
+# Impeccable session output (keep config and briefs tracked)
+/.impeccable/config.local.json
+/.impeccable/review/
+/.impeccable/live/
+/.impeccable/tmp/

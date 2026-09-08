@@ -1,3 +1,4 @@
+import '@/components/cockpit/cockpit.css'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { preload } from 'react-dom'

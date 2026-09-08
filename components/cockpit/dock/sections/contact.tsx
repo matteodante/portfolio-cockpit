@@ -10,8 +10,7 @@ import {
   LINKEDIN_DISPLAY,
   LINKEDIN_URL,
 } from '@/lib/constants/contact'
-import { BASE_URL } from '@/lib/constants/site'
-import { type TranslationKey, useT } from '@/lib/i18n'
+import { type TranslationKey, useI18n } from '@/lib/i18n'
 
 type Row = {
   labelKey: TranslationKey
@@ -26,15 +25,15 @@ const ROW_STYLE = {
   padding: '10px 14px',
   marginBottom: 6,
   background: 'var(--color-cockpit-panel-light)',
-  border: '1px solid #000',
+  border: '1px solid var(--color-cockpit-border)',
   textDecoration: 'none',
   color: 'var(--color-cockpit-text)',
-  fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+  fontFamily: 'var(--font-body), sans-serif',
   fontSize: 13,
 } as const
 
 export default function ContactSection() {
-  const t = useT()
+  const { t, locale } = useI18n()
 
   const rows: Row[] = [
     {
@@ -45,9 +44,9 @@ export default function ContactSection() {
     },
     {
       labelKey: 'contact.website',
-      value: BASE_URL.replace(/^https?:\/\//, ''),
-      href: BASE_URL,
-      external: true,
+      value: t('cockpit.mobile.backToHome'),
+      href: `/${locale}`,
+      external: false,
     },
     {
       labelKey: 'contact.github',

@@ -1,96 +1,69 @@
-import type { CSSProperties } from 'react'
-import { COCKPIT_ACCENT } from '@/lib/constants/theme'
+import MetalPanel from '@/components/cockpit/chrome/primitives/metal-panel'
 import { useT } from '@/lib/i18n'
-import MetalPanel from '../primitives/metal-panel'
-import PanelHeader from './panel-header'
-import ScanLine from './scan-line'
 
-type AiPanelProps = {
-  onOpenComm: () => void
-}
-
-const PANEL_STYLE: CSSProperties = {
-  padding: '10px 14px',
-  position: 'relative',
-  overflow: 'hidden',
-}
-
-/** Middle-right panel: AI assistant teaser + Open button. */
-export default function AiPanel({ onOpenComm }: AiPanelProps) {
+export default function AiPanel({ onOpenComm }: { onOpenComm: () => void }) {
   const t = useT()
-  const title = t('cockpit.sections.comm.title')
-  const sub = t('cockpit.sections.comm.sub')
-
   return (
-    <MetalPanel style={PANEL_STYLE}>
-      <PanelHeader
-        title={t('cockpit.hud.aiPanel')}
-        right={
-          <span style={{ color: 'var(--color-cockpit-hud-green)' }}>
-            {t('cockpit.hud.aiStatus')}
-          </span>
-        }
-      />
+    <MetalPanel
+      style={{
+        padding: '12px 14px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 10,
+      }}
+    >
       <div
         style={{
-          marginTop: 6,
-          fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
-          fontSize: 19,
-          fontWeight: 600,
-          lineHeight: 1.1,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'baseline',
+          gap: 12,
         }}
       >
-        {title}
+        <span
+          style={{
+            fontFamily: 'var(--font-body), sans-serif',
+            fontSize: 21,
+            fontWeight: 500,
+          }}
+        >
+          {t('cockpit.sections.comm.title')}
+        </span>
+        <span
+          style={{
+            color: 'var(--color-cockpit-hud-green)',
+            fontFamily: 'var(--font-mono), monospace',
+            fontSize: 10,
+          }}
+        >
+          {t('cockpit.hud.aiStatus')}
+        </span>
       </div>
-      <div
+      <p
         style={{
-          fontSize: 11,
+          fontFamily: 'var(--font-body), sans-serif',
+          fontSize: 12,
+          lineHeight: 1.5,
           color: 'var(--color-cockpit-text-dim)',
-          marginTop: 3,
-          fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
-        }}
-      >
-        {sub}
-      </div>
-
-      <div
-        style={{
-          marginTop: 8,
-          border: `1px solid ${COCKPIT_ACCENT}44`,
-          background: 'rgba(8, 12, 16, 0.45)',
-          padding: '8px 10px',
-          fontSize: 11,
-          lineHeight: 1.45,
-          color: '#b8b2a8',
-          fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+          margin: 0,
         }}
       >
         {t('cockpit.hud.aiPreview')}
-      </div>
-
+      </p>
       <button
         type="button"
+        className="brand-button"
         onClick={onOpenComm}
         style={{
-          position: 'absolute',
-          bottom: 10,
-          right: 14,
-          padding: '6px 12px',
-          background: COCKPIT_ACCENT,
-          border: `1px solid ${COCKPIT_ACCENT}`,
-          color: '#000',
-          fontFamily: 'var(--font-orbitron), Orbitron, sans-serif',
-          letterSpacing: 1.6,
-          fontSize: 10,
-          fontWeight: 700,
-          cursor: 'pointer',
-          boxShadow: `0 0 12px ${COCKPIT_ACCENT}66`,
+          marginTop: 'auto',
+          alignSelf: 'flex-end',
+          minHeight: 38,
+          padding: '8px 14px',
+          fontSize: 12,
         }}
       >
         {t('cockpit.controls.openAiBtn')}
       </button>
-
-      <ScanLine />
     </MetalPanel>
   )
 }
