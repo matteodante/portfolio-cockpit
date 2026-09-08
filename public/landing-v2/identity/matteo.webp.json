@@ -1,0 +1,4 @@
+{
+  "prompt": "Precise background replacement only. The reference image has an unwanted baked-in gray-and-white checkerboard. REMOVE EVERY BIT of that checkerboard and replace it with a perfectly flat opaque near-black studio background, exact color #05060a, uniformly across the entire background to all four canvas edges. Do not use transparency, checkerboards, gradients, scenery, particles, glow or fog. Preserve the subject EXACTLY: same pose, identity or helmet geometry, facial expression if visible, arm and finger positions, lighting, proportions, framing, every pixel-aligned landmark. No reimagining or camera change. Same portrait 1122x1402 dimensions and crop. Keep all fine hair edges or suit edges clean, naturally antialiased on the solid near-black background. This is one precisely registered VFX plate used for a cinematic website transition.\n",
+  "createdAt": "2026-09-08T17:24:01.980Z"
+}

@@ -204,6 +204,36 @@ export default function LandingMotion({
             )
           if (timeline.scrollTrigger) triggers.push(timeline.scrollTrigger)
         }
+        const brands = root.querySelector<HTMLElement>('.brands-scene')
+        const track = brands?.querySelector<HTMLElement>('.brands-track')
+        const brandStage = brands?.querySelector<HTMLElement>('.brands-stage')
+        if (brands && track && brandStage) {
+          gsap.set(brands, { '--brands-speed': 0, '--brands-progress': 0 })
+          const setSpeed = gsap.quickSetter(brands, '--brands-speed')
+          const setProgress = gsap.quickSetter(brands, '--brands-progress')
+          const horizontal = gsap.fromTo(
+            track,
+            { x: 0 },
+            {
+              x: () => -Math.max(0, track.scrollWidth - width),
+              ease: 'power2.inOut',
+              scrollTrigger: {
+                trigger: brands,
+                start: 'top top',
+                end: () =>
+                  `+=${Math.max(1, brands.offsetHeight - brandStage.offsetHeight)}`,
+                scrub: 0.55,
+                invalidateOnRefresh: true,
+              },
+              onUpdate: function (this: gsap.core.Tween) {
+                const velocity = this.scrollTrigger?.getVelocity() ?? 0
+                setSpeed(Math.max(-1, Math.min(1, velocity / 2500)))
+                setProgress(this.progress())
+              },
+            }
+          )
+          if (horizontal.scrollTrigger) triggers.push(horizontal.scrollTrigger)
+        }
       }, root)
       sync()
       if (document.hidden) {

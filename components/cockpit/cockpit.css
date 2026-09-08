@@ -24,6 +24,21 @@
   font-family: var(--font-body), sans-serif;
   font-size: 15px;
 }
+.cockpit-home-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+.cockpit-home-avatar-mobile {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  left: calc(env(safe-area-inset-left, 0px) + 92px);
+  z-index: 40;
+}
 .cockpit-intro-copy {
   position: absolute;
   left: 6vw;

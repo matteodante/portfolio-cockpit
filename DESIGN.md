@@ -15,6 +15,7 @@ colors:
   muted-text: '#a7a5a1'
   frame-line: '#f2ede333'
   panel: '#0c0d11'
+  booking-surface: '#101010'
 typography:
   display:
     fontFamily: var(--font-unbounded), Unbounded, sans-serif
@@ -76,7 +77,8 @@ components:
     padding: 14px 24px
   button-primary-hover:
     backgroundColor: '{colors.thruster-orange-hover}'
-  button-primary-disabled:
+    textColor: '{colors.deep-space}'
+  brand-button-primary-disabled:
     backgroundColor: '{colors.thruster-orange-disabled}'
     textColor: '{colors.deep-space}'
   button-nav:
@@ -88,8 +90,24 @@ components:
     textColor: '{colors.ivory-suit}'
     padding: 12px 0
   hero-play:
+    backgroundColor: '{colors.panel-light}'
     textColor: '{colors.ivory-suit}'
-    padding: 12px 4px
+    rounded: '{rounded.control}'
+    padding: 14px 22px
+  service-card:
+    backgroundColor: '{colors.panel}'
+    rounded: '{rounded.control}'
+    padding: 28px
+  service-booking:
+    backgroundColor: '{colors.panel-light}'
+    textColor: '{colors.ivory-suit}'
+    rounded: '{rounded.control}'
+    padding: 12px 16px
+  booking-dialog:
+    backgroundColor: '{colors.booking-surface}'
+    textColor: '{colors.ivory-suit}'
+    rounded: '{rounded.control}'
+    padding: 0px
   brand-avatar:
     rounded: '{rounded.circle}'
     width: 36px
@@ -121,15 +139,17 @@ components:
 
 **Creative North Star: "A Personal Introduction Suspended in Space"**
 
-The landing and playable cockpit share monumental Unbounded titles, Space
-Grotesk text and actions, warm ivory on near-black, orange commands and thin
+The landing and playable cockpit share monumental Unbounded interface
+titles, Space Grotesk text and actions, warm ivory on near-black, orange commands and thin
 rectangular frames. The accepted landing supplies the visual authority for
 this shared system. Dungyov informs the outlined/solid lettering; Oakley
 Axiom Space informs media scale and native-scroll depth, not asset identity.
 
-The glossy toy astronaut connects an original generated landing image with
-the existing model in the vanilla Three.js cockpit. A natural photographic
-avatar and services portrait share one edit of the owner’s real photograph.
+The hero alternates between matched photographic portraits of Matteo and
+his astronaut alter ego through a brief, localized optical glitch. The toy
+character also connects the separate full-body work image to the existing
+Three.js model. A natural photographic avatar and services portrait share
+one edit of the owner’s real photograph.
 The landing is spacious and direct; the cockpit is playful and
 instrument-dense. Flat controls, the shared avatar and equal EN/IT treatment
 connect them while scrolling and gameplay retain their functional layouts.
@@ -137,9 +157,9 @@ connect them while scrolling and gameplay retain their functional layouts.
 **Key Characteristics:**
 
 - Near-black space, warm ivory text and orange actions.
-- Shared Unbounded display lettering and Space Grotesk prose and actions.
+- Shared Unbounded interface titles and Space Grotesk prose and actions.
 - Thin rectangular frames, flat controls and restrained two-pixel corners.
-- A consistent toy astronaut character and recognizable photographic identity.
+- Matched human/astronaut portraits, a consistent toy character and recognizable identity.
 - Native-scroll depth on the landing; readable telemetry in the playable CV.
 
 ## Colors
@@ -154,8 +174,8 @@ normative.
   name punctuation and focus outlines; cockpit actions.
 - **Thruster Orange Hover:** the landing's enabled booking hover fill and
   border, a lighter state of the same accent.
-- **Thruster Orange Disabled:** the booking controls' muted orange fill and
-  border while setup is deferred; text retains full opacity.
+- **Thruster Orange Disabled:** muted fill and border for disabled cockpit
+  form commands, such as access-code submission and chat send.
 
 ### Tertiary
 
@@ -168,8 +188,10 @@ normative.
 - **Ivory Suit:** headings, primary text and outlined letter strokes.
 - **Muted Text:** supporting copy, metadata and quiet navigation.
 - **Frame Line:** translucent ivory dividers, project frames and instruments.
-- **Panel:** the subtle fill behind app captures, menus and cockpit panels.
-- **Panel Light:** the cockpit header and quiet control hover step.
+- **Panel:** the subtle fill behind service cards, app captures, menus and
+  cockpit panels.
+- **Panel Light:** dark secondary controls and the cockpit header/hover step.
+- **Booking Surface:** the neutral dark Cal.com dialog and calendar backdrop.
 
 **The Shared Identity Rule.** Use the same palette, display/body roles and
 flat control language across both routes; reserve signal colors for working
@@ -206,6 +228,11 @@ then 21px on mobile and 19px below 360px.
 Supporting leads use 18px/1.65, reducing to 16px on mobile; service and
 project descriptions use 15px, reducing to 14px. Service titles use 20px
 and 18px on mobile; project titles use Unbounded 400 at 23px and 20px.
+Service prices use Space Grotesk 500 at 28px/1.3, with a quiet 12px
+qualifier. The relationship-section heading uses Unbounded 700 at
+`clamp(36px, 5.2vw, 72px)`, reducing to 34px on mobile; captions use
+Space Grotesk 11px desktop and 10px mobile. The literal project name
+`claude-local-docs` uses the code/mono role, not a fabricated logo.
 Compact metadata and controls vary by function and viewport; this is not
 a single mathematical type scale. Existing 9–10px helper and role text is
 not a default for new content. Below 600px viewport height, the hero name
@@ -218,23 +245,32 @@ Grotesk 14px/1.7; shared commands use 14px/500 with no uppercase tracking.
 Access and chat fields use Space Grotesk at 16px. Monospace remains for
 instrument values, keyboard codes and telemetry rather than prose.
 
-**The Type Roles Rule.** Use Unbounded for titles, Space Grotesk for reading
-and actions, and JetBrains Mono for telemetry and code on either surface.
+The owner restored the original orange `MATTEO DANTE` sign inside the 3D
+world. Its bold Helvetiker TextGeometry is a scene-specific exception to
+the shared display family; it does not replace Unbounded in the interface.
+
+**The Type Roles Rule.** Use Unbounded for interface titles, Space Grotesk
+for reading and actions, and JetBrains Mono for telemetry and code on
+either surface. Preserve the explicitly approved Helvetiker 3D sign.
 
 ## Layout
 
-The landing uses native document flow, with two photographic scenes and
-centered content sections. With motion enabled, the hero occupies 300svh
-and the work introduction 230svh; each contains a sticky 100svh stage.
+The landing uses native document flow: Intro, Services, Brands, Work and
+Contact. With motion enabled, the hero occupies 180svh and the work
+introduction 230svh; each contains a sticky 100svh stage. The former second
+hero text chapter is removed. A 270svh relationship section after Services
+contains a sticky 100svh horizontal logo stage.
 Services, the real project cards after the work scene, and contact remain
 in normal flow. Their panels have a 100svh minimum height, 140px 70px
 padding and 1040px composition width. The hero composition caps at 1160px
 and uses 110px 40px 80px padding. These are the current homepage's
 compositions, not compulsory templates for every future surface.
 
-A close crop of the generated astronaut fills the hero foreground over lunar
-terrain; the 220px framed portrait introduces services. Services form three columns
-and shipped products a two-column pair. Below 800px, the hero copy sits
+Registered folded-arm human/astronaut portraits occupy the hero foreground
+over restrained lunar terrain; the 220px framed portrait introduces services. Three squared
+service cards form a three-column grid; shipped products form a two-column
+pair. Cards have 20px gaps on wide screens, 32px at the compact-desktop
+breakpoint and 16px when stacked on mobile. Below 800px, the hero copy sits
 near the bottom of its stage with 100px 25px 104px padding. The astronaut and
 landscape crop widen while retaining the same depth travel. The portrait
 becomes 150px above the services copy; services and products stack into
@@ -245,12 +281,23 @@ shortcut hides while language and booking controls remain. Below
 360px, the header booking arrow hides and the name may wrap to preserve
 the controls without horizontal overflow.
 
+The hero identity frame is 4:5, 108% of its stage height, positioned 8%
+from the top and -1% from the right. On mobile it becomes 116% wide with
+auto height, 9% top and -26% right. Two intersected gradient masks blend
+its opaque plate edges into the scene. The landscape remains a separate
+scroll layer at 0.38 opacity. The identity frame retains scroll-driven
+translation and rotation; the timed transformation does not move the copy
+or actions. Their normal scroll progression remains independent.
+
 Motion works at every viewport width and height. Reduced motion or pause
 removes the tall scene lengths and sticky positioning, retaining static
 100svh imagery and normal content flow. Short viewports adapt the hero's
 type and padding without disabling animation. Section anchors remain
 native; sections are never fixed or made inert. Without JavaScript, the
 same static content remains available and enhancement-only controls hide.
+The relationship rail becomes a complete normal-flow grid with three
+columns on desktop and two on mobile. Its headings and relationship
+captions remain present in either mode.
 
 The cockpit remains a locked 100vw × 100dvh stage. HUD chrome pins to the
 edges, the Three.js scene owns the center, and dock/intro overlays cover
@@ -258,14 +305,48 @@ the scene. Keep its viewport lock scoped to the cockpit route.
 
 ## Elevation & Depth
 
-Landing depth comes from separate raster planes: the closely framed
-astronaut moves past the viewer as the lunar terrain approaches, typography
-recedes, and the same full figure pulls back before the real app cards.
+Landing depth comes from separate planes: the hero identity frame moves
+past the viewer as lunar terrain approaches and typography recedes. The
+separate transparent full-body astronaut pulls back in the Work scene
+before the real app cards.
 Portrait, project pair and contact landscape have separate parallax travel.
 CSS perspective, translation, rotation, clipping and opacity create depth.
 GSAP 3.15 ScrollTrigger maps native scroll to scene and parallax progress,
 with a 0.3-second scrub response and linear progress. CSS owns sticky
-positioning; there are no pin spacers or application-owned animation loop.
+positioning without pin spacers or a custom scroll animation loop.
+
+`HeroIdentity` adds a dynamically loaded native WebGL renderer with one
+quad and two image textures; it does not import Three.js. A textured reveal
+front, luminance-derived refraction, refractive ripples, local temporal
+echoes, brief horizontal tears and restrained chromatic separation transform
+the subject. Both settled endpoints sample the original plates without
+shader color treatment. The headline, offer and controls remain undisturbed
+by the timed effect.
+
+The first transformation starts 650ms after the ready hero begins visible,
+motion-enabled time. Each transition lasts 1120ms; starts recur every
+5000ms and alternate direction. Timers sleep through settled frames;
+`requestAnimationFrame` runs during transformations, with settled redraws
+for setup or resize. Offscreen/hidden-document time is suspended rather
+than accumulating missed changes. Pixel ratio is capped at 1.5.
+
+A clean astronaut poster is server-rendered immediately. The existing
+motion toggle, reduced-motion preference and no-JavaScript mode select
+that poster. A failed image/module, unavailable GPU or lost context also
+keeps it visible. This enhancement has no loading gate, sound or video
+decoder, and text, contact and booking links remain independent of it.
+
+The relationship rail maps native vertical scroll to horizontal travel over
+its overflow width. GSAP `power2.inOut` accelerates and decelerates the
+track, with a 0.55-second scrub response. Scroll velocity divided by 2500
+is clamped to ±1 and drives logo skew up to ±6°. An orange hairline tracks
+progress. Pause, reduced motion and no JavaScript retain the static logo
+grid; there is no scroll interception or perpetual marquee.
+
+The native booking dialog opens with a 240ms opacity/translate/scale
+animation using `cubic-bezier(0.16, 1, 0.3, 1)`, from 24px down and 0.97
+scale. The global reduced-motion rule overrides animation and transition
+durations to 0.001ms and animation iteration count to one.
 
 The Canvas 2D background uses 700 subtle points, a 1.5 DPR cap and 0.5 layer
 opacity. It redraws with scroll/layout updates, with no autonomous star
@@ -275,11 +356,12 @@ Landing controls have no glow or drop shadow; hover moves enabled booking
 controls by two pixels and project captures by seven pixels.
 
 Cockpit chrome uses the same flat dark panels, ivory hairlines and orange
-state feedback. Decorative halos, scanlines, metal fasteners and inset
-metal highlights have been removed. The 3D scene retains its lighting,
-planet effects and functional signals; those are scene depth, not a control
-material. The Unbounded outline/solid world wordmark is a CanvasTexture
-with a steady warm light, without an extruded or pulsing sign.
+state feedback. Interface halos, scanlines, metal fasteners and inset metal
+highlights have been removed. The 3D scene retains its lighting, planet
+effects and functional signals. Its restored orange name sign has beveled,
+extruded lettering with a dark metallic base, clearcoat and warm emissive
+light. The sign material and its point light pulse together, as explicitly
+requested by the owner; this scene treatment does not apply to controls.
 
 Dock overlays separate from the scene through a translucent near-black
 backdrop and 12px blur. Panels do not need a glow to establish hierarchy.
@@ -311,22 +393,29 @@ Landing booking controls use orange fill/border, Deep Space text, Space
 Grotesk 500 and the control radius. Standard controls have a 52px minimum
 height; compact header controls use 43px. Mobile standard controls use
 46px and the header uses 38px. Enabled hover lightens the fill and border,
-lifts the control, and shifts its SVG arrow. Focus-visible uses a two-pixel
+lifts the control, and shifts its SVG arrow. Text stays Deep Space on the
+orange hover fill, including in the header. Focus-visible uses a two-pixel
 orange outline with six-pixel offset across landing links and buttons.
 
 The hero pairs booking with the secondary “Play my CV” / “Gioca al mio CV”
-link to the current locale’s cockpit. It has an outlined SVG play symbol,
-ivory text and an understated bottom hairline; hover turns text and line
-orange. Minimum height is 48px on desktop and 46px on mobile. The flexible
-action row can wrap; the play label reduces from 14px to 12px on mobile and
-11px below 360px. Keyboard focus restores the hero copy’s visibility and
-position during scroll, keeping the link reachable even after its scene fades.
+link to the current locale’s cockpit. It is a dark squared button with Panel
+Light fill, ivory text, an outlined SVG play symbol, a full Frame Line
+border and two-pixel corners. Hover uses Panel fill and an orange border.
+Minimum height is 52px desktop and 46px mobile; desktop padding is 14px
+22px, with horizontal padding reducing to 14px below 800px and 8px below
+360px. Space Grotesk 500 labels reduce from 14px to 12px and then 11px at
+those breakpoints. The flexible action row can wrap. Keyboard focus restores
+the hero copy’s visibility and position during scroll, keeping the link
+reachable even after its scene fades.
 
-**Booking state:** all three booking controls are currently disabled at
-full opacity, with the muted orange state fill and border. The owner has
-explicitly deferred Cal.com setup; this is an accepted state for this
-phase. Their labels and styling do not establish an operational booking
-path. Connecting the approved URL later does not change this visual world.
+**Booking state:** the header, hero and contact booking CTAs are enabled
+orange links to the owner-confirmed `https://cal.com/matteo-dante`. They
+remain direct links. Each service card additionally has a dark secondary
+booking control: Panel Light fill, full ivory hairline, two-pixel corners,
+13px Space Grotesk 500, 48px minimum height and 12px 16px padding. Hover
+changes the border to orange and the fill to `#1c1e25` over 180ms.
+A normal activation opens the calendar dialog; modifier-key activation or
+no JavaScript follows the same direct Cal.com URL.
 
 The shared `brand-button` used by cockpit commands and chat uses Space
 Grotesk 500, a 48px minimum height and 12px 24px padding. Primary is orange
@@ -343,7 +432,8 @@ Access-code and chat fields use dark fills, thin ivory borders and readable
 10px 12px padding; the multiline composer stays rectangular with 8px 10px
 padding. Labels, error feedback and disabled/sending state remain explicit.
 The composer is a simple field/action row without an extra framed panel.
-There is no landing form.
+The landing’s scheduling form is supplied by the lazy Cal.com embed;
+there is no separate custom lead-capture form.
 
 ### Cards / Containers
 
@@ -352,8 +442,14 @@ localized App Store captures, staggered vertically. The whole project is
 a link, with a circular ivory arrow indicator and text below the frame.
 Frames are 380px tall with 30px 30px 0 padding, changing to 310px with
 24px 25px 0 padding on mobile. Hover brightens the border and lifts the
-captures. Services use open text rows with top hairlines and no icons or
-filled card backgrounds.
+captures.
+
+Services use three dark squared cards with full thin borders, two-pixel
+corners and 28px padding, reducing to 25px on mobile. Each card contains a
+title, brief description, price and dark booking control. Websites start at
+300 €; apps/software and custom AI are on request. These are owner-confirmed
+prices, not implied fixed scopes or delivery promises. A flexible price
+area keeps controls aligned; service icons remain removed.
 Cockpit containers use the shared Panel fill and thin Frame Line border.
 Dock headers use Panel Light; content remains in a readable scroll area.
 The dialog is `min(760px, 92vw)` wide and capped at 85vh on desktop; mobile
@@ -361,11 +457,48 @@ uses a full 100vw × 100dvh surface with safe-area padding. Focus trapping,
 focus return, Escape and direct section/contact/CV access remain functional
 requirements. Public/private access state changes the available content.
 
+### Service booking dialog
+
+Each service opens a native modal `<dialog>` with an accessible title and
+44px close control. The Cal.com React embed loads only when opened, uses
+a dark theme, month view and orange brand accent, and retains the exact
+owner destination. The route locale is passed into the embed; the external
+calendar controls its own displayed language. Escape and the close control dismiss
+the dialog; native modal behavior owns focus. The footer provides a direct
+Cal.com link in a new tab, so visitors can continue outside the embed.
+
+The shell is near-square with a thin ivory border and Booking Surface fill,
+`min(1000px, calc(100vw - 40px))` wide and capped at `100dvh - 40px` high.
+Mobile leaves 10px on each side and caps height at `100dvh - 20px`. A sticky
+header keeps the title and close action visible; the calendar has a 540px
+minimum height and the shell can scroll. The page stops scrolling while
+the dialog is open. Its translucent near-black backdrop adds 8px blur.
+
+### Relationship logos
+
+“Chi ho aiutato” / its English equivalent sits after Services. The official
+logo sequence is Pilatus Aircraft, PiùUDITO, Hexa Credit Care, DonTouch,
+Galileo SpA, Fastweb, Sorgenia, GymTree and Maestro, followed by the literal
+text `claude-local-docs`. Captions preserve the source relationship: team
+for Pilatus, Hexa, DonTouch and Galileo; client for PiùUDITO; project for
+Fastweb and Sorgenia; personal for GymTree, Maestro and claude-local-docs.
+These labels do not turn personal projects into external clients.
+
+Animated rail items are 320px wide on desktop and 210px on mobile, with
+180px and 110px logo areas respectively. Static layout uses the complete
+three-/two-column grid. Official alpha/SVG assets sit directly on the dark
+scene; most are rendered white through CSS. PiùUDITO uses grayscale and
+brightness adjustment. Galileo is the exception: its source is opaque and
+uses CSS grayscale/inversion. `mix-blend-mode: screen` is applied to the
+whole `.brands-scene`, compositing its dark pixels into the page backdrop.
+It is not an image-level-only treatment, and the source is not transparent.
+
 ### Navigation
 
 The landing header combines the circular photographic avatar/name, a quiet
 Work link, the shared EN/IT control and a compact booking control. A bottom-left section picker
-uses a dark rectangular menu; its current item is orange, and hover
+includes Intro, Services, Brands, Work and Contact in a dark rectangular
+menu; its current item is orange, and hover
 adds a faint ivory tint behind the existing text. Menu links use 13px
 type and 12px 20px padding. Escape closes the picker and returns
 focus. A slim right-side progress rail and bottom motion toggle remain
@@ -374,27 +507,47 @@ JavaScript.
 
 The same `BrandAvatar` and `LanguageSwitcher` appear in the cockpit. Language
 links preserve the current landing/cockpit route, use an ivory current
-state and retain clear focus. The cockpit intro brand and Website action
-return to the localized landing. HUD controls preserve direct DOCK, COMM,
+state and retain clear focus. The cockpit intro avatar/name link has an
+explicit localized “Back to home” label. The in-game desktop avatar and
+mobile avatar link also return to the localized landing, with 44px square
+targets and pointer events enabled. On mobile, the avatar sits beside audio
+at a 92px left offset plus the safe-area inset. Website and menu actions
+retain the same return path. HUD controls preserve direct DOCK, COMM,
 section, contact and CV routes alongside the flight controls.
 
 ### Signature: Astronaut, photographic identity and outlined display
 
-`public/landing-v2/astronaut.webp` is an original Image Gen reinterpretation
-based on a reference render of the existing `public/models/astronaut.glb`.
-The octagonal helmet, opaque visor, ivory suit, chest controls, hoses and
-orange fittings preserve the toy character. The runtime model is unchanged.
-The landing asset has true transparency at 1122 × 1402: the hero uses a 1.7
-CSS scale for a close crop, and the work scene shows the same full figure.
-Raw GLB renders were reference inputs only and are no longer public landing
-assets. The generated lunar landscape remains behind the character and
-contact. Temporary Oakley rasters were removed. Media provenance is in
-`docs/design/brand-media.md` and adjacent asset metadata. The landing
-animates still-image layers; it does not scrub video or require WebGL.
+The hero uses `public/landing-v2/identity/astronaut.webp` and `matteo.webp`:
+two opaque 960 × 1200 Image Gen photographic plates, 199,564 bytes combined.
+Matched folded arms, camera perspective, head/shoulder placement and warm
+rim light make the transition coherent. Matteo’s source is the supplied
+real photograph; the astronaut plate references the generated human pose
+and established toy design. Dark studio backgrounds are part of the images;
+CSS blends the rectangular frame edges, rather than approximating the
+subject with a geometric cutout. The shader transition and its fallbacks are
+documented above. Prompts and source history sit alongside the plates in
+`.origin.json` and `.webp.json`; direction and provenance are explained in
+`docs/design/identity-glitch.md`.
 
-The cockpit world wordmark uses the same outlined first name and solid
-surname, rendered with Unbounded into a CanvasTexture. The scene updates
-that texture after fonts load; its warm light remains steady.
+The Work scene separately retains `public/landing-v2/astronaut.webp`, an
+original Image Gen reinterpretation based on a render of the existing
+`public/models/astronaut.glb`. That full-body asset has true transparency at
+1122 × 1402. Its octagonal helmet, opaque visor, ivory suit, chest controls,
+hoses and orange fittings preserve the toy character; the runtime cockpit
+model is unchanged. It is not the current hero portrait. Raw GLB renders
+were reference inputs only and are no longer public landing assets.
+The generated lunar landscape remains behind the hero, work and contact;
+temporary Oakley rasters were removed. This media’s provenance is in
+`docs/design/brand-media.md` and adjacent asset metadata. The landing uses
+still-image layers and an optional image shader, not scrubbed video.
+
+The cockpit world wordmark is the original orange `MATTEO DANTE` sign,
+restored at the owner’s request. Bold Helvetiker TextGeometry supplies its
+beveled extrusion, with a physical emissive material (`#ff8a3c`) and a
+matching point light. Its material emissive intensity varies from 1.2 to
+1.8 while the light varies from 200 to 290. The scene update loop drives
+both from the same sine pulse. This is the named scene exception; the
+landing keeps its Unbounded outlined first name and solid surname.
 
 The shared `BrandAvatar` uses `matteo-avatar-v2.webp` (200 × 200), displayed
 as a 36px circle on desktop and 32px below 800px. It replaces the former
@@ -420,26 +573,32 @@ are not promoted to shared tokens.
 
 ### Do:
 
-- **Do** share Unbounded titles, Space Grotesk reading/actions and JetBrains
-  Mono telemetry/code across landing and cockpit.
-- **Do** use thin frames, flat controls, small control corners and clear
-  outline/solid display contrast across both routes.
+- **Do** share Unbounded interface titles, Space Grotesk reading/actions
+  and JetBrains Mono telemetry/code across landing and cockpit, preserving
+  the approved orange Helvetiker 3D sign.
+- **Do** use thin frames, flat controls and small control corners across
+  both routes, with outline/solid display contrast on the landing.
 - **Do** preserve keyboard focus, native anchors, readable content and
   reduced-motion behavior in both languages.
 - **Do** preserve the toy character across the existing cockpit model and
   original generated landing artwork, with recorded provenance.
 - **Do** use the matching natural avatar and services portrait derived from
   the owner’s photograph, alongside actual shipped product imagery.
+- **Do** retain official logo provenance, relationship captions and complete
+  static access to the rail, distinguishing personal work from clients.
+- **Do** confine the identity glitch to its registered subject plates, keep
+  clean settled photographs and preserve the composed astronaut fallback.
 
 ### Don't:
 
 - **Don't** restore the orbit brand symbol, service-row icons or raw GLB
   renders as landing artwork.
-- **Don't** restore the separate Orbitron/Rajdhani font system or decorative
-  cockpit glow, scanlines and metal fasteners.
+- **Don't** restore the separate Orbitron/Rajdhani interface font system or
+  decorative chrome glow, scanlines and metal fasteners. The restored
+  emissive 3D sign is an explicit scene exception.
 - **Don't** turn HUD signal colors into general marketing accents or
   monospace telemetry styles into body and action typography.
 - **Don't** make reading or contact depend on animation, JavaScript or
   completing the cockpit.
-- **Don't** represent the disabled booking controls as working until the
-  owner's exact destination is supplied and verified.
+- **Don't** confuse a booking-link click with a completed appointment or
+  confirmed lead.

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import BrandAvatar from '@/components/shared/brand-avatar'
 import LanguageSwitcher from '@/components/shared/language-switcher'
 import { cvPdfPath } from '@/lib/constants/site'
 import { COCKPIT_ACCENT } from '@/lib/constants/theme'
@@ -194,6 +195,13 @@ export default function MobileActions({
     <>
       {/* biome-ignore lint/security/noDangerouslySetInnerHtml: static css */}
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
+      <Link
+        href={`/${locale}`}
+        className="cockpit-home-avatar cockpit-home-avatar-mobile"
+        aria-label={t('cockpit.mobile.backToHome')}
+      >
+        <BrandAvatar />
+      </Link>
       <button
         type="button"
         onClick={() => setOpen(true)}

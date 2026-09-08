@@ -65,7 +65,11 @@ export default function IntroOverlay({ locale, onStart }: IntroOverlayProps) {
   return (
     <div className="cockpit-intro">
       <header className="cockpit-intro-header">
-        <Link href={`/${locale}`} className="cockpit-brand">
+        <Link
+          href={`/${locale}`}
+          className="cockpit-brand"
+          aria-label={t('cockpit.mobile.backToHome')}
+        >
           <BrandAvatar />
           <span>Matteo Dante</span>
         </Link>

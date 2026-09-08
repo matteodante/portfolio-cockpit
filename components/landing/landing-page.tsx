@@ -1,5 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import BookingPopup from '@/components/landing/booking-popup'
+import BrandsSection from '@/components/landing/brands-section'
+import HeroIdentity from '@/components/landing/hero-identity'
 import { makeT } from '@/components/landing/i18n'
 import LandingMotion from '@/components/landing/landing-motion'
 import BrandAvatar from '@/components/shared/brand-avatar'
@@ -47,14 +50,6 @@ function BookingLink({
   const className = compact
     ? 'booking-link booking-link-compact'
     : 'booking-link'
-  if (!CAL_BOOKING_URL) {
-    return (
-      <button type="button" className={className} disabled>
-        {label}
-        <Arrow />
-      </button>
-    )
-  }
   return (
     <Link href={CAL_BOOKING_URL} className={className}>
       {label}
@@ -80,10 +75,12 @@ const PROJECTS = [
 
 export default function LandingPage({ locale }: { locale: Locale }) {
   const t = makeT(locale)
-  const sections = ['intro', 'services', 'work', 'contact'].map((id) => ({
-    id,
-    label: t(`home.nav.${id}`),
-  }))
+  const sections = ['intro', 'services', 'brands', 'work', 'contact'].map(
+    (id) => ({
+      id,
+      label: t(`home.nav.${id}`),
+    })
+  )
 
   return (
     <LandingMotion
@@ -136,16 +133,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                   sizes="100vw"
                 />
               </div>
-              <div className="hero-helmet">
-                <Image
-                  src="/landing-v2/astronaut.webp"
-                  alt=""
-                  fill
-                  priority
-                  quality={90}
-                  sizes="(max-width: 799px) 120vw, 75vw"
-                />
-              </div>
+              <HeroIdentity />
             </div>
             <div className="hero-shade" aria-hidden="true" />
             <div className="hero-composition">
@@ -164,7 +152,11 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 </p>
                 <div className="hero-actions">
                   <BookingLink label={t('home.book')} />
-                  <Link className="hero-play" href={`/${locale}/cockpit`}>
+                  <Link
+                    className="hero-play"
+                    href={`/${locale}/cockpit`}
+                    prefetch={false}
+                  >
                     <svg
                       width="16"
                       height="16"
@@ -185,10 +177,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <p className="hero-experience">{t('home.hero.experience')}</p>
               </div>
             </div>
-            <p className="hero-chapter" aria-hidden="true">
-              <span>{t('home.cinema.line1')}</span>
-              <strong>{t('home.cinema.line2')}</strong>
-            </p>
           </div>
         </section>
 
@@ -227,6 +215,24 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                   <div className="service-item" key={id}>
                     <h3>{t(`home.services.${id}.title`)}</h3>
                     <p>{t(`home.services.${id}.body`)}</p>
+                    <div className="service-price">
+                      {id === 'web' ? (
+                        <>
+                          <span>{t('home.services.from')}</span>
+                          <strong>300 €</strong>
+                        </>
+                      ) : (
+                        <strong>{t('home.services.onRequest')}</strong>
+                      )}
+                    </div>
+                    <BookingPopup
+                      id={id}
+                      locale={locale}
+                      label={t('home.book')}
+                      title={t('home.booking.title')}
+                      closeLabel={t('home.booking.close')}
+                      fallbackLabel={t('home.booking.fallback')}
+                    />
                   </div>
                 ))}
               </div>
@@ -237,6 +243,8 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </div>
           </div>
         </section>
+
+        <BrandsSection locale={locale} />
 
         <section
           id="work"
@@ -340,7 +348,11 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <Link href={LINKEDIN_URL}>LinkedIn</Link>
                 <Link href={GITHUB_URL}>GitHub</Link>
               </div>
-              <Link className="cockpit-invitation" href={`/${locale}/cockpit`}>
+              <Link
+                className="cockpit-invitation"
+                href={`/${locale}/cockpit`}
+                prefetch={false}
+              >
                 <span>{t('home.cockpit')}</span>
                 <Arrow />
               </Link>

@@ -45,6 +45,55 @@ rasters were replaced and removed; that reference informs motion only.
 
 ## Runtime wordmark
 
-The cockpit title renders Unbounded into a CanvasTexture: outlined first
-name, solid surname. Font loading refreshes it once. The warm scene light
-is steady; no pulsing material or dedicated sign animation is used.
+The owner requested restoring the original orange 3D MATTEO DANTE sign.
+It uses the pre-unification Helvetiker Bold TextGeometry, beveled physical
+material with warm emissive light, clearcoat and the original light pulse.
+The UI retains its shared Unbounded typography; this lettering belongs to
+the 3D scene. Restored source: the parent of commit `803130e`.
+
+## Work relationship logos
+
+The “Chi ho aiutato” section uses the actual brands in the owner's CV
+and the additional names the owner explicitly supplied. Team experience,
+client/project work and personal products have separate captions; the
+rail does not imply endorsements or that every brand is a direct client.
+
+Files live in `public/landing-v2/brands/`. Adjacent `.origin.json` files
+record original sources; raster `.webp.json` files record sourced-asset
+provenance for Impeccable. Only resizing and format conversion were used.
+
+| Brand | Source |
+| --- | --- |
+| Pilatus Aircraft | Official header SVG at https://www.pilatus-aircraft.com/en |
+| PiùUDITO | Owner's piuudito repository, `apps/piuudito/src/assets/images/piuudito/piuudito-logo-italiano.webp` |
+| Hexa Credit Care | https://www.hexacredit.com/wp-content/uploads/2021/02/HEXA-WHITE.svg |
+| DonTouch | https://www.dontouch.ch/img/logo-dt.webp |
+| Galileo SpA | https://www.galileospa.com/media/immagini/402_n_logo.jpg |
+| Fastweb | Official header symbol `v8662a44f` from https://www.fastweb.it/adsl-fibra-ottica/gfx/sprite.svg?rel=6454a29f |
+| Sorgenia | https://www.sorgenia.it/sites/default/themes/sorgenia/assets/images/footer/logo-white.svg |
+| GymTree | Owner's gymtrainer repository, `brand/assets/gymtree-logo.svg` |
+| Maestro | Owner's maestro repository, `content/product/icons/maestro-wordmark.png` |
+
+SVG paths and transparent rasters retain their original silhouette.
+CSS presents most logos in white, PiùUDITO in grayscale. Galileo's
+official source has a white background: CSS inversion and `screen`
+blending remove its visible rectangle on the dark surface; its file
+does not have alpha. `claude-local-docs` uses its actual project name
+as text because no logo was supplied.
+
+The movement takes inspiration from [Z1's process sequence on Awwwards](https://www.awwwards.com/inspiration/process-z1-digital-studio).
+Native vertical scroll drives horizontal travel with `power2.inOut`,
+0.55-second GSAP scrub and a small [velocity-driven skew](https://gsap.com/docs/v3/Plugins/ScrollTrigger/getVelocity()/).
+The static fallback keeps all ten entries in a grid.
+
+The booking dialog uses Cal.com's [official React embed and UI configuration](https://cal.com/help/embedding/embed-instructions).
+No booking is created by opening the calendar.
+
+## Hero identity plates
+
+The hero now uses two registered Image Gen studio portraits: Matteo and
+his astronaut alter ego in a matching folded-arm pose. They replace the
+hero's use of the full-body astronaut; the work scene keeps that asset.
+The new images have opaque dark backgrounds and are composited through
+a native WebGL transformation. See [identity-glitch.md](identity-glitch.md)
+for source prompts, timing, implementation and research references.

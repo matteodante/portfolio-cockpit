@@ -324,7 +324,17 @@
   "home.contact.body": "Raccontami cosa vuoi costruire. Partiamo da una call.",
   "home.contact.email": "Preferisci scrivermi?",
   "home.cockpit": "Il mio CV è anche un viaggio nello spazio.",
-  "home.cinema.line1": "Dall’idea.",
-  "home.cinema.line2": "Al lancio.",
-  "home.hero.play": "Gioca al mio CV"
+  "home.hero.play": "Gioca al mio CV",
+  "home.nav.brands": "Chi ho aiutato",
+  "home.brands.title": "Chi ho aiutato.",
+  "home.brands.body": "Clienti, team e prodotti a cui ho dato forma.",
+  "home.brands.client": "Cliente",
+  "home.brands.team": "Esperienza nel team",
+  "home.brands.personal": "Progetto personale",
+  "home.services.from": "A partire da",
+  "home.services.onRequest": "Su richiesta",
+  "home.booking.title": "Parliamo del tuo progetto.",
+  "home.booking.close": "Chiudi prenotazione",
+  "home.booking.fallback": "Apri direttamente su Cal.com",
+  "home.brands.project": "Progetti enterprise"
 }

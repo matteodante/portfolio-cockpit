@@ -180,11 +180,11 @@ export function buildWorld(args: BuildWorldArgs): () => void {
     outerRadius: 95,
   })
   const explosion = createExplosion(scene)
-  // Shared outlined/solid wordmark sitting beyond the spawn point.
+  // Original orange 3D lettering sitting beyond the spawn point.
   // Acts as the title plate during the intro (the cinematic camera looks
   // toward -Z, so the astronaut sits silhouetted against the glyphs) and
   // becomes a back-rim light for the ship once the player flips around.
-  const backdropText = createBackdropText(scene, {
+  const backdropText = createBackdropText(scene, rendererBundle.renderer, {
     position: new THREE.Vector3(0, 5, -250),
     size: 5,
   })
@@ -309,6 +309,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
     planets.update(dt)
     asteroids.update(dt)
     explosion.update(dt)
+    backdropText.update(dt)
 
     const { nearest, locked } = updateNearestLocked(player, planets.planets)
 

@@ -1,18 +1,19 @@
 'use client'
 
+import Link from 'next/link'
+import Led from '@/components/cockpit/chrome/primitives/led'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import { COCKPIT_ACCENT } from '@/lib/constants/theme'
 import type { CockpitSection } from '@/lib/data/cockpit-sections'
 import { useHud } from '@/lib/hooks/cockpit-store'
-import { type TranslationKey, useT } from '@/lib/i18n'
-import Led from './primitives/led'
+import { type TranslationKey, useI18n, useT } from '@/lib/i18n'
 
 type TopBarProps = {
   near: CockpitSection | null
 }
 
 export default function TopBar({ near }: TopBarProps) {
-  const t = useT()
+  const { locale, t } = useI18n()
   const nearLabel = near ? t(`${near.i18nKey}.label` as TranslationKey) : ''
   return (
     <div
@@ -32,7 +33,13 @@ export default function TopBar({ near }: TopBarProps) {
     >
       {/* Ship id */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-        <BrandAvatar />
+        <Link
+          href={`/${locale}`}
+          className="cockpit-home-avatar"
+          aria-label={t('cockpit.mobile.backToHome')}
+        >
+          <BrandAvatar />
+        </Link>
         <div>
           <div
             style={{

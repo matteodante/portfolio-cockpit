@@ -324,7 +324,17 @@
   "home.contact.body": "Tell me what you want to build. Let’s start with a call.",
   "home.contact.email": "Prefer to email?",
   "home.cockpit": "My CV is also a journey through space.",
-  "home.cinema.line1": "From idea.",
-  "home.cinema.line2": "To launch.",
-  "home.hero.play": "Play my CV"
+  "home.hero.play": "Play my CV",
+  "home.nav.brands": "Who I’ve helped",
+  "home.brands.title": "Who I’ve helped.",
+  "home.brands.body": "Clients, teams and products I’ve helped shape.",
+  "home.brands.client": "Client",
+  "home.brands.team": "Team experience",
+  "home.brands.personal": "Personal project",
+  "home.services.from": "Starting from",
+  "home.services.onRequest": "On request",
+  "home.booking.title": "Let’s talk about your project.",
+  "home.booking.close": "Close booking",
+  "home.booking.fallback": "Open directly on Cal.com",
+  "home.brands.project": "Enterprise projects"
 }

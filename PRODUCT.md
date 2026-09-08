@@ -61,9 +61,12 @@ demo" resta un supporto veritiero già presente nel copy.)
   parallasse 3D e scene legate allo scroll, anche su telefono. Placeholder
   fotografici ora; media originali e video in una fase successiva.
 - Foto personale fornita dall’utente, utilizzabile come riferimento per
-  un ritratto generato. CTA diretta a Cal.com; configurazione esplicitamente
-  rimandata dall’utente a una sessione successiva insieme.
+  un ritratto generato. CTA diretta a Cal.com: l’utente ha poi confermato
+  `https://cal.com/matteo-dante`, ora collegato ai pulsanti di prenotazione.
 - Terminologia ricorrente: decollo/takeoff, PLAY, cockpit, COMM, DOCK.
+- Prezzi confermati dall’utente: siti web a partire da 300 €; app e
+  software, AI su misura su richiesta. Tre card con pulsanti secondari
+  che aprono Cal.com in un popup; link diretto disponibile come fallback.
 
 ## Brand Commitments
 
@@ -98,8 +101,14 @@ Font e trattamento dei controlli sono documentati in DESIGN.md.
 - CV: versioni pubbliche skeletal in `public/resume/`, versioni complete
   cifrate in `private/resume/` (+ sorgenti LaTeX).
 - Profili: GitHub (matteodante), LinkedIn, Instagram.
-- Nessuna testimonianza cliente, case study scritto, metrica o logo
-  cliente presente nel repo: non fabbricarne.
+- Esperienze nel CV: Pilatus Aircraft, DonTouch, Hexa Credit Care e
+  Galileo SpA. L’utente ha confermato anche PiùUDITO, Fastweb e Sorgenia
+  per la sezione “Chi ho aiutato”. Loghi ufficiali e asset dei progetti
+  sono in `public/landing-v2/brands/`, con provenienza documentata.
+- GymTree, Maestro e claude-local-docs sono prodotti personali e vengono
+  indicati come tali. Non presentarli come clienti esterni.
+- Nessuna testimonianza, case study scritto o metrica di conversione
+  confermata: non fabbricarne.
 
 ## Product Principles
 
@@ -120,3 +129,28 @@ Nessun requisito normativo specifico stabilito. Prassi già in essere da
 preservare: `prefers-reduced-motion` onorato globalmente, focus states
 visibili, contenuti significativi e link server-rendered e utilizzabili
 anche senza animazioni o JavaScript.
+
+## Owner refinement — booking and cockpit navigation
+
+Confirmed destination: `https://cal.com/matteo-dante`. The hero CV action
+is a dark squared button. The cockpit avatar returns to the localized
+homepage before and during the game. The owner requested the original
+orange extruded 3D name in the scene; shared UI fonts remain unchanged.
+
+## Owner refinement — services and work relationships
+
+Replace the second hero chapter “Dall’idea. Al lancio.” with “Chi ho
+aiutato” below services. Large logos move horizontally with scroll,
+acceleration and brief inertia. Awwwards is an interaction reference,
+not evidence of an award or partnership. Paused/reduced motion and
+no-JavaScript visitors see the same brands in a normal-flow grid.
+
+## Owner refinement — cinematic identity transformation
+
+The owner requested a striking first-load hero: Matteo and his astronaut
+alter ego in matching, convincing AI-generated poses, alternating through
+a realistic film-inspired glitch every five seconds. Implementation may
+use shaders or media; no particular technical approach was prescribed.
+The owner explicitly requested visual judgment and iteration, then commit
+and push of all accumulated changes. Contact copy and usable static
+fallbacks remain part of the landing's purpose.

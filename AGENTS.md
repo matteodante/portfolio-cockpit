@@ -73,14 +73,23 @@ gated CV / translations APIs. No CMS, no DB.
 
 ## Routing
 
-- `app/[lang]/page.tsx` → server-rendered `LandingPage` with four
-  sections: intro, services, shipped apps and contact. Both routes share
+- `app/[lang]/page.tsx` → server-rendered `LandingPage` with five
+  sections: intro, services, brands, shipped apps and contact. Both routes share
   Unbounded and Space Grotesk; landing composition styles are scoped in
   `components/landing/landing.css`. `LandingMotion` progressively adds
   a subtle Canvas 2D star field and GSAP ScrollTrigger driving photographic
-  depth layers. Hero/work scenes use native CSS sticky stages (300/230svh)
-  on desktop and mobile; other sections stay in normal flow. There is no
-  WebGL dependency or custom scroll interception on the landing. Pause,
+  depth layers. Hero/work scenes use native CSS sticky stages (180/230svh)
+  on desktop and mobile. The brands section uses a 270svh native sticky
+  stage with accelerating horizontal logo travel; other sections stay
+  in normal flow. Services are three cards: websites from 300 €, apps
+  and AI on request. Secondary card links progressively open a native
+  dialog with the lazy-loaded Cal.com embed and a direct-link fallback.
+  `HeroIdentity` progressively adds one native WebGL quad with two registered
+  photographic plates. Image-derived refraction, tears and chromatic
+  displacement alternate Matteo/astronaut every five seconds, starting
+  on first load. GPU drawing stops between transitions and offscreen/hidden.
+  A static poster remains when motion is disabled or WebGL fails; the
+  landing never requires WebGL for copy or contact. No custom scroll interception. Pause,
   reduced motion and no JavaScript use static imagery and normal flow.
   Content and email links work without JavaScript. Assets in
   `public/landing-v2/` include the generated portrait, localized App Store
@@ -89,7 +98,7 @@ gated CV / translations APIs. No CMS, no DB.
   secondary localized link to the playable CV. Provenance is stored alongside each raster; source notes in
   `docs/design/brand-media.md`. The temporary Oakley photos were replaced.
   Booking links use `CAL_BOOKING_URL` in `lib/constants/contact.ts`;
-  configuration is explicitly deferred by the owner. Never invent a URL.
+  the owner confirmed `https://cal.com/matteo-dante`. Keep this exact URL.
 - `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → dynamic-imports
   `CockpitApp` with `ssr: false`. Scene is client-only. The page wraps
   it in `<div data-viewport-lock>`; `global.css` locks body scroll via

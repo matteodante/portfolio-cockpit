@@ -32,6 +32,7 @@
     "prepare": "lefthook install"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@formatjs/intl-localematcher": "^0.8.3",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",

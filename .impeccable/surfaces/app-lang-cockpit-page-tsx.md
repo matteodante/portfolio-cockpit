@@ -42,7 +42,7 @@ consistent flat controls, thin frames and language navigation.
 The cockpit retains its playable astronaut and instrument function while
 dropping decorative glow, scanlines and metal fasteners. The landing uses
 an Image Gen astronaut based on a reference render of the cockpit GLB,
-plus an original generated lunar background. Cal.com remains deferred. Preserve gameplay, public/private
+plus an original generated lunar background. Cal.com now links to `https://cal.com/matteo-dante`. Preserve gameplay, public/private
 access, localized content, keyboard/touch and the landing's native scroll.
 The approved incumbent landing supplies the visual authority for this scoped
 unification; no new direction tournament or replacement comp is requested.
@@ -56,3 +56,11 @@ real photograph, and remove the same symbol from all three service rows.
 The avatar and services portrait must share a realistic, natural face and
 confident expression, preserving the owner's recognizable features. Add the
 secondary hero action “Gioca al mio CV” / “Play my CV” to the localized cockpit.
+
+## Owner refinement: booking, button and original 3D name
+
+All booking links now use `https://cal.com/matteo-dante`. The secondary
+hero CV link is styled as a dark squared button. Cockpit avatar links
+return to the localized homepage from intro and active gameplay. Restore
+the original orange extruded MATTEO DANTE scene lettering, including its
+physical material; this scene-only exception preserves shared UI fonts.

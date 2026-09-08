@@ -1,8 +1,6 @@
 export const NAME = 'Matteo Dante'
 
-// Booking destination is supplied by the owner before launch.
-export const CAL_BOOKING_URL: `https://cal.com/${string}` | undefined =
-  undefined
+export const CAL_BOOKING_URL = 'https://cal.com/matteo-dante' as const
 
 export const EMAIL = 'matteo.dante659@gmail.com'
 export const EMAIL_HREF = `mailto:${EMAIL}` as const
