@@ -88,6 +88,9 @@
   gap: 30px;
   font-size: 13px;
 }
+.booking-label-short {
+  display: none;
+}
 .landing-work-link {
   color: var(--landing-muted);
 }
@@ -151,7 +154,7 @@
   overflow: clip;
 }
 .landing[data-cinema="true"] .hero-scene {
-  height: 180svh;
+  height: 160svh;
 }
 .landing[data-cinema="true"] .work-scene {
   height: 280svh;
@@ -247,6 +250,10 @@
   );
   opacity: clamp(0, calc(1 - var(--scene-progress) * 1.25), 1);
 }
+.hero-title {
+  position: relative;
+  user-select: none;
+}
 .hero-name {
   font-family: var(--font-display), sans-serif;
   font-weight: 900;
@@ -270,9 +277,9 @@
 }
 .hero-role {
   color: var(--landing-ink);
-  font-size: 11px;
+  font-size: 12px;
   margin-top: 23px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .hero-offer {
@@ -287,14 +294,14 @@
   margin-top: 16px;
 }
 .services-composition {
-  width: min(1040px, 100%);
+  width: min(1480px, 100%);
 }
 .services-intro {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: minmax(220px, 300px) 1fr;
   align-items: center;
-  gap: 90px;
-  margin-bottom: 65px;
+  gap: clamp(60px, 5vw, 120px);
+  margin-bottom: clamp(70px, 7svh, 110px);
 }
 .hero-portrait {
   position: relative;
@@ -325,7 +332,7 @@
   color: var(--landing-muted);
 }
 .services-composition h2 {
-  font-size: clamp(27px, 3vw, 42px);
+  font-size: clamp(32px, 3vw, 60px);
 }
 .services-composition h2 span {
   color: var(--landing-accent);
@@ -524,11 +531,6 @@
 .text-link svg {
   width: 17px;
 }
-.landing[data-cinema="true"] .services-intro .hero-portrait {
-  transform: perspective(1000px)
-    translateY(calc((0.5 - var(--parallax-progress, 0.5)) * 100px))
-    rotateY(calc((var(--parallax-progress, 0.5) - 0.5) * 18deg));
-}
 
 .work-scene {
   --work-progress: 0.5;
@@ -536,7 +538,7 @@
 .work-stage {
   display: grid;
   place-items: center;
-  perspective: 1500px;
+  perspective: 2000px;
   isolation: isolate;
 }
 .work-film {
@@ -546,22 +548,22 @@
   transform-origin: center;
 }
 .work-film-mission {
-  top: 12%;
-  left: 5%;
-  width: 42%;
-  height: 68%;
+  top: 16%;
+  left: 7%;
+  width: min(46vw, 1150px);
+  aspect-ratio: 16 / 9;
   transform: rotate(-5deg);
 }
 .work-film-visor {
   top: 32%;
-  right: 5%;
-  width: 35%;
-  height: 60%;
+  right: 7%;
+  width: min(37vw, 900px);
+  aspect-ratio: 4 / 3;
   transform: rotate(6deg);
 }
 .work-film-image {
   position: absolute;
-  inset: -12% 0;
+  inset: 0;
 }
 .work-film img,
 .work-film video {
@@ -582,7 +584,7 @@
   z-index: 1;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, #05060a8a, #05060a22 68%);
+  background: radial-gradient(ellipse at center, #05060abf, #05060a66 68%);
 }
 .work-stage h2 {
   position: relative;
@@ -599,36 +601,31 @@
 }
 .landing[data-cinema="true"] .work-film-mission {
   transform: translate3d(
-      calc((var(--work-progress) - 0.5) * -8vw),
-      calc((var(--work-progress) - 0.5) * 112svh),
-      calc(var(--work-progress) * (1 - var(--work-progress)) * 280px)
+      calc((var(--work-progress) - 0.5) * 4vw),
+      calc((var(--work-progress) * 24 - 4) * 1svh),
+      calc(var(--work-progress) * (1 - var(--work-progress)) * 480px)
     )
     rotateY(calc((var(--work-progress) - 0.5) * -18deg))
-    rotateZ(calc(-5deg + (var(--work-progress) - 0.5) * 10deg));
+    rotateZ(calc(-3deg + (var(--work-progress) - 0.5) * 6deg));
 }
 .landing[data-cinema="true"] .work-film-visor {
   transform: translate3d(
-      calc((var(--work-progress) - 0.5) * 8vw),
-      calc((0.5 - var(--work-progress)) * 112svh),
-      calc(var(--work-progress) * (1 - var(--work-progress)) * 200px)
+      calc((var(--work-progress) - 0.5) * -4vw),
+      calc((8 - var(--work-progress) * 24) * 1svh),
+      calc(var(--work-progress) * (1 - var(--work-progress)) * 360px)
     )
     rotateY(calc((var(--work-progress) - 0.5) * 22deg))
-    rotateZ(calc(6deg - (var(--work-progress) - 0.5) * 12deg));
+    rotateZ(calc(3deg - (var(--work-progress) - 0.5) * 6deg));
 }
-.landing[data-cinema="true"] .work-film-mission .work-film-image {
-  transform: translateY(calc((0.5 - var(--work-progress)) * 16%));
-}
-.landing[data-cinema="true"] .work-film-visor .work-film-image {
-  transform: translateY(calc((var(--work-progress) - 0.5) * 16%));
-}
+
 .landing[data-cinema="true"] .work-stage h2 {
   transform: translateY(calc((0.5 - var(--work-progress)) * 12svh));
 }
 .work-composition {
-  width: min(1040px, 100%);
+  width: min(1480px, 100%);
 }
 #work > .flight-panel {
-  padding-top: 65px;
+  padding-top: clamp(160px, 18svh, 280px);
 }
 .project-pair {
   display: grid;
@@ -706,22 +703,6 @@
   color: var(--landing-muted);
   font-size: 15px;
   line-height: 1.65;
-}
-.landing[data-cinema="true"] .project-proof-maestro {
-  transform: translate3d(
-      0,
-      calc((0.5 - var(--parallax-progress, 0.5)) * 130px),
-      0
-    )
-    rotateY(calc((0.5 - var(--parallax-progress, 0.5)) * 12deg));
-}
-.landing[data-cinema="true"] .project-proof-gymtree {
-  transform: translate3d(
-      0,
-      calc((var(--parallax-progress, 0.5) - 0.5) * 130px),
-      0
-    )
-    rotateY(calc((0.5 - var(--parallax-progress, 0.5)) * -12deg));
 }
 
 #contact {
@@ -883,19 +864,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  pointer-events: none;
+  gap: 8px;
+  padding: 8px 12px;
+  min-height: 44px;
+  pointer-events: auto;
   z-index: 15;
 }
 .landing-scroll-hint > span:first-child {
-  font-size: 10px;
-  letter-spacing: 0.2em;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.landing-scroll-hint > span:last-child {
-  width: 1px;
-  height: 29px;
-  background: var(--landing-line);
+.landing-scroll-hint svg {
+  transition: transform 180ms ease-out;
+}
+.landing-scroll-hint:hover {
+  color: var(--landing-accent);
+}
+.landing[data-cinema="true"] .landing-scroll-hint:hover svg {
+  transform: translateY(3px);
 }
 .landing-motion-toggle {
   position: fixed;
@@ -978,13 +965,20 @@
     font-size: 10px;
   }
   .landing-header .booking-link {
-    min-height: 38px;
+    min-height: 44px;
     padding: 8px 10px;
     font-size: 10px;
     gap: 8px;
   }
   .landing-header .booking-link svg {
     width: 14px;
+  }
+  .booking-label-full {
+    display: none;
+  }
+  .booking-label-short {
+    display: inline;
+    white-space: nowrap;
   }
   .hero-composition {
     padding: 100px 25px 104px;
@@ -997,8 +991,8 @@
     font-size: clamp(38px, 12vw, 65px);
   }
   .hero-role {
-    font-size: 9px;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    letter-spacing: 0.06em;
     margin-top: 18px;
     max-width: 320px;
   }
@@ -1083,33 +1077,31 @@
     font-size: 14px;
   }
   .work-film-mission {
-    top: 21%;
-    left: -9%;
-    width: 58%;
-    height: 48%;
+    top: 15%;
+    left: 7%;
+    width: 84%;
   }
   .work-film-visor {
     top: 46%;
-    right: -9%;
-    width: 58%;
-    height: 44%;
+    right: 7%;
+    width: 76%;
   }
   .work-stage h2 {
     max-width: calc(100% - 44px);
     font-size: clamp(34px, 10.5vw, 64px);
   }
   .landing[data-cinema="true"] .work-film-mission {
-    transform: translate3d(0, calc((var(--work-progress) - 0.5) * 80svh), 0)
+    transform: translate3d(0, calc(var(--work-progress) * 18svh), 0)
       rotateY(calc((var(--work-progress) - 0.5) * -16deg))
-      rotateZ(calc(-5deg + (var(--work-progress) - 0.5) * 10deg));
+      rotateZ(calc(-3deg + (var(--work-progress) - 0.5) * 6deg));
   }
   .landing[data-cinema="true"] .work-film-visor {
-    transform: translate3d(0, calc((0.5 - var(--work-progress)) * 80svh), 0)
+    transform: translate3d(0, calc((1 - var(--work-progress) * 2) * 9svh), 0)
       rotateY(calc((var(--work-progress) - 0.5) * 16deg))
-      rotateZ(calc(6deg - (var(--work-progress) - 0.5) * 12deg));
+      rotateZ(calc(3deg - (var(--work-progress) - 0.5) * 6deg));
   }
   #work > .flight-panel {
-    padding-top: 45px;
+    padding-top: 140px;
   }
   .project-pair {
     grid-template-columns: 1fr;
@@ -1153,7 +1145,15 @@
     right: 14px;
   }
   .landing-scroll-hint {
-    display: none;
+    flex-direction: row;
+    bottom: calc(env(safe-area-inset-bottom) + 65px);
+    left: auto;
+    right: 18px;
+    transform: none;
+  }
+  .landing-scroll-hint > span:first-child {
+    font-size: 10px;
+    letter-spacing: 0.06em;
   }
   .landing-motion-toggle {
     right: 12px;
@@ -1170,11 +1170,6 @@
   }
   .landing-header .booking-link svg {
     display: none;
-  }
-  .landing-brand span {
-    max-width: 50px;
-    white-space: normal;
-    line-height: 1.1;
   }
   .landing-header-links {
     gap: 6px;
@@ -1205,7 +1200,7 @@
     font-size: 44px;
   }
   .hero-role {
-    font-size: 9px;
+    font-size: 11px;
     margin-top: 10px;
   }
   .hero-offer {
@@ -1217,8 +1212,8 @@
     font-size: 10px;
   }
   .hero-copy .booking-link {
-    min-height: 40px;
-    padding-block: 9px;
+    min-height: 48px;
+    padding-block: 12px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1297,13 +1292,120 @@
   transform: none;
 }
 
+/* Optical interference: the semantic text and link hit areas never move. */
+.hero-name-ghost {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.landing[data-cinema="true"] .hero-name-ghost {
+  display: block;
+  opacity: var(--hero-glitch-opacity, 0);
+}
+.hero-name-echo {
+  color: var(--landing-accent);
+  clip-path: inset(
+    max(0px, calc(var(--hero-glitch-y, 50%) - 5px))
+      max(0px, calc(100% - var(--hero-glitch-x, 50%) - 100px))
+      max(0px, calc(100% - var(--hero-glitch-y, 50%) - 5px))
+      max(0px, calc(var(--hero-glitch-x, 50%) - 100px))
+  );
+  transform: translate3d(var(--hero-glitch-shift, 0px), 0, 0);
+}
+.hero-name-echo > span {
+  -webkit-text-stroke-color: var(--landing-accent);
+}
+.hero-name-cut {
+  clip-path: inset(
+    max(0px, calc(var(--hero-glitch-y, 50%) + 6px))
+      max(0px, calc(100% - var(--hero-glitch-x, 50%) - 75px))
+      max(0px, calc(100% - var(--hero-glitch-y, 50%) - 11px))
+      max(0px, calc(var(--hero-glitch-x, 50%) - 75px))
+  );
+  transform: translate3d(calc(var(--hero-glitch-shift, 0px) * -0.6), 1px, 0);
+}
+.landing[data-cinema="true"] .name-period {
+  text-shadow:
+    calc(var(--hero-identity-pulse, 0) * -4px) 0
+    rgb(255 107 53 / calc(var(--hero-identity-pulse, 0) * 0.55)),
+    calc(var(--hero-identity-pulse, 0) * 4px) 0
+    rgb(242 237 227 / calc(var(--hero-identity-pulse, 0) * 0.3));
+}
+.landing[data-cinema="true"] [data-hero-glitch="copy"] {
+  text-shadow: calc(var(--hero-glitch-shift, 0px) * 0.1) 0
+    rgb(255 107 53 / calc(var(--hero-glitch-opacity, 0) * 0.2));
+}
+.hero-actions > a {
+  position: relative;
+  isolation: isolate;
+  min-height: 52px;
+  padding-block: 13px;
+  box-sizing: border-box;
+}
+.hero-actions > a::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--landing-ink);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+.landing[data-cinema="true"] .hero-actions > a::before {
+  opacity: var(--hero-glitch-opacity, 0);
+  clip-path: inset(
+    0 max(0%, calc(100% - var(--hero-glitch-scan, 0%) - 12%)) 0
+      max(0%, calc(var(--hero-glitch-scan, 0%) - 12%))
+  );
+  transform: translateX(calc(var(--hero-glitch-shift, 0px) * 0.35));
+}
+.hero-actions > .booking-link:hover {
+  transform: none;
+}
+.landing[data-cinema="true"] .hero-actions > a svg {
+  transform: translateX(calc(var(--hero-glitch-shift, 0px) * 0.5));
+  transition: none;
+}
+.landing[data-cinema="true"] .hero-actions > .hero-play::before {
+  opacity: calc(var(--hero-glitch-opacity, 0) * 0.65);
+}
+.landing[data-cinema="true"] .hero-actions > a:focus-visible::before {
+  opacity: 0;
+}
+.landing[data-cinema="true"] .hero-actions > a:focus-visible svg {
+  transform: none;
+}
+@media (width < 800px) {
+  .hero-actions > a {
+    min-height: 48px;
+    padding-block: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing[data-cinema="true"] .hero-name-ghost {
+    display: none;
+  }
+  .landing[data-cinema="true"] .name-period,
+  .landing[data-cinema="true"] [data-hero-glitch="copy"] {
+    text-shadow: none;
+  }
+  .landing[data-cinema="true"] .hero-actions > a::before {
+    opacity: 0;
+  }
+  .landing[data-cinema="true"] .hero-actions > a svg {
+    transform: none;
+  }
+}
+
 .brands-scene {
   position: relative;
-  padding: 86px 0 90px;
+  padding: 120px 0 clamp(180px, 16svh, 260px);
   mix-blend-mode: screen;
 }
 .brands-heading {
-  width: min(1160px, calc(100% - 100px));
+  width: min(1480px, calc(100% - 140px));
   margin: 0 auto 48px;
 }
 .brands-heading h2 {
@@ -1507,7 +1609,7 @@ body:has(.booking-dialog[open]) {
 }
 @media (max-width: 799px) {
   .brands-scene {
-    padding: 66px 0 72px;
+    padding: 90px 0 150px;
   }
   .brands-heading {
     width: calc(100% - 50px);
@@ -1569,5 +1671,293 @@ body:has(.booking-dialog[open]) {
   .work-stage h2 {
     max-width: min(650px, 82%);
     font-size: clamp(32px, 5.4vw, 58px);
+  }
+}
+
+/* A rising service plane; each foreground layer shares the same arrival. */
+#services > .flight-panel {
+  perspective: 1800px;
+  padding-block: clamp(140px, 14svh, 230px);
+}
+#services .services-composition,
+#services .services-intro,
+#services .service-list {
+  transform-style: preserve-3d;
+}
+#services .portrait-image {
+  width: clamp(220px, 22vw, 300px);
+}
+.landing[data-cinema="true"] #services .services-composition {
+  transform-origin: 50% 20%;
+  transform: translate3d(
+      0,
+      calc((1 - var(--arrival, 1)) * 260px),
+      calc((1 - var(--arrival, 1)) * -360px)
+    )
+    rotateX(calc((1 - var(--arrival, 1)) * 16deg));
+}
+.landing[data-cinema="true"] #services .hero-portrait {
+  transform: translateZ(100px) rotateY(calc((1 - var(--arrival, 1)) * -14deg));
+}
+.landing[data-cinema="true"] #services .services-intro-copy {
+  transform: translateZ(45px);
+}
+#services .service-item {
+  padding: clamp(28px, 2.2vw, 42px);
+  box-shadow: 0 24px 55px #0003;
+}
+.landing[data-cinema="true"] #services .service-item {
+  transform: translate3d(
+    0,
+    calc((1 - var(--arrival, 1)) * var(--lift, 70px)),
+    calc((1 - var(--arrival, 1)) * 80px)
+  );
+}
+#services .service-item:nth-child(2) {
+  --lift: 130px;
+}
+#services .service-item:nth-child(3) {
+  --lift: 190px;
+}
+.landing[data-cinema="true"] #services:focus-within .services-composition,
+.landing[data-cinema="true"] #services:focus-within .service-item {
+  transform: none;
+}
+
+/* Every project is a separate stage, with copy on the stable reading plane. */
+.projects-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: clamp(100px, 12svh, 180px);
+}
+.projects-intro h2 {
+  max-width: 800px;
+  font-size: clamp(36px, 4vw, 72px);
+  line-height: 1.15;
+}
+.projects-intro p {
+  color: var(--landing-muted);
+  max-width: 300px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.work-composition [data-project-depth] {
+  --turn: 1;
+  --depth: calc((var(--project-progress, 0.5) - 0.5) * 2);
+  perspective: 1600px;
+}
+.work-composition > .website-proof {
+  grid-template-columns: 1.55fr 1fr;
+  gap: clamp(60px, 6vw, 120px);
+  min-height: clamp(500px, 60svh, 850px);
+  padding-block: 60px;
+  margin-bottom: clamp(100px, 12svh, 190px);
+}
+.work-composition > .website-proof h3 {
+  font-size: clamp(30px, 2.3vw, 48px);
+  line-height: 1.25;
+}
+.work-composition > .website-proof p {
+  font-size: 18px;
+}
+.work-composition > .website-proof:not(.portfolio-proof) {
+  grid-template-columns: 1fr 1.55fr;
+}
+.work-composition > .website-proof:not(.portfolio-proof) > img {
+  grid-column: 2;
+  grid-row: 1;
+}
+.work-composition > .website-proof:not(.portfolio-proof) > div {
+  grid-column: 1;
+  grid-row: 1;
+}
+.work-composition .portfolio-proof,
+.work-composition .project-proof-gymtree {
+  --turn: -1;
+}
+.work-composition .portfolio-proof-views {
+  position: relative;
+  display: block;
+  padding: 40px 14% 70px 0;
+  transform-style: preserve-3d;
+}
+.work-composition .portfolio-proof-views img:first-child {
+  width: 100%;
+}
+.work-composition .portfolio-proof-views img:last-child {
+  position: absolute;
+  width: 24%;
+  top: 14%;
+  right: 0;
+  transform: translateZ(100px) rotateY(-9deg);
+}
+.work-composition .portfolio-proof-views img,
+.work-composition > .website-proof > img {
+  box-shadow: 0 28px 70px #0009;
+}
+.work-composition .project-pair {
+  gap: clamp(70px, 8vw, 140px);
+  padding-block: 30px 80px;
+}
+.work-composition .project-proof-gymtree {
+  margin-top: 140px;
+}
+.work-composition .project-screens {
+  height: auto;
+  padding: clamp(25px, 3vw, 48px);
+  gap: 20px;
+  overflow: visible;
+  transform-style: preserve-3d;
+  box-shadow: 0 28px 70px #0006;
+}
+.work-composition .project-screens img {
+  width: min(44%, 240px);
+  flex: 0 0 auto;
+  border-radius: 4px;
+  transition: none;
+  transform: translateZ(45px) rotateY(-4deg);
+}
+.work-composition .project-screens img:nth-child(2) {
+  transform: translateZ(95px) rotateY(4deg);
+}
+.work-composition .project-title-row h3 {
+  font-size: clamp(28px, 2.2vw, 40px);
+}
+.work-composition .project-proof p {
+  font-size: 17px;
+  max-width: 500px;
+}
+.landing[data-cinema="true"]
+  .work-composition
+  :is(.portfolio-proof-views, .website-proof > img, .project-screens) {
+  transform: translate3d(
+      calc(var(--depth) * var(--turn) * 22px),
+      calc(var(--depth) * -85px),
+      calc((1 - var(--depth) * var(--depth)) * 70px)
+    )
+    rotateY(calc(var(--depth) * var(--turn) * 12deg))
+    rotateX(calc(var(--depth) * -5deg));
+}
+.landing[data-cinema="true"]
+  .work-composition
+  [data-project-depth]:focus-within
+  :is(.portfolio-proof-views, .project-screens),
+.landing[data-cinema="true"]
+  .work-composition
+  .website-proof:focus-visible
+  > img {
+  transform: none;
+}
+
+.contact-landscape video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+.contact-landscape[data-playing] video {
+  opacity: 0.65;
+}
+.contact-landscape[data-playing] img {
+  opacity: 0;
+}
+.landing[data-cinema="true"] .contact-landscape video {
+  transform: translateY(calc((var(--parallax-progress, 0.5) - 0.5) * -160px))
+    scale(1.3);
+}
+#contact .flight-panel {
+  min-height: 110svh;
+  padding-block: clamp(160px, 20svh, 300px);
+}
+.contact-composition {
+  width: min(1440px, 100%);
+}
+.contact-composition h2 {
+  font-size: clamp(44px, 5.5vw, 96px);
+}
+@media (width < 800px) {
+  #services > .flight-panel {
+    padding-block: 130px;
+  }
+  #services .portrait-image {
+    width: 180px;
+  }
+  #services .services-composition h2 {
+    font-size: clamp(28px, 7.2vw, 42px);
+  }
+  #services .service-item {
+    padding: 26px;
+  }
+  .landing[data-cinema="true"] #services .hero-portrait,
+  .landing[data-cinema="true"] #services .services-intro-copy {
+    transform: none;
+  }
+  .projects-intro {
+    display: block;
+    margin-bottom: 70px;
+  }
+  .projects-intro h2 {
+    font-size: clamp(32px, 9vw, 46px);
+  }
+  .projects-intro p {
+    margin-top: 24px;
+    font-size: 16px;
+  }
+  .work-composition > .website-proof,
+  .work-composition > .website-proof:not(.portfolio-proof) {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    min-height: 0;
+    padding-block: 25px;
+    margin-bottom: 110px;
+  }
+  .work-composition > .website-proof:not(.portfolio-proof) > :is(img, div) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .work-composition > .website-proof h3 {
+    font-size: 30px;
+  }
+  .work-composition > .website-proof p,
+  .work-composition .project-proof p {
+    font-size: 16px;
+  }
+  .work-composition .portfolio-proof-views {
+    padding-block: 20px 35px;
+  }
+  .work-composition .portfolio-proof-views img:last-child {
+    transform: translateZ(35px) rotateY(-5deg);
+  }
+  .work-composition .project-pair {
+    gap: 100px;
+    padding-bottom: 40px;
+  }
+  .work-composition .project-proof-gymtree {
+    margin-top: 0;
+  }
+  .work-composition .project-screens {
+    padding: 24px 16px 38px;
+    gap: 14px;
+  }
+  .landing[data-cinema="true"]
+    .work-composition
+    :is(.portfolio-proof-views, .website-proof > img, .project-screens) {
+    transform: translate3d(0, calc(var(--depth) * -40px), 20px)
+      rotateY(calc(var(--depth) * var(--turn) * 6deg));
+  }
+  #contact .flight-panel {
+    padding-block: 150px;
+  }
+}
+@media (height < 600px) and (width >= 800px) {
+  .work-film-mission {
+    width: min(42vw, 62svh);
+  }
+  .work-film-visor {
+    width: min(34vw, 55svh);
   }
 }

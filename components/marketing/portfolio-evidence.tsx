@@ -32,14 +32,21 @@ export default function PortfolioEvidence({
 }) {
   const t = COPY[locale]
   return (
-    <article className="website-proof portfolio-proof">
+    <article
+      className="website-proof portfolio-proof"
+      data-project-depth={placement === 'home_work' ? '' : undefined}
+    >
       <div className="portfolio-proof-views">
         <Image
           src={`/landing-v2/portfolio/website-${locale}-v5.webp`}
           alt={t.landingAlt}
           width={1200}
           height={630}
-          sizes="(max-width: 799px) 72vw, 460px"
+          sizes={
+            placement === 'home_work'
+              ? '(max-width: 799px) 72vw, (min-width: 1800px) 740px, 44vw'
+              : '(max-width: 799px) 72vw, 460px'
+          }
           quality={90}
         />
         <Image
@@ -47,7 +54,11 @@ export default function PortfolioEvidence({
           alt={t.cockpitAlt}
           width={390}
           height={844}
-          sizes="(max-width: 799px) 22vw, 140px"
+          sizes={
+            placement === 'home_work'
+              ? '(max-width: 799px) 22vw, (min-width: 1800px) 220px, 14vw'
+              : '(max-width: 799px) 22vw, 140px'
+          }
           quality={90}
         />
       </div>

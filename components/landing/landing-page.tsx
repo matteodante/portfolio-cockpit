@@ -46,9 +46,11 @@ function Arrow() {
 
 function BookingLink({
   label,
+  shortLabel,
   compact = false,
 }: {
   label: string
+  shortLabel?: string
   compact?: boolean
 }) {
   const className = compact
@@ -58,11 +60,30 @@ function BookingLink({
     <Link
       href={CAL_BOOKING_URL}
       className={className}
+      aria-label={label}
       data-track="booking_opened"
     >
-      {label}
+      <span className={shortLabel ? 'booking-label-full' : undefined}>
+        {label}
+      </span>
+      {shortLabel && (
+        <span className="booking-label-short" aria-hidden="true">
+          {shortLabel}
+        </span>
+      )}
       <Arrow />
     </Link>
+  )
+}
+
+function NameLines() {
+  return (
+    <>
+      <span className="hero-name-outline">Matteo</span>
+      <strong>
+        Dante<span className="name-period">.</span>
+      </strong>
+    </>
   )
 }
 
@@ -114,20 +135,18 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           className="landing-header-links"
           aria-label={t('home.header.label')}
         >
-          <Link
-            className="landing-work-link"
-            href={MARKETING_PAGES.websites.paths[locale]}
-            data-track="service_opened"
-            data-placement="header"
-            data-service="web"
-          >
+          <Link className="landing-work-link" href="#services">
             {t('home.nav.services')}
           </Link>
           <Link className="landing-work-link" href="#work">
             {t('home.nav.work')}
           </Link>
           <LanguageSwitcher locale={locale} />
-          <BookingLink label={t('home.book')} compact />
+          <BookingLink
+            label={t('home.book')}
+            shortLabel={t('home.book.short')}
+            compact
+          />
         </nav>
       </header>
 
@@ -155,14 +174,27 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             <div className="hero-shade" aria-hidden="true" />
             <div className="hero-composition">
               <div className="hero-copy">
-                <h1 id="intro-heading" className="hero-name">
-                  <span>Matteo</span>
-                  <strong>
-                    Dante<span className="name-period">.</span>
-                  </strong>
-                </h1>
-                <p className="hero-role">{t('home.hero.role')}</p>
-                <p className="hero-offer">
+                <div className="hero-title" data-hero-glitch="title">
+                  <h1 id="intro-heading" className="hero-name">
+                    <NameLines />
+                  </h1>
+                  <div
+                    className="hero-name hero-name-ghost hero-name-echo"
+                    aria-hidden="true"
+                  >
+                    <NameLines />
+                  </div>
+                  <div
+                    className="hero-name hero-name-ghost hero-name-cut"
+                    aria-hidden="true"
+                  >
+                    <NameLines />
+                  </div>
+                </div>
+                <p className="hero-role" data-hero-glitch="copy">
+                  {t('home.hero.role')}
+                </p>
+                <p className="hero-offer" data-hero-glitch="copy">
                   {t('home.hero.line1')}
                   <br />
                   {t('home.hero.line2')}
@@ -207,21 +239,30 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           aria-labelledby="work-heading"
         >
           <WorkSequence title={t('home.work.title')} />
-          <div className="flight-panel">
-            <div className="work-composition">
+          <div className="flight-panel projects-panel">
+            <section
+              className="work-composition"
+              aria-labelledby="projects-heading"
+            >
+              <div className="projects-intro">
+                <h2 id="projects-heading">{t('home.projects.title')}</h2>
+                <p>{t('home.projects.body')}</p>
+              </div>
+              <PortfolioEvidence locale={locale} placement="home_work" />
               <Link
                 href={MARKETING_PAGES.piuudito.paths[locale]}
                 className="website-proof"
                 data-track="case_study_opened"
                 data-project="piuudito"
                 data-placement="home_work"
+                data-project-depth
               >
                 <Image
                   src="/landing-v2/piuudito/desktop.jpg"
                   width={1440}
                   height={1000}
                   alt={t('home.work.piuudito.alt')}
-                  sizes="(max-width: 799px) 100vw, 640px"
+                  sizes="(max-width: 799px) 90vw, (min-width: 1800px) 880px, 52vw"
                   quality={90}
                 />
                 <div>
@@ -233,8 +274,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                   </span>
                 </div>
               </Link>
-              <PortfolioEvidence locale={locale} placement="home_work" />
-              <div className="project-pair" data-parallax>
+              <div className="project-pair">
                 {PROJECTS.map((project) => (
                   <Link
                     key={project.id}
@@ -246,6 +286,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                     data-track="project_opened"
                     data-placement="home_work"
                     data-project={project.id}
+                    data-project-depth
                   >
                     <div className="project-screens">
                       {[1, 2].map((index) => (
@@ -256,7 +297,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                           width={221}
                           height={480}
                           quality={90}
-                          sizes="(max-width: 799px) 120px, 160px"
+                          sizes="(max-width: 799px) 36vw, (min-width: 1800px) 240px, 18vw"
                         />
                       ))}
                       <span className="project-open">
@@ -274,7 +315,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 ))}
               </div>
               <TeamExperience locale={locale} />
-            </div>
+            </section>
           </div>
         </section>
 
@@ -283,13 +324,26 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           className="flight-stop"
           aria-labelledby="contact-heading"
         >
-          <div className="contact-landscape" data-parallax aria-hidden="true">
+          <div
+            className="contact-landscape"
+            data-contact-film
+            data-parallax
+            aria-hidden="true"
+          >
             <Image
-              src="/landing-v2/lunar-world.webp"
+              src="/landing-v2/contact-video/lunar-loop-poster.jpg"
               alt=""
               fill
               quality={90}
               sizes="100vw"
+            />
+            <video
+              data-src="/landing-v2/contact-video/lunar-loop.mp4"
+              loop
+              muted
+              playsInline
+              preload="none"
+              tabIndex={-1}
             />
           </div>
           <div className="flight-panel">

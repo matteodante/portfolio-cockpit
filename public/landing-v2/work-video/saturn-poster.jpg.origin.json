@@ -1,0 +1,7 @@
+{
+  "type": "Still from an AI-generated original film",
+  "model": "minimax/h3",
+  "predictionUrl": "https://replicate.com/p/cj0rat7gaxrmy0d0gz18th0he8",
+  "prompt": "Frame extracted at 2.4s from the original MiniMax H3 video. Original generation prompt: One continuous cinematic space shot, six seconds, 4:3. A majestic photoreal Saturn fills the central-right part of the frame, its enormous layered rings sweeping diagonally from the lower-left foreground into the distance. Camera makes a slow smooth lateral glide just above the ring plane, revealing real parallax between nearby small icy ring particles and the distant planet. Saturn has warm ivory and muted amber atmospheric bands, a deep shadow terminator and physically convincing sunlight. A tiny distant warm Sun and sparse dim stars sit in a vast near-black background. A calm, immense journey through our solar system, not an infographic. Match premium analog space-mission footage: subtle late-1980s VHS luminance grain, faint horizontal tape texture, slight chroma bleed and gentle amber halation; dark and elegant, retaining photographic detail. Slow readable motion suitable for a scroll-controlled film, stable planet shape and ring geometry throughout. No cuts, no rapid zoom, no spinning camera, no colored nebula clouds, no fantasy rainbow colors, no labels, no typography, no timestamp, no logos, no border, no spacecraft or people. No dialogue or music.",
+  "sha256": "26cb98d4a4a6f9e50f7f4f0a5314ed94353eb4490c89b7928f0a51135a2f9352"
+}

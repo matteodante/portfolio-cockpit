@@ -282,6 +282,7 @@
   "projects.claudeLocalDocs.link": "Apri GitHub",
   "projects.portfolio.link": "Apri GitHub",
   "home.book": "Prenota una call",
+  "home.book.short": "Prenota",
   "home.nav.intro": "Intro",
   "home.nav.services": "Servizi",
   "home.nav.work": "Progetti",
@@ -290,7 +291,7 @@
   "home.nav.section": "Sezione",
   "home.header.label": "Navigazione principale",
   "home.language.label": "Lingua",
-  "home.scroll": "Scorri per esplorare",
+  "home.scroll": "Scopri i servizi",
   "home.motion.pause": "Riduci movimento",
   "home.motion.resume": "Attiva movimento",
   "home.skip": "Vai ai servizi",
@@ -341,5 +342,7 @@
   "home.work.piuudito.body": "Tre siti realizzati per la stessa azienda: piuudito.it, piuuditogroup.it e fabiotomassetti.it. Esplora il lavoro pubblicato.",
   "home.work.piuudito.open": "Guarda il progetto",
   "home.services.app.details": "Scopri app e software",
-  "home.services.ai.details": "Scopri le automazioni AI"
+  "home.services.ai.details": "Scopri le automazioni AI",
+  "home.projects.title": "Progetti da esplorare.",
+  "home.projects.body": "Siti, prodotti e software che puoi vedere in azione."
 }

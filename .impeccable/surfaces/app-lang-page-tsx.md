@@ -48,6 +48,16 @@ confirmed `https://cal.com/matteo-dante` destination.
 
 ## Owner correction: cinematic scroll and media
 
+Latest scoped refinement (2026-09-09): extend the optical glitch to the
+hero UI with the existing approved identity and media. Decorative slices
+of the name and CTA edge/arrow feedback share the photo's pointer strength
+and clock. Keep semantic text, focus and click targets stationary. Touch
+is stronger with a cap on text decoration; scroll stays native. The
+approved supporting changes are 11px mobile role type, equal hero button
+heights, a short mobile header booking label, `#services` navigation and a
+160svh hero. Implementation/evidence: `docs/design/hero-ui-glitch.md`.
+New video production and animation changes outside the hero remain separate.
+
 The owner found the page pleasant but lacking the required 3D parallax /
 scroll-video feel. Oakley Axiom Space is now the authority for media scale
 and motion: https://www.oakley.com/en-us/l/axiom-space . Preserve the
@@ -154,6 +164,14 @@ Awwwards marquee and Houmahani Kane's Codrops Atmospheric Depth Gallery.
 This is a code-led motion refinement with no new image comp.
 
 ## Owner refinement: opposing scroll-controlled films — 2026-09-09
+
+Media decision superseded later the same day: the owner requested MiniMax
+H3 films of a rocket launch and the solar system. Original 6s launch and
+Saturn-ring clips now replace the Oakley footage/posters below. Retain
+near-black, ivory and amber with light analog/VHS texture, continuous shots
+and the existing opposing scroll movement. Generation used text only;
+no external media or personal photographs were submitted. Details and
+current verification: `docs/design/original-work-video.md`.
 
 Replace only the “Ideas, out in the world” / “Idee diventate prodotti”
 introduction with two substantial video planes, one left and one right.
@@ -380,3 +398,21 @@ passed, with no horizontal overflow or console warnings/errors. Captures:
 `.impeccable/tmp/polo-preview/closeup-{desktop,mobile}.png`.
 `bun run check` (36 tests, 502 assertions) and `bun run build` passed.
 The shared avatar, social images, hero and CV were not changed in this step.
+
+
+## Owner refinement — depth at 2K — 2026-09-09
+
+Keep the approved identity and media subjects. Make Services emerge upward
+in perspective; widen the services/project composition, give the brand
+wall more bottom space, retain complete film frames, and separate cinema
+from real work. Introduce the gallery with a localized title and lead
+with matteodante.it + Cockpit. Treat all four project media presentations
+with individual scroll depth. Replace the final landscape still with an
+original, quiet Replicate loop, retaining its static fallback.
+
+Selected implementation: CSS perspective and the existing GSAP lifecycle,
+without another WebGL renderer or scroll interception. The commercial
+proof rows and original CV photo stay unchanged. The selected geometry,
+research and bounded desktop/mobile review live in
+`docs/design/depth-release.md`. This refinement supersedes the earlier
+1040px layout, cropped films and PiùUDITO-first gallery order.

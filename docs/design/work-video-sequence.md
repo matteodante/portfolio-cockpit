@@ -1,5 +1,11 @@
 # Opposing scroll-controlled films
 
+Current media update: original MiniMax H3 launch/Saturn films now replace
+the initial Oakley pair. See `original-work-video.md` for generation,
+encoding and current validation. The playback/lifecycle architecture is retained. The geometry below is
+historical: `depth-release.md` supersedes its travel, frame sizes and
+internal crop with complete native-aspect planes and a smaller 3D arc.
+
 Scope, 2026-09-09: replace the “Ideas, out in the world” / “Idee diventate
 prodotti” introduction, remove the two-app explanatory note in EN and IT,
 and retain the two real App Store project links below the scene.
@@ -21,7 +27,7 @@ ivory Unbounded lettering, squared film planes and orange booking control.
 No Awwwards code or media is included in the shipped page, and no award
 quality or conversion improvement is claimed for this implementation.
 
-## Media and provenance
+## Original reference media and provenance — superseded
 
 The previous generated identity assets are still photographs. The repository
 contains a jet clip and older cockpit recordings, but no matching original
@@ -71,7 +77,7 @@ video visibility and motion styles; no-JS and cold reduced mode use composed
 posters without video sources. A failed MP4 leaves its poster in place.
 Semantic heading, App Store links, booking, keyboard and native scroll remain.
 
-## Validation and finish
+## Original sequence validation and finish — historical baseline
 
 Production Chromium on the development Mac; no physical-phone or field
 performance claim. All twelve final captures were opened and reviewed.

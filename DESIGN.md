@@ -28,6 +28,34 @@ typography:
     fontSize: clamp(27px, 3vw, 42px)
     fontWeight: 400
     lineHeight: 1.3
+  services-heading:
+    fontFamily: var(--font-unbounded), Unbounded, sans-serif
+    fontSize: clamp(32px, 3vw, 60px)
+    fontWeight: 400
+  services-heading-mobile:
+    fontFamily: var(--font-unbounded), Unbounded, sans-serif
+    fontSize: clamp(28px, 7.2vw, 42px)
+    fontWeight: 400
+  gallery-heading:
+    fontFamily: var(--font-unbounded), Unbounded, sans-serif
+    fontSize: clamp(36px, 4vw, 72px)
+    fontWeight: 400
+  gallery-heading-mobile:
+    fontFamily: var(--font-unbounded), Unbounded, sans-serif
+    fontSize: clamp(32px, 9vw, 46px)
+    fontWeight: 400
+  website-project-heading:
+    fontFamily: var(--font-unbounded), Unbounded, sans-serif
+    fontSize: clamp(30px, 2.3vw, 48px)
+    fontWeight: 400
+  app-project-heading:
+    fontFamily: var(--font-unbounded), Unbounded, sans-serif
+    fontSize: clamp(28px, 2.2vw, 40px)
+    fontWeight: 400
+  contact-display:
+    fontFamily: var(--font-unbounded), Unbounded, sans-serif
+    fontSize: clamp(44px, 5.5vw, 96px)
+    fontWeight: 900
   title:
     fontFamily: var(--font-body), Space Grotesk, sans-serif
     fontSize: 20px
@@ -148,7 +176,7 @@ Axiom Space informs media scale and native-scroll depth, not asset identity.
 The hero alternates between matched photographic portraits of Matteo and
 his astronaut alter ego through a brief, localized optical glitch. The toy
 character connects these portraits to the existing Three.js model. Two
-opposing film planes introduce the real app cards in Work. The owner-approved
+opposing film planes introduce four real project presentations in Work. The owner-approved
 smiling portrait with clear-lens black glasses supplies the human hero and
 services image; a square headshot edit of that master supplies the avatar.
 The landing is spacious and direct; the cockpit is playful and
@@ -169,8 +197,8 @@ equally in EN/IT. The photographic avatar also supplies the favicon and app icon
 The homepage and website-development page also show matteodante.it and the
 playable cockpit as a personal project, with two real screenshot previews
 and native links. A compact public Pilatus/DonTouch role summary identifies
-company-team experience. Their new layout awaits fresh browser review;
-the shared proof-row and control patterns are retained.
+company-team experience. The homepage presents them first, with the cover and cockpit capture on
+separate depth planes. Commercial pages retain their compact proof rows.
 
 **Key Characteristics:**
 
@@ -237,19 +265,22 @@ Prose and navigation remain in Space Grotesk, mostly sentence case.
 
 The frontmatter display scale describes the desktop name. On mobile it is
 `clamp(38px, 12vw, 65px)`, with 38px below 360px. Contact uses
-`clamp(40px, 6vw, 80px)` on desktop and `clamp(27px, 8.6vw, 50px)` on mobile.
+`clamp(44px, 5.5vw, 96px)`; on mobile it starts at 44px and wraps within the panel.
 The Work film heading uses `clamp(48px, 6.7vw, 96px)`, line-height 1.13
 and letter-spacing −0.03em, changing to `clamp(34px, 10.5vw, 64px)` below
 800px. At viewport heights up to 600px, its size becomes
 `clamp(32px, 5.4vw, 58px)` at every width. Balanced wrapping and a localized
 dark text shadow keep the independent title readable over the films.
-Services reduce to 26px on mobile. The hero offer uses
+Services use `clamp(32px, 3vw, 60px)` and `clamp(28px, 7.2vw, 42px)` on mobile. The hero offer uses
 `clamp(22px, 2.2vw, 29px)` at line-height 1.45,
 then 21px on mobile and 19px below 360px.
 
 Supporting leads use 18px/1.65, reducing to 16px on mobile; service and
 project descriptions use 15px, reducing to 14px. Service titles use 20px
-and 18px on mobile; project titles use Unbounded 400 at 23px and 20px.
+and 18px on mobile. Homepage website-project titles use Unbounded 400
+at `clamp(30px, 2.3vw, 48px)` and 30px on mobile; app titles use
+`clamp(28px, 2.2vw, 40px)`. Homepage project prose is 18px (websites)
+and 17px (apps), reducing to 16px on mobile.
 Service prices use Space Grotesk 500 at 28px/1.3, with a quiet 12px
 qualifier. The relationship-section heading uses Unbounded 700 at
 `clamp(32px, 3.5vw, 48px)`, reducing to 32px below 800px, with 1.15
@@ -296,48 +327,60 @@ either surface. Preserve the explicitly approved Helvetiker 3D sign.
 ## Layout
 
 The landing uses native document flow: Intro, Services, Brands, Work and
-Contact. With motion enabled, the hero occupies 180svh and the work
+Contact. With motion enabled, the hero occupies 160svh and the work
 introduction 280svh; each contains a sticky 100svh stage. The former second
 hero text chapter is removed. A compact relationship wall after Services
-remains in native vertical flow. It has 86px top and 90px bottom padding;
-its heading caps at `min(1160px, calc(100% - 100px))` with 48px below it.
-Below 800px, section padding is 66px top and 72px bottom, heading width
-is `calc(100% - 50px)` and the heading-to-wall gap is 36px. There is no
-sticky brand stage or scroll-controlled horizontal travel.
-The work collection adds matteodante.it and its cockpit as a personal
-project between PiùUDITO and the app pair. A compact company-team summary
-follows the apps.
-Services, the real project cards after the work scene, and contact remain
-in normal flow. Their panels have a 100svh minimum height, 140px 70px
-padding and 1040px composition width. The hero composition caps at 1160px
-and uses 110px 40px 80px padding. These are the current homepage's
-compositions, not compulsory templates for every future surface.
+remains in native vertical flow. Its top padding is 120px, with
+`clamp(180px, 16svh, 260px)` below it; the heading caps at
+`min(1480px, calc(100% - 140px))`. Mobile uses 90px top / 150px bottom
+and 25px side margins. The slow three-row wall retains its scroll impulse.
 
-The Work stage places two clipped rectangular films behind an independent
-central title. On desktop, the left mission frame is 42% wide and 68%
-high, positioned 5% from the left and 12% from the top; the right visor
-frame is 35% wide and 60% high, positioned 5% from the right and 32% from
-the top. Below 800px, each is 58% wide with a −9% outer offset that crops
-its edge. Their mobile top/height pairs are 21%/48% and 46%/44%. The title
+Services and the project gallery cap at 1480px. The services panel has
+`clamp(140px, 14svh, 230px)` vertical padding and a 300px portrait column.
+Its HTML composition rises 260px, approaches from −360px depth and
+straightens from 16deg rotateX; portrait, copy and cards occupy separate
+planes. ScrollTrigger uses 0.65s scrub, from section top at 95% to 14% of
+viewport height. Keyboard focus restores the service planes to flat.
+
+The project gallery begins `clamp(160px, 18svh, 280px)` after the film
+stage (140px on mobile), with “Projects to explore” / “Progetti da esplorare”.
+Order: matteodante.it + Cockpit, PiùUDITO, Maestro, GymTree, company-team
+experience. Website rows alternate media/copy, with independently layered
+site/gameplay previews; the app pair is staggered by 140px on desktop.
+Every project has its own scroll progress, affecting only media transforms.
+Text and links stay in normal flow. Mobile stacks every presentation.
+
+The hero composition still caps at 1160px with 110px 40px 80px padding.
+The final contact panel uses a 1440px composition and 110svh minimum
+height, with `clamp(160px, 20svh, 300px)` vertical padding (150px mobile).
+These dimensions belong to this homepage, not commercial-page templates.
+
+The Work stage uses 2000px perspective and complete, native-aspect film
+planes. Launch: 16:9, `min(46vw, 1150px)`, top 16%, left 7%.
+Saturn: 4:3, `min(37vw, 900px)`, top 32%, right 7%. There is no internal
+overscan/crop translation. Mobile: widths 84% / 76%, top 15% / 46%,
+7% outer offsets. Short desktop windows cap each width by viewport height.
+The title
 caps at `min(880px, 82%)`, uses `calc(100% - 44px)` on mobile, and caps at
 `min(650px, 82%)` when viewport height is at most 600px. Maestro and GymTree
 follow in normal flow; the former two-app explanatory note is removed
 in both languages.
 
 Human/astronaut portraits with folded arms occupy the hero foreground
-over restrained lunar terrain; the 220px framed portrait introduces services. Three squared
+over restrained lunar terrain; the 220–300px framed portrait introduces services. Three squared
 service cards form a three-column grid; shipped products form a two-column
 pair. Cards have 20px gaps on wide screens, 32px at the compact-desktop
 breakpoint and 16px when stacked on mobile. Below 800px, the hero copy sits
 near the bottom of its stage with 100px 25px 104px padding. The astronaut and
 landscape crop widen while retaining the same depth travel. The portrait
-becomes 150px above the services copy; services and products stack into
+becomes 180px above the services copy; services and products stack into
 one column. Content panels use 100px 25px padding, with 22px side padding
 below 360px. The header has a stable dark backing (`#05060aeb`) at every
 scroll position and width, with safe-area top padding on mobile. Its Work
 shortcut hides while language and booking controls remain. Below
-360px, the header booking arrow hides and the name may wrap to preserve
-the controls without horizontal overflow.
+360px, the header booking arrow hides. The short mobile booking label
+(“Prenota” / “Book”) leaves room for the name on one line; its accessible
+label retains the full booking action.
 
 The hero identity frame is 4:5, 108% of its stage height, positioned 8%
 from the top and -1% from the right. On mobile it becomes 116% wide with
@@ -381,22 +424,25 @@ only the optional choice panel is fixed above the lower page edge.
 Landing depth comes from separate planes: the hero identity frame moves
 past the viewer as lunar terrain approaches and typography recedes. Two
 opposing film planes pass behind the Work title before the real app cards.
-Portrait, project pair and contact landscape have separate parallax travel.
+Services and each project have separate 0.65s depth progress. The contact
+landscape has its existing parallax travel.
 CSS perspective, translation, rotation, clipping and opacity create depth.
 GSAP 3.15 ScrollTrigger maps native scroll to hero and parallax progress
 with a 0.3-second scrub response and linear progress. Work uses its own
 0.45-second scrub. CSS owns sticky positioning without pin spacers; the
 hero/work progression needs no custom frame loop.
 
-Work uses one reversible progress value for both film containers, internal
-crops, title and paused video playheads. The mission film descends 112svh
-while the visor rises 112svh; each travels 80svh on mobile. A 1500px
-perspective and restrained yaw/rotation separate the planes. Desktop adds
-opposing 8vw horizontal travel and central depth lifts of up to 70px/50px;
-mobile keeps vertical travel and rotation. Internal images overscan by
-12% above/below their frames and counter-translate through 16%. The title
+Work uses one reversible progress value for both native-aspect film
+containers, title and paused video playheads. Launch descends 24svh while
+Saturn rises 24svh; each travels 18svh on mobile. A 2000px perspective and
+opposing yaw/rotation separate the planes. Desktop adds 4vw horizontal
+travel and peak depth lifts of 120px/90px; mobile retains vertical travel
+and rotation. Both films now remain complete within their frames, without
+internal overscan or counter-translation. The title
 drifts upward through its own 12svh range; a radial dark shade and
-`0 5px 35px #05060acc` text shadow protect its contrast.
+`0 5px 35px #05060acc` text shadow protect its contrast. The shade now
+uses `#05060abf` at its center and `#05060a66` at 68%, maintaining readable
+type over the launch film's bright exhaust.
 
 The silent films remain paused; scroll sets `currentTime` in either
 direction. One seek may be in flight per film, and the `seeked` event
@@ -414,8 +460,25 @@ quad and two image textures; it does not import Three.js. A textured reveal
 front, luminance-derived refraction, refractive ripples, local temporal
 echoes, brief horizontal tears and restrained chromatic separation transform
 the subject. Both settled endpoints sample the original plates without
-shader color treatment. The headline, offer and controls remain undisturbed
-by the timed effect.
+shader color treatment. The timed effect adds only a brief orange-period
+echo to the headline; the offer and controls retain their settled state.
+
+The hero UI now shares the photograph's pointer strength, decay and frame
+clock through `hero-interaction.ts`. Two aria-hidden, pointer-transparent
+copies of the name produce local 10px/5px optical slices. The real H1 stays
+stationary. Hover is subtle, drag stronger, and touch has a dedicated cap
+on the DOM effects. A 220ms clipped border scan and slight arrow displacement
+connect both squared actions; the secondary action is quieter. Role/offer
+receive only a faint orange echo. There is no character replacement or
+new animation library. Only the name disables text selection during drag.
+
+Both hero actions have 52px minimum height on desktop and 48px on mobile
+or short viewports. The role is 12px on desktop and 11px on mobile, with
+reduced tracking. Focus rings and link hit areas stay stable. Pause,
+reduced motion, hidden/offscreen states and teardown reset the decoration.
+UI input initializes independently of photos/WebGL; failure leaves a poster
+with working links and optional DOM hover. See `docs/design/hero-ui-glitch.md`
+for the implementation and bounded browser evidence.
 
 The first transformation starts 650ms after the ready hero begins visible,
 motion-enabled time. Each transition lasts 1120ms; starts recur every
@@ -669,7 +732,8 @@ the prior orbit record is historical and superseded.
 
 The landing header combines the circular photographic avatar/name, quiet
 Services and Work links, the shared EN/IT control and a compact booking control. Services
-opens the website-development page. Commercial headers reuse this shell
+opens the homepage's `#services` section. “Scopri i servizi” / “Explore services”
+is also a real section link in the hero's scroll hint. Commercial headers reuse this shell
 with their current service link; the language control opens the matching
 localized page. Their footer links to the other services, home and cockpit.
 A bottom-left section picker
@@ -721,16 +785,21 @@ This media’s provenance is in `docs/design/brand-media.md` and adjacent
 asset metadata. The hero retains its still-image layers and optional
 image shader; the Work introduction separately uses scroll-controlled film.
 
-The Work pair in `public/landing-v2/work-video/` is temporary Oakley Axiom
-reference media under the owner's prior explicit authorization, disclosed
-before implementation. The mission film uses the hero frame sequence
-(1440 × 712); the visor film is 960 × 784. Together the silent seekable
-MP4s are about 5.1MiB. Both JPEG posters carry embedded origins; video
-metadata and `origin.json` record the sources and processing. These films
-are neither AI-generated originals nor Matteo's portfolio work, and they
-do not imply an Oakley relationship. `docs/design/work-video-sequence.md`
-records the asset decision, mechanics and replacement path. The real
-Maestro/GymTree links remain the work evidence immediately afterward.
+The Work pair in `public/landing-v2/work-video/` now consists of original
+MiniMax H3 films: a night launch with warm exhaust on the left, and a calm
+glide beside Saturn's rings on the right. Near-black backgrounds, ivory
+subjects, amber light and a restrained analog/VHS texture extend the space
+identity. The existing opposing scroll choreography remains. No reference
+media was supplied to generation; these are decorative AI films, not real
+mission recordings or portfolio evidence. The former Oakley clips/posters
+are removed from public assets.
+
+`launch.mp4` is 1440×810 and `saturn.mp4` 960×720. Both are silent, 6s,
+30fps H.264 with per-frame keyframes and faststart; together about 5.5MiB.
+JPEG posters carry embedded generation prompts; `origin.json` records
+model, inputs, prediction IDs, source hashes and encoding. See
+`docs/design/original-work-video.md`. The real Maestro/GymTree links remain
+work evidence after the decorative sequence.
 
 The cockpit world wordmark is the original orange `MATTEO DANTE` sign,
 restored at the owner’s request. Bold Helvetiker TextGeometry supplies its
@@ -809,8 +878,8 @@ licenses are recorded in `public/social/origin.json`,
 - **Do** retain official logo provenance, relationship captions and complete
   static access to the wall's ten items, distinguishing personal work from
   clients.
-- **Do** confine the identity glitch to its registered subject plates, keep
-  clean settled photographs and preserve the composed astronaut fallback.
+- **Do** keep clean settled photographs and the composed astronaut fallback;
+  extend input feedback only through the hero's decorative text/edge layers.
 
 ### Don't:
 
@@ -841,3 +910,16 @@ columns, stacking on mobile. It states the public Pilatus and DonTouch
 roles as employment/team experience. These additions are implemented;
 fresh desktop/mobile layout inspection is pending the owner's Mac unlock.
 The reused project captures do not constitute review of the new layout.
+
+## Spatial homepage refinement — 2026-09-09
+
+Services and all four project presentations now use CSS perspective and
+GSAP scroll progress. The native 280svh film stage retains its reversible
+playheads, with 24svh opposing desktop travel and 18svh mobile travel,
+central depth lifts of 120px/90px, and a separate 12svh title drift.
+
+The contact backdrop is an original MiniMax H3 lunar loop derived from
+the approved landscape. The 7s silent 1920×1270 encode is 4,151,303 bytes.
+It loads only at the visible contact scene, pauses offscreen/hidden, and
+uses its poster for disabled motion, no JavaScript, errors or rejected
+autoplay. Scope, research, provenance and local QA: `docs/design/depth-release.md`.

@@ -282,6 +282,7 @@
   "projects.claudeLocalDocs.link": "Open GitHub",
   "projects.portfolio.link": "Open GitHub",
   "home.book": "Book a call",
+  "home.book.short": "Book",
   "home.nav.intro": "Intro",
   "home.nav.services": "Services",
   "home.nav.work": "Work",
@@ -290,7 +291,7 @@
   "home.nav.section": "Section",
   "home.header.label": "Main navigation",
   "home.language.label": "Language",
-  "home.scroll": "Scroll to explore",
+  "home.scroll": "Explore services",
   "home.motion.pause": "Reduce motion",
   "home.motion.resume": "Enable motion",
   "home.skip": "Skip to services",
@@ -341,5 +342,7 @@
   "home.work.piuudito.body": "Three websites built for one business: piuudito.it, piuuditogroup.it and fabiotomassetti.it. Explore the published work.",
   "home.work.piuudito.open": "Explore the project",
   "home.services.app.details": "Explore apps & software",
-  "home.services.ai.details": "Explore AI automation"
+  "home.services.ai.details": "Explore AI automation",
+  "home.projects.title": "Projects to explore.",
+  "home.projects.body": "Websites, products and software you can see in action."
 }

@@ -36,7 +36,7 @@ export default function ServicesSection({ locale }: { locale: Locale }) {
     >
       <div className="flight-panel">
         <div className="services-composition">
-          <div className="services-intro" data-parallax>
+          <div className="services-intro">
             <figure className="hero-portrait">
               <div className="portrait-image">
                 <Image
@@ -45,7 +45,7 @@ export default function ServicesSection({ locale }: { locale: Locale }) {
                   width={560}
                   height={640}
                   quality={90}
-                  sizes="(max-width: 799px) 150px, 220px"
+                  sizes="(max-width: 799px) 180px, 300px"
                 />
               </div>
               <figcaption>{t('home.portrait.caption')}</figcaption>

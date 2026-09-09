@@ -1,0 +1,7 @@
+{
+  "type": "Still from an AI-generated original film",
+  "model": "minimax/h3",
+  "predictionUrl": "https://replicate.com/p/3a80vkjkkdrmt0d0gz1aa49zk4",
+  "prompt": "Frame extracted at 1.9s from the original MiniMax H3 video. Original generation prompt: One continuous cinematic shot, six seconds, 16:9. A believable ivory-white launch vehicle with small burnt-orange hardware and a dark nose detail lifts off from a launchpad at night. Start with ignition already beginning: intense warm amber exhaust, dense rolling charcoal and ivory vapor expanding across the ground. The rocket rises steadily and convincingly, its entire silhouette visible, with a gentle upward camera tilt following the ascent. Slow, heavy physical motion; coherent geometry throughout. Strong depth from dark gantry edges in the lower foreground. Deep near-black sky, warm ivory metal, amber-orange highlights, very restrained color. Premium photoreal space cinematography with a subtle late-1980s analog mission-recording character: fine VHS luminance grain, gentle halation around flame, faint horizontal tape texture and slight chroma bleed, retaining crisp subject detail. No cuts, no whip pan, no transition to another scene, no logos, no typography, no timestamp, no border, no starburst flashes, no added people. Compose with the rocket near center and generous dark breathing room around it. No dialogue or music.",
+  "sha256": "dc45dc19dabab252e7750e7b931a0df23451bcbfe64c267d3db2c0c2441b1dc7"
+}

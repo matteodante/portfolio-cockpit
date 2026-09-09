@@ -81,9 +81,9 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   Unbounded and Space Grotesk; landing composition styles are scoped in
   `components/landing/landing.css`. `LandingMotion` progressively adds
   a subtle Canvas 2D star field and GSAP ScrollTrigger driving photographic
-  depth layers. Hero/work scenes use native CSS sticky stages (180/280svh)
-  on desktop and mobile. Work has two opposing silent film planes with
-  internal crop counter-parallax and an independent title. One GSAP progress
+  depth layers. Hero/work scenes use native CSS sticky stages (160/280svh)
+  on desktop and mobile. Work has two opposing silent native-aspect film planes with
+  CSS perspective and an independent title; no internal crop counter-parallax. One GSAP progress
   value with 0.45s scrub controls transforms and paused video playheads;
   layout refresh explicitly restores progress and frames. Sources load only
   near the stage through IntersectionObserver, with no idle/offscreen/hidden
@@ -104,13 +104,28 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   sections stay in normal flow. Services are three cards: websites from 300 €, apps
   and AI on request. Each dark card link opens its specific localized
   service page. Header, hero and contact booking links remain direct Cal.com links.
-  Work adds a PiùUDITO case link with an actual website capture before
-  the existing Maestro/GymTree pair; the film sequence stays unchanged.
-  `PortfolioEvidence` adds this site/cockpit as a personal project after
-  PiùUDITO; `TeamExperience` adds public Pilatus/DonTouch role summaries
+  Work introduces “Progetti da esplorare” / “Projects to explore”.
+  `PortfolioEvidence` presents this site/cockpit first, then a PiùUDITO case
+  link with its actual website capture and the Maestro/GymTree pair; `TeamExperience` adds public Pilatus/DonTouch role summaries
   after the apps. Both are also used by website development. Project
   captures live in `public/landing-v2/portfolio/`; cockpit links disable
   prefetch. See `docs/design/portfolio-evidence.md` for evidence boundaries.
+  Hero input and lifecycle live in `hero-interaction.ts`: one pointer model
+  and frame clock drive the photo plus decorative DOM layers in `hero-ui.ts`.
+  Title slices, a short period echo and CTA border/arrow scans preserve the
+  real heading, focus and link hit areas. UI input initializes independently
+  of WebGL/photos; pause/reduced motion resets it. Hero buttons are 52/48px,
+  the mobile role is 11px, the header booking label is shortened, and both
+  the header Services link and scroll hint use `#services`. See
+  `docs/design/hero-ui-glitch.md` for validation and its limits.
+  `section-depth.ts` adds 0.65s GSAP progress for the Services upward
+  perspective entrance and each of the four project media presentations.
+  Services/project composition caps at 1480px; brands and the transition
+  into projects have larger vertical margins. Text and links stay native.
+  `contact-film-motion.ts` loads the silent 7s original MiniMax H3 lunar
+  loop only when the contact scene is visible, pausing offscreen/hidden
+  and on cleanup. Poster fallback covers no-JS, reduced/pause and failure.
+  See `docs/design/depth-release.md` for current geometry and local QA.
   `HeroIdentity` progressively adds one native WebGL quad with two photographic
   plates. `public/landing-v2/identity/matteo-polo-v1.webp` is the approved
   natural standing hero: black polo, glasses and smile, based on the man on
@@ -150,11 +165,14 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   renderer; the historical cockpit screenshot remains authentic. The hero has a
   secondary localized link to the playable CV. Provenance is stored alongside each raster; source notes in
   `docs/design/brand-media.md`. The earlier Oakley photos were replaced;
-  Work now temporarily uses authorized Oakley hero-frame and visor films
-  in `public/landing-v2/work-video/` (about 5.1MiB). These are disclosed
-  reference placeholders, not generated originals or portfolio work.
-  JPEG posters have embedded origins; video metadata and `origin.json`
-  preserve provenance. See `docs/design/work-video-sequence.md`.
+  Work now uses original MiniMax H3 launch and Saturn films in
+  `public/landing-v2/work-video/` (about 5.5MiB together). Both are 6s,
+  silent H.264 with 30fps, per-frame keyframes and faststart; reversible
+  scroll playback remains, with framing updated in `depth-release.md`. They are decorative AI films,
+  not client work or real mission footage. The former Oakley clips/posters
+  are removed. JPEG posters have embedded prompts; video metadata,
+  `origin.json` and `assets/work-video/launch-orbit-h3.json` preserve
+  provenance. See `docs/design/original-work-video.md`.
   Booking links use `CAL_BOOKING_URL` in `lib/constants/contact.ts`;
   the owner confirmed `https://cal.com/matteo-dante`. Keep this exact URL.
 - `app/[lang]/[section]/[slug]/page.tsx` → `MarketingPageContent`:

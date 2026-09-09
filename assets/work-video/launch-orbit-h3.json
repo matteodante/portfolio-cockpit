@@ -1,14 +1,12 @@
 {
-  "purpose": "Original decorative launch and Saturn films for the Work introduction. Not client work or a real mission recording.",
-  "generatedAt": "2026-09-09",
   "model": "minimax/h3",
-  "method": "Text-to-video via the authenticated Replicate playground. No images, videos, real-person references or Oakley media were submitted.",
-  "style": "Photoreal space cinematography, near-black/ivory/amber palette and restrained analog/VHS texture requested in the generation prompts.",
-  "supersedes": "Temporary Oakley mission.mp4, visor.mp4 and their posters; previous sources remain in Git history.",
+  "date": "2026-09-09",
+  "status": "generated and validated in the local production preview; not deployed",
+  "estimatedPriceUsd": 1.56,
+  "referenceMedia": [],
   "clips": [
     {
-      "file": "launch.mp4",
-      "model": "minimax/h3",
+      "name": "launch",
       "input": {
         "prompt": "One continuous cinematic shot, six seconds, 16:9. A believable ivory-white launch vehicle with small burnt-orange hardware and a dark nose detail lifts off from a launchpad at night. Start with ignition already beginning: intense warm amber exhaust, dense rolling charcoal and ivory vapor expanding across the ground. The rocket rises steadily and convincingly, its entire silhouette visible, with a gentle upward camera tilt following the ascent. Slow, heavy physical motion; coherent geometry throughout. Strong depth from dark gantry edges in the lower foreground. Deep near-black sky, warm ivory metal, amber-orange highlights, very restrained color. Premium photoreal space cinematography with a subtle late-1980s analog mission-recording character: fine VHS luminance grain, gentle halation around flame, faint horizontal tape texture and slight chroma bleed, retaining crisp subject detail. No cuts, no whip pan, no transition to another scene, no logos, no typography, no timestamp, no border, no starburst flashes, no added people. Compose with the rocket near center and generous dark breathing room around it. No dialogue or music.",
         "duration": 6,
@@ -17,19 +15,13 @@
       },
       "predictionId": "3a80vkjkkdrmt0d0gz1aa49zk4",
       "predictionUrl": "https://replicate.com/p/3a80vkjkkdrmt0d0gz1aa49zk4",
+      "status": "succeeded",
       "sourceUrl": "https://replicate.delivery/xezq/GESNYOxE5j7gO9t5RC6BPTTNtxfgI6A4LkJ81T8qEWbvb7lLA/tmprvx3plgz.mp4",
       "sourceSha256": "bf73bd4eba018cf22fac294ec872f0faa8eeb43aaea2a1cdb0ddbe47c8a296c2",
-      "processing": "Trim to 6s; scale width 1440 with Lanczos; 30fps; H.264 libx264 slow CRF25; GOP1; yuv420p; faststart; audio removed. No added overlays or color filters.",
-      "durationSeconds": 6,
-      "bytes": 3038971,
-      "sha256": "8bfa705a065d9878fb534ade59451f71bd59c9e75c27ac227ce875029e851301",
-      "poster": "launch-poster.jpg",
-      "posterTimeSeconds": 1.9,
-      "posterSha256": "dc45dc19dabab252e7750e7b931a0df23451bcbfe64c267d3db2c0c2441b1dc7"
+      "webFile": "/landing-v2/work-video/launch.mp4"
     },
     {
-      "file": "saturn.mp4",
-      "model": "minimax/h3",
+      "name": "saturn",
       "input": {
         "prompt": "One continuous cinematic space shot, six seconds, 4:3. A majestic photoreal Saturn fills the central-right part of the frame, its enormous layered rings sweeping diagonally from the lower-left foreground into the distance. Camera makes a slow smooth lateral glide just above the ring plane, revealing real parallax between nearby small icy ring particles and the distant planet. Saturn has warm ivory and muted amber atmospheric bands, a deep shadow terminator and physically convincing sunlight. A tiny distant warm Sun and sparse dim stars sit in a vast near-black background. A calm, immense journey through our solar system, not an infographic. Match premium analog space-mission footage: subtle late-1980s VHS luminance grain, faint horizontal tape texture, slight chroma bleed and gentle amber halation; dark and elegant, retaining photographic detail. Slow readable motion suitable for a scroll-controlled film, stable planet shape and ring geometry throughout. No cuts, no rapid zoom, no spinning camera, no colored nebula clouds, no fantasy rainbow colors, no labels, no typography, no timestamp, no logos, no border, no spacecraft or people. No dialogue or music.",
         "duration": 6,
@@ -38,15 +30,13 @@
       },
       "predictionId": "cj0rat7gaxrmy0d0gz18th0he8",
       "predictionUrl": "https://replicate.com/p/cj0rat7gaxrmy0d0gz18th0he8",
+      "status": "succeeded",
       "sourceUrl": "https://replicate.delivery/xezq/1pPXglA7UV4iFZuZm6vJ9TR83M2bHGeb4GeFj8Acwcuc32LXA/tmp6vyeo3oh.mp4",
       "sourceSha256": "6862a74ede9c30c280962aca9ae6e40e759ef13ab4cf7da412d50ca85ce381de",
-      "processing": "Trim to 6s; scale width 960 with Lanczos; 30fps; H.264 libx264 slow CRF25; GOP1; yuv420p; faststart; audio removed. No added overlays or color filters.",
-      "durationSeconds": 6,
-      "bytes": 2772591,
-      "sha256": "3dccb1d7938792dd861ff24cd5f0b10bf2e191b17c15ee9afe4a9f124b50adfb",
-      "poster": "saturn-poster.jpg",
-      "posterTimeSeconds": 2.4,
-      "posterSha256": "26cb98d4a4a6f9e50f7f4f0a5314ed94353eb4490c89b7928f0a51135a2f9352"
+      "webFile": "/landing-v2/work-video/saturn.mp4"
     }
-  ]
+  ],
+  "actualOutputDurationSeconds": 6.584,
+  "webDurationSeconds": 6,
+  "billingNote": "Listed estimate for two requested 6-second 2K jobs; final invoice not inspected."
 }

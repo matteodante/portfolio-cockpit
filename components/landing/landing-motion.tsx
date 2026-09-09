@@ -5,6 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Link from 'next/link'
 import { type ReactNode, useEffect, useId, useRef, useState } from 'react'
 import { observeBrandsWall } from '@/components/landing/brands-motion'
+import { observeContactFilm } from '@/components/landing/contact-film-motion'
+import { createSectionDepth } from '@/components/landing/section-depth'
 import { createWorkSequence } from '@/components/landing/work-sequence-motion'
 
 type LandingMotionProps = {
@@ -45,7 +47,7 @@ export default function LandingMotion({
   const rootRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const progressRef = useRef<HTMLSpanElement>(null)
-  const hintRef = useRef<HTMLDivElement>(null)
+  const hintRef = useRef<HTMLAnchorElement>(null)
   const navRef = useRef<HTMLElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const configureRef = useRef<(() => void) | null>(null)
@@ -211,9 +213,13 @@ export default function LandingMotion({
         const work = root.querySelector<HTMLElement>('[data-work-sequence]')
         const sequence = work ? createWorkSequence(work) : undefined
         if (sequence?.trigger) triggers.push(sequence.trigger)
+        triggers.push(...createSectionDepth(root))
+        const contact = root.querySelector<HTMLElement>('[data-contact-film]')
+        const stopContact = contact ? observeContactFilm(contact) : undefined
         return () => {
           stopWall?.()
           sequence?.destroy()
+          stopContact?.()
         }
       }, root)
       sync()
@@ -351,10 +357,22 @@ export default function LandingMotion({
       <div className="landing-progress" aria-hidden="true">
         <span ref={progressRef} />
       </div>
-      <div ref={hintRef} className="landing-scroll-hint" aria-hidden="true">
+      <Link ref={hintRef} className="landing-scroll-hint" href="#services">
         <span>{labels.scroll}</span>
-        <span />
-      </div>
+        <svg
+          width="16"
+          height="20"
+          viewBox="0 0 16 20"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M8 2v15m-5-5 5 5 5-5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+        </svg>
+      </Link>
       {eligible && (
         <button
           className="landing-motion-toggle"

@@ -1,0 +1,39 @@
+{
+  "model": "minimax/h3",
+  "predictionId": "ay6j2a1r15rmr0d0gzha0wemr4",
+  "predictionUrl": "https://replicate.com/p/ay6j2a1r15rmr0d0gzha0wemr4",
+  "generatedAt": "2026-09-09",
+  "input": {
+    "prompt": "Animate the supplied lunar landscape as a premium photoreal cinematic closing shot for a space-inspired portfolio. One continuous eight-second scene. Preserve the exact craters, ivory-gray rock, deep near-black sky and restrained amber sunlight from the right. A very slow, shallow camera arc reveals subtle foreground-to-background parallax, then eases gently back to exactly the original viewpoint by the final frame. The scene feels quietly alive and full of possibility, a new mission waiting to begin. Light shimmers gently on the far-right crater rim, with no sharp flash. Maintain large quiet dark space above the horizon for website typography. Extremely subtle analog mission-film grain and soft warm halation, matching elegant VHS-inspired space cinematography without obvious scanline overlays. Stable physical geometry. No cuts, no launch, no people, no astronaut, no spacecraft, no new planet, no logos, no typography, no timestamp, no added graphical overlay. Match the first and last frame exactly, with zero camera velocity at each end for an unobtrusive seamless loop. No music or dialogue.",
+    "duration": 8,
+    "resolution": "2K",
+    "ratio": "adaptive",
+    "first_frame_image": "https://matteodante.it/landing-v2/lunar-world.webp",
+    "last_frame_image": "https://matteodante.it/landing-v2/lunar-world.webp"
+  },
+  "sourceUrl": "https://replicate.delivery/xezq/k9TAGImkkJLzJJxOiomj5t1uVpUfecmr6WIMiskWerwwyuXuA/tmpjfw3s3ds.mp4",
+  "sourceSha256": "42afdd45f68bb6eea5f08309f2c246bf725472d57f82656e3e97546b7e747b2a",
+  "referenceSha256": "d5b4aa7207d51af86fe4e22317bc442a1d3d71ca28c240c7257d0336b8014aa7",
+  "processing": "30fps; Lanczos width 1920; loop begins at source second 1, continues to second 8; the final second crossfades into source seconds 0-1. Result 7-second continuous loop. H.264 slow CRF25 GOP60 yuv420p faststart, audio removed.",
+  "webFile": "lunar-loop.mp4",
+  "webSha256": "c358e79b85984f05ef64aa27ed748b3af57963571122432300bf401f3c0157c8",
+  "webMetadata": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1270,
+        "nb_frames": "210"
+      }
+    ],
+    "format": {
+      "duration": "7.000000",
+      "size": "4151303"
+    }
+  },
+  "poster": "lunar-loop-poster.jpg",
+  "posterSha256": "611634571e0449b45c88d1f53b14bb94bba976cc5e2499f41b1e6270183c2924",
+  "purpose": "Decorative original AI film behind contact copy; not footage of a real mission."
+}
