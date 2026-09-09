@@ -2,7 +2,10 @@
 
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
-import { createIdentityPointer } from '@/components/landing/identity-pointer'
+import {
+  createIdentityPointer,
+  type IdentityInput,
+} from '@/components/landing/identity-pointer'
 import { identityFrame } from '@/components/landing/identity-timing'
 
 const ASTRONAUT = '/landing-v2/identity/astronaut.webp'
@@ -84,7 +87,7 @@ export default function HeroIdentity() {
         clientX: number,
         clientY: number,
         target: EventTarget | null,
-        dragging: boolean
+        input: IdentityInput
       ) => {
         if (
           !(running && visible) ||
@@ -97,7 +100,7 @@ export default function HeroIdentity() {
         const x = (clientX - bounds.left) / bounds.width
         const y = 1 - (clientY - bounds.top) / bounds.height
         if (x < 0 || x > 1 || y < 0 || y > 1) return
-        pointer.move(x, y, performance.now(), dragging)
+        pointer.move(x, y, performance.now(), input)
         wake()
       }
       const onPointerMove = (event: Event) => {
@@ -109,12 +112,17 @@ export default function HeroIdentity() {
           event.clientX,
           event.clientY,
           event.target,
-          (event.buttons & 1) !== 0
+          (event.buttons & 1) !== 0 ? 'drag' : 'hover'
         )
       }
       const onPointerDown = (event: Event) => {
         if (!(event instanceof PointerEvent && event.isPrimary)) return
-        movePointer(event.clientX, event.clientY, event.target, true)
+        movePointer(
+          event.clientX,
+          event.clientY,
+          event.target,
+          event.pointerType === 'touch' ? 'touch' : 'drag'
+        )
       }
       const resetPointer = () => {
         pointer.reset()
@@ -133,7 +141,9 @@ export default function HeroIdentity() {
           return
         }
         const touch = event.touches.item(0)
-        if (touch) movePointer(touch.clientX, touch.clientY, event.target, true)
+        if (touch) {
+          movePointer(touch.clientX, touch.clientY, event.target, 'touch')
+        }
       }
       const sync = () => {
         const enabled =

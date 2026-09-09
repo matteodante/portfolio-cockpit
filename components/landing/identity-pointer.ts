@@ -4,6 +4,8 @@ export type IdentityPointerFrame = {
   strength: number
 }
 
+export type IdentityInput = 'hover' | 'drag' | 'touch'
+
 /** A short optical wake; stopping the pointer lets the renderer sleep again. */
 export function createIdentityPointer() {
   let x = 0.5
@@ -15,13 +17,13 @@ export function createIdentityPointer() {
   let sampledAt = 0
 
   return {
-    move(nextX: number, nextY: number, now: number, dragging: boolean) {
+    move(nextX: number, nextY: number, now: number, input: IdentityInput) {
       const fresh = amplitude === 0 || now - movedAt > 400
       const distance = Math.hypot(nextX - targetX, nextY - targetY)
       const speed = fresh ? 0 : distance / Math.max(8, now - movedAt)
-      amplitude = dragging
-        ? Math.min(1, 0.72 + speed * 95)
-        : Math.min(0.55, 0.32 + speed * 55)
+      if (input === 'touch') amplitude = Math.min(3.8, 2.6 + speed * 280)
+      else if (input === 'drag') amplitude = Math.min(1, 0.72 + speed * 95)
+      else amplitude = Math.min(0.55, 0.32 + speed * 55)
       targetX = nextX
       targetY = nextY
       if (fresh) {

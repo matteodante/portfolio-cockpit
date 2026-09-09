@@ -110,7 +110,8 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   photographic plates. Image-derived refraction, tears and chromatic
   displacement alternate Matteo/astronaut every five seconds, starting
   on first load. Cursor movement, tap and passive touch drag add a short local refractive
-  wake that distorts the visible identity; dragging is stronger than hover
+  wake that distorts the visible identity; touch is stronger and wider than
+  mouse drag, and dragging is stronger than hover
   and never reveals the other identity. Native scroll is not intercepted.
   GPU drawing stops outside
   transitions/input decay and offscreen/hidden. The new input behavior

@@ -111,8 +111,9 @@ The owner requested local cursor interaction, then explicitly added tap
 and touch drag. The owner then clarified that input must distort the
 visible photograph, never reveal the identity underneath. Hover works
 without pressing; dragging with mouse or touch is distinctly stronger.
-`identity-pointer.ts` uses hover strength 0.32–0.55 and pressed/touch strength
-0.72–1, with movement-speed response, 55ms position following and a 190ms
+`identity-pointer.ts` distinguishes hover (0.32–0.55), mouse drag (0.72–1)
+and touch (2.6–3.8), with movement-speed response, 55ms position following
+and a 190ms
 exponential decay. Once below 0.008, the interaction
 becomes exactly zero so the shared renderer can sleep again.
 
@@ -171,3 +172,22 @@ verification remains part of the deferred browser pass.
 
 The owner explicitly requested commit and push before the deferred browser
 pass. This authorization does not turn pending visual checks into a pass.
+
+### Stronger touch correction
+
+The owner requested a much stronger touch effect after the first push.
+Touch now supplies more than three times the mouse-drag shader strength
+for the tested matching gestures, while mouse hover/drag keep their ranges.
+The shader widens the interaction radius above strength 1, reaching 0.402
+instead of 0.22 texture units. This makes distortion visible around the
+finger instead of hiding most of it beneath the touch point. The radius
+shrinks with the same decay; the identity blend remains timer-only.
+A touch impulse still becomes exactly zero within 1.2 seconds after input
+stops. Returning to mouse input immediately restores its lower range.
+No scrolling, zoom, controls, assets or identity timing behavior was changed.
+Browser visual validation remains deferred to the owner's Mac unlock.
+
+Stronger-touch checks: `bun run check` passed with 31 tests and 191
+assertions; `bun run build` passed. The scoped Impeccable detector found
+no primary issues. The mouse/touch comparison test includes rest, slow and
+fast movement, decay back to zero and switching back to mouse input.

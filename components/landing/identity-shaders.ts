@@ -60,7 +60,9 @@ void main() {
   float cursorDistance = length(cursorDelta);
   float cursorContour = cursorDistance
     + (field(uv * 17.0 + time * 0.2) - 0.5) * 0.04;
-  float cursorField = 1.0 - smoothstep(0.018, 0.22, cursorContour);
+  // Touch exceeds the mouse range, extending the glitch beyond the fingertip.
+  float cursorRadius = 0.22 + max(0.0, interaction - 1.0) * 0.065;
+  float cursorField = 1.0 - smoothstep(0.018, cursorRadius, cursorContour);
   float local = cursorField * interaction;
   if (strength < 0.001 && local < 0.001) {
     gl_FragColor = vec4(plate(uv, progress), 1.0);

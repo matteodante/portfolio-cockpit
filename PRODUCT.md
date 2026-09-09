@@ -198,3 +198,6 @@ identity sequence and gains a glitch reactive to cursor, tap and touch drag.
 Owner clarification: direct input must glitch the currently visible identity,
 not reveal the other portrait. Hover responds without pressing; mouse and
 touch drag intensify the distortion. The automatic identity cycle remains.
+
+The owner subsequently requested a substantially stronger touch glitch,
+with mouse hover and dragging retaining their existing behavior.

@@ -248,3 +248,7 @@ review are pending: the Mac is locked, and the owner will unlock it at 18:00.
 
 The owner authorized commit and push with the browser pass still deferred
 until the Mac is unlocked. Keep that verification boundary explicit.
+
+Owner correction: touch must be much stronger. Use a distinct 2.6–3.8
+strength range and a wider local distortion field, retaining mouse hover
+0.32–0.55 and mouse drag 0.72–1. No identity reveal or input capture.

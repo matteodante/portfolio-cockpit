@@ -425,7 +425,8 @@ The prepared cursor/touch extension adds a local irregular refractive lens
 inside the portrait: cursor motion glitches the visible photograph, with
 stronger distortion during mouse or touch drag. It never reveals the other
 identity; the automatic transformation remains independent. Hover strength
-is 0.32–0.55; pressed/touch strength is 0.72–1. A bounded speed response, 55ms
+is 0.32–0.55; mouse drag is 0.72–1 and touch is 2.6–3.8. Touch also widens
+the local glitch radius from 0.22 to at most 0.402 texture units. A bounded speed response, 55ms
 position following and 190ms decay return the image to its clean state.
 Controls, native scroll and pinch zoom retain their normal behavior in the
 implementation. This interaction awaits browser visual and lifecycle
