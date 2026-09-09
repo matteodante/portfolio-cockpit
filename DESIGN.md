@@ -147,8 +147,9 @@ Axiom Space informs media scale and native-scroll depth, not asset identity.
 
 The hero alternates between matched photographic portraits of Matteo and
 his astronaut alter ego through a brief, localized optical glitch. The toy
-character also connects the separate full-body work image to the existing
-Three.js model. A natural photographic avatar and services portrait share
+character connects these portraits to the existing Three.js model. Two
+opposing film planes introduce the real app cards in Work. A natural
+photographic avatar and services portrait share
 one edit of the owner’s real photograph.
 The landing is spacious and direct; the cockpit is playful and
 instrument-dense. Flat controls, the shared avatar and equal EN/IT treatment
@@ -214,15 +215,19 @@ The landing name is uppercase, weight 900, with an outlined first name and
 solid surname. Contact repeats the outline/solid contrast. Outlined glyphs
 use a two-pixel ivory stroke, Deep Space fill and `paint-order: stroke fill`
 to keep contours clean. Services use the lighter headline weight 400;
-the photographic work heading uses 700 and the closing display uses 900.
+the Work film heading uses 700 and the closing display uses 900.
 Prose and navigation remain in Space Grotesk, mostly sentence case.
 
 The frontmatter display scale describes the desktop name. On mobile it is
 `clamp(38px, 12vw, 65px)`, with 38px below 360px. Contact uses
 `clamp(40px, 6vw, 80px)` on desktop and `clamp(27px, 8.6vw, 50px)` on mobile.
-The work scene uses `clamp(32px, 5.5vw, 72px)` at line-height 1.2,
-changing to `clamp(31px, 9vw, 54px)` on mobile. Services reduce to 26px on
-mobile. The hero offer uses `clamp(22px, 2.2vw, 29px)` at line-height 1.45,
+The Work film heading uses `clamp(48px, 6.7vw, 96px)`, line-height 1.13
+and letter-spacing −0.03em, changing to `clamp(34px, 10.5vw, 64px)` below
+800px. At viewport heights up to 600px, its size becomes
+`clamp(32px, 5.4vw, 58px)` at every width. Balanced wrapping and a localized
+dark text shadow keep the independent title readable over the films.
+Services reduce to 26px on mobile. The hero offer uses
+`clamp(22px, 2.2vw, 29px)` at line-height 1.45,
 then 21px on mobile and 19px below 360px.
 
 Supporting leads use 18px/1.65, reducing to 16px on mobile; service and
@@ -230,9 +235,13 @@ project descriptions use 15px, reducing to 14px. Service titles use 20px
 and 18px on mobile; project titles use Unbounded 400 at 23px and 20px.
 Service prices use Space Grotesk 500 at 28px/1.3, with a quiet 12px
 qualifier. The relationship-section heading uses Unbounded 700 at
-`clamp(36px, 5.2vw, 72px)`, reducing to 34px on mobile; captions use
-Space Grotesk 11px desktop and 10px mobile. The literal project name
-`claude-local-docs` uses the code/mono role, not a fabricated logo.
+`clamp(32px, 3.5vw, 48px)`, reducing to 32px below 800px, with 1.15
+line-height and −0.025em tracking. Supporting copy uses Space Grotesk
+16px desktop and 15px mobile; relationship captions use 11px and 10px.
+The literal project name `claude-local-docs` uses the code/mono role at
+16px desktop and 13px mobile in both the wall and static grid. It remains
+a literal name, not a fabricated logo. These are scoped relationship-wall
+sizes, not additional shared type tokens.
 Compact metadata and controls vary by function and viewport; this is not
 a single mathematical type scale. Existing 9–10px helper and role text is
 not a default for new content. Below 600px viewport height, the hero name
@@ -257,14 +266,29 @@ either surface. Preserve the explicitly approved Helvetiker 3D sign.
 
 The landing uses native document flow: Intro, Services, Brands, Work and
 Contact. With motion enabled, the hero occupies 180svh and the work
-introduction 230svh; each contains a sticky 100svh stage. The former second
-hero text chapter is removed. A 270svh relationship section after Services
-contains a sticky 100svh horizontal logo stage.
+introduction 280svh; each contains a sticky 100svh stage. The former second
+hero text chapter is removed. A compact relationship wall after Services
+remains in native vertical flow. It has 86px top and 90px bottom padding;
+its heading caps at `min(1160px, calc(100% - 100px))` with 48px below it.
+Below 800px, section padding is 66px top and 72px bottom, heading width
+is `calc(100% - 50px)` and the heading-to-wall gap is 36px. There is no
+sticky brand stage or scroll-controlled horizontal travel.
 Services, the real project cards after the work scene, and contact remain
 in normal flow. Their panels have a 100svh minimum height, 140px 70px
 padding and 1040px composition width. The hero composition caps at 1160px
 and uses 110px 40px 80px padding. These are the current homepage's
 compositions, not compulsory templates for every future surface.
+
+The Work stage places two clipped rectangular films behind an independent
+central title. On desktop, the left mission frame is 42% wide and 68%
+high, positioned 5% from the left and 12% from the top; the right visor
+frame is 35% wide and 60% high, positioned 5% from the right and 32% from
+the top. Below 800px, each is 58% wide with a −9% outer offset that crops
+its edge. Their mobile top/height pairs are 21%/48% and 46%/44%. The title
+caps at `min(880px, 82%)`, uses `calc(100% - 44px)` on mobile, and caps at
+`min(650px, 82%)` when viewport height is at most 600px. Maestro and GymTree
+follow in normal flow; the former two-app explanatory note is removed
+in both languages.
 
 Registered folded-arm human/astronaut portraits occupy the hero foreground
 over restrained lunar terrain; the 220px framed portrait introduces services. Three squared
@@ -295,7 +319,7 @@ removes the tall scene lengths and sticky positioning, retaining static
 type and padding without disabling animation. Section anchors remain
 native; sections are never fixed or made inert. Without JavaScript, the
 same static content remains available and enhancement-only controls hide.
-The relationship rail becomes a complete normal-flow grid with three
+The relationship wall becomes a complete normal-flow grid with four
 columns on desktop and two on mobile. Its headings and relationship
 captions remain present in either mode.
 
@@ -306,14 +330,35 @@ the scene. Keep its viewport lock scoped to the cockpit route.
 ## Elevation & Depth
 
 Landing depth comes from separate planes: the hero identity frame moves
-past the viewer as lunar terrain approaches and typography recedes. The
-separate transparent full-body astronaut pulls back in the Work scene
-before the real app cards.
+past the viewer as lunar terrain approaches and typography recedes. Two
+opposing film planes pass behind the Work title before the real app cards.
 Portrait, project pair and contact landscape have separate parallax travel.
 CSS perspective, translation, rotation, clipping and opacity create depth.
-GSAP 3.15 ScrollTrigger maps native scroll to scene and parallax progress,
-with a 0.3-second scrub response and linear progress. CSS owns sticky
-positioning without pin spacers or a custom scroll animation loop.
+GSAP 3.15 ScrollTrigger maps native scroll to hero and parallax progress
+with a 0.3-second scrub response and linear progress. Work uses its own
+0.45-second scrub. CSS owns sticky positioning without pin spacers; the
+hero/work progression needs no custom frame loop.
+
+Work uses one reversible progress value for both film containers, internal
+crops, title and paused video playheads. The mission film descends 112svh
+while the visor rises 112svh; each travels 80svh on mobile. A 1500px
+perspective and restrained yaw/rotation separate the planes. Desktop adds
+opposing 8vw horizontal travel and central depth lifts of up to 70px/50px;
+mobile keeps vertical travel and rotation. Internal images overscan by
+12% above/below their frames and counter-translate through 16%. The title
+drifts upward through its own 12svh range; a radial dark shade and
+`0 5px 35px #05060acc` text shadow protect its contrast.
+
+The silent films remain paused; scroll sets `currentTime` in either
+direction. One seek may be in flight per film, and the `seeked` event
+takes the latest progress; changes under 1/60s are ignored. A layout refresh
+explicitly restores progress and renders the frame, since GSAP may restore
+its animation with callbacks suppressed. An IntersectionObserver adds
+video sources only within one viewport of the stage. The initial hero
+does not request them. Idle, offscreen and hidden states do not seek.
+Pause/reduced motion clears the motion styles and film visibility;
+no-JavaScript and cold reduced-motion mode use the composed JPEG posters
+without requesting videos. An unavailable film also leaves its poster.
 
 `HeroIdentity` adds a dynamically loaded native WebGL renderer with one
 quad and two image textures; it does not import Three.js. A textured reveal
@@ -336,12 +381,28 @@ that poster. A failed image/module, unavailable GPU or lost context also
 keeps it visible. This enhancement has no loading gate, sound or video
 decoder, and text, contact and booking links remain independent of it.
 
-The relationship rail maps native vertical scroll to horizontal travel over
-its overflow width. GSAP `power2.inOut` accelerates and decelerates the
-track, with a 0.55-second scrub response. Scroll velocity divided by 2500
-is clamped to ±1 and drives logo skew up to ±6°. An orange hairline tracks
-progress. Pause, reduced motion and no JavaScript retain the static logo
-grid; there is no scroll interception or perpetual marquee.
+The relationship wall uses three flat CSS transform loops moving right,
+left, right over 130s, 140s and 125s, with linear timing and starting
+delays of −28s, −16s and −24s. Each row repeats its assigned marks twice
+per run, then duplicates the run so translating by half the track width
+loops seamlessly. Forty visual copies sit inside an `aria-hidden` wall;
+one canonical semantic list retains all ten names and relationship labels.
+Soft horizontal masks fade the outer 12% on desktop and 7% on mobile.
+
+Native vertical scroll adds a gentle impulse to playback speed. Absolute
+scroll velocity sets a positive rate capped at 2.25×, with a 160ms attack
+and 1.1s return to 1×, both using `power2.out`. Short tweens use the existing
+GSAP dependency and native `Animation.updatePlaybackRate`, preserving each
+loop's phase and right/left/right direction. The scroll listener is passive.
+
+An IntersectionObserver and document-visibility listener gate the CSS play
+state. Offscreen, hidden and cleanup states cancel rate tweens and reset
+the rate to 1×. Brands has no ScrollTrigger, custom animation-frame loop,
+sticky stage, perspective, skew or scroll-driven position. Offscreen and
+hidden rows pause; the existing motion toggle, reduced motion and no JavaScript show
+the complete static grid. During motion the canonical list is visually
+clipped, preserving assistive-technology access. There is no brand progress
+bar; the global right-side indicator still hides while Brands is active.
 
 The native booking dialog opens with a 240ms opacity/translate/scale
 animation using `cubic-bezier(0.16, 1, 0.3, 1)`, from 24px down and 0.97
@@ -484,14 +545,24 @@ for Pilatus, Hexa, DonTouch and Galileo; client for PiùUDITO; project for
 Fastweb and Sorgenia; personal for GymTree, Maestro and claude-local-docs.
 These labels do not turn personal projects into external clients.
 
-Animated rail items are 320px wide on desktop and 210px on mobile, with
-180px and 110px logo areas respectively. Static layout uses the complete
-three-/two-column grid. Official alpha/SVG assets sit directly on the dark
+The three automatic rows group Pilatus through DonTouch, Galileo through
+Sorgenia, and the three personal projects. Wall items are 176px wide on
+desktop and 140px below 800px; logo areas are 64px and 52px high in both
+moving and static modes. Row gaps are 28px desktop and 26px mobile.
+Each run has a 72px gap and matching trailing padding, reducing to 40px
+on mobile; `space-around` distributes spare space across a minimum 100vw
+run. Captions sit 12px below the mark area, reducing to 10px on mobile.
+The static list uses four columns, 36px row gaps and 60px column gaps,
+with the heading's width cap. Below 800px it uses two columns with
+28px row gaps and 26px column gaps. Official alpha/SVG assets sit directly on the dark
 scene; most are rendered white through CSS. PiùUDITO uses grayscale and
 brightness adjustment. Galileo is the exception: its source is opaque and
 uses CSS grayscale/inversion. `mix-blend-mode: screen` is applied to the
 whole `.brands-scene`, compositing its dark pixels into the page backdrop.
 It is not an image-level-only treatment, and the source is not transparent.
+No brand media was created or replaced for this refinement. Current motion
+mechanics and local validation are recorded in `docs/design/brand-wall.md`;
+the prior orbit record is historical and superseded.
 
 ### Navigation
 
@@ -502,8 +573,8 @@ menu; its current item is orange, and hover
 adds a faint ivory tint behind the existing text. Menu links use 13px
 type and 12px 20px padding. Escape closes the picker and returns
 focus. A slim right-side progress rail and bottom motion toggle remain
-secondary to the content. Enhancement-only navigation is absent without
-JavaScript.
+secondary to the content; the rail hides while Brands is active.
+Enhancement-only navigation is absent without JavaScript.
 
 The same `BrandAvatar` and `LanguageSwitcher` appear in the cockpit. Language
 links preserve the current landing/cockpit route, use an ivory current
@@ -529,17 +600,29 @@ documented above. Prompts and source history sit alongside the plates in
 `.origin.json` and `.webp.json`; direction and provenance are explained in
 `docs/design/identity-glitch.md`.
 
-The Work scene separately retains `public/landing-v2/astronaut.webp`, an
-original Image Gen reinterpretation based on a render of the existing
+`public/landing-v2/astronaut.webp` remains in source history as an original
+Image Gen reinterpretation based on a render of the existing
 `public/models/astronaut.glb`. That full-body asset has true transparency at
 1122 × 1402. Its octagonal helmet, opaque visor, ivory suit, chest controls,
 hoses and orange fittings preserve the toy character; the runtime cockpit
-model is unchanged. It is not the current hero portrait. Raw GLB renders
+model is unchanged. It is no longer used in Work and is not the current
+hero portrait. Raw GLB renders
 were reference inputs only and are no longer public landing assets.
-The generated lunar landscape remains behind the hero, work and contact;
-temporary Oakley rasters were removed. This media’s provenance is in
-`docs/design/brand-media.md` and adjacent asset metadata. The landing uses
-still-image layers and an optional image shader, not scrubbed video.
+The generated lunar landscape remains behind the hero and contact.
+This media’s provenance is in `docs/design/brand-media.md` and adjacent
+asset metadata. The hero retains its still-image layers and optional
+image shader; the Work introduction separately uses scroll-controlled film.
+
+The Work pair in `public/landing-v2/work-video/` is temporary Oakley Axiom
+reference media under the owner's prior explicit authorization, disclosed
+before implementation. The mission film uses the hero frame sequence
+(1440 × 712); the visor film is 960 × 784. Together the silent seekable
+MP4s are about 5.1MiB. Both JPEG posters carry embedded origins; video
+metadata and `origin.json` record the sources and processing. These films
+are neither AI-generated originals nor Matteo's portfolio work, and they
+do not imply an Oakley relationship. `docs/design/work-video-sequence.md`
+records the asset decision, mechanics and replacement path. The real
+Maestro/GymTree links remain the work evidence immediately afterward.
 
 The cockpit world wordmark is the original orange `MATTEO DANTE` sign,
 restored at the owner’s request. Bold Helvetiker TextGeometry supplies its
@@ -585,7 +668,8 @@ are not promoted to shared tokens.
 - **Do** use the matching natural avatar and services portrait derived from
   the owner’s photograph, alongside actual shipped product imagery.
 - **Do** retain official logo provenance, relationship captions and complete
-  static access to the rail, distinguishing personal work from clients.
+  static access to the wall's ten items, distinguishing personal work from
+  clients.
 - **Do** confine the identity glitch to its registered subject plates, keep
   clean settled photographs and preserve the composed astronaut fallback.
 

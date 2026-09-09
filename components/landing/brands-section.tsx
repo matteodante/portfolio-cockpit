@@ -75,7 +75,44 @@ const BRANDS = [
     height: 192,
     kind: 'personal',
   },
+  {
+    id: 'docs',
+    name: 'claude-local-docs',
+    file: null,
+    width: 0,
+    height: 0,
+    kind: 'personal',
+  },
 ] as const
+
+const BRAND_ROWS = [BRANDS.slice(0, 4), BRANDS.slice(4, 7), BRANDS.slice(7)]
+
+function BrandMark({
+  brand,
+  relationship,
+}: {
+  brand: (typeof BRANDS)[number]
+  relationship: string
+}) {
+  return (
+    <>
+      <div className="brand-image">
+        {brand.file ? (
+          <Image
+            src={`/landing-v2/brands/${brand.file}`}
+            alt={brand.name}
+            width={brand.width}
+            height={brand.height}
+            sizes="(max-width: 799px) 140px, 176px"
+          />
+        ) : (
+          <span className="brand-wordmark">{brand.name}</span>
+        )}
+      </div>
+      <span>{relationship}</span>
+    </>
+  )
+}
 
 export default function BrandsSection({ locale }: { locale: Locale }) {
   const t = makeT(locale)
@@ -85,42 +122,45 @@ export default function BrandsSection({ locale }: { locale: Locale }) {
       className="brands-scene"
       aria-labelledby="brands-heading"
     >
-      <div className="brands-stage">
-        <div className="brands-heading">
-          <h2 id="brands-heading">{t('home.brands.title')}</h2>
-          <p>{t('home.brands.body')}</p>
-        </div>
-        <div className="brands-window">
-          <ul className="brands-track">
-            {BRANDS.map((brand) => (
-              <li
-                className={`brand-item brand-item-${brand.id}`}
-                key={brand.id}
-              >
-                <div className="brand-image">
-                  <Image
-                    src={`/landing-v2/brands/${brand.file}`}
-                    alt={brand.name}
-                    width={brand.width}
-                    height={brand.height}
-                    sizes="(max-width: 799px) 210px, 320px"
-                  />
-                </div>
-                <span>{t(`home.brands.${brand.kind}`)}</span>
-              </li>
-            ))}
-            <li className="brand-item brand-item-docs">
-              <div className="brand-image brand-wordmark">
-                claude-local-docs
-              </div>
-              <span>{t('home.brands.personal')}</span>
-            </li>
-          </ul>
-        </div>
-        <div className="brands-progress" aria-hidden="true">
-          <span />
-        </div>
+      <div className="brands-heading">
+        <h2 id="brands-heading">{t('home.brands.title')}</h2>
+        <p>{t('home.brands.body')}</p>
       </div>
+      <div className="brands-wall" aria-hidden="true">
+        {BRAND_ROWS.map((row) => (
+          <div className="brands-row" key={row[0]?.id}>
+            <div className="brands-track">
+              {[0, 1].map((copy) => (
+                <div className="brands-run" key={copy}>
+                  {[0, 1].map((repeat) =>
+                    row.map((brand) => (
+                      <div
+                        className={`brand-item brand-item-${brand.id}`}
+                        key={`${repeat}-${brand.id}`}
+                      >
+                        <BrandMark
+                          brand={brand}
+                          relationship={t(`home.brands.${brand.kind}`)}
+                        />
+                      </div>
+                    ))
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <ul className="brands-static">
+        {BRANDS.map((brand) => (
+          <li className={`brand-item brand-item-${brand.id}`} key={brand.id}>
+            <BrandMark
+              brand={brand}
+              relationship={t(`home.brands.${brand.kind}`)}
+            />
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }

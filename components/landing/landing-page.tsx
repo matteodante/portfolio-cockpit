@@ -5,6 +5,7 @@ import BrandsSection from '@/components/landing/brands-section'
 import HeroIdentity from '@/components/landing/hero-identity'
 import { makeT } from '@/components/landing/i18n'
 import LandingMotion from '@/components/landing/landing-motion'
+import WorkSequence from '@/components/landing/work-sequence'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import LanguageSwitcher from '@/components/shared/language-switcher'
 import {
@@ -251,30 +252,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           className="flight-stop"
           aria-labelledby="work-heading"
         >
-          <div className="work-scene" data-cinema-scene>
-            <div className="cinema-stage work-stage">
-              <div className="work-backdrop" aria-hidden="true">
-                <Image
-                  src="/landing-v2/lunar-world.webp"
-                  alt=""
-                  fill
-                  sizes="100vw"
-                  quality={90}
-                />
-              </div>
-              <div className="work-media" aria-hidden="true">
-                <Image
-                  src="/landing-v2/astronaut.webp"
-                  alt=""
-                  fill
-                  quality={90}
-                  sizes="100vw"
-                />
-              </div>
-              <div className="work-shade" aria-hidden="true" />
-              <h2 id="work-heading">{t('home.work.title')}</h2>
-            </div>
-          </div>
+          <WorkSequence title={t('home.work.title')} />
           <div className="flight-panel">
             <div className="work-composition">
               <div className="project-pair" data-parallax>
@@ -313,7 +291,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                   </Link>
                 ))}
               </div>
-              <p className="work-note">{t('home.work.note')}</p>
             </div>
           </div>
         </section>

@@ -140,10 +140,17 @@ orange extruded 3D name in the scene; shared UI fonts remain unchanged.
 ## Owner refinement — services and work relationships
 
 Replace the second hero chapter “Dall’idea. Al lancio.” with “Chi ho
-aiutato” below services. Large logos move horizontally with scroll,
-acceleration and brief inertia. Awwwards is an interaction reference,
-not evidence of an award or partnership. Paused/reduced motion and
-no-JavaScript visitors see the same brands in a normal-flow grid.
+aiutato” below services. On 2026-09-09 the owner rejected the orbital
+carousel and confirmed a compact, elegant wall: three slow automatic
+rows moving right, left, right, with repeated marks allowed. The wall
+stays in native vertical flow, with no scroll-driven rail or tall sticky
+stage. Pause, reduced motion and no JavaScript expose the same ten real
+relationships in a complete static grid. The existing space identity,
+hero and Work film sequence remain. No award, partnership or conversion
+improvement is implied by the treatment.
+The owner subsequently requested gentle acceleration during native
+vertical scrolling, settling back to the slow automatic baseline while
+preserving the compact wall and its row directions.
 
 ## Owner refinement — cinematic identity transformation
 

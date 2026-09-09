@@ -1,0 +1,22 @@
+{
+  "purpose": "Temporary cinematic media for the Work introduction; replace with original Matteo Dante films.",
+  "authorization": "The portfolio owner authorized temporary use of Oakley Axiom media in the conversation. This is reference material, not portfolio work or a claimed partnership.",
+  "retrievedAt": "2026-09-09",
+  "clips": [
+    {
+      "file": "mission.mp4",
+      "source": "https://www.oakley.com/en-us/l/axiom-space",
+      "frameUrls": "https://media.oakley.com/2025/Axiom/Hero_D/fbf/Hero_D_00060.jpg through Hero_D_00170.jpg",
+      "processing": "111 source frames at 30fps, width 1440, H.264 yuv420p, CRF24, GOP1, faststart, no audio",
+      "poster": "mission-poster.jpg",
+      "posterTimeSeconds": 2.1
+    },
+    {
+      "file": "visor.mp4",
+      "source": "https://media.oakley.com/2025/Axiom/visor_D.mp4",
+      "processing": "Width 960, 30fps, H.264 yuv420p, CRF24, GOP1, faststart, audio removed",
+      "poster": "visor-poster.jpg",
+      "posterTimeSeconds": 0.65
+    }
+  ]
+}

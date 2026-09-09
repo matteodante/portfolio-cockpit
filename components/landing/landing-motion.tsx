@@ -4,6 +4,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Link from 'next/link'
 import { type ReactNode, useEffect, useId, useRef, useState } from 'react'
+import { observeBrandsWall } from '@/components/landing/brands-motion'
+import { createWorkSequence } from '@/components/landing/work-sequence-motion'
 
 type LandingMotionProps = {
   children: ReactNode
@@ -205,34 +207,13 @@ export default function LandingMotion({
           if (timeline.scrollTrigger) triggers.push(timeline.scrollTrigger)
         }
         const brands = root.querySelector<HTMLElement>('.brands-scene')
-        const track = brands?.querySelector<HTMLElement>('.brands-track')
-        const brandStage = brands?.querySelector<HTMLElement>('.brands-stage')
-        if (brands && track && brandStage) {
-          gsap.set(brands, { '--brands-speed': 0, '--brands-progress': 0 })
-          const setSpeed = gsap.quickSetter(brands, '--brands-speed')
-          const setProgress = gsap.quickSetter(brands, '--brands-progress')
-          const horizontal = gsap.fromTo(
-            track,
-            { x: 0 },
-            {
-              x: () => -Math.max(0, track.scrollWidth - width),
-              ease: 'power2.inOut',
-              scrollTrigger: {
-                trigger: brands,
-                start: 'top top',
-                end: () =>
-                  `+=${Math.max(1, brands.offsetHeight - brandStage.offsetHeight)}`,
-                scrub: 0.55,
-                invalidateOnRefresh: true,
-              },
-              onUpdate: function (this: gsap.core.Tween) {
-                const velocity = this.scrollTrigger?.getVelocity() ?? 0
-                setSpeed(Math.max(-1, Math.min(1, velocity / 2500)))
-                setProgress(this.progress())
-              },
-            }
-          )
-          if (horizontal.scrollTrigger) triggers.push(horizontal.scrollTrigger)
+        const stopWall = brands ? observeBrandsWall(brands) : undefined
+        const work = root.querySelector<HTMLElement>('[data-work-sequence]')
+        const sequence = work ? createWorkSequence(work) : undefined
+        if (sequence?.trigger) triggers.push(sequence.trigger)
+        return () => {
+          stopWall?.()
+          sequence?.destroy()
         }
       }, root)
       sync()
@@ -312,7 +293,11 @@ export default function LandingMotion({
   }, [menuOpen])
 
   return (
-    <div ref={rootRef} className={`landing ${className}`}>
+    <div
+      ref={rootRef}
+      className={`landing ${className}`}
+      data-section={sections[current]?.id}
+    >
       <canvas
         ref={canvasRef}
         className="landing-stars"

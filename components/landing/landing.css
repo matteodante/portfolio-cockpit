@@ -154,7 +154,7 @@
   height: 180svh;
 }
 .landing[data-cinema="true"] .work-scene {
-  height: 230svh;
+  height: 280svh;
 }
 .landing[data-cinema="true"] .cinema-stage {
   position: sticky;
@@ -421,41 +421,99 @@
     rotateY(calc((var(--parallax-progress, 0.5) - 0.5) * 18deg));
 }
 
-.work-stage {
-  perspective: 1100px;
+.work-scene {
+  --work-progress: 0.5;
 }
-.work-media {
+.work-stage {
+  display: grid;
+  place-items: center;
+  perspective: 1500px;
+  isolation: isolate;
+}
+.work-film {
+  position: absolute;
+  overflow: clip;
+  background: #080a0e;
+  transform-origin: center;
+}
+.work-film-mission {
+  top: 12%;
+  left: 5%;
+  width: 42%;
+  height: 68%;
+  transform: rotate(-5deg);
+}
+.work-film-visor {
+  top: 32%;
+  right: 5%;
+  width: 35%;
+  height: 60%;
+  transform: rotate(6deg);
+}
+.work-film-image {
+  position: absolute;
+  inset: -12% 0;
+}
+.work-film img,
+.work-film video {
   position: absolute;
   inset: 0;
-  transform-origin: center;
-  transform: translate3d(
-      0,
-      calc(var(--scene-progress) * -4vh),
-      calc(80px - var(--scene-progress) * 400px)
-    )
-    rotateX(calc(var(--scene-progress) * 10deg)) scale(1.2);
-  clip-path: inset(calc(var(--scene-progress) * 6%));
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.work-media img {
-  object-fit: contain;
-  object-position: center 42%;
+.work-film video {
+  opacity: 0;
+}
+.work-film video[data-ready] {
+  opacity: 1;
 }
 .work-shade {
   position: absolute;
+  z-index: 1;
   inset: 0;
-  background: linear-gradient(0deg, #05060a 0%, #05060a88 23%, #05060a22 65%);
   pointer-events: none;
+  background: radial-gradient(ellipse at center, #05060a8a, #05060a22 68%);
 }
 .work-stage h2 {
-  position: absolute;
-  bottom: 14%;
-  left: 50%;
-  width: min(1000px, 90%);
+  position: relative;
+  z-index: 2;
+  max-width: min(880px, 82%);
+  margin: 0;
   text-align: center;
   font-weight: 700;
-  font-size: clamp(32px, 5.5vw, 72px);
-  line-height: 1.2;
-  transform: translate3d(-50%, calc(var(--scene-progress) * -6vh), 0);
+  font-size: clamp(48px, 6.7vw, 96px);
+  line-height: 1.13;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  text-shadow: 0 5px 35px #05060acc;
+}
+.landing[data-cinema="true"] .work-film-mission {
+  transform: translate3d(
+      calc((var(--work-progress) - 0.5) * -8vw),
+      calc((var(--work-progress) - 0.5) * 112svh),
+      calc(var(--work-progress) * (1 - var(--work-progress)) * 280px)
+    )
+    rotateY(calc((var(--work-progress) - 0.5) * -18deg))
+    rotateZ(calc(-5deg + (var(--work-progress) - 0.5) * 10deg));
+}
+.landing[data-cinema="true"] .work-film-visor {
+  transform: translate3d(
+      calc((var(--work-progress) - 0.5) * 8vw),
+      calc((0.5 - var(--work-progress)) * 112svh),
+      calc(var(--work-progress) * (1 - var(--work-progress)) * 200px)
+    )
+    rotateY(calc((var(--work-progress) - 0.5) * 22deg))
+    rotateZ(calc(6deg - (var(--work-progress) - 0.5) * 12deg));
+}
+.landing[data-cinema="true"] .work-film-mission .work-film-image {
+  transform: translateY(calc((0.5 - var(--work-progress)) * 16%));
+}
+.landing[data-cinema="true"] .work-film-visor .work-film-image {
+  transform: translateY(calc((var(--work-progress) - 0.5) * 16%));
+}
+.landing[data-cinema="true"] .work-stage h2 {
+  transform: translateY(calc((0.5 - var(--work-progress)) * 12svh));
 }
 .work-composition {
   width: min(1040px, 100%);
@@ -539,12 +597,6 @@
   color: var(--landing-muted);
   font-size: 15px;
   line-height: 1.65;
-}
-.work-note {
-  margin-top: 55px;
-  text-align: center;
-  color: var(--landing-muted);
-  font-size: 12px;
 }
 .landing[data-cinema="true"] .project-proof-maestro {
   transform: translate3d(
@@ -921,13 +973,31 @@
   .service-item p {
     font-size: 14px;
   }
-  .work-media img {
-    object-position: 48% center;
+  .work-film-mission {
+    top: 21%;
+    left: -9%;
+    width: 58%;
+    height: 48%;
+  }
+  .work-film-visor {
+    top: 46%;
+    right: -9%;
+    width: 58%;
+    height: 44%;
   }
   .work-stage h2 {
-    font-size: clamp(31px, 9vw, 54px);
-    bottom: 18%;
-    width: calc(100% - 48px);
+    max-width: calc(100% - 44px);
+    font-size: clamp(34px, 10.5vw, 64px);
+  }
+  .landing[data-cinema="true"] .work-film-mission {
+    transform: translate3d(0, calc((var(--work-progress) - 0.5) * 80svh), 0)
+      rotateY(calc((var(--work-progress) - 0.5) * -16deg))
+      rotateZ(calc(-5deg + (var(--work-progress) - 0.5) * 10deg));
+  }
+  .landing[data-cinema="true"] .work-film-visor {
+    transform: translate3d(0, calc((0.5 - var(--work-progress)) * 80svh), 0)
+      rotateY(calc((var(--work-progress) - 0.5) * 16deg))
+      rotateZ(calc(6deg - (var(--work-progress) - 0.5) * 12deg));
   }
   #work > .flight-panel {
     padding-top: 45px;
@@ -948,11 +1018,6 @@
   }
   .project-proof p {
     font-size: 14px;
-  }
-  .work-note {
-    font-size: 11px;
-    margin-top: 40px;
-    text-align: left;
   }
   .contact-composition h2 {
     font-size: clamp(27px, 8.6vw, 50px);
@@ -1061,15 +1126,6 @@
   display: none;
 }
 
-.work-backdrop {
-  position: absolute;
-  inset: 0;
-  opacity: 0.65;
-}
-.work-backdrop img {
-  object-fit: cover;
-}
-
 .hero-actions {
   display: flex;
   align-items: center;
@@ -1133,49 +1189,48 @@
 }
 
 .brands-scene {
-  --brands-speed: 0;
-  --brands-progress: 0;
   position: relative;
+  padding: 86px 0 90px;
   mix-blend-mode: screen;
 }
-.brands-stage {
-  padding: 120px 0;
-}
 .brands-heading {
-  width: min(1040px, calc(100% - 100px));
-  margin: 0 auto 70px;
+  width: min(1160px, calc(100% - 100px));
+  margin: 0 auto 48px;
 }
 .brands-heading h2 {
-  font-size: clamp(36px, 5.2vw, 72px);
+  font-size: clamp(32px, 3.5vw, 48px);
   font-weight: 700;
   letter-spacing: -0.025em;
+  line-height: 1.15;
+  text-wrap: balance;
 }
 .brands-heading p {
-  margin-top: 22px;
+  margin-top: 18px;
   color: var(--landing-muted);
-  font-size: 18px;
+  font-size: 16px;
 }
-.brands-track {
+.brands-wall {
+  display: none;
+}
+.brands-static {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
-  gap: 70px;
+  gap: 36px 60px;
+  width: min(1160px, calc(100% - 100px));
   margin: 0 auto;
-  padding: 0 50px;
-  max-width: 1160px;
+  padding: 0;
 }
 .brand-item {
   min-width: 0;
   text-align: center;
 }
 .brand-image {
-  height: 180px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: skewX(calc(var(--brands-speed) * -6deg));
-  transform-origin: center;
 }
 .brand-image img {
   width: 100%;
@@ -1191,56 +1246,86 @@
 }
 .brand-item > span {
   display: block;
-  margin-top: 20px;
+  margin-top: 12px;
   font-size: 11px;
   color: var(--landing-muted);
 }
 .brand-wordmark {
   font-family: var(--font-mono), monospace;
-  font-size: 23px;
+  font-size: 16px;
   white-space: nowrap;
 }
-.brands-progress {
-  display: none;
-}
-.landing[data-cinema="true"] .brands-scene {
-  height: 270svh;
-}
-.landing[data-cinema="true"] .brands-stage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
+.landing[data-cinema="true"] .brands-wall {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 28px;
   overflow: clip;
-  padding: 110px 0 80px;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
 }
-.landing[data-cinema="true"] .brands-track {
+.landing[data-cinema="true"] .brands-static {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.brands-track,
+.brands-run {
   display: flex;
-  gap: clamp(70px, 9vw, 150px);
   width: max-content;
-  max-width: none;
-  margin: 0;
-  padding-inline: max(70px, calc((100vw - 1040px) / 2));
 }
-.landing[data-cinema="true"] .brand-item {
-  width: 320px;
+.brands-track {
+  animation: brands-drift-right 130s linear infinite;
+  animation-delay: -28s;
+  animation-play-state: paused;
+}
+.brands-run {
+  flex: none;
+  gap: 72px;
+  padding-right: 72px;
+  min-width: 100vw;
+  justify-content: space-around;
+}
+.brands-wall .brand-item {
+  width: 176px;
   flex: none;
 }
-.landing[data-cinema="true"] .brands-progress {
-  display: block;
-  width: min(1040px, calc(100% - 100px));
-  margin: 65px auto 0;
-  height: 1px;
-  background: var(--landing-line);
+.brands-row:nth-child(2) .brands-track {
+  animation-name: brands-drift-left;
+  animation-duration: 140s;
+  animation-delay: -16s;
 }
-.brands-progress > span {
-  display: block;
-  height: 100%;
-  background: var(--landing-accent);
-  transform: scaleX(var(--brands-progress));
-  transform-origin: left;
+.brands-row:nth-child(3) .brands-track {
+  animation-duration: 125s;
+  animation-delay: -24s;
+}
+.brands-scene[data-wall-playing] .brands-track {
+  animation-play-state: running;
+}
+@keyframes brands-drift-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes brands-drift-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.landing[data-section="brands"] .landing-progress {
+  visibility: hidden;
 }
 
 .booking-dialog {
@@ -1312,53 +1397,51 @@ body:has(.booking-dialog[open]) {
   }
 }
 @media (max-width: 799px) {
-  .brands-stage {
-    padding: 90px 0;
+  .brands-scene {
+    padding: 66px 0 72px;
   }
   .brands-heading {
     width: calc(100% - 50px);
-    margin-bottom: 44px;
+    margin-bottom: 36px;
   }
   .brands-heading h2 {
-    font-size: 34px;
+    font-size: 32px;
   }
   .brands-heading p {
     font-size: 15px;
-    margin-top: 18px;
+    margin-top: 16px;
   }
-  .brands-track {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 42px 26px;
-    padding-inline: 25px;
+  .brands-static {
+    width: calc(100% - 50px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 26px;
   }
   .brand-image {
-    height: 110px;
+    height: 52px;
   }
   .brand-wordmark {
-    font-size: 14px;
-    white-space: normal;
-    overflow-wrap: anywhere;
+    font-size: 13px;
   }
   .brand-item > span {
     font-size: 10px;
-    margin-top: 12px;
+    margin-top: 10px;
   }
-  .landing[data-cinema="true"] .brands-stage {
-    padding: 105px 0 80px;
+  .brands-run {
+    gap: 40px;
+    padding-right: 40px;
   }
-  .landing[data-cinema="true"] .brands-track {
-    gap: 65px;
-    padding-inline: 25px;
+  .brands-wall .brand-item {
+    width: 140px;
   }
-  .landing[data-cinema="true"] .brand-item {
-    width: 210px;
-  }
-  .landing[data-cinema="true"] .brand-wordmark {
-    font-size: 19px;
-  }
-  .landing[data-cinema="true"] .brands-progress {
-    width: calc(100% - 50px);
-    margin-top: 44px;
+  .landing[data-cinema="true"] .brands-wall {
+    gap: 26px;
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 7%,
+      #000 93%,
+      transparent
+    );
   }
   .booking-dialog {
     width: calc(100vw - 20px);
@@ -1370,5 +1453,12 @@ body:has(.booking-dialog[open]) {
   }
   .booking-dialog-header h2 {
     font-size: 16px;
+  }
+}
+
+@media (max-height: 600px) {
+  .work-stage h2 {
+    max-width: min(650px, 82%);
+    font-size: clamp(32px, 5.4vw, 58px);
   }
 }

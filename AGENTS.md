@@ -78,10 +78,27 @@ gated CV / translations APIs. No CMS, no DB.
   Unbounded and Space Grotesk; landing composition styles are scoped in
   `components/landing/landing.css`. `LandingMotion` progressively adds
   a subtle Canvas 2D star field and GSAP ScrollTrigger driving photographic
-  depth layers. Hero/work scenes use native CSS sticky stages (180/230svh)
-  on desktop and mobile. The brands section uses a 270svh native sticky
-  stage with accelerating horizontal logo travel; other sections stay
-  in normal flow. Services are three cards: websites from 300 €, apps
+  depth layers. Hero/work scenes use native CSS sticky stages (180/280svh)
+  on desktop and mobile. Work has two opposing silent film planes with
+  internal crop counter-parallax and an independent title. One GSAP progress
+  value with 0.45s scrub controls transforms and paused video playheads;
+  layout refresh explicitly restores progress and frames. Sources load only
+  near the stage through IntersectionObserver, with no idle/offscreen/hidden
+  seeking. Pause, reduced motion, no JavaScript and media errors retain
+  composed posters; the real app links follow in normal flow. The brands
+  section is a compact wall in normal flow: three slow automatic CSS rows
+  move right/left/right over 130/140/125s. Repeated runs make seamless loops;
+  all 40 visual copies are aria-hidden and a canonical list exposes ten
+  real names and relationship captions. An observer pauses CSS offscreen
+  or hidden. Passive native scroll adds a gentle speed impulse using short
+  existing-GSAP rate tweens and native Animation playback-rate updates,
+  capped at 2.25× and returning to 1×. Offscreen/hidden/cleanup cancels
+  tweens and resets the rate. Brands has no ScrollTrigger, custom frame
+  loop or sticky stage.
+  It has no horizontal bar; the global progress indicator hides while
+  Brands is active. Pause, reduced motion and no JavaScript show the
+  complete four-/two-column static grid. See `docs/design/brand-wall.md`; other
+  sections stay in normal flow. Services are three cards: websites from 300 €, apps
   and AI on request. Secondary card links progressively open a native
   dialog with the lazy-loaded Cal.com embed and a direct-link fallback.
   `HeroIdentity` progressively adds one native WebGL quad with two registered
@@ -96,7 +113,12 @@ gated CV / translations APIs. No CMS, no DB.
   captures, an Image Gen astronaut based on the cockpit GLB render, a
   generated lunar landscape and a circular photo avatar. The hero has a
   secondary localized link to the playable CV. Provenance is stored alongside each raster; source notes in
-  `docs/design/brand-media.md`. The temporary Oakley photos were replaced.
+  `docs/design/brand-media.md`. The earlier Oakley photos were replaced;
+  Work now temporarily uses authorized Oakley hero-frame and visor films
+  in `public/landing-v2/work-video/` (about 5.1MiB). These are disclosed
+  reference placeholders, not generated originals or portfolio work.
+  JPEG posters have embedded origins; video metadata and `origin.json`
+  preserve provenance. See `docs/design/work-video-sequence.md`.
   Booking links use `CAL_BOOKING_URL` in `lib/constants/contact.ts`;
   the owner confirmed `https://cal.com/matteo-dante`. Keep this exact URL.
 - `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → dynamic-imports
