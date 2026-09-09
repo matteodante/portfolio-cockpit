@@ -219,3 +219,32 @@ The fresh scoped scroll-impulse finish review returned **SHIP**, with no
 material fixes. Desktop/mobile captures preserve the approved composition;
 local rate, touch, pause and offscreen checks passed. Validation is recorded
 in `docs/design/brand-wall.md`. No layout, CSS, copy or assets changed.
+
+## Owner refinement: cursor and touch identity wake — 2026-09-09
+
+Add a local refractive glitch following the pointer over the portrait,
+including tap and touch drag. Keep the five-second automatic identity
+sequence, scroll depth, copy and controls. Social previews now use Matteo
+himself, not the astronaut; that change does not remove the hero astronaut.
+
+Focal moment: a soft irregular glitch distorts only the visible identity
+beneath the cursor or finger. Hover already responds; dragging with mouse
+or touch produces stronger refraction and chromatic tearing at the same
+speed. The owner explicitly rejected revealing the identity underneath.
+A short trailing response settles fully.
+Continuity: the existing five-second sequence is unaffected. Input stops
+producing energy when still; settled GPU drawing returns to timer sleep.
+Feedback: tap creates an impulse, dragging updates it. Passive touch input
+preserves native scrolling and pinch zoom. Links and controls are excluded.
+Budget: the existing quad and two textures, no new asset, graphics library,
+permanent animation loop or input capture. Pause, reduced motion, hidden or
+offscreen state and lost context clear the interaction and keep fallbacks.
+
+QUALITY BAR: local image-derived refraction and recognizable settled faces;
+clear connection to pointer/finger; no whole-page flash or moving copy;
+no blocked scrolling, pinch zoom, keyboard navigation or booking action.
+Implementation is prepared. Browser inspection and independent hero finish
+review are pending: the Mac is locked, and the owner will unlock it at 18:00.
+
+The owner authorized commit and push with the browser pass still deferred
+until the Mac is unlocked. Keep that verification boundary explicit.

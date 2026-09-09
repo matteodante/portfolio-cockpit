@@ -1,3 +1,4 @@
+import { HOME_METADATA, socialSchemaImage } from '@/lib/seo/social'
 /**
  * Schema.org JSON-LD definitions for matteodante.it
  * Person + WebSite structured data for AI/search-engine ranking.
@@ -172,24 +173,15 @@ export function getWebSiteSchema(locale: Locale): WithContext<WebSite> {
   return {
     '@context': SCHEMA_CONTEXT,
     '@type': 'WebSite',
+    image: socialSchemaImage('home', locale),
     '@id': `${BASE_URL}/#website`,
     name: SITE_NAME,
     url: BASE_URL,
-    description: `${FULL_NAME}'s site — freelance software engineering and AI consulting (websites, apps, custom software), plus an interactive 3D cockpit CV with embedded streaming AI assistant.`,
+    description: HOME_METADATA[locale].description,
     inLanguage: BCP47_LOCALE[locale],
     author: { '@id': `${BASE_URL}/#person` },
     publisher: { '@id': `${BASE_URL}/#person` },
   }
-}
-
-const LANDING_PAGE_NAME: Record<Locale, string> = {
-  en: 'Matteo Dante — Freelance Software Engineer & AI Consultant',
-  it: 'Matteo Dante — Software Engineer Freelance & Consulente AI',
-}
-
-const LANDING_PAGE_DESCRIPTION: Record<Locale, string> = {
-  en: 'Freelance software engineering and consulting: websites, apps, AI integration, custom software. The full CV is playable as an interactive 3D cockpit.',
-  it: 'Ingegneria software freelance e consulenza: siti, app, integrazione AI, software su misura. Il CV completo è giocabile come cockpit 3D interattivo.',
 }
 
 /**
@@ -200,10 +192,11 @@ export function getLandingPageSchema(locale: Locale): WithContext<ProfilePage> {
   return {
     '@context': SCHEMA_CONTEXT,
     '@type': 'ProfilePage',
+    primaryImageOfPage: socialSchemaImage('home', locale),
     '@id': `${BASE_URL}/${locale}`,
     url: `${BASE_URL}/${locale}`,
-    name: LANDING_PAGE_NAME[locale],
-    description: LANDING_PAGE_DESCRIPTION[locale],
+    name: HOME_METADATA[locale].title,
+    description: HOME_METADATA[locale].description,
     inLanguage: BCP47_LOCALE[locale],
     isPartOf: { '@id': `${BASE_URL}/#website` },
     mainEntity: { '@id': `${BASE_URL}/#person` },
@@ -229,6 +222,7 @@ export function getCockpitPageSchema(locale: Locale): WithContext<WebPage> {
   return {
     '@context': SCHEMA_CONTEXT,
     '@type': 'WebPage',
+    primaryImageOfPage: socialSchemaImage('cockpit', locale),
     '@id': `${BASE_URL}/${locale}/cockpit`,
     url: `${BASE_URL}/${locale}/cockpit`,
     name: COCKPIT_PAGE_NAME[locale],

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-09T13:08:06.711901+00:00",
+  "generatedAt": "2026-09-09T14:04:26.835500+00:00",
   "title": "Design System: Portfolio Cockpit",
   "extensions": {
     "colorMeta": {
@@ -218,7 +218,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Shared Unbounded interface title family; this token records the landing desktop name size. Cockpit intro/dock sizes and the explicit Helvetiker 3D sign exception are recorded in DESIGN.md."
+        "purpose": "Shared Unbounded interface title family; this token records the landing desktop name size. Cockpit intro/dock sizes and the explicit Helvetiker 3D sign exception are recorded in DESIGN.md. Social cards separately use local Unbounded 900 at 92px/1.12 with −0.03em tracking in fixed 1200×630 rasters; webpage tokens are unchanged."
       },
       "headline": {
         "displayName": "Headline",
@@ -226,7 +226,7 @@
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Shared Space Grotesk reading family; the landing base is 16px/1.5 and cockpit dock prose is 14px/1.7."
+        "purpose": "Shared Space Grotesk reading family; the landing base is 16px/1.5 and cockpit dock prose is 14px/1.7. Social cards separately use local Space Grotesk 500: 30px/1.35 titles, 24px subtitles and 20px domain text in the fixed raster output."
       },
       "label": {
         "displayName": "Label",
@@ -455,7 +455,7 @@
   ],
   "narrative": {
     "northStar": "A Personal Introduction Suspended in Space",
-    "overview": "The landing, commercial pages and playable cockpit share monumental Unbounded interface\ntitles, Space Grotesk text and actions, warm ivory on near-black, orange commands and thin\nrectangular frames. The accepted landing supplies the visual authority for\nthis shared system. Dungyov informs the outlined/solid lettering; Oakley\nAxiom Space informs media scale and native-scroll depth, not asset identity.\n\nThe hero alternates between matched photographic portraits of Matteo and\nhis astronaut alter ego through a brief, localized optical glitch. The toy\ncharacter connects these portraits to the existing Three.js model. Two\nopposing film planes introduce the real app cards in Work. A natural\nphotographic avatar and services portrait share\none edit of the owner’s real photograph.\nThe landing is spacious and direct; the cockpit is playful and\ninstrument-dense. Flat controls, the shared avatar and equal EN/IT treatment\nconnect them while scrolling and gameplay retain their functional layouts.\n\nThe commercial pages extend this identity through ordinary reading flow:\nsplit introductions, real website and app captures, practical sections and\nnative disclosures. Their flat booking and consent controls use the same\npalette and focus language as the landing.",
+    "overview": "The landing, commercial pages and playable cockpit share monumental Unbounded interface\ntitles, Space Grotesk text and actions, warm ivory on near-black, orange commands and thin\nrectangular frames. The accepted landing supplies the visual authority for\nthis shared system. Dungyov informs the outlined/solid lettering; Oakley\nAxiom Space informs media scale and native-scroll depth, not asset identity.\n\nThe hero alternates between matched photographic portraits of Matteo and\nhis astronaut alter ego through a brief, localized optical glitch. The toy\ncharacter connects these portraits to the existing Three.js model. Two\nopposing film planes introduce the real app cards in Work. A natural\nphotographic avatar and services portrait share\none edit of the owner’s real photograph.\nThe landing is spacious and direct; the cockpit is playful and\ninstrument-dense. Flat controls, the shared avatar and equal EN/IT treatment\nconnect them while scrolling and gameplay retain their functional layouts.\n\nThe commercial pages extend this identity through ordinary reading flow:\nsplit introductions, real website and app captures, practical sections and\nnative disclosures. Their flat booking and consent controls use the same\npalette and focus language as the landing.\n\nSocial previews extend the current hero into one fixed 1200×630 image:\nMatteo's photographic portrait with folded arms and the lunar terrain sit\nright of a stacked solid name, orange punctuation, localized page title\nand subtitle, and the public domain. Six destinations share this composition\nequally in EN/IT. The photographic avatar also supplies the favicon and app icons.",
     "keyCharacteristics": [
       "Near-black space, warm ivory text and orange actions.",
       "Shared Unbounded interface titles and Space Grotesk prose and actions.",

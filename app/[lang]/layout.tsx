@@ -21,20 +21,8 @@ import {
   OG_LOCALE,
 } from '@/lib/i18n/config'
 import { getJsonLdGraph } from '@/lib/seo/schemas'
+import { HOME_METADATA, socialImages } from '@/lib/seo/social'
 import '@/lib/styles/css/index.css'
-
-const META: Record<Locale, { title: string; description: string }> = {
-  en: {
-    title: 'Matteo Dante · Freelance Software Engineer & AI Consultant',
-    description:
-      'Websites, apps, AI consulting and custom software. Senior engineer, 8+ years across aviation, telecom, and consumer platforms — plus a playable 3D cockpit CV. EN/IT.',
-  },
-  it: {
-    title: 'Matteo Dante · Software Engineer Freelance & Consulente AI',
-    description:
-      'Siti, app, consulenza AI e software su misura. Senior engineer, 8+ anni tra aviazione, telco e piattaforme consumer — con un CV giocabile in cockpit 3D. EN/IT.',
-  },
-}
 
 const SHARED_KEYWORDS = [
   'Matteo Dante',
@@ -110,7 +98,7 @@ export async function generateMetadata({
   const { lang } = await params
   if (!isValidLocale(lang)) return {}
   const locale = lang as Locale
-  const t = META[locale]
+  const t = HOME_METADATA[locale]
   const url = `${BASE_URL}/${locale}`
 
   return {
@@ -141,6 +129,7 @@ export async function generateMetadata({
     },
     openGraph: {
       type: 'website',
+      images: socialImages('home', locale),
       title: t.title,
       description: t.description,
       url,
@@ -152,6 +141,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
+      images: socialImages('home', locale),
       title: t.title,
       description: t.description,
     },

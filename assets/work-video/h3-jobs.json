@@ -1,0 +1,41 @@
+{
+  "model": "minimax/h3",
+  "provider": "Replicate",
+  "status": "prepared; not submitted",
+  "verifiedAt": "2026-09-09",
+  "modelUrl": "https://replicate.com/minimax/h3",
+  "releaseSource": "https://www.minimax.io/blog/minimax-h3",
+  "estimatedTotalUsd": 1.56,
+  "billing": "2 clips × 6 seconds × $0.13 per second at 2K; excludes any retry.",
+  "clips": [
+    {
+      "id": "mission",
+      "firstFrameFile": "assets/work-video/mission-first-frame.png",
+      "input": {
+        "duration": 6,
+        "resolution": "2K",
+        "ratio": "adaptive",
+        "prompt": "One uninterrupted six-second cinematic shot, continuing precisely from the provided first frame. A slow controlled lateral dolly to camera right with a small forward push creates clear layered parallax through the foreground lunar rocks, the astronaut and the distant crater ridge. The original ivory designer-toy astronaut remains firmly planted, making a subtle deliberate head turn toward the horizon. Preserve its octagonal helmet, opaque amber-black visor, orange suit bands, twin hoses and body proportions throughout. Warm sunlight moves naturally across the visor as the viewpoint changes. Physically realistic miniature photography, stable horizon and smooth constant camera speed. No cuts, no transition, no text, no logos, no added characters, no dust storm, no face appearing inside the visor. No dialogue or music."
+      }
+    },
+    {
+      "id": "visor",
+      "firstFrameFile": "assets/work-video/visor-first-frame.png",
+      "input": {
+        "duration": 6,
+        "resolution": "2K",
+        "ratio": "adaptive",
+        "prompt": "One uninterrupted six-second cinematic macro shot continuing precisely from the provided first frame. The camera slowly arcs a few degrees to the left around the original astronaut helmet with a very slight push closer. A narrow warm highlight and the reflected lunar ridge travel naturally across the curved opaque amber visor. Keep the ivory octagonal helmet edges, panel seams, chest controls and twin hoses perfectly consistent and rigid; preserve the original character proportions. The astronaut stays almost still with a barely perceptible head adjustment. Finely textured physical miniature materials, restrained warm rim light, shallow optical depth, steady exposure and fluid constant movement. No cuts, no editing transitions, no lettering, no logos, no added objects, no eye or human face visible behind the visor. No dialogue or music."
+      }
+    }
+  ],
+  "delivery": {
+    "format": "H.264 / yuv420p MP4, 30fps, GOP1, faststart, audio removed",
+    "destinations": [
+      "public/landing-v2/work-video/mission.mp4",
+      "public/landing-v2/work-video/visor.mp4"
+    ],
+    "posters": "Extract from the final generated films, preserving provenance. Do not switch live sources before both films pass visual and scroll QA.",
+    "transferBudget": "Aim for the current pair’s approximately 5.1 MiB; judge decoded quality before increasing."
+  }
+}

@@ -109,7 +109,13 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   `HeroIdentity` progressively adds one native WebGL quad with two registered
   photographic plates. Image-derived refraction, tears and chromatic
   displacement alternate Matteo/astronaut every five seconds, starting
-  on first load. GPU drawing stops between transitions and offscreen/hidden.
+  on first load. Cursor movement, tap and passive touch drag add a short local refractive
+  wake that distorts the visible identity; dragging is stronger than hover
+  and never reveals the other identity. Native scroll is not intercepted.
+  GPU drawing stops outside
+  transitions/input decay and offscreen/hidden. The new input behavior
+  still needs browser visual validation after the owner unlocks the Mac;
+  see `docs/design/identity-glitch.md`.
   A static poster remains when motion is disabled or WebGL fails; the
   landing never requires WebGL for copy or contact. No custom scroll interception. Pause,
   reduced motion and no JavaScript use static imagery and normal flow.
@@ -322,6 +328,17 @@ To update private content: edit files in `private-src/`, run
 - Commercial pages have localized canonical/hreflang, Open Graph,
   WebPage + Service/CreativeWork + breadcrumb JSON-LD, sitemap entries
   and public llms.txt links. This describes content, not measured SEO results.
+- `lib/seo/social.ts` owns EN/IT sharing copy, image URLs and descriptors.
+  `lib/seo/social-image.tsx` renders the shared 1200×630 Matteo portrait
+  composition with locally bundled Unbounded 900 and Space Grotesk 500.
+  `/social/{en|it}/{home|websites|apps|ai|piuudito|cockpit}.png` prerenders
+  all twelve previews at build time. Homepage metadata explicitly sets
+  page images so Next's file defaults do not override them; the existing
+  localized OG/Twitter endpoints also render the new homepage image.
+  Schemas use matching social images; Person retains the photographic
+  portrait. Favicon, Apple and manifest icons derive from the current
+  photographic avatar. See `docs/design/social-metadata.md` and the image
+  and font origin manifests for provenance and local verification limits.
 - `components/analytics/marketing-analytics.tsx` mounts from the locale
   layout. A valid `NEXT_PUBLIC_GA_MEASUREMENT_ID` enables the optional
   consent UI; Google loads only after positive consent. With no ID there

@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
+import { createIdentityPointer } from '@/components/landing/identity-pointer'
 import { identityFrame } from '@/components/landing/identity-timing'
 
 const ASTRONAUT = '/landing-v2/identity/astronaut.webp'
@@ -15,7 +16,8 @@ export default function HeroIdentity() {
     const host = hostRef.current
     const canvas = canvasRef.current
     const landing = host?.closest('.landing')
-    if (!(host && canvas && landing)) return
+    const stage = host?.closest('.hero-stage')
+    if (!(host && canvas && landing && stage)) return
     let destroyed = false
     let cleanup: (() => void) | undefined
 
@@ -41,26 +43,97 @@ export default function HeroIdentity() {
       let visible = false
       let running = false
       let contextLost = false
+      const pointer = createIdentityPointer()
+      const finePointer = window.matchMedia(
+        '(hover: hover) and (pointer: fine)'
+      )
       const draw = () => {
         const frame = identityFrame(elapsed)
-        renderer.draw(frame.progress, frame.strength, elapsed / 1000)
-        return frame
+        const interaction = pointer.sample(performance.now())
+        renderer.draw(
+          frame.progress,
+          frame.strength,
+          elapsed / 1000,
+          interaction
+        )
+        return interaction.strength > 0 ? 0 : frame.wait
       }
       const cancel = () => {
         if (running) elapsed += performance.now() - last
         window.cancelAnimationFrame(raf)
         window.clearTimeout(timer)
         running = false
+        pointer.reset()
       }
       const tick = (now: number) => {
         elapsed += now - last
         last = now
-        const frame = draw()
-        if (frame.wait > 0) {
+        const wait = draw()
+        if (wait > 0) {
           timer = window.setTimeout(() => {
             raf = window.requestAnimationFrame(tick)
-          }, frame.wait)
+          }, wait)
         } else raf = window.requestAnimationFrame(tick)
+      }
+      const wake = () => {
+        window.clearTimeout(timer)
+        window.cancelAnimationFrame(raf)
+        raf = window.requestAnimationFrame(tick)
+      }
+      const movePointer = (
+        clientX: number,
+        clientY: number,
+        target: EventTarget | null,
+        dragging: boolean
+      ) => {
+        if (
+          !(running && visible) ||
+          document.hidden ||
+          (target instanceof Element &&
+            target.closest('a, button, input, select, textarea, summary'))
+        )
+          return
+        const bounds = canvas.getBoundingClientRect()
+        const x = (clientX - bounds.left) / bounds.width
+        const y = 1 - (clientY - bounds.top) / bounds.height
+        if (x < 0 || x > 1 || y < 0 || y > 1) return
+        pointer.move(x, y, performance.now(), dragging)
+        wake()
+      }
+      const onPointerMove = (event: Event) => {
+        if (!(event instanceof PointerEvent)) return
+        // Passive touchmove continues through native scrolling/pointercancel.
+        if (event.pointerType === 'touch') return
+        if (event.pointerType === 'mouse' && !finePointer.matches) return
+        movePointer(
+          event.clientX,
+          event.clientY,
+          event.target,
+          (event.buttons & 1) !== 0
+        )
+      }
+      const onPointerDown = (event: Event) => {
+        if (!(event instanceof PointerEvent && event.isPrimary)) return
+        movePointer(event.clientX, event.clientY, event.target, true)
+      }
+      const resetPointer = () => {
+        pointer.reset()
+        if (running) wake()
+      }
+      const onPointerLeave = (event: Event) => {
+        // Touch release keeps its short fade; the browser emits leave on lift.
+        if (event instanceof PointerEvent && event.pointerType !== 'touch') {
+          resetPointer()
+        }
+      }
+      const onTouchMove = (event: Event) => {
+        if (!(event instanceof TouchEvent)) return
+        if (event.touches.length !== 1) {
+          resetPointer()
+          return
+        }
+        const touch = event.touches.item(0)
+        if (touch) movePointer(touch.clientX, touch.clientY, event.target, true)
       }
       const sync = () => {
         const enabled =
@@ -98,6 +171,12 @@ export default function HeroIdentity() {
       }
       document.addEventListener('visibilitychange', sync)
       canvas.addEventListener('webglcontextlost', onContextLost)
+      stage.addEventListener('pointermove', onPointerMove, { passive: true })
+      stage.addEventListener('pointerdown', onPointerDown, { passive: true })
+      stage.addEventListener('touchmove', onTouchMove, { passive: true })
+      stage.addEventListener('pointerleave', onPointerLeave)
+      window.addEventListener('blur', resetPointer)
+      finePointer.addEventListener('change', resetPointer)
       draw()
       sync()
       cleanup = () => {
@@ -107,6 +186,12 @@ export default function HeroIdentity() {
         resize.disconnect()
         document.removeEventListener('visibilitychange', sync)
         canvas.removeEventListener('webglcontextlost', onContextLost)
+        stage.removeEventListener('pointermove', onPointerMove)
+        stage.removeEventListener('pointerdown', onPointerDown)
+        stage.removeEventListener('touchmove', onTouchMove)
+        stage.removeEventListener('pointerleave', onPointerLeave)
+        window.removeEventListener('blur', resetPointer)
+        finePointer.removeEventListener('change', resetPointer)
         host.removeAttribute('data-identity-ready')
         renderer.dispose()
       }

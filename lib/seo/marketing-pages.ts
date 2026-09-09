@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { BASE_URL } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
+import { socialImages, socialSchemaImage } from '@/lib/seo/social'
 
 export const MARKETING_PAGES = {
   apps: {
@@ -74,10 +75,6 @@ export function marketingMetadata(
   const url = `${BASE_URL}${content.paths[locale]}`
   const title = content.title[locale]
   const description = content.description[locale]
-  const image =
-    page === 'apps' || page === 'ai'
-      ? `${BASE_URL}/${locale}/opengraph-image`
-      : `${BASE_URL}/landing-v2/piuudito/desktop.jpg`
   return {
     title,
     description,
@@ -94,14 +91,15 @@ export function marketingMetadata(
       description,
       url,
       type: 'website',
+      siteName: 'Matteo Dante',
       locale: locale === 'it' ? 'it_IT' : 'en_US',
-      images: [{ url: image }],
+      images: socialImages(page, locale),
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: `${title} · Matteo Dante`,
       description,
-      images: [image],
+      images: socialImages(page, locale),
     },
   }
 }
@@ -135,6 +133,7 @@ export function marketingSchema(page: MarketingPage, locale: Locale) {
     '@graph': [
       {
         '@type': 'WebPage',
+        primaryImageOfPage: socialSchemaImage(page, locale),
         '@id': url,
         url,
         name: content.title[locale],

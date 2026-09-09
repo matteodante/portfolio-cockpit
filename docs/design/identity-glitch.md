@@ -104,3 +104,70 @@ material visual correction in the scoped hero/services/brands work.
 Its sole documentation finding was corrected by the documenter, then
 scored resolved in the targeted `ship` verdict. Review evidence and logs
 live in ignored `.impeccable/review/glitch/` and `.impeccable/tmp/`.
+
+## Cursor, tap and drag refinement — prepared 2026-09-09
+
+The owner requested local cursor interaction, then explicitly added tap
+and touch drag. The owner then clarified that input must distort the
+visible photograph, never reveal the identity underneath. Hover works
+without pressing; dragging with mouse or touch is distinctly stronger.
+`identity-pointer.ts` uses hover strength 0.32–0.55 and pressed/touch strength
+0.72–1, with movement-speed response, 55ms position following and a 190ms
+exponential decay. Once below 0.008, the interaction
+becomes exactly zero so the shared renderer can sleep again.
+
+The existing quad receives pointer position and strength. An irregular
+local lens distorts the visible identity with image-derived refraction,
+limited tearing, grain and chromatic separation. Pointer position and
+strength never alter the identity blend; only the independent five-second
+timeline does. Pixels outside the wake keep
+the clean photograph when the automatic transition is idle. No additional
+media, graphics library, custom cursor or page-wide overlay is introduced.
+
+Mouse movement, primary pointer down and passive single-touch movement
+feed the same effect. Touch release leaves the short decay; passive
+`touchmove` continues through native scroll’s pointer cancellation. Multiple
+fingers clear the wake. No preventDefault, pointer capture or touch-action
+override is added, so native scrolling and pinch zoom retain ownership.
+Link/form/control targets are excluded. Mouse exit, window blur, input-mode
+change, offscreen/hidden, pause and lost context clear the pointer state.
+
+Pointer input wakes the existing timer/RAF scheduler; it does not create a
+second permanent loop or reset the five-second automatic identity timeline.
+The shared cinema flag still controls pause and reduced motion.
+
+### Verification boundary
+
+Pure timing tests cover tap decay, stronger but bounded fast movement,
+position following, immediate reset and resuming without an old trail.
+These tests verify the input envelope, not visual rendering or browser
+interaction. Current browser capture, touch-scroll behavior, GPU frame
+budget, motion fallback and independent visual finish review remain
+pending. Computer Use reports the Mac locked; the owner confirmed they
+will unlock it at 18:00. The previous review above predates this refinement
+and must not be presented as approval of the new interaction.
+
+Next browser pass: desktop and mobile together, both identity states,
+mouse hover/fast movement, tap/drag and native scroll/pinch zoom, CTA clicks,
+keyboard focus, pause/reduced motion, offscreen/hidden and settled GPU idle.
+Capture the new states and hand them to a fresh Impeccable finish reviewer.
+
+Automatic checks for this preparation: `bun run check` passed (30 tests,
+175 assertions) and `bun run build` passed. Impeccable’s scoped detector
+reported zero primary findings; its only advisory concerns the existing
+social-card subtitle shade. The refreshed local production preview serves
+the updated code and all twelve portrait-based social cards.
+
+React Doctor’s changed-file scan reported an observer-cleanup error.
+A direct scan of both the exact HEAD component and the changed component
+reported the same `effect-needs-cleanup` message for `observe`. This is a
+pre-existing analyzer limitation around the async setup’s assigned cleanup:
+the returned effect callback invokes `cleanup`, which cancels timer/RAF,
+disconnects all three observers and removes every registered listener.
+The `destroyed` guard also stops setup after unmount during image loading.
+No suppression or tooling configuration was added. Comparison evidence:
+`.impeccable/tmp/cursor-glitch/cleanup-comparison.json`. Runtime lifecycle
+verification remains part of the deferred browser pass.
+
+The owner explicitly requested commit and push before the deferred browser
+pass. This authorization does not turn pending visual checks into a pass.

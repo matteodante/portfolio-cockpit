@@ -188,3 +188,13 @@ use shaders or media; no particular technical approach was prescribed.
 The owner explicitly requested visual judgment and iteration, then commit
 and push of all accumulated changes. Contact copy and usable static
 fallbacks remain part of the landing's purpose.
+
+## Owner refinement — portrait previews and direct interaction
+
+Confirmed 2026-09-09: use Matteo himself in all social sharing images,
+replacing the astronaut there. The homepage keeps its human/astronaut
+identity sequence and gains a glitch reactive to cursor, tap and touch drag.
+
+Owner clarification: direct input must glitch the currently visible identity,
+not reveal the other portrait. Hover responds without pressing; mouse and
+touch drag intensify the distortion. The automatic identity cycle remains.

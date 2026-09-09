@@ -1,0 +1,10 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-09-09",
+  "prompt": "Create one original cinematic first-frame image for a six-second website film, landscape 16:9, high resolution. References: image 1 is the exact original designer-toy astronaut identity, image 2 is the approved lunar landscape and lighting palette. Preserve the astronaut's distinctive octagonal ivory helmet, opaque deep amber-black visor, ivory segmented suit, orange narrow arm and leg bands, twin pale hoses, orange hexagonal waist fittings and dark gloves. Re-stage this exact character as a convincing premium physical miniature photographed on a lunar set. Medium-wide three-quarter view, astronaut standing on a low charcoal lunar ridge in the center-right, entire figure from helmet to boots visible and occupying roughly 60 percent of frame height. Head very slightly turned toward the far horizon. Asymmetrical finely detailed lunar craters lead from left foreground toward the character and distant ridges. Near-black clear sky, restrained warm amber grazing sunlight from camera right, cool soft shadow fill, tactile satin ivory materials, realistic glass reflections, tiny imperfections, cinematic physically plausible exposure. Quiet, serious, exquisite film-production art direction consistent with Matteo Dante's existing website. Maintain room around the figure for a slow lateral camera dolly; the scene must read when cropped closer inside a website panel. All design details remain stable and coherent. No letters, no numbers, no agency insignia, no product logos, no third-party brand references, no watermark, no interface, no caption, no colored nebula, no cartoon illustration. This is a standalone movie still, not a webpage screenshot.",
+  "references": [
+    "public/landing-v2/astronaut.webp",
+    "public/landing-v2/lunar-world.webp"
+  ],
+  "purpose": "First frame for an original MiniMax H3 video. Video not generated yet."
+}

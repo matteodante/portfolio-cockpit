@@ -160,6 +160,12 @@ split introductions, real website and app captures, practical sections and
 native disclosures. Their flat booking and consent controls use the same
 palette and focus language as the landing.
 
+Social previews extend the current hero into one fixed 1200×630 image:
+Matteo's photographic portrait with folded arms and the lunar terrain sit
+right of a stacked solid name, orange punctuation, localized page title
+and subtitle, and the public domain. Six destinations share this composition
+equally in EN/IT. The photographic avatar also supplies the favicon and app icons.
+
 **Key Characteristics:**
 
 - Near-black space, warm ivory text and orange actions.
@@ -270,6 +276,12 @@ Commercial page titles use Unbounded 700 at `clamp(42px, 5vw, 72px)`,
 Grotesk 20px/1.6 and 18px on mobile; prose uses 1.75 line-height.
 FAQ questions use 18px. These are the commercial reading surface's
 hierarchy, not replacements for the cinematic landing or cockpit scales.
+
+Server-rendered social cards bundle local Unbounded 900 and Space Grotesk
+500 TTF files separately from the webpage font loader. Their solid,
+mixed-case name uses 92px/1.12 and −0.03em tracking; the page title uses
+30px/1.35, its subtitle 24px, and the domain 20px. These fixed raster sizes
+scale with the 1200×630 output and do not change the webpage type tokens.
 
 **The Type Roles Rule.** Use Unbounded for interface titles, Space Grotesk
 for reading and actions, and JetBrains Mono for telemetry and code on
@@ -399,8 +411,8 @@ by the timed effect.
 The first transformation starts 650ms after the ready hero begins visible,
 motion-enabled time. Each transition lasts 1120ms; starts recur every
 5000ms and alternate direction. Timers sleep through settled frames;
-`requestAnimationFrame` runs during transformations, with settled redraws
-for setup or resize. Offscreen/hidden-document time is suspended rather
+`requestAnimationFrame` runs during transformations and short pointer/touch
+wakes, with settled redraws for setup or resize. Offscreen/hidden-document time is suspended rather
 than accumulating missed changes. Pixel ratio is capped at 1.5.
 
 A clean astronaut poster is server-rendered immediately. The existing
@@ -408,6 +420,17 @@ motion toggle, reduced-motion preference and no-JavaScript mode select
 that poster. A failed image/module, unavailable GPU or lost context also
 keeps it visible. This enhancement has no loading gate, sound or video
 decoder, and text, contact and booking links remain independent of it.
+
+The prepared cursor/touch extension adds a local irregular refractive lens
+inside the portrait: cursor motion glitches the visible photograph, with
+stronger distortion during mouse or touch drag. It never reveals the other
+identity; the automatic transformation remains independent. Hover strength
+is 0.32–0.55; pressed/touch strength is 0.72–1. A bounded speed response, 55ms
+position following and 190ms decay return the image to its clean state.
+Controls, native scroll and pinch zoom retain their normal behavior in the
+implementation. This interaction awaits browser visual and lifecycle
+validation after the owner unlocks the Mac; the prior hero finish review
+does not cover it. See `docs/design/identity-glitch.md`.
 
 The relationship wall uses three flat CSS transform loops moving right,
 left, right over 130s, 140s and 125s, with linear timing and starting
@@ -723,6 +746,29 @@ captures retain their actual UI and colors, documented in
 text are not templates for decorative kickers or a new small-text scale.
 Static detector advisories do not define new rules; isolated legacy values
 are not promoted to shared tokens.
+
+### Social sharing cards
+
+One static composition serves home, websites, apps, AI, PiùUDITO and cockpit
+in both languages. The original hero-derived Image Gen JPEG places the
+recognizable Matteo in a black shirt on the right, with his complete head
+and folded arms visible and quiet dark space for copy on the left.
+The stacked solid name begins at
+64px left and 74px top in a 610px column; title and subtitle sit 36px below
+it in a 570px column. The domain sits at 66px left and 42px from the bottom.
+The name and title use Ivory Suit, the period uses Thruster Orange, and
+the local subtitle shade is `#c5c2bb`. That shade is scoped to these raster
+cards; it does not replace the shared Muted Text token.
+
+`lib/seo/social-image.tsx` composes the image and local fonts without
+external rendering requests; `lib/seo/social.ts` supplies localized copy.
+All twelve PNGs are prerendered during the build. Page-specific copy names
+the actual destination; Matteo's portrait remains personal identity artwork,
+including on the PiùUDITO preview. It is not client work imagery.
+The favicon, Apple icon and 192/512px manifest icons are resampled from the
+current photographic avatar. Source prompts, image processing and font
+licenses are recorded in `public/social/origin.json`,
+`public/fonts/social-origin.json` and `docs/design/social-metadata.md`.
 
 ## Do's and Don'ts
 

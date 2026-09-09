@@ -1,0 +1,10 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-09-09",
+  "prompt": "Create one complementary original cinematic close-up first-frame image for a six-second website film, landscape 4:3, high resolution. Reference 1 defines the exact original designer-toy astronaut: faceted octagonal ivory helmet, deep amber-black opaque visor, ivory suit with restrained orange and two hoses. Reference 2 defines the lunar environment, realistic physical-miniature material and warm grazing sunlight of the matching wide shot. Now photograph an extreme close-up of this SAME astronaut from upper chest to the top of the helmet, three-quarter angle slightly looking toward camera left. The helmet fills roughly 65 percent of the frame, centered, with complete top and enough shoulder framing. The visor is glossy amber-black, with a physically correct subtle reflection of a curved lunar ridge and a tiny warm light; no visible face or eyes. Emphasize the beveled octagonal helmet edge, satin ivory shell, fine contact shadows, very subtle dust and a sliver of orange upper-arm band. Deep charcoal out-of-focus lunar horizon and almost black sky behind. Warm amber rim illumination from the right, restrained cool shadow fill, precise material definition, rich blacks, exceptional cinematic optical realism as a high-end practical model shoot, clean restrained image. Preserve exact character identity and recognizable geometry. Keep the composition balanced for a very slow camera arc and a traveling highlight across the curved visor. No logos, no agency insignia, no third-party design marks, no lettering, no numbers, no UI, no watermark, no extra astronaut, no neon, no cartoon illustration. Standalone film still, not a website mockup.",
+  "references": [
+    "public/landing-v2/astronaut.webp",
+    "assets/work-video/mission-first-frame.png"
+  ],
+  "purpose": "First frame for an original MiniMax H3 video. Video not generated yet."
+}

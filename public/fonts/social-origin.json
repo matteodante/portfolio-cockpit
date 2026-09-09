@@ -1,0 +1,9 @@
+{
+  "source": "Google Fonts",
+  "date": "2026-09-09",
+  "fonts": {
+    "social-space-grotesk-500.ttf": "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7aUUsj.ttf",
+    "social-unbounded-900.ttf": "https://fonts.gstatic.com/s/unbounded/v12/Yq6F-LOTXCb04q32xlpat-6uR42XTqtG67H2040.ttf"
+  },
+  "purpose": "Local font files for deterministic social image rendering; no runtime font fetch."
+}

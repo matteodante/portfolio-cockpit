@@ -7,6 +7,7 @@ import { BASE_URL, SITE_NAME } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
 import { isValidLocale, locales, OG_LOCALE } from '@/lib/i18n/config'
 import { getCockpitPageSchema } from '@/lib/seo/schemas'
+import { socialImages } from '@/lib/seo/social'
 
 const META: Record<Locale, { title: string; description: string }> = {
   en: {
@@ -45,6 +46,7 @@ export async function generateMetadata({
     },
     openGraph: {
       type: 'website',
+      images: socialImages('cockpit', locale),
       title: t.title,
       description: t.description,
       url,
@@ -56,6 +58,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
+      images: socialImages('cockpit', locale),
       title: t.title,
       description: t.description,
     },

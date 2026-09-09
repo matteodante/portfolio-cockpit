@@ -16,6 +16,8 @@ uniform sampler2D matteo;
 uniform float progress;
 uniform float strength;
 uniform float time;
+uniform vec2 pointer;
+uniform float interaction;
 varying vec2 uv;
 
 float hash(vec2 p) {
@@ -49,7 +51,18 @@ float heightMap(vec2 p) {
   return dot(plate(p, progress), vec3(0.2126, 0.7152, 0.0722));
 }
 void main() {
-  if (strength < 0.001) {
+  if (strength < 0.001 && interaction < 0.001) {
+    gl_FragColor = vec4(plate(uv, progress), 1.0);
+    return;
+  }
+  // Pointer input distorts the visible plate; only the timer changes identity.
+  vec2 cursorDelta = (uv - pointer) * vec2(0.8, 1.0);
+  float cursorDistance = length(cursorDelta);
+  float cursorContour = cursorDistance
+    + (field(uv * 17.0 + time * 0.2) - 0.5) * 0.04;
+  float cursorField = 1.0 - smoothstep(0.018, 0.22, cursorContour);
+  float local = cursorField * interaction;
+  if (strength < 0.001 && local < 0.001) {
     gl_FragColor = vec4(plate(uv, progress), 1.0);
     return;
   }
@@ -73,9 +86,13 @@ void main() {
   displacement += normal * front * 0.085
     + (uv - vec2(0.5, 0.74)) * ripple * 0.028;
   displacement *= strength;
+  displacement += local * (normal * 0.045
+    + vec2(tear * 0.085, 0.0)
+    + cursorDelta * sin(cursorDistance * 95.0 - time * 12.0) * 0.055);
   vec2 p = uv + displacement;
-  float blend = reveal(p);
+  float blend = reveal(uv);
   float fringe = strength * (0.0008 + front * 0.005 + abs(tear) * 0.020);
+  fringe += local * (0.002 + abs(tear) * 0.024);
   vec3 color = vec3(
     plate(p + vec2(fringe, 0.001 * strength), blend).r,
     plate(p, blend).g,
@@ -94,7 +111,10 @@ void main() {
   float line = step(0.965, fract(uv.y * 410.0 + tick * 0.23));
   color *= 1.0 - line * strength * front * 0.17;
   float grain = hash(floor(uv * vec2(960.0, 1200.0)) + tick) - 0.5;
-  color += grain * 0.045 * strength * smoothstep(0.03, 0.2, detail);
+  color += grain * (0.045 * strength + 0.025 * local)
+    * smoothstep(0.03, 0.2, detail);
+  color += vec3(0.10, 0.045, 0.012) * local * abs(tear)
+    * smoothstep(0.03, 0.25, detail);
   gl_FragColor = vec4(color, 1.0);
 }
 `

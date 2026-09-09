@@ -1,3 +1,4 @@
+import type { IdentityPointerFrame } from '@/components/landing/identity-pointer'
 import {
   IDENTITY_FRAGMENT,
   IDENTITY_VERTEX,
@@ -88,9 +89,16 @@ export function createIdentityRenderer(
     progress: gl.getUniformLocation(program, 'progress'),
     strength: gl.getUniformLocation(program, 'strength'),
     time: gl.getUniformLocation(program, 'time'),
+    pointer: gl.getUniformLocation(program, 'pointer'),
+    interaction: gl.getUniformLocation(program, 'interaction'),
   }
   return {
-    draw(progress: number, strength: number, time: number) {
+    draw(
+      progress: number,
+      strength: number,
+      time: number,
+      pointer: IdentityPointerFrame
+    ) {
       const ratio = Math.min(window.devicePixelRatio, 1.5)
       const width = Math.max(1, Math.round(canvas.clientWidth * ratio))
       const height = Math.max(1, Math.round(canvas.clientHeight * ratio))
@@ -102,6 +110,8 @@ export function createIdentityRenderer(
       gl.uniform1f(uniforms.progress, progress)
       gl.uniform1f(uniforms.strength, strength)
       gl.uniform1f(uniforms.time, time)
+      gl.uniform2f(uniforms.pointer, pointer.x, pointer.y)
+      gl.uniform1f(uniforms.interaction, pointer.strength)
       gl.drawArrays(gl.TRIANGLES, 0, 6)
     },
     dispose,

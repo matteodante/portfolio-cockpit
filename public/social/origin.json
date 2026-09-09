@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-09",
+  "background": {
+    "file": "hero-background.jpg",
+    "generator": "built-in Image Gen",
+    "prompt": "Edit reference image 1, the 1200:630 social-card background. Replace ONLY the astronaut on the right with Matteo, the exact recognizable real person in reference image 2. Use reference image 3 as additional face identity detail. Preserve his face proportions, curly short brown hair, black angular glasses with amber lenses, earring, natural skin texture, black short-sleeve t-shirt, folded arms and confident relaxed expression from reference 2. Do not beautify or change identity. Position him with the same scale and framing as the astronaut: complete head with about 5 percent headroom, head centered around 75 percent canvas width, visible crossed forearms and waist, torso wholly on the right 42 percent. Natural believable human anatomy, hands and forearms. Match the warm rim light to the existing lunar setting. Keep the entire left 57 percent quiet near-black for later text, keep the existing lunar foreground and original horizon and overall 1200:630 composition. The final image must contain Matteo in normal black clothing, no spacesuit and no astronaut anywhere. Photorealistic cinematic portrait composited naturally into the same brand landscape. No text, numbers, symbols, logos, graphic overlays, extra characters or watermark. Do not redraw the background unnecessarily. This is one finished background image, not a mockup.",
+    "references": [
+      "public/landing-v2/identity/matteo.webp",
+      "public/landing-v2/matteo-portrait-v2.webp"
+    ],
+    "editTargetBeforeReplacement": {
+      "file": "hero-background.jpg",
+      "generator": "built-in Image Gen",
+      "prompt": "Create a finished photographic background for Matteo Dante's Open Graph / social sharing card, landscape 1200:630 ratio, high resolution, NO TEXT. It must faithfully translate the actual website hero, using reference image 1 as the exact astronaut portrait identity and reference image 2 as the exact lunar world and light palette. Preserve the realistic original astronaut's recognizably octagonal ivory helmet with deep opaque amber-black glass, folded arms, chest controls, hoses, orange arm stripes, adult proportions, camera angle and pose from reference 1. Place this astronaut on the RIGHT 42 percent of the composition, large from helmet to below crossed arms, helmet fully visible with about 5 percent top margin, shoulder silhouette not touching the right edge. Blend it naturally into the lunar ground from reference 2 occupying only the lower quarter, with subtle amber rim light and cool neutral shadows. The entire LEFT 57 percent must be very dark near-black #05060a and quiet, with only a barely visible lunar ridge at the very bottom. That area is reserved for typographic content composited in code later. The right side is sculptural and richly detailed; the left is negative space. Premium cinematic photography of a believable sci-fi physical prop, exact ivory/dark/amber brand palette, restrained saturation, clear confident silhouette, optically realistic glass, fine material texture. No other characters, no face in the visor, no giant planet, no bright nebula, no sparkles, no HUD, no emblems, no agency logos, no symbols, no letters, no numbers, no watermark, no caption, no graphic frame. One integrated background photograph, not a website screenshot or mockup.",
+      "references": [
+        "public/landing-v2/identity/astronaut.webp",
+        "public/landing-v2/lunar-world.webp"
+      ],
+      "processing": "Resize to1200x630 and JPEG encoding only.",
+      "sha256": "0f958f7db459c305e5fe7d1060e616fb3a812d3c2ddb188e90fcc19b660962d4"
+    },
+    "processing": "Resize to 1200x630 and JPEG encoding only.",
+    "identity": "Matteo in normal black clothing, per the owner correction; no astronaut in social previews."
+  },
+  "icons": {
+    "source": "/landing-v2/matteo-avatar-v2.webp",
+    "files": [
+      "/icon.png",
+      "/apple-icon.png",
+      "/favicon.ico",
+      "/social/avatar-192.png",
+      "/social/avatar-512.png"
+    ],
+    "processing": "Format conversion and resampling only; no new face generation."
+  },
+  "socialCards": {
+    "renderer": "lib/seo/social-image.tsx",
+    "copy": "lib/seo/social.ts",
+    "routes": "/social/{en|it}/{home|websites|apps|ai|piuudito|cockpit}.png",
+    "size": "1200x630",
+    "description": "Programmatic Next ImageResponse composition of the original Matteo portrait on lunar terrain and local Unbounded 900 / Space Grotesk 500 fonts. Localized title and subtitle identify the actual page."
+  }
+}

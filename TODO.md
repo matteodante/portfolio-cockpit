@@ -43,9 +43,9 @@ Flusso: previz 480p → approvazione → finale 720p/1080p → encode ffmpeg
 
 ## Grafica / brand
 
-- [ ] OG + Twitter image (`app/[lang]/opengraph-image.tsx`,
-      `twitter-image.tsx`): usano ancora la grafica pre-landing.
-      Rifarle col logo cartoon + mondo glossy-toy.
+- [x] OG + Twitter: dodici anteprime EN/IT con Matteo sul paesaggio lunare,
+      metadati per pagina e icone fotografiche. Dettagli in
+      `docs/design/social-metadata.md`.
 - [ ] README: gli screenshot in `preview/` mostrano il sito vecchio
       (solo cockpit). Aggiornare con landing + cockpit.
 - [ ] Valutare logo astronauta (già generato, in scratchpad) come

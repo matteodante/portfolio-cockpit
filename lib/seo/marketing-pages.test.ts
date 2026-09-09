@@ -7,6 +7,7 @@ import {
   marketingSchema,
   resolveMarketingPage,
 } from '@/lib/seo/marketing-pages'
+import { socialImages } from '@/lib/seo/social'
 
 describe('localized commercial pages', () => {
   test('canonical origin is the public domain even in local previews', () => {
@@ -18,6 +19,10 @@ describe('localized commercial pages', () => {
         const paths = MARKETING_PAGES[page].paths
         const metadata = marketingMetadata(page, locale)
         expect(resolveMarketingPage(paths[locale])).toBe(page)
+        const image = socialImages(page, locale)
+        expect(metadata.openGraph?.images).toEqual(image)
+        expect(metadata.twitter?.images).toEqual(image)
+        expect(image[0]?.url).toBe(`${BASE_URL}/social/${locale}/${page}.png`)
         expect(metadata.alternates?.canonical).toBe(
           `${BASE_URL}${paths[locale]}`
         )
