@@ -299,3 +299,45 @@ animated plate registration, cursor/touch, fallback and GPU behavior remain
 pending: Computer Use confirmed the Mac was still locked this turn. Older
 reviews and historical portfolio screenshots do not validate these changes.
 No public deployment, commit or push is included in this replacement.
+
+
+## Owner correction — explicit hero and portrait references
+
+This supersedes the portrait-replacement pose above and the rejected wider
+services edit. Photo 1 from attachment A7C4C9E2 supplies the hero's exact
+smiling face and clear black glasses. Photo 3 supplies actual body
+proportions only. Return to the original wider folded-arm hero composition,
+plain black T-shirt and flat near-black background, without the gray wall.
+The old generated human plate supplies only pose, framing and lighting.
+Restore its folded-arm astronaut counterpart; preserve renderer and inputs.
+
+Photo 2 was the services portrait reference: close head-and-shoulders crop,
+black and white, expression only slightly more relaxed, faithful face and
+glasses. Keep the existing 7:8 frame at 220px/150px with its thin outline.
+Use separate image assets. Avatar and social artwork retain their current
+versions while these two photographs are refined. Person metadata follows
+the current color hero asset.
+
+The owner explicitly deferred updating the matteodante.it project preview
+until the overall design is settled. Keep that real historical screenshot
+as it is in this pass. Current browser validation remains pending while
+the Mac is locked; no older capture validates the new photograph.
+
+The owner subsequently approved the hero: "Foto hero perfetta". Preserve
+that image and its counterpart. For services, replace the Photo 2 reference
+with the man on the left in attachment B7F1C78D, preserving his authentic
+smile without glasses. Keep close-up framing, monochrome, black T-shirt,
+near-black background and the existing 7:8 services frame.
+
+## Approved release — both portraits and sharing
+
+The owner approved both latest photographs and authorized final integration,
+commit and push. Keep the hero and services images exactly as approved.
+Use the color hero directly in all twelve EN/IT social images, with existing
+fonts and copy; derive the shared avatar/icons from the approved monochrome
+close-up using CSS image layout, without another generative face edit.
+The project card now uses the actual localized social cover, explicitly
+described as a cover, alongside the existing real cockpit screenshot.
+Mac lock prevents a fresh browser capture; no synthetic UI screenshot.
+Owner exception: retain the previous photograph in all CV documents and
+their original profile-pic.jpeg source.

@@ -213,7 +213,8 @@ the current site portraits with it: “Ok usiamo me per sostituire le attuali
 sul sito”. It is an approved photographic edit based on his supplied real
 photos, preserving his natural smile and clear-lens black glasses.
 
-The approved master now supplies the human hero, services and Person schema.
+That replacement supplied the human hero, services and Person schema;
+the later photo-role correction below supersedes the hero and services assets.
 A square headshot edit supplies the shared avatar and icons; the social
 background uses the same identity in the existing lunar composition. The
 astronaut counterpart follows the relaxed arms-at-sides pose. The hero's
@@ -230,3 +231,34 @@ support credibility where appropriate. The implementation uses their
 existing public role/sector summaries as company-team experience; it does
 not claim freelance client status, sole authorship of corporate products,
 or new commercial outcomes.
+
+
+## Owner correction — hero and services photo roles
+
+The owner supplied three new photographs with explicit roles: Photo 1 is
+the smiling face with clear black glasses for the hero; Photo 3 establishes
+his real body proportions. The hero returns to the earlier wider folded-arm
+pose, black T-shirt and near-black background, with no gray studio rectangle.
+The old generated face and physique are not identity references.
+
+Photo 2 was the sole facial reference for the services portrait: a close-up
+in black and white, with a slightly more relaxed expression. The wide
+folded-arm services interpretation was rejected. These are two separate
+photographic edits. Refreshing the matteodante.it project screenshot is
+explicitly deferred until the overall design direction is settled.
+
+Latest owner selection: the color hero is explicitly approved ("Foto hero
+perfetta"). Change only the services portrait using the man on the left
+in the new boat selfie, attachment `B7F1C78D-2DF1-4363-BAA5-02564ADC60B1`.
+Preserve his natural smile and lack of glasses, in a close-up monochrome
+portrait with black T-shirt and near-black background.
+
+## Owner approval — final website identity
+
+Both latest portraits are approved. Use the folded-arm hero and close-up
+throughout the website, avatar/icons and all EN/IT Open Graph/Twitter
+previews, update the project preview, then commit and push. The website
+project preview uses the actual localized social cover while the Mac is
+locked; the cockpit retains its authentic historical gameplay screenshot.
+The owner explicitly requires the previous photo to remain in the CV:
+public and protected PDFs and their `profile-pic.jpeg` source are unchanged.

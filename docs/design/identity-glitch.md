@@ -4,9 +4,10 @@
 
 The owner requested a cinematic identity glitch on initial load, then an
 astronaut/Matteo transformation every five seconds. The visual subject is
-the same person in two states. The current owner-approved portrait has
-relaxed arms at the sides, a natural smile and clear-lens black glasses;
-the astronaut follows its camera and head/shoulder placement. The headline, offer and booking
+the same person in two states. The latest photo-role correction returns
+to folded arms and the wider original framing. Photo 1 supplies Matteo's
+smiling face and clear black glasses; Photo 3 supplies real body proportions.
+The original folded-arm astronaut plate is restored. The headline, offer and booking
 controls remain still while the subject transforms.
 
 The implementation uses two photographic plates and one native WebGL quad.
@@ -32,31 +33,30 @@ the actual visor and face detail.
 - Pixel ratio is capped at 1.5. No Three.js import, video decoder,
   additional runtime package, sound, full-screen flash or loading gate.
 
-The current WebP pair totals 194,470 bytes, excluding provenance.
-This is an asset transfer count, not a field-performance score.
+The current WebP sizes are recorded in the adjacent provenance manifests.
+These are asset transfer counts, not field-performance scores.
 The landing's two cockpit links disable automatic route prefetching:
 production inspection showed it was also fetching the game's 2.1 MB GLB
 before a click. The cockpit keeps its own asset preload when opened.
 
 ## Generated assets and provenance
 
-`public/landing-v2/matteo-portrait-v3.webp` and
-`public/landing-v2/identity/astronaut-v2.webp` are both 960 × 1200,
-respectively 75,748 and 118,722 bytes. The human plate is the exact approved
-`assets/portrait-options/matteo-a-real-reference.png`, resized and encoded
-without another generative edit. These are opaque
-dark-background photographic plates, not transparent cutouts. Their
+`public/landing-v2/matteo-portrait-v4.webp` and
+`public/landing-v2/identity/astronaut.webp` are both 960 × 1200.
+The human plate is an Image Gen edit using the latest real face/body
+references. The old human plate is only a pose/framing reference; its
+generated face is not the identity source. These are opaque near-black
+photographic plates, not transparent cutouts. Their
 frame edges blend into the scene through CSS; the subject is not
 approximated by a geometric cutout.
 
-Matteo's approved master is a photographic edit based on his supplied real
-photos. The new Image Gen astronaut uses that approved master as its pose
-reference and the previous astronaut as its character reference. Both now
-have relaxed arms at their sides. The old folded-arm runtime plates were
-removed; their source history remains in Git and the generated masters.
+The astronaut is restored byte-for-byte from `eb0606b`, including original
+prompts and provenance. Both have folded arms and the original warm edge
+light. The previous gray-background, arms-at-sides pair is superseded for
+the hero; its history remains in Git and the generated masters.
 The adjacent `.webp.origin.json` and `.webp.json` files record prompts,
-source paths and processing. `assets/portrait-options/site-integration.json`
-records the exact integration prompts; see [portrait-provenance.md](portrait-provenance.md).
+source paths and processing. `assets/portrait-options/hero-services-correction.json`
+records the latest prompts; see [portrait-provenance.md](portrait-provenance.md).
 
 The original full-body astronaut remains as a source asset, not the current
 hero or Work image. The cockpit Three.js model is unchanged.

@@ -1,0 +1,6 @@
+{
+  "source": "public/landing-v2/lunar-world.webp",
+  "sourcePrompt": "Create a cinematic panoramic lunar landscape background asset for Matteo Dante's space-themed freelance website, landscape 3:2 high resolution. Premium physical miniature world photographed with a macro cinema lens: rounded sculpted lunar crater ridges, dark charcoal and warm ivory regolith, subtle small pebbles, restrained amber-orange grazing sunlight from camera right, cool soft fill, crisp finely detailed foreground. Horizon in the upper third, vast near-black empty sky with a handful of very faint stars. Terrain across full bottom two thirds, asymmetrical ridges creating spatial depth from left foreground to right distance. Serious beautiful cinematic toy-world atmosphere, believable material texture and restrained saturation, compatible with a glossy ivory toy astronaut with black visor and orange details. This asset is background only. No astronaut, no people, no text, no lettering, no logos, no spacecraft, no big planet in sky, no blue nebula, no gradient illustration. The website overlays its own text and astronaut, so keep upper-left sky exceptionally quiet and dark.",
+  "processing": "Resize and JPEG encoding only",
+  "sha256": "6770c251632ed0ee55b0d36bc7eaadb0d18d25c6c9cbf7e92f4ed6cd55af4b7d"
+}

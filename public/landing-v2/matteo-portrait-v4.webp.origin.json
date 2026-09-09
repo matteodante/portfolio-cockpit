@@ -1,0 +1,28 @@
+{
+  "generator": "Built-in Image Gen",
+  "date": "2026-09-09",
+  "id": "hero",
+  "source": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-5eea6c38-e16a-408d-874e-a7f75d81800f.png",
+  "target": "public/landing-v2/matteo-portrait-v4.webp",
+  "width": 960,
+  "height": 1200,
+  "prompt": "Use case: identity-preserve.\nAsset type: photographic hero portrait for Matteo Dante's personal website, vertical 4:5.\nCreate the man from reference 1 in the folded-arm standing pose and wider waist-up composition of reference 3, with his ACTUAL physique from reference 2. Reference 1 is the sole authoritative facial identity: this exact young man, his real natural smile, face width, nose, lips, green/hazel eyes, short irregular brown curls, light stubble, small hoop earring and glossy thick black rectangular clear-lens glasses. Do not average his face with the generated person in reference 3.\nInput roles: reference 1 = REAL FACE and expression; reference 2 = REAL BODY PROPORTIONS ONLY, not boat, shorts, pose or shirtlessness; reference 3 = old generated hero, POSE, FRAMING, LIGHTING and BACKGROUND ONLY, never face or physique.\nDress him in a plain black crewneck T-shirt. Arms folded naturally as in reference 3, relaxed shoulders and subtly angled torso, looking into camera with an approachable authentic smile. Keep real moderate athletic build from reference 2: realistic head-to-shoulder ratio, normal neck, arms and chest, not inflated biceps, broad model shoulders or stylized jaw. Full head including hair with a little headroom; frame through waist and keep elbows inside frame. Natural photographic detail and skin texture, no beauty smoothing, no face reshaping or perfect stock-model symmetry.\nOpaque flat very-near-black background RGB(5,6,10) hex #05060a across every unoccupied pixel, like reference 3. No gray studio wall, gradient, spotlight glow, halo, scenery, transparency checkerboard or cast shadow behind him. Soft flattering neutral light on the actual face and a faint warm edge light as in reference 3. Color photograph. One person, no lettering, no astronaut. Highest priority is recognizable faithful identity from reference 1.",
+  "references": [
+    {
+      "path": "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/A7C4C9E2-7CB1-43B2-A5AC-1F060B6E2B69/1-Foto-1.jpg",
+      "role": "Authoritative real face, clear glasses and smile"
+    },
+    {
+      "path": "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/A7C4C9E2-7CB1-43B2-A5AC-1F060B6E2B69/3-Foto-3.jpg",
+      "role": "Real body proportions only"
+    },
+    {
+      "path": "public/landing-v2/identity/matteo.webp",
+      "revision": "eb0606b",
+      "role": "Previous generated plate: pose, framing, light and background only; not facial identity"
+    }
+  ],
+  "bytes": 78154,
+  "sha256": "3df17745f4098b757afee189edfe761e17df558eb854fba9498d0423a1e77ac3",
+  "processing": "Resize/crop to requested aspect ratio and WebP encoding only. No facial or background editing outside Image Gen."
+}

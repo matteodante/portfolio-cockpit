@@ -8,7 +8,7 @@ const COPY = {
     home: 'Esplora la homepage',
     play: 'Prova il cockpit 3D',
     landingAlt:
-      'La homepage di matteodante.it con il ritratto di Matteo e i percorsi di contatto',
+      'Copertina di matteodante.it con il ritratto approvato di Matteo e i suoi servizi',
     cockpitAlt:
       'Il cockpit di Matteo su mobile: astronauta, pianeti e controlli di gioco',
   },
@@ -17,7 +17,7 @@ const COPY = {
     home: 'Explore the homepage',
     play: 'Try the 3D cockpit',
     landingAlt:
-      'The matteodante.it homepage with Matteo’s portrait and contact links',
+      'The matteodante.it cover featuring Matteo’s approved portrait and services',
     cockpitAlt:
       'Matteo’s cockpit on mobile: astronaut, planets and game controls',
   },
@@ -35,12 +35,12 @@ export default function PortfolioEvidence({
     <article className="website-proof portfolio-proof">
       <div className="portfolio-proof-views">
         <Image
-          src="/landing-v2/portfolio/landing.jpg"
+          src={`/landing-v2/portfolio/website-${locale}-v4.webp`}
           alt={t.landingAlt}
-          width={1440}
-          height={900}
+          width={1200}
+          height={630}
           sizes="(max-width: 799px) 72vw, 460px"
-          quality={85}
+          quality={90}
         />
         <Image
           src="/landing-v2/portfolio/cockpit-mobile.jpg"
@@ -48,7 +48,7 @@ export default function PortfolioEvidence({
           width={390}
           height={844}
           sizes="(max-width: 799px) 22vw, 140px"
-          quality={85}
+          quality={90}
         />
       </div>
       <div>

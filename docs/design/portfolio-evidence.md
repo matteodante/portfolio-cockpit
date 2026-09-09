@@ -29,21 +29,20 @@ Sources: `public/resume/cv.it.md`, `public/resume/cv.md` and the public
 `experience.03`/`experience.04` translations. No gated CV content, private
 architecture, employer metrics, testimonials or results were added.
 
-## Actual project captures
+## Project covers and actual cockpit capture
 
-`public/landing-v2/portfolio/landing.jpg` comes from the prior settled
-Matteo hero capture; `cockpit-mobile.jpg` comes from the prior public mobile
-gameplay capture. The original screenshot pixels were JPEG-encoded without
-retouching or cropping. These are real UI captures, not generated mockups.
-The homepage capture predates its added service navigation shortcut; it
-records the existing hero composition, portrait and CTAs. The cockpit
-capture shows no access code or private CV content.
+`public/landing-v2/portfolio/website-{en,it}-v4.webp` are current localized
+covers emitted by the site's actual social renderer, using the approved
+hero. They replace the outdated homepage screenshot. Alt text identifies
+these as covers, and the image keeps its 1200×630 aspect ratio. Mac lock
+prevents a fresh browser capture; no synthetic screenshot is substituted.
 
-Both carry embedded origins; `origin.json` records capture paths and hashes.
-Together the source JPEGs are about 132 KiB. Next Image loads them lazily,
-with intrinsic dimensions and responsive sizes. The side-by-side screenshot
-pair occupies the existing editorial proof-row layout and stacks with its
-copy on mobile. All links remain normal server-rendered links.
+`cockpit-mobile.jpg` remains the authentic historical public mobile gameplay
+capture. It contains no access code or private CV content. Its pixels and
+provenance are unchanged. The two-image composition keeps the existing
+fluid primary column and 24% companion, with intrinsic dimensions and lazy
+loading. Image quality uses the configured 90 value. Sources, hashes and
+original capture information live alongside the images in `origin.json`.
 
 ## SEO and measurement
 
@@ -53,7 +52,7 @@ personal project. Existing `project_opened` tracking accepts two explicit
 labels: `portfolio_website` and `portfolio_cockpit`. These clicks represent
 interest in an example, not a lead, appointment or completed game.
 
-## Validation
+## Earlier validation (before the approved covers)
 
 - `bun run check`: passed, 31 tests and 191 assertions.
 - `bun run build`: passed.
@@ -74,3 +73,5 @@ inspection and the independent visual finish review remain pending while
 the owner's Mac is locked. The owner said they will unlock it at 18:00.
 Previous social-card and cinematic-hero reviews do not approve this layout.
 No live analytics receipt or conversion/SEO result is claimed.
+
+Current release verification is recorded in [identity-release.md](identity-release.md).

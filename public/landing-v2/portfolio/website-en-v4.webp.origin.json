@@ -1,0 +1,9 @@
+{
+  "file": "website-en-v4.webp",
+  "type": "Actual site-generated social cover",
+  "source": "/social/en/home.png?v=portrait-4",
+  "renderer": "lib/seo/social-image.tsx",
+  "description": "Actual localized social cover rendered by lib/seo/social-image.tsx from the owner-approved Matteo hero photograph and existing lunar landscape, with Unbounded and Space Grotesk typography. This is a graphic project cover, not a browser screenshot. No new generated face.",
+  "sourceSha256": "88414ea24a3c1b00589fbf9e5de367e7152ae8b71091fb4c9186ddd570130b6b",
+  "sha256": "88414ea24a3c1b00589fbf9e5de367e7152ae8b71091fb4c9186ddd570130b6b"
+}

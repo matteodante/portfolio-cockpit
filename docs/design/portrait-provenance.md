@@ -1,6 +1,79 @@
 # Matteo portrait and avatar provenance
 
-## Approved identity — 2026-09-09
+## Final approved integration
+
+Both current portraits are approved and the owner authorized commit/push.
+The release extends them to all site portraits, avatar/icons, twelve social
+cards and localized project covers. It uses the exact approved photographs
+through CSS image layout; no further generative face changes. Superseded
+runtime portraits are removed. See [identity-release.md](identity-release.md).
+
+Owner correction: the CV keeps the earlier photo. Public and protected PDFs
+and `public/images/profile-pic.jpeg` are restored byte-for-byte; the separate
+`profile-photo.jpeg` uses the new approved close-up.
+
+## Current correction — explicit photo roles
+
+Attachment `A7C4C9E2-7CB1-43B2-A5AC-1F060B6E2B69` assigns Photo 1 to the
+hero face and Photo 3 to body proportions. The owner explicitly approved
+the resulting hero: "Foto hero perfetta". Its folded-arm pose, dark
+background and all hero assets remain unchanged.
+
+The services portrait now uses the man on the left in the new boat selfie,
+attachment `B7F1C78D-2DF1-4363-BAA5-02564ADC60B1`: his natural smile, no
+glasses, close framing, black T-shirt and monochrome treatment. This sole
+face reference replaces the earlier Photo 2 portrait. The prior rejected
+services derivatives are removed; generated originals and exact prompt
+history remain. Both current photographs were made with built-in Image Gen.
+
+| Current asset | Dimensions | Bytes | Source and use |
+| --- | --- | --- | --- |
+| `public/landing-v2/matteo-portrait-v4.webp` | 960 × 1200 | 78,154 | Photo 1 face and clear glasses, Photo 3 body proportions, previous hero pose/framing only. Human hero and Person schema. |
+| `public/landing-v2/identity/astronaut.webp` | 960 × 1200 | 115,138 | Original folded-arm counterpart restored byte-for-byte from `eb0606b`, including its provenance. |
+| `public/landing-v2/matteo-services-closeup-bw-v2.webp` | 560 × 640 | 34,792 | Latest boat selfie only; natural smile without glasses, close-up, black and white. |
+
+The hero pair totals 193,292 bytes. Images have opaque near-black
+backgrounds; no gray studio rectangle or fake transparency is intended.
+Only resize/crop and WebP encoding happened outside Image Gen. Exact prompts,
+reference roles and original generated paths are in
+`assets/portrait-options/hero-services-correction.json` and adjacent origins.
+
+The existing 7:8 services frame remains 220px/150px, now filled by the
+close-up. Shader, timing, interaction, avatar and social artwork retain
+their existing implementations. Updating the historical matteodante.it
+project capture is deferred at the owner's request.
+
+This correction is outside the earlier independent static-asset SHIP review.
+Computer Use confirmed the Mac is locked; current desktop/mobile browser
+layout and animated plate registration cannot be verified. Local asset and
+automated verification for this correction lives under
+`.impeccable/tmp/portrait-correction/`; older screenshots are not its evidence.
+
+The preceding hero/Photo 2 correction passed `bun run check` (36 tests, 502 assertions),
+production build, EN/IT markup and Person image references, all three served
+image payloads/dimensions/hashes, and the optimized services image response.
+Impeccable reported zero anti-patterns and 45 existing typography advisories.
+React Doctor scanned three changed files with no reported issues (score 64;
+the hero's existing effect is unchanged apart from its asset path).
+Desktop/mobile-sized image previews were inspected together; these are
+resized assets, not browser screenshots. No commit or push is part of this
+correction.
+
+The latest services-only refinement has separate evidence under
+`.impeccable/tmp/services-face-v2/`. It preserves the hero image, astronaut,
+hero component and Person path byte-for-byte. Its original generated source
+and exact prompt are in the new asset's `.origin.json`; resized 220px/150px
+image previews do not constitute browser layout validation.
+
+This services refinement passed the production build, `bun run check`
+(36 tests, 502 assertions), Impeccable (zero anti-patterns; existing type
+advisories), and React Doctor (no issues, unchanged score 64). EN/IT HTML,
+served image hashes and optimized image response passed HTTP verification
+after restarting port 3001. The hero hashes match the values recorded before
+the edit. Computer Use again reported the Mac locked, so browser inspection
+remains pending; no new layout or motion validation is claimed.
+
+## Previous approved identity — 2026-09-09
 
 The owner selected `assets/portrait-options/matteo-a-real-reference.png`
 and authorized replacing the site's existing portraits: “Ok usiamo me per
@@ -17,19 +90,18 @@ The exact source prompt and reference history are in
 prompts and generated master paths are in
 `assets/portrait-options/site-integration.json`; they are not repeated here.
 
-## Runtime derivatives
+## Previous replacement derivatives
 
 | Asset | Dimensions | Bytes | Derivation and use |
 | --- | --- | --- | --- |
-| `public/landing-v2/matteo-portrait-v3.webp` | 960 × 1200 | 75,748 | Exact approved master, resized and encoded only; human hero, services and Person schema share `PERSON_IMAGE_PATH`. |
+| `public/landing-v2/matteo-portrait-v3.webp` | 960 × 1200 | 75,748 | Previous exact approved master; superseded for hero and Person by the correction above. |
 | `public/landing-v2/matteo-avatar-v3.webp` | 200 × 200 | 5,160 | Image Gen square headshot edit of the approved master; shared `BrandAvatar` and icon source. |
-| `public/landing-v2/identity/astronaut-v2.webp` | 960 × 1200 | 118,722 | Image Gen counterpart following the approved relaxed pose and existing toy design. |
+| `public/landing-v2/identity/astronaut-v2.webp` | 960 × 1200 | 118,722 | Previous arms-at-sides counterpart; superseded by the restored folded-arm plate. |
 | `public/social/hero-background-v2.jpg` | 1200 × 630 | 128,987 | Image Gen composition using the approved identity and existing lunar background. |
 
-Services retain the existing 7:8 CSS frame; the avatar retains its circular
-CSS display across landing, commercial pages and cockpit. The human hero
-receives no further generative edit. The hero pair totals 194,470 bytes;
-renderer, timing and pointer behavior are unchanged.
+The previous hero pair totaled 194,470 bytes. The avatar retains its circular
+CSS display across landing, commercial pages and cockpit. Renderer, timing
+and pointer behavior are unchanged by either asset replacement.
 
 The new 512px app icon, 180px Apple icon, 48px favicon payload and
 `public/social/avatar-v3-{192,512}.png` derive from the same avatar.
@@ -47,7 +119,7 @@ history and original tool masters. Existing `public/images/` profile photos,
 CV imagery and real historical portfolio screenshots are outside this
 replacement; screenshots show their earlier UI, not the current layout.
 
-## Verification boundary — 2026-09-09
+## Previous replacement verification — 2026-09-09
 
 An independent finish reviewer inspected the current static assets and all
 twelve social outputs and returned **SHIP for static assets/socials only**,

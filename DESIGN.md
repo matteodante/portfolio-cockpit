@@ -161,7 +161,7 @@ native disclosures. Their flat booking and consent controls use the same
 palette and focus language as the landing.
 
 Social previews extend the current hero into one fixed 1200×630 image:
-Matteo's smiling photographic portrait with relaxed arms and the lunar terrain sit
+Matteo's smiling photographic portrait with folded arms and the lunar terrain sit
 right of a stacked solid name, orange punctuation, localized page title
 and subtitle, and the public domain. Six destinations share this composition
 equally in EN/IT. The photographic avatar also supplies the favicon and app icons.
@@ -324,7 +324,7 @@ caps at `min(880px, 82%)`, uses `calc(100% - 44px)` on mobile, and caps at
 follow in normal flow; the former two-app explanatory note is removed
 in both languages.
 
-Human/astronaut portraits with relaxed arms at their sides occupy the hero foreground
+Human/astronaut portraits with folded arms occupy the hero foreground
 over restrained lunar terrain; the 220px framed portrait introduces services. Three squared
 service cards form a three-column grid; shipped products form a two-column
 pair. Cards have 20px gaps on wide screens, 32px at the compact-desktop
@@ -693,24 +693,24 @@ section, contact and CV routes alongside the flight controls.
 
 ### Signature: Astronaut, photographic identity and outlined display
 
-The hero uses `public/landing-v2/identity/astronaut-v2.webp` and
-`public/landing-v2/matteo-portrait-v3.webp`: two opaque 960 × 1200
-photographic plates, 194,470 bytes combined. The human image is the exact
-owner-approved `assets/portrait-options/matteo-a-real-reference.png`, only
-resized and encoded. The new Image Gen astronaut follows its relaxed arms,
-camera and head/shoulder placement while preserving the established toy
-design. Dark studio backgrounds are part of the images;
+The hero uses `public/landing-v2/identity/astronaut.webp` and
+`public/landing-v2/matteo-portrait-v4.webp`: two opaque 960 × 1200
+photographic plates. The human uses the owner's latest Photo 1 for his
+smiling face and clear glasses, Photo 3 for body proportions, and the old
+hero only for its wider folded-arm pose and lighting. The original
+folded-arm astronaut plate is restored from `eb0606b`, preserving the toy
+design. Flat near-black backgrounds replace the gray studio backdrop;
 CSS blends the rectangular frame edges, rather than approximating the
 subject with a geometric cutout. The shader transition and its fallbacks are
 documented above. Prompts and source history sit alongside the plates in
 `.origin.json` and `.webp.json`; direction and provenance are explained in
 `docs/design/identity-glitch.md`.
 
-The 2026-09-09 replacement changes the plates, not the renderer, timing or
-pointer behavior. Static assets and all twelve social cards received a
-scoped **SHIP** review. Fresh desktop/mobile layout, animated registration
-and cursor/touch review remain pending while the Mac is locked; earlier
-hero captures and historical project screenshots do not validate this pair.
+The latest correction changes the plates, not the renderer, timing or
+pointer behavior. The previous scoped static-asset **SHIP** review predates
+this new pair. Fresh desktop/mobile layout, animated registration and
+cursor/touch review remain pending while the Mac is locked; earlier hero
+captures and historical project screenshots do not validate this pair.
 
 `public/landing-v2/astronaut.webp` remains in source history as an original
 Image Gen reinterpretation based on a render of the existing
@@ -744,19 +744,23 @@ matching point light. Its material emissive intensity varies from 1.2 to
 both from the same sine pulse. This is the named scene exception; the
 landing keeps its Unbounded outlined first name and solid surname.
 
-The shared `BrandAvatar` uses `matteo-avatar-v3.webp` (200 × 200), displayed
+The shared `BrandAvatar` uses `matteo-avatar-v4.webp` (200 × 200), displayed
 as a 36px circle on desktop and 32px below 800px. It replaces the former
 orbit brand symbol. Services and contact no longer repeat that symbol.
-The services portrait shares the hero's `matteo-portrait-v3.webp`
-(960 × 1200) through `PERSON_IMAGE_PATH`, cropped in the existing 7:8
-frame at 220px desktop and 150px mobile with a thin offset outline.
-The Person schema uses that same path.
+The services portrait uses its own `matteo-services-closeup-bw-v2.webp`
+(560 × 640), a close-up edit of the man in the owner's latest boat selfie
+(attachment B7F1C78D). Its black-and-white treatment preserves his natural
+smile, no glasses, curls and stubble against a near-black background. The existing
+7:8 frame stays 220px on desktop and 150px on mobile with a thin offset
+outline; centered `object-fit: cover` retains the close composition.
+Hero and Person schema share the color `matteo-portrait-v4.webp` through
+`PERSON_IMAGE_PATH`. The owner explicitly approved this color hero; its
+assets and rendering remain unchanged by the latest services refinement.
 
-Both personal images derive from the owner-approved photographic edit of
-his real reference photographs. Clear-lens black glasses, a natural open
-smile, short curls, stubble, earring and black T-shirt define the current
-identity. The avatar is an Image Gen square headshot edit of the approved
-master; the hero/services portrait receives no further generative edit.
+These two images use the real photographs with distinct roles, documented
+in `assets/portrait-options/hero-services-correction.json`. The avatar and
+icons now use the approved monochrome close-up through square CSS image
+layout. Social cards use the exact color hero, without a new generated face.
 These are photographic edits, not untouched camera originals.
 Their provenance is in `docs/design/portrait-provenance.md`. Official app
 captures retain their actual UI and colors, documented in
@@ -770,11 +774,11 @@ are not promoted to shared tokens.
 ### Social sharing cards
 
 One static composition serves home, websites, apps, AI, PiùUDITO and cockpit
-in both languages. `public/social/hero-background-v2.jpg` places the
-recognizable Matteo in a black shirt on the right, with his complete head
-and relaxed arms at his sides, a smile and clear black glasses, with quiet
-dark space for copy on the left. Image Gen used the approved portrait and
-the existing lunar composition; typography and layout are unchanged.
+in both languages. `public/social/hero-portrait-v4.jpg` is a JPEG encoding
+of the exact approved folded-arm hero. It sits on the right at 544 × 680,
+with complete head, smile and clear black glasses. The separate existing
+lunar image has a dark overlay for legible copy; CSS frame-edge masks blend
+the photo into that scene. No new face is generated. Typography is unchanged.
 The stacked solid name begins at
 64px left and 74px top in a 610px column; title and subtitle sit 36px below
 it in a 570px column. The domain sits at 66px left and 42px from the bottom.
@@ -787,10 +791,10 @@ external rendering requests; `lib/seo/social.ts` supplies localized copy.
 All twelve PNGs are prerendered during the build. Page-specific copy names
 the actual destination; Matteo's portrait remains personal identity artwork,
 including on the PiùUDITO preview. It is not client work imagery.
-`socialImageUrl` appends `?v=portrait-3` to distinguish the updated previews
+`socialImageUrl` appends `?v=portrait-4` to distinguish the updated previews
 from previously cached images; live platform caches are not verified.
-The favicon, Apple icon and 192/512px manifest icons are resampled from the
-current photographic avatar. Source prompts, image processing and font
+The favicon, Apple icon and 192/512px manifest icons use the same approved
+monochrome portrait as the avatar. Source prompts, image processing and font
 licenses are recorded in `public/social/origin.json`,
 `public/fonts/social-origin.json` and `docs/design/social-metadata.md`.
 
@@ -832,7 +836,7 @@ licenses are recorded in `public/social/origin.json`,
 ### Personal website and team evidence
 
 `PortfolioEvidence` reuses the two-column website-proof row, pairing an
-actual homepage capture with a narrow mobile gameplay capture. Both retain
+localized site-generated social cover with a narrow real mobile gameplay capture. Both retain
 their full aspect ratio, thin frame and two-pixel corners. The image group
 uses a fluid main column and a 24% companion column; the entire proof row
 stacks below 800px. Its heading and concise copy identify a personal project.

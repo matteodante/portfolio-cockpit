@@ -9,8 +9,9 @@ import {
 } from '@/lib/seo/social'
 
 export async function renderSocialImage(page: SocialPage, locale: Locale) {
-  const [background, displayFont, bodyFont] = await Promise.all([
-    readFile(join(process.cwd(), 'public/social/hero-background-v2.jpg')),
+  const [portrait, landscape, displayFont, bodyFont] = await Promise.all([
+    readFile(join(process.cwd(), 'public/social/hero-portrait-v4.jpg')),
+    readFile(join(process.cwd(), 'public/social/lunar-background.jpg')),
     readFile(join(process.cwd(), 'public/fonts/social-unbounded-900.ttf')),
     readFile(join(process.cwd(), 'public/fonts/social-space-grotesk-500.ttf')),
   ])
@@ -23,13 +24,36 @@ export async function renderSocialImage(page: SocialPage, locale: Locale) {
         width: '100%',
         height: '100%',
         backgroundColor: '#05060a',
-        backgroundImage: `url(data:image/jpeg;base64,${background.toString('base64')})`,
+        backgroundImage: `linear-gradient(180deg, #05060a 5%, rgba(5,6,10,0.94) 48%, rgba(5,6,10,0.7) 100%), url(data:image/jpeg;base64,${landscape.toString('base64')})`,
         backgroundSize: '1200px 630px',
         color: '#f2ede3',
         fontFamily: 'Space Grotesk',
         overflow: 'hidden',
       }}
     >
+      <div
+        style={{
+          display: 'flex',
+          position: 'absolute',
+          right: 0,
+          top: 0,
+          width: 544,
+          height: 680,
+          maskImage:
+            'linear-gradient(0deg, transparent 0%, black 24%, black 100%)',
+        }}
+      >
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            backgroundImage: `url(data:image/jpeg;base64,${portrait.toString('base64')})`,
+            backgroundSize: '100% 100%',
+            maskImage:
+              'linear-gradient(90deg, transparent 0%, black 14%, black 92%, transparent 100%)',
+          }}
+        />
+      </div>
       <div
         style={{
           display: 'flex',

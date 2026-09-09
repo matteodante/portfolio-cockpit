@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { makeT } from '@/components/landing/i18n'
-import { PERSON_IMAGE_PATH } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
 import { MARKETING_PAGES } from '@/lib/seo/marketing-pages'
 
@@ -41,10 +40,10 @@ export default function ServicesSection({ locale }: { locale: Locale }) {
             <figure className="hero-portrait">
               <div className="portrait-image">
                 <Image
-                  src={PERSON_IMAGE_PATH}
+                  src="/landing-v2/matteo-services-closeup-bw-v2.webp"
                   alt={t('home.portrait.alt')}
-                  width={960}
-                  height={1200}
+                  width={560}
+                  height={640}
                   quality={90}
                   sizes="(max-width: 799px) 150px, 220px"
                 />

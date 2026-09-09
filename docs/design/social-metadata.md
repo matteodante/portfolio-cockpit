@@ -1,74 +1,42 @@
 # Social previews and metadata
 
-The sharing previews extend the existing homepage hero: the owner-approved
-smiling portrait of Matteo with clear-lens black glasses and arms at his
-sides, lunar terrain, near-black, ivory and orange.
-The user requested this identity for all Open Graph and related metadata.
-This is a fixed raster composition; the website layout and motion are unchanged.
+The owner approved the folded-arm color hero and the close-up monochrome
+portrait, then requested integration across the website, Open Graph,
+Twitter, avatar and icons. The hero itself remains byte-for-byte unchanged.
 
-The owner requested Matteo himself in every sharing image, replacing the
-astronaut. On 2026-09-09 he approved
-`assets/portrait-options/matteo-a-real-reference.png` for the site portraits.
-Image Gen placed this identity into the existing lunar composition;
-`public/social/hero-background-v2.jpg` is 1200 × 630 and 128,987 bytes.
-The homepage still alternates Matteo and the astronaut; only the sharing
-images switch to Matteo exclusively.
+## Current composition
 
-## Images and routes
+`lib/seo/social-image.tsx` renders 1200×630 cards using the exact approved
+hero, encoded as `public/social/hero-portrait-v4.jpg`, and the existing
+lunar landscape in `lunar-background.jpg`. The photo occupies the right
+544×680 area; CSS masks fade only the frame edges. A dark overlay preserves
+copy contrast. Unbounded 900, Space Grotesk 500, text placement and localized
+copy retain their existing values. No newly generated face or external
+asset/font request is involved in rendering.
 
-`lib/seo/social-image.tsx` renders one 1200×630 composition with Next
-ImageResponse. It combines `public/social/hero-background-v2.jpg`, locally
-bundled Unbounded 900 and Space Grotesk 500, the owner's name and concise
-localized copy. No fonts or images are fetched from external services when
-rendering. `lib/seo/social.ts` owns copy, URLs and metadata descriptors.
+Six destinations (home, websites, apps, AI, PiùUDITO and cockpit) have EN/IT
+previews: `/social/{en|it}/{page}.png?v=portrait-4`. All twelve are prerendered
+at build time. Localized `opengraph-image` and `twitter-image` routes share
+the homepage renderer. Page metadata, Twitter/OG alt text, JSON-LD and
+sitemap image references select the corresponding versioned URL.
 
-Six destinations have independent EN/IT previews:
+## Other portraits and icons
 
-- Homepage: `/social/{en|it}/home.png`.
-- Website development: `/social/{en|it}/websites.png`.
-- App/software development: `/social/{en|it}/apps.png`.
-- AI automation: `/social/{en|it}/ai.png`.
-- PiùUDITO case study: `/social/{en|it}/piuudito.png`.
-- Playable CV: `/social/{en|it}/cockpit.png`.
+Person metadata uses `PERSON_IMAGE_PATH`, the approved color hero at
+`/landing-v2/matteo-portrait-v4.webp`. Services use the separate approved
+monochrome close-up. The shared 200px `matteo-avatar-v4.webp`, favicon,
+Apple/app icons and `/social/avatar-v4-{192,512}.png` use square CSS image
+layout of that close-up. The manifest references these new paths.
+The original CV photo is retained at the owner's explicit request.
 
-These twelve endpoints are prerendered at build time. The existing localized
-`opengraph-image` and `twitter-image` endpoints also use the new homepage
-renderer. Explicit page metadata selects the matching image; the homepage
-sets its images at page level because Next's file metadata would otherwise
-supersede the layout images. Both social formats include localized alt text;
-Open Graph declares PNG and 1200×630 dimensions.
-`socialImageUrl` appends `?v=portrait-3` to every preview URL to distinguish
-the updated artwork from earlier cached previews. Font, copy placement and
-layout are unchanged; localized alt text describes the smile and clear
-black glasses.
+Current localized project covers are direct outputs of the social renderer,
+identified as covers, alongside the real historical cockpit capture. They
+are not fabricated browser screenshots. Sources, layout recipes and image
+hashes are in `public/social/origin.json` and adjacent origin records.
+Previous generated background/portrait versions remain in Git history.
 
-## Other metadata
-
-Homepage title and description emphasize websites, apps and AI automation,
-with the confirmed Italy/Ticino audience. Service and case metadata retain
-their specific offer and evidence. Canonical and language alternatives remain
-on `https://matteodante.it`.
-
-WebSite, homepage, cockpit and commercial WebPage schemas reference the
-matching social image. Person shares `PERSON_IMAGE_PATH` with the human
-hero and services portrait: `/landing-v2/matteo-portrait-v3.webp`.
-The 512px app icon, 180px Apple icon, 48px favicon payload and
-`/social/avatar-v3-{192,512}.png` manifest icons derive from the new
-`/landing-v2/matteo-avatar-v3.webp` square headshot edit.
-
-Matteo’s portrait is personal brand imagery. It is not a screenshot of
-client work, a client logo or evidence of results.
-
-## Provenance
-
-`public/social/origin.json` records the exact Image Gen background prompt,
-approved portrait references, the previous background’s provenance,
-format processing and icon source.
-The generated JPEG and derived PNG icons contain embedded provenance.
-`public/fonts/social-origin.json` and the two OFL files record font sources
-and licenses. The social renderer and copy module are the composition recipe.
-`assets/portrait-options/site-integration.json` also records the exact
-avatar, astronaut and social integration prompts and generated masters.
+See [identity-release.md](identity-release.md) for this release's validation
+and deployment status. The earlier records below do not validate this set.
 
 ## Earlier verification — 2026-09-09, before the approved portrait integration
 

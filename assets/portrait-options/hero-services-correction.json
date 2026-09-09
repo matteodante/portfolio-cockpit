@@ -1,0 +1,66 @@
+{
+  "date": "2026-09-09",
+  "generator": "Built-in Image Gen",
+  "brief": "Owner approved the hero. Services use only the man in the latest B7F1C78D boat selfie, smiling without glasses in a monochrome close-up.",
+  "jobs": [
+    {
+      "id": "hero",
+      "source": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-5eea6c38-e16a-408d-874e-a7f75d81800f.png",
+      "target": "public/landing-v2/matteo-portrait-v4.webp",
+      "width": 960,
+      "height": 1200,
+      "prompt": "Use case: identity-preserve.\nAsset type: photographic hero portrait for Matteo Dante's personal website, vertical 4:5.\nCreate the man from reference 1 in the folded-arm standing pose and wider waist-up composition of reference 3, with his ACTUAL physique from reference 2. Reference 1 is the sole authoritative facial identity: this exact young man, his real natural smile, face width, nose, lips, green/hazel eyes, short irregular brown curls, light stubble, small hoop earring and glossy thick black rectangular clear-lens glasses. Do not average his face with the generated person in reference 3.\nInput roles: reference 1 = REAL FACE and expression; reference 2 = REAL BODY PROPORTIONS ONLY, not boat, shorts, pose or shirtlessness; reference 3 = old generated hero, POSE, FRAMING, LIGHTING and BACKGROUND ONLY, never face or physique.\nDress him in a plain black crewneck T-shirt. Arms folded naturally as in reference 3, relaxed shoulders and subtly angled torso, looking into camera with an approachable authentic smile. Keep real moderate athletic build from reference 2: realistic head-to-shoulder ratio, normal neck, arms and chest, not inflated biceps, broad model shoulders or stylized jaw. Full head including hair with a little headroom; frame through waist and keep elbows inside frame. Natural photographic detail and skin texture, no beauty smoothing, no face reshaping or perfect stock-model symmetry.\nOpaque flat very-near-black background RGB(5,6,10) hex #05060a across every unoccupied pixel, like reference 3. No gray studio wall, gradient, spotlight glow, halo, scenery, transparency checkerboard or cast shadow behind him. Soft flattering neutral light on the actual face and a faint warm edge light as in reference 3. Color photograph. One person, no lettering, no astronaut. Highest priority is recognizable faithful identity from reference 1.",
+      "references": [
+        {
+          "path": "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/A7C4C9E2-7CB1-43B2-A5AC-1F060B6E2B69/1-Foto-1.jpg",
+          "role": "Authoritative real face, clear glasses and smile"
+        },
+        {
+          "path": "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/A7C4C9E2-7CB1-43B2-A5AC-1F060B6E2B69/3-Foto-3.jpg",
+          "role": "Real body proportions only"
+        },
+        {
+          "path": "public/landing-v2/identity/matteo.webp",
+          "revision": "eb0606b",
+          "role": "Previous generated plate: pose, framing, light and background only; not facial identity"
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "source": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-bb1a519b-17aa-4f19-9d93-6913435b3e4d.png",
+      "target": "public/landing-v2/matteo-services-closeup-bw-v2.webp",
+      "width": 560,
+      "height": 640,
+      "prompt": "Use case: identity-preserve.\nAsset: a close head-and-shoulders photographic black-and-white portrait for Matteo Dante's personal website services section, vertical 7:8.\nEdit the MAN ON THE LEFT in this single real reference photograph. Preserve this exact man's recognizable face: his actual eye shape and spacing, slightly asymmetrical natural tooth-showing smile, nose, lips, facial width, short irregular curly hair and hairline, light stubble, small hoop earring. He has NO GLASSES in this portrait. Use no other generated faces or identity references. Do not beautify or replace him with a generic stock model, sharpen his jaw, enlarge his eyes or change his smile. Retain real skin texture and subtle asymmetry.\nRemove the other person, the boat and sea background completely. Reframe him alone as a close-up, head nearly frontal with the slight natural angle of the reference, looking into camera with the same authentic relaxed friendly smile. Show complete hair with comfortable small headroom, neck and upper shoulders. Dress him in a plain black crewneck T-shirt, naturally covering his torso. No folded arms or waist-up composition.\nTrue neutral black-and-white photograph with soft natural light and believable detailed skin, not dramatic harsh noir or polished fashion retouching. A completely flat opaque near-black background RGB(5,6,10), hex #05060a, all the way to edges, blending into the dark website. No gray studio wall, gradient, halo, scenery or checkerboard. Face should remain large and clearly recognizable when shown in a 220px or 150px portrait frame. Highest priority is faithful identity and real expression from the man on the left. No text, no logos, no other people.",
+      "references": [
+        {
+          "path": "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/B7F1C78D-2DF1-4363-BAA5-02564ADC60B1/1-Foto-1.jpg",
+          "role": "The man on the left: sole face and natural smile reference, no glasses."
+        }
+      ]
+    }
+  ],
+  "astronaut": {
+    "target": "public/landing-v2/identity/astronaut.webp",
+    "restoredFromRevision": "eb0606b",
+    "processing": "Original folded-arm plate and its provenance restored without image modification."
+  },
+  "scope": "Approved hero and close-up integrated throughout the website, avatar/icons, Open Graph, Twitter and localized project covers. Original CV photograph and PDFs explicitly retained.",
+  "supersededServices": {
+    "id": "services",
+    "source": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-d0ddab8e-8d04-463b-bb08-6309613abb44.png",
+    "target": "public/landing-v2/matteo-services-closeup-bw.webp",
+    "width": 560,
+    "height": 640,
+    "prompt": "Use case: identity-preserve.\nAsset type: close-up black-and-white portrait for Matteo Dante's website services introduction, vertical 7:8.\nEdit this real reference photo into a restrained photographic head-and-shoulders portrait of the EXACT SAME MAN. Preserve his real facial geometry and proportions, distinctive thick black rectangular glasses, eyes behind the lenses, nose, natural hairline and short curls, stubble and small hoop earring. This is an identity-preserving photographic edit, not a new handsome model. Change his expression only slightly: relax the mouth corners into a subtle friendly closed-mouth half smile and soften the tense look, keeping natural recognizable eyes and lips. No exaggerated grin, different jaw, different nose, beauty filter or plastic skin.\nKeep the plain black crewneck shirt. Close composition showing full hair, head, neck and upper shoulders, not waist or folded arms. Head centered with comfortable headroom, face large and readable in a small portrait frame. Convert subject to true neutral black and white, including the amber glasses lenses, with natural skin texture, detailed hair and gentle photographic contrast; eyes must remain readable.\nRemove the street, people, buildings and lamps completely. Replace background with opaque uniform very-near-black RGB(5,6,10), hex #05060a. No gray rectangle or studio gradient, no spotlight, no halo, no transparency checkerboard, no text. Keep the exact recognizable man from the supplied real photograph.",
+    "references": [
+      {
+        "path": "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/A7C4C9E2-7CB1-43B2-A5AC-1F060B6E2B69/2-Foto-2.jpg",
+        "role": "Sole real identity reference; close-up monochrome edit with slightly relaxed expression"
+      }
+    ]
+  },
+  "heroApproval": "Foto hero perfetta",
+  "approval": "Owner approved both hero and services portrait and requested use throughout site, social previews and icons, followed by commit and push."
+}

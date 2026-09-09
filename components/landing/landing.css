@@ -303,7 +303,6 @@
   position: relative;
   width: 220px;
   aspect-ratio: 7 / 8;
-  background: var(--landing-bg);
 }
 .portrait-image::after {
   content: "";
@@ -317,7 +316,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 36%;
+  object-position: center;
 }
 .hero-portrait figcaption {
   margin-top: 29px;
