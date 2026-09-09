@@ -401,6 +401,49 @@
   border-color: var(--landing-accent);
   background: #1c1e25;
 }
+.website-proof {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 80px;
+}
+.website-proof > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.website-proof h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+.website-proof p {
+  color: var(--landing-muted);
+  margin-top: 20px;
+  line-height: 1.7;
+}
+.website-proof span {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 26px;
+  font-size: 14px;
+}
+.website-proof:hover span {
+  text-decoration: underline;
+}
+@media (max-width: 799px) {
+  .website-proof {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    margin-bottom: 64px;
+  }
+  .website-proof h3 {
+    font-size: 28px;
+  }
+}
 .service-booking svg {
   flex-shrink: 0;
 }

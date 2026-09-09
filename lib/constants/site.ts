@@ -1,7 +1,7 @@
 import type { Locale } from '@/lib/i18n/config'
 
-export const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL ?? 'https://matteodante.it'
+// Previews keep the production canonical instead of publishing localhost URLs.
+export const BASE_URL = 'https://matteodante.it'
 
 export const SITE_NAME = 'Matteo Dante · Portfolio'
 export const SITE_TITLE = 'Matteo Dante · Senior Software Engineer'

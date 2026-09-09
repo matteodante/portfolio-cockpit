@@ -139,7 +139,7 @@ components:
 
 **Creative North Star: "A Personal Introduction Suspended in Space"**
 
-The landing and playable cockpit share monumental Unbounded interface
+The landing, commercial pages and playable cockpit share monumental Unbounded interface
 titles, Space Grotesk text and actions, warm ivory on near-black, orange commands and thin
 rectangular frames. The accepted landing supplies the visual authority for
 this shared system. Dungyov informs the outlined/solid lettering; Oakley
@@ -154,6 +154,11 @@ one edit of the owner’s real photograph.
 The landing is spacious and direct; the cockpit is playful and
 instrument-dense. Flat controls, the shared avatar and equal EN/IT treatment
 connect them while scrolling and gameplay retain their functional layouts.
+
+The commercial pages extend this identity through ordinary reading flow:
+split introductions, real website and app captures, practical sections and
+native disclosures. Their flat booking and consent controls use the same
+palette and focus language as the landing.
 
 **Key Characteristics:**
 
@@ -195,7 +200,7 @@ normative.
 - **Booking Surface:** the neutral dark Cal.com dialog and calendar backdrop.
 
 **The Shared Identity Rule.** Use the same palette, display/body roles and
-flat control language across both routes; reserve signal colors for working
+flat control language across all surfaces; reserve signal colors for working
 instruments and status.
 
 ## Typography
@@ -257,6 +262,14 @@ instrument values, keyboard codes and telemetry rather than prose.
 The owner restored the original orange `MATTEO DANTE` sign inside the 3D
 world. Its bold Helvetiker TextGeometry is a scene-specific exception to
 the shared display family; it does not replace Unbounded in the interface.
+
+Commercial page titles use Unbounded 700 at `clamp(42px, 5vw, 72px)`,
+1.1 line-height and −0.03em tracking; below 800px they use
+`clamp(34px, 9vw, 56px)`. Section headings use weight 400 at
+`clamp(28px, 3vw, 42px)`, settling at 28px on mobile. Leads use Space
+Grotesk 20px/1.6 and 18px on mobile; prose uses 1.75 line-height.
+FAQ questions use 18px. These are the commercial reading surface's
+hierarchy, not replacements for the cinematic landing or cockpit scales.
 
 **The Type Roles Rule.** Use Unbounded for interface titles, Space Grotesk
 for reading and actions, and JetBrains Mono for telemetry and code on
@@ -326,6 +339,21 @@ captions remain present in either mode.
 The cockpit remains a locked 100vw × 100dvh stage. HUD chrome pins to the
 edges, the Three.js scene owns the center, and dock/intro overlays cover
 the scene. Keep its viewport lock scoped to the cockpit route.
+
+The three service pages and PiùUDITO case share a normal-flow commercial
+layout capped at `min(1160px, calc(100% - 100px))`, with 144px top padding
+below the shared header. The introduction pairs title and explanation in
+1.3:1 columns with a 72px gap. Reading sections pair headings and content
+in 1:1.1 columns with a 100px gap, 104px vertical padding and thin dividers.
+Below 800px, the container leaves 20px side margins, top padding becomes
+112px, sections use 64px vertical padding and the columns stack. Actual
+captures follow the introduction; the commercial pages have no sticky
+cinematic stage, WebGL scene or scroll-controlled video.
+
+The case's two related website captures and the app evidence use two
+columns on desktop and one on mobile. Cross-service links and the playable
+CV sit in the footer. Analytics preferences follow in normal footer flow;
+only the optional choice panel is fixed above the lower page edge.
 
 ## Elevation & Depth
 
@@ -469,14 +497,16 @@ those breakpoints. The flexible action row can wrap. Keyboard focus restores
 the hero copy’s visibility and position during scroll, keeping the link
 reachable even after its scene fades.
 
-**Booking state:** the header, hero and contact booking CTAs are enabled
+**Booking state:** the homepage header, hero and contact booking CTAs are enabled
 orange links to the owner-confirmed `https://cal.com/matteo-dante`. They
-remain direct links. Each service card additionally has a dark secondary
-booking control: Panel Light fill, full ivory hairline, two-pixel corners,
+remain direct links, as do the commercial pages' header and hero controls.
+Each homepage service card has a dark link to its specific localized
+service page: Panel Light fill, full ivory hairline, two-pixel corners,
 13px Space Grotesk 500, 48px minimum height and 12px 16px padding. Hover
 changes the border to orange and the fill to `#1c1e25` over 180ms.
-A normal activation opens the calendar dialog; modifier-key activation or
-no JavaScript follows the same direct Cal.com URL.
+The final orange CTA on each commercial page opens the native calendar
+dialog. Modifier-key activation or no JavaScript follows the same direct
+Cal.com URL, and the dialog retains a direct-link fallback.
 
 The shared `brand-button` used by cockpit commands and chat uses Space
 Grotesk 500, a 48px minimum height and 12px 24px padding. Primary is orange
@@ -507,10 +537,22 @@ captures.
 
 Services use three dark squared cards with full thin borders, two-pixel
 corners and 28px padding, reducing to 25px on mobile. Each card contains a
-title, brief description, price and dark booking control. Websites start at
+title, brief description, price and dark service-page link. Websites start at
 300 €; apps/software and custom AI are on request. These are owner-confirmed
 prices, not implied fixed scopes or delivery promises. A flexible price
 area keeps controls aligned; service icons remain removed.
+
+Website evidence uses actual public captures, with a caption and project
+link. The commercial showcase has a quiet blue-black fill, 32px padding
+and four-pixel corners; mobile padding is 12px. PiùUDITO is presented as
+one client with three websites. Its desktop/mobile, Group and Fabio
+Tomassetti JPEG captures have embedded origins plus adjacent `origin.json`
+in `public/landing-v2/piuudito/`. The homepage links to this case before
+the existing app pair. Commercial app evidence reuses the localized
+Maestro and GymTree frames, labels both as personal products and keeps
+their real App Store links. The AI page also links to the personal
+`claude-local-docs` repository as document-search evidence.
+
 Cockpit containers use the shared Panel fill and thin Frame Line border.
 Dock headers use Panel Light; content remains in a readable scroll area.
 The dialog is `min(760px, 92vw)` wide and capped at 85vh on desktop; mobile
@@ -520,7 +562,7 @@ requirements. Public/private access state changes the available content.
 
 ### Service booking dialog
 
-Each service opens a native modal `<dialog>` with an accessible title and
+The final commercial-page booking CTA opens a native modal `<dialog>` with an accessible title and
 44px close control. The Cal.com React embed loads only when opened, uses
 a dark theme, month view and orange brand accent, and retains the exact
 owner destination. The route locale is passed into the embed; the external
@@ -534,6 +576,32 @@ Mobile leaves 10px on each side and caps height at `100dvh - 20px`. A sticky
 header keeps the title and close action visible; the calendar has a 540px
 minimum height and the shell can scroll. The page stops scrolling while
 the dialog is open. Its translucent near-black backdrop adds 8px blur.
+
+### Commercial FAQ
+
+Practical questions use native `<details>` and `<summary>` in the reading
+column, separated by ivory hairlines. Summary remains a list item, with
+orange native disclosure markers changing between closed and open states.
+This local rule restores markers hidden by the global reset, including
+WebKit's marker. Questions have 22px vertical row padding and answers
+appear 18px below. Keyboard focus has a two-pixel orange outline with
+six-pixel offset. Disclosure and reading remain usable without JavaScript.
+
+### Optional analytics choice
+
+When a valid GA ID is configured, the first choice appears in a fixed dark
+rectangular panel with an ivory hairline. It is 420px wide, capped to the
+viewport, with 24px padding; mobile uses 20px padding and a scrollable
+height cap. The two choices use equal transparent fills, borders, 44px
+minimum targets and 14px body type. Orange hover borders and visible focus
+give feedback without visually favoring consent. After a choice, the
+preferences button sits in normal footer flow and reopens the panel.
+
+No valid ID means no Google tag or consent interface. Google loads only
+after positive consent, and the cockpit is excluded. This is the optional
+GA control, not a universal consent manager for existing Vercel tools.
+Activation in Google's services remains pending owner access and real IDs;
+event meanings and verification limits live in `docs/seo/measurement-plan.md`.
 
 ### Relationship logos
 
@@ -566,8 +634,12 @@ the prior orbit record is historical and superseded.
 
 ### Navigation
 
-The landing header combines the circular photographic avatar/name, a quiet
-Work link, the shared EN/IT control and a compact booking control. A bottom-left section picker
+The landing header combines the circular photographic avatar/name, quiet
+Services and Work links, the shared EN/IT control and a compact booking control. Services
+opens the website-development page. Commercial headers reuse this shell
+with their current service link; the language control opens the matching
+localized page. Their footer links to the other services, home and cockpit.
+A bottom-left section picker
 includes Intro, Services, Brands, Work and Contact in a dark rectangular
 menu; its current item is orange, and hover
 adds a faint ivory tint behind the existing text. Menu links use 13px

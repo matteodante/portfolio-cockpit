@@ -1,0 +1,28 @@
+{
+  "kind": "public website screenshots",
+  "captured": "2026-09-09",
+  "authorship": "Matteo Dante confirmed all three websites were built for the single client PiùUDITO.",
+  "sources": [
+    {
+      "file": "desktop.jpg",
+      "url": "https://www.piuudito.it/it",
+      "viewport": "1440x1000"
+    },
+    {
+      "file": "mobile.jpg",
+      "url": "https://www.piuudito.it/it",
+      "viewport": "390x844"
+    },
+    {
+      "file": "group.jpg",
+      "url": "https://www.piuuditogroup.it/",
+      "viewport": "1440x1000"
+    },
+    {
+      "file": "fabio.jpg",
+      "url": "https://www.fabiotomassetti.it/",
+      "viewport": "1440x1000"
+    }
+  ],
+  "notes": "Captured through the public UI. PiùUDITO optional cookies declined before capture. No form submission. JPEG comments contain source provenance. No commercial outcomes are inferred from these images."
+}

@@ -3,6 +3,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import { JetBrains_Mono, Space_Grotesk, Unbounded } from 'next/font/google'
 import { notFound } from 'next/navigation'
+import MarketingAnalytics from '@/components/analytics/marketing-analytics'
+import { validMeasurementId } from '@/lib/analytics/client'
 import {
   EMAIL_HREF,
   GITHUB_URL,
@@ -113,6 +115,9 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(BASE_URL),
+    verification: process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : {},
     title: { default: t.title, template: `%s · ${NAME}` },
     description: t.description,
     applicationName: SITE_NAME,
@@ -253,6 +258,10 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         />
         <Analytics />
         <SpeedInsights />
+        <MarketingAnalytics
+          id={validMeasurementId(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID)}
+          locale={locale}
+        />
       </body>
     </html>
   )

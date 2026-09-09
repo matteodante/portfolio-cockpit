@@ -65,8 +65,9 @@ demo" resta un supporto veritiero già presente nel copy.)
   `https://cal.com/matteo-dante`, ora collegato ai pulsanti di prenotazione.
 - Terminologia ricorrente: decollo/takeoff, PLAY, cockpit, COMM, DOCK.
 - Prezzi confermati dall’utente: siti web a partire da 300 €; app e
-  software, AI su misura su richiesta. Tre card con pulsanti secondari
-  che aprono Cal.com in un popup; link diretto disponibile come fallback.
+  software, AI su misura su richiesta. Tre card con pulsanti che aprono le rispettive pagine servizio
+  (correzione del titolare, 2026-09-09). Nelle pagine servizio la CTA finale
+  apre Cal.com in un popup, con link diretto come fallback.
 
 ## Brand Commitments
 
@@ -107,8 +108,34 @@ Font e trattamento dei controlli sono documentati in DESIGN.md.
   sono in `public/landing-v2/brands/`, con provenienza documentata.
 - GymTree, Maestro e claude-local-docs sono prodotti personali e vengono
   indicati come tali. Non presentarli come clienti esterni.
+- Il titolare ha confermato di aver realizzato per l'azienda PiùUDITO
+  `piuudito.it`, `piuuditogroup.it` e `fabiotomassetti.it`.
+  Sono tre siti per lo stesso cliente, il primo caso da sviluppare per
+  il servizio siti web.
+  Non sono disponibili risultati economici o di acquisizione misurati.
 - Nessuna testimonianza, case study scritto o metrica di conversione
-  confermata: non fabbricarne.
+  confermata: non fabbricarne. Il caso PiùUDITO è implementato in IT/EN nella repo e presenta
+  i tre siti come lavoro per un solo cliente. Non è una prova di risultati
+  SEO o commerciali.
+
+## Owner refinement — initial commercial growth
+
+Confirmed 2026-09-09:
+
+- Websites are the initial commercial priority; app/software and AI
+  have dedicated commercial pages, as subsequently requested by the owner.
+- Priority audiences: professionals, startups and small businesses in
+  Italy and Ticino. Larger and international opportunities remain welcome.
+- Acquisition budget is small; prioritize word of mouth and organic search.
+  No numeric advertising budget or acquisition target has been agreed.
+- The owner says this commercial activity is just starting. Existing
+  projects are the available evidence; do not invent additional clients,
+  historical leads or testimonials, or describe him as new to engineering.
+- The owner reports no established search/analytics measurement setup.
+  Vercel Analytics and Speed Insights are mounted in code; account setup,
+  collected data and conversion instrumentation still need verification.
+- The proposed scope of the 300 € offer and the suggested 1,000–2,000 €
+  project range are recommendations, not confirmed public offer terms.
 
 ## Product Principles
 

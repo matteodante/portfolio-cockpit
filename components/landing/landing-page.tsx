@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import BookingPopup from '@/components/landing/booking-popup'
 import BrandsSection from '@/components/landing/brands-section'
 import HeroIdentity from '@/components/landing/hero-identity'
 import { makeT } from '@/components/landing/i18n'
 import LandingMotion from '@/components/landing/landing-motion'
+import ServicesSection from '@/components/landing/services-section'
 import WorkSequence from '@/components/landing/work-sequence'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import LanguageSwitcher from '@/components/shared/language-switcher'
@@ -20,6 +20,7 @@ import {
   NAME,
 } from '@/lib/constants/contact'
 import type { Locale } from '@/lib/i18n/config'
+import { MARKETING_PAGES } from '@/lib/seo/marketing-pages'
 
 function Arrow() {
   return (
@@ -52,7 +53,11 @@ function BookingLink({
     ? 'booking-link booking-link-compact'
     : 'booking-link'
   return (
-    <Link href={CAL_BOOKING_URL} className={className}>
+    <Link
+      href={CAL_BOOKING_URL}
+      className={className}
+      data-track="booking_opened"
+    >
       {label}
       <Arrow />
     </Link>
@@ -107,6 +112,15 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           className="landing-header-links"
           aria-label={t('home.header.label')}
         >
+          <Link
+            className="landing-work-link"
+            href={MARKETING_PAGES.websites.paths[locale]}
+            data-track="service_opened"
+            data-placement="header"
+            data-service="web"
+          >
+            {t('home.nav.services')}
+          </Link>
           <Link className="landing-work-link" href="#work">
             {t('home.nav.work')}
           </Link>
@@ -181,69 +195,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        <section
-          id="services"
-          className="flight-stop"
-          aria-labelledby="services-heading"
-        >
-          <div className="flight-panel">
-            <div className="services-composition">
-              <div className="services-intro" data-parallax>
-                <figure className="hero-portrait">
-                  <div className="portrait-image">
-                    <Image
-                      src="/landing-v2/matteo-portrait-v2.webp"
-                      alt={t('home.portrait.alt')}
-                      width={768}
-                      height={768}
-                      quality={90}
-                      sizes="(max-width: 799px) 150px, 220px"
-                    />
-                  </div>
-                  <figcaption>{t('home.portrait.caption')}</figcaption>
-                </figure>
-                <div className="services-intro-copy">
-                  <h2 id="services-heading">
-                    {t('home.services.line1')}
-                    <br />
-                    <span>{t('home.services.line2')}</span>
-                  </h2>
-                  <p className="section-lead">{t('home.services.body')}</p>
-                </div>
-              </div>
-              <div className="service-list">
-                {['web', 'app', 'ai'].map((id) => (
-                  <div className="service-item" key={id}>
-                    <h3>{t(`home.services.${id}.title`)}</h3>
-                    <p>{t(`home.services.${id}.body`)}</p>
-                    <div className="service-price">
-                      {id === 'web' ? (
-                        <>
-                          <span>{t('home.services.from')}</span>
-                          <strong>300 €</strong>
-                        </>
-                      ) : (
-                        <strong>{t('home.services.onRequest')}</strong>
-                      )}
-                    </div>
-                    <BookingPopup
-                      id={id}
-                      locale={locale}
-                      label={t('home.book')}
-                      title={t('home.booking.title')}
-                      closeLabel={t('home.booking.close')}
-                      fallbackLabel={t('home.booking.fallback')}
-                    />
-                  </div>
-                ))}
-              </div>
-              <Link className="text-link" href="#work">
-                {t('home.services.proof')}
-                <Arrow />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <ServicesSection locale={locale} />
 
         <BrandsSection locale={locale} />
 
@@ -255,6 +207,30 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           <WorkSequence title={t('home.work.title')} />
           <div className="flight-panel">
             <div className="work-composition">
+              <Link
+                href={MARKETING_PAGES.piuudito.paths[locale]}
+                className="website-proof"
+                data-track="case_study_opened"
+                data-project="piuudito"
+                data-placement="home_work"
+              >
+                <Image
+                  src="/landing-v2/piuudito/desktop.jpg"
+                  width={1440}
+                  height={1000}
+                  alt={t('home.work.piuudito.alt')}
+                  sizes="(max-width: 799px) 100vw, 640px"
+                  quality={90}
+                />
+                <div>
+                  <h3>PiùUDITO</h3>
+                  <p>{t('home.work.piuudito.body')}</p>
+                  <span>
+                    {t('home.work.piuudito.open')}
+                    <Arrow />
+                  </span>
+                </div>
+              </Link>
               <div className="project-pair" data-parallax>
                 {PROJECTS.map((project) => (
                   <Link
@@ -264,6 +240,9 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${project.name} — ${t('home.work.open')}`}
+                    data-track="project_opened"
+                    data-placement="home_work"
+                    data-project={project.id}
                   >
                     <div className="project-screens">
                       {[1, 2].map((index) => (
@@ -318,7 +297,12 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               </h2>
               <p className="section-lead">{t('home.contact.body')}</p>
               <BookingLink label={t('home.book')} />
-              <Link className="contact-email" href={EMAIL_HREF}>
+              <Link
+                className="contact-email"
+                href={EMAIL_HREF}
+                data-track="contact_clicked"
+                data-placement="home_contact"
+              >
                 {t('home.contact.email')}
               </Link>
               <div className="contact-socials">

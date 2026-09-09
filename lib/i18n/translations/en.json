@@ -307,7 +307,7 @@
   "home.services.web.body": "Your business, well presented. Fast and easy to use.",
   "home.services.app.title": "Apps & software",
   "home.services.app.body": "Your product, on the web and in your customers’ hands.",
-  "home.services.ai.title": "Custom AI",
+  "home.services.ai.title": "AI automation",
   "home.services.ai.body": "Assistants and automations for the work you do every day.",
   "home.services.proof": "See what I’ve built",
   "home.work.title": "Ideas, out in the world.",
@@ -335,5 +335,11 @@
   "home.booking.title": "Let’s talk about your project.",
   "home.booking.close": "Close booking",
   "home.booking.fallback": "Open directly on Cal.com",
-  "home.brands.project": "Enterprise projects"
+  "home.brands.project": "Enterprise projects",
+  "home.services.web.details": "Explore websites",
+  "home.work.piuudito.alt": "The PiùUDITO website built by Matteo Dante",
+  "home.work.piuudito.body": "Three websites built for one business: piuudito.it, piuuditogroup.it and fabiotomassetti.it. Explore the published work.",
+  "home.work.piuudito.open": "Explore the project",
+  "home.services.app.details": "Explore apps & software",
+  "home.services.ai.details": "Explore AI automation"
 }

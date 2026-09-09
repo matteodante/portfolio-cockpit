@@ -3,10 +3,49 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { trackMarketing } from '@/lib/analytics/client'
 import { CAL_BOOKING_URL } from '@/lib/constants/contact'
 import type { Locale } from '@/lib/i18n/config'
 
 const Cal = dynamic(() => import('@calcom/embed-react'), { ssr: false })
+
+function connectCalendar(id: string) {
+  let disposed = false
+  let removeListener: (() => void) | undefined
+  void import('@calcom/embed-react')
+    .then(async ({ getCalApi }) => {
+      const cal = await getCalApi({ namespace: `service-${id}` })
+      if (disposed) return
+      let recorded = false
+      const onBooking = () => {
+        if (recorded) return
+        recorded = true
+        trackMarketing('booking_created', {
+          placement: 'service_popup',
+          method: 'embed',
+          service: id === 'app' || id === 'ai' ? id : 'web',
+        })
+      }
+      cal('on', { action: 'bookingSuccessfulV2', callback: onBooking })
+      removeListener = () =>
+        cal('off', { action: 'bookingSuccessfulV2', callback: onBooking })
+      cal('ui', {
+        theme: 'dark',
+        styles: { body: { background: '#101010' } },
+        cssVarsPerTheme: {
+          dark: { 'cal-brand': '#ff6b35' },
+          light: { 'cal-brand': '#ff6b35' },
+        },
+      })
+    })
+    .catch(() => {
+      /* The direct calendar link remains available. */
+    })
+  return () => {
+    disposed = true
+    removeListener?.()
+  }
+}
 
 type Props = {
   id: string
@@ -14,6 +53,7 @@ type Props = {
   label: string
   title: string
   closeLabel: string
+  className?: string
   fallbackLabel: string
 }
 
@@ -24,6 +64,7 @@ export default function BookingPopup({
   title,
   closeLabel,
   fallbackLabel,
+  className = 'service-booking',
 }: Props) {
   const [open, setOpen] = useState(false)
   const dialogRef = useRef<HTMLDialogElement>(null)
@@ -32,25 +73,22 @@ export default function BookingPopup({
     const dialog = dialogRef.current
     if (!(open && dialog)) return
     dialog.showModal()
-    void import('@calcom/embed-react').then(async ({ getCalApi }) => {
-      const cal = await getCalApi({ namespace: `service-${id}` })
-      cal('ui', {
-        theme: 'dark',
-        styles: { body: { background: '#101010' } },
-        cssVarsPerTheme: {
-          dark: { 'cal-brand': '#ff6b35' },
-          light: { 'cal-brand': '#ff6b35' },
-        },
-      })
-    })
-    return () => dialog.close()
+    const disconnect = connectCalendar(id)
+    return () => {
+      disconnect()
+      dialog.close()
+    }
   }, [id, open])
 
   return (
     <>
       <Link
         href={CAL_BOOKING_URL}
-        className="service-booking"
+        className={className}
+        data-track="booking_opened"
+        data-placement="service_popup"
+        data-method="embed"
+        data-service={id === 'app' || id === 'ai' ? id : 'web'}
         onClick={(event) => {
           if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
             return

@@ -1,0 +1,376 @@
+.marketing-sites a {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  overflow-wrap: anywhere;
+}
+.marketing-showcase figcaption a,
+.marketing-text-link {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.marketing-main {
+  width: min(1160px, calc(100% - 100px));
+  margin: 0 auto;
+  padding-top: 144px;
+}
+.marketing-breadcrumb {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+  color: var(--landing-muted);
+  margin-bottom: 50px;
+}
+.marketing-breadcrumb a:hover {
+  color: var(--landing-ink);
+}
+.marketing-hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 72px;
+  align-items: start;
+  margin-bottom: 72px;
+}
+.marketing-hero h1 {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.marketing-hero-copy {
+  padding-top: 8px;
+}
+.marketing-hero-copy > p:first-child {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--landing-muted);
+}
+.marketing-hero-copy .booking-link {
+  margin-top: 28px;
+}
+.marketing-hero-copy > .marketing-text-link {
+  display: block;
+  margin-top: 22px;
+}
+.marketing-price {
+  display: grid;
+  gap: 8px;
+  margin-top: 28px;
+}
+.marketing-price strong {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--landing-ink);
+}
+.marketing-price span {
+  font-size: 14px;
+  color: var(--landing-muted);
+}
+.marketing-showcase {
+  padding: 32px;
+  background: #13232c;
+  border-radius: 4px;
+}
+.marketing-showcase > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+.marketing-showcase figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 22px;
+  font-size: 14px;
+}
+.marketing-showcase figcaption > span {
+  font-size: 20px;
+  font-weight: 500;
+}
+.marketing-section {
+  padding: 104px 0;
+  border-bottom: 1px solid var(--landing-line);
+}
+.marketing-split {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 100px;
+}
+.marketing-page h2 {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+.marketing-prose p,
+.marketing-rows p,
+.marketing-faq p {
+  color: var(--landing-muted);
+  line-height: 1.75;
+}
+.marketing-prose p + p {
+  margin-top: 20px;
+}
+.marketing-prose .marketing-text-link {
+  display: inline-block;
+  margin-top: 28px;
+}
+.marketing-rows {
+  display: grid;
+  gap: 36px;
+}
+.marketing-rows h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.marketing-process {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.marketing-faq details {
+  border-bottom: 1px solid var(--landing-line);
+  padding: 22px 0;
+}
+.marketing-faq details:first-child {
+  padding-top: 0;
+}
+.marketing-faq details:last-child {
+  border: 0;
+  padding-bottom: 0;
+}
+.marketing-faq summary {
+  display: list-item;
+  list-style: disclosure-closed inside;
+  cursor: pointer;
+  font-size: 18px;
+  padding-right: 12px;
+}
+.marketing-faq summary::marker {
+  color: var(--landing-accent);
+}
+.marketing-faq details[open] > summary {
+  list-style-type: disclosure-open;
+}
+.marketing-faq summary::-webkit-details-marker {
+  display: inline;
+  color: var(--landing-accent);
+}
+.marketing-faq details p {
+  margin-top: 18px;
+}
+.marketing-faq summary:focus-visible {
+  outline: 2px solid var(--landing-accent);
+  outline-offset: 6px;
+}
+.marketing-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  margin: 0;
+  padding: 54px 0;
+  border-bottom: 1px solid var(--landing-line);
+}
+.marketing-facts dt {
+  font-size: 14px;
+  color: var(--landing-muted);
+  margin-bottom: 12px;
+}
+.marketing-facts dd {
+  margin: 0;
+  font-size: 18px;
+}
+.marketing-story {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 120px;
+  align-items: center;
+}
+.marketing-story h2 {
+  margin-bottom: 32px;
+}
+.marketing-story > img {
+  display: block;
+  width: min(100%, 320px);
+  height: auto;
+  justify-self: center;
+  border-radius: 4px;
+}
+.marketing-contact {
+  padding: 120px 0;
+  max-width: 800px;
+}
+.marketing-contact > p {
+  margin-top: 24px;
+  color: var(--landing-muted);
+  max-width: 540px;
+  font-size: 18px;
+}
+.marketing-contact-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 32px 0 24px;
+}
+.marketing-contact-actions .service-booking {
+  width: auto;
+  margin: 0;
+  padding: 14px 0;
+}
+.marketing-footer {
+  border-top: 1px solid var(--landing-line);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 32px 50px;
+  font-size: 14px;
+  color: var(--landing-muted);
+}
+.marketing-text-link:hover,
+.marketing-showcase figcaption a:hover {
+  color: var(--landing-accent);
+}
+@media (max-width: 799px) {
+  .marketing-main {
+    width: calc(100% - 40px);
+    padding-top: 112px;
+  }
+  .marketing-breadcrumb {
+    margin-bottom: 32px;
+  }
+  .marketing-hero {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    margin-bottom: 42px;
+  }
+  .marketing-hero h1 {
+    font-size: clamp(34px, 9vw, 56px);
+  }
+  .marketing-hero-copy {
+    padding: 0;
+  }
+  .marketing-hero-copy > p:first-child {
+    font-size: 18px;
+  }
+  .marketing-showcase {
+    padding: 12px;
+  }
+  .marketing-showcase figcaption {
+    padding: 16px 4px 6px;
+    font-size: 12px;
+  }
+  .marketing-showcase figcaption > span {
+    font-size: 18px;
+  }
+  .marketing-section {
+    padding: 64px 0;
+  }
+  .marketing-split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .marketing-page h2 {
+    font-size: 28px;
+  }
+  .marketing-story {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .marketing-story > img {
+    width: min(100%, 280px);
+  }
+  .marketing-facts {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 38px 0;
+  }
+  .marketing-facts dt {
+    margin-bottom: 6px;
+  }
+  .marketing-facts dd {
+    font-size: 16px;
+  }
+  .marketing-contact {
+    padding: 72px 0;
+  }
+  .marketing-contact-actions {
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .marketing-contact .booking-link {
+    width: 100%;
+  }
+  .marketing-footer {
+    padding: 30px 20px;
+    flex-direction: column;
+  }
+}
+
+.marketing-sites {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 28px;
+  font-size: 14px;
+}
+
+.marketing-related-sites {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+}
+.marketing-related-sites img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.marketing-related-sites span {
+  display: block;
+  margin-top: 18px;
+  font-size: 20px;
+}
+@media (max-width: 799px) {
+  .marketing-related-sites {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+.marketing-app-evidence {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 72px;
+}
+.marketing-app-evidence .project-proof {
+  transform: none;
+}
+.marketing-app-evidence .project-title-row h2 {
+  font-family: var(--font-body), sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.marketing-project-kind {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--landing-muted);
+}
+@media (max-width: 799px) {
+  .marketing-app-evidence {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+}

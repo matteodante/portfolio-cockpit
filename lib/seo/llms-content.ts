@@ -5,6 +5,10 @@ export const LLMS_PUBLIC = `# Matteo Dante
 ## Site structure
 
 - Landing (freelance services): https://matteodante.it
+- Website development: https://matteodante.it/en/services/web-development (IT: https://matteodante.it/it/servizi/sviluppo-siti-web)
+- App and software development: https://matteodante.it/en/services/app-software-development (IT: https://matteodante.it/it/servizi/sviluppo-app-software)
+- AI automation: https://matteodante.it/en/services/ai-automation (IT: https://matteodante.it/it/servizi/automazioni-ai)
+- PiùUDITO: three websites for one client: https://matteodante.it/en/projects/piuudito (IT: https://matteodante.it/it/progetti/piuudito)
 - Interactive 3D cockpit CV (playable): https://matteodante.it/en/cockpit (IT: https://matteodante.it/it/cockpit)
 
 > The detailed CV (per-role scope, ownership, team sizes, clients, architectures) is gated and available with an access code. Request one at matteo.dante659@gmail.com or via LinkedIn.

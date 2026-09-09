@@ -14,7 +14,9 @@ work; implement the requested scope.
   existing visual system, and the target's `.impeccable/surfaces/`
   brief for its purpose. Do not turn proposals into confirmed facts.
 - Landing (`app/[lang]/page.tsx`): help visitors understand the offer,
-  inspect real work, and contact Matteo. Cockpit (`app/[lang]/cockpit/`):
+  inspect real work, and contact Matteo. Commercial pages
+  (`app/[lang]/[section]/[slug]/`): explain each service and show its evidence.
+  Cockpit (`app/[lang]/cockpit/`):
   the playable CV, with accessible routes to sections, contact and CV.
 - Space, the toy astronaut, the playful technical voice and EN/IT are
   confirmed identity commitments. Existing fonts, palette, scroll
@@ -29,7 +31,8 @@ work; implement the requested scope.
   the findings together, then confirm once. Run relevant static
   design checks as well as `bun run check` and `bun run build`.
 - Follow `docs/design-workflow.md`; priorities and proposed measurement
-  live in `docs/redesign-roadmap.md`. A click on email is intent, not
+  live in `docs/redesign-roadmap.md`; commercial SEO and GA activation
+  boundaries live in `docs/seo/measurement-plan.md`. A click on email is intent, not
   a confirmed lead. No conversion uplift is established without data.
 
 ## Stack
@@ -67,14 +70,14 @@ directly. No Jest, no Vitest layer.
 
 ## What this is
 
-Two page routes: a space-inspired freelance landing at `/` and the
-Three.js cockpit game (the playable CV) at `/cockpit`. Chat + unlock +
-gated CV / translations APIs. No CMS, no DB.
+A space-inspired freelance landing at `/`, three service pages and one
+PiùUDITO case in EN/IT, plus the Three.js cockpit game (the playable CV)
+at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
 
 ## Routing
 
 - `app/[lang]/page.tsx` → server-rendered `LandingPage` with five
-  sections: intro, services, brands, shipped apps and contact. Both routes share
+  sections: intro, services, brands, shipped work and contact. All surfaces share
   Unbounded and Space Grotesk; landing composition styles are scoped in
   `components/landing/landing.css`. `LandingMotion` progressively adds
   a subtle Canvas 2D star field and GSAP ScrollTrigger driving photographic
@@ -99,8 +102,10 @@ gated CV / translations APIs. No CMS, no DB.
   Brands is active. Pause, reduced motion and no JavaScript show the
   complete four-/two-column static grid. See `docs/design/brand-wall.md`; other
   sections stay in normal flow. Services are three cards: websites from 300 €, apps
-  and AI on request. Secondary card links progressively open a native
-  dialog with the lazy-loaded Cal.com embed and a direct-link fallback.
+  and AI on request. Each dark card link opens its specific localized
+  service page. Header, hero and contact booking links remain direct Cal.com links.
+  Work adds a PiùUDITO case link with an actual website capture before
+  the existing Maestro/GymTree pair; the film sequence stays unchanged.
   `HeroIdentity` progressively adds one native WebGL quad with two registered
   photographic plates. Image-derived refraction, tears and chromatic
   displacement alternate Matteo/astronaut every five seconds, starting
@@ -121,6 +126,21 @@ gated CV / translations APIs. No CMS, no DB.
   preserve provenance. See `docs/design/work-video-sequence.md`.
   Booking links use `CAL_BOOKING_URL` in `lib/constants/contact.ts`;
   the owner confirmed `https://cal.com/matteo-dante`. Keep this exact URL.
+- `app/[lang]/[section]/[slug]/page.tsx` → `MarketingPageContent`:
+  eight static localized URLs for websites, app/software, AI automation
+  and the PiùUDITO case. `lib/seo/marketing-pages.ts` owns paths, metadata
+  and schemas; unknown combinations call `notFound()`. Content and normal-flow
+  layouts live in `components/marketing/`, sharing landing controls and
+  typography. Split introductions, real captures, native FAQs with orange
+  open/closed disclosure markers, and cross-service footer links stack on
+  mobile. FAQ CSS locally restores markers hidden by the global reset.
+  Header/hero Cal links are direct; the final orange CTA uses `BookingPopup`
+  with its native dialog, lazy Cal.com embed and direct-link fallback.
+  PiùUDITO is one client with three sites: piuudito.it, piuuditogroup.it
+  and fabiotomassetti.it. Four actual captures in `public/landing-v2/piuudito/`
+  carry embedded origins plus `origin.json`. Maestro/GymTree are labeled
+  personal products; the AI page also links to personal `claude-local-docs`.
+  These pages do not import the homepage WebGL or cinematic video scenes.
 - `app/[lang]/cockpit/page.tsx` → `CockpitLauncher` → dynamic-imports
   `CockpitApp` with `ssr: false`. Scene is client-only. The page wraps
   it in `<div data-viewport-lock>`; `global.css` locks body scroll via
@@ -299,6 +319,18 @@ To update private content: edit files in `private-src/`, run
 
 ## SEO
 
+- Commercial pages have localized canonical/hreflang, Open Graph,
+  WebPage + Service/CreativeWork + breadcrumb JSON-LD, sitemap entries
+  and public llms.txt links. This describes content, not measured SEO results.
+- `components/analytics/marketing-analytics.tsx` mounts from the locale
+  layout. A valid `NEXT_PUBLIC_GA_MEASUREMENT_ID` enables the optional
+  consent UI; Google loads only after positive consent. With no ID there
+  is no Google tag or consent UI. The fixed choice panel gives both
+  buttons equal treatment; preferences remain in normal footer flow.
+  The cockpit is excluded. Existing Vercel tools are independent.
+  Live Google activation still needs owner login and real IDs. Keep click
+  intent, embed booking creation and confirmed outcomes distinct; consult
+  `docs/seo/measurement-plan.md` for event definitions and activation checks.
 - `app/[lang]/layout.tsx` injects JSON-LD from `lib/seo/schemas.ts`
   via `dangerouslySetInnerHTML`. Keep the `// biome-ignore`.
 - Fonts via `next/font/google` in the shared locale layout: Unbounded

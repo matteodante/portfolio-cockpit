@@ -307,7 +307,7 @@
   "home.services.web.body": "Il tuo business, presentato bene. Veloce e semplice da usare.",
   "home.services.app.title": "App e software",
   "home.services.app.body": "Il tuo prodotto, sul web e nelle mani dei tuoi clienti.",
-  "home.services.ai.title": "AI su misura",
+  "home.services.ai.title": "Automazioni AI",
   "home.services.ai.body": "Assistenti e automazioni per il lavoro di ogni giorno.",
   "home.services.proof": "Guarda cosa ho costruito",
   "home.work.title": "Idee diventate prodotti.",
@@ -335,5 +335,11 @@
   "home.booking.title": "Parliamo del tuo progetto.",
   "home.booking.close": "Chiudi prenotazione",
   "home.booking.fallback": "Apri direttamente su Cal.com",
-  "home.brands.project": "Progetti enterprise"
+  "home.brands.project": "Progetti enterprise",
+  "home.services.web.details": "Scopri i siti web",
+  "home.work.piuudito.alt": "Il sito PiùUDITO realizzato da Matteo Dante",
+  "home.work.piuudito.body": "Tre siti realizzati per la stessa azienda: piuudito.it, piuuditogroup.it e fabiotomassetti.it. Esplora il lavoro pubblicato.",
+  "home.work.piuudito.open": "Guarda il progetto",
+  "home.services.app.details": "Scopri app e software",
+  "home.services.ai.details": "Scopri le automazioni AI"
 }
