@@ -1,25 +1,25 @@
 {
   "preparedAt": "2026-09-09",
-  "type": "Current localized website covers and an authentic historical cockpit screenshot",
-  "processing": "Covers encoded as WebP from the actual site social renderer. Existing cockpit screenshot unchanged.",
+  "type": "Current localized website covers and authentic historical cockpit screenshot",
+  "processing": "Covers encoded as WebP from actual updated social renderer; cockpit screenshot unchanged.",
   "files": [
     {
-      "file": "website-it-v4.webp",
+      "file": "website-it-v5.webp",
       "type": "Actual site-generated social cover",
-      "source": "/social/it/home.png?v=portrait-4",
+      "source": "/social/it/home.png?v=portrait-5",
       "renderer": "lib/seo/social-image.tsx",
-      "description": "Actual localized social cover rendered by lib/seo/social-image.tsx from the owner-approved Matteo hero photograph and existing lunar landscape, with Unbounded and Space Grotesk typography. This is a graphic project cover, not a browser screenshot. No new generated face.",
-      "sourceSha256": "39a7fb39050e673a7cd3719366a9faf1ec71c9b9ff15f001604da8227a88a15a",
-      "sha256": "39a7fb39050e673a7cd3719366a9faf1ec71c9b9ff15f001604da8227a88a15a"
+      "description": "Actual localized social cover from lib/seo/social-image.tsx, approved black-polo hero, lunar landscape and existing fonts. This is a graphic cover, not a website screenshot.",
+      "sourceSha256": "563f8039ae98fc9c4161f36e90fe70f36b148ca7b3c032d6cff82d32903fee24",
+      "sha256": "324d60f13badbed7ac39711d694ecdecaf3dd6e12530b49cc888bac6e7f41aab"
     },
     {
-      "file": "website-en-v4.webp",
+      "file": "website-en-v5.webp",
       "type": "Actual site-generated social cover",
-      "source": "/social/en/home.png?v=portrait-4",
+      "source": "/social/en/home.png?v=portrait-5",
       "renderer": "lib/seo/social-image.tsx",
-      "description": "Actual localized social cover rendered by lib/seo/social-image.tsx from the owner-approved Matteo hero photograph and existing lunar landscape, with Unbounded and Space Grotesk typography. This is a graphic project cover, not a browser screenshot. No new generated face.",
-      "sourceSha256": "88414ea24a3c1b00589fbf9e5de367e7152ae8b71091fb4c9186ddd570130b6b",
-      "sha256": "88414ea24a3c1b00589fbf9e5de367e7152ae8b71091fb4c9186ddd570130b6b"
+      "description": "Actual localized social cover from lib/seo/social-image.tsx, approved black-polo hero, lunar landscape and existing fonts. This is a graphic cover, not a website screenshot.",
+      "sourceSha256": "57e0e718ce5847c8d9d2a7aebed9cc2a680f0694d8a1c92d3543d74ae28a4e9c",
+      "sha256": "8d11b819eb4e95d3472bfc773618f6ae28e799c2f4242c03593f7f8535e86677"
     },
     {
       "file": "cockpit-mobile.jpg",
@@ -27,6 +27,5 @@
       "description": "Actual public mobile cockpit gameplay, with astronaut, planets and controls; captured in prior local browser validation. No access code or private CV content is shown.",
       "sourceSha256": "9cbfb97437bc199787669fcfe83d664172a347ca9efa86b3f09a5233b499d9f0"
     }
-  ],
-  "browserCapture": "Mac locked; no fresh homepage or cockpit screenshot claimed."
+  ]
 }

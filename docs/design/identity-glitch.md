@@ -41,19 +41,18 @@ before a click. The cockpit keeps its own asset preload when opened.
 
 ## Generated assets and provenance
 
-`public/landing-v2/matteo-portrait-v4.webp` and
+`public/landing-v2/identity/matteo-polo-v1.webp` and
 `public/landing-v2/identity/astronaut.webp` are both 960 × 1200.
-The human plate is an Image Gen edit using the latest real face/body
-references. The old human plate is only a pose/framing reference; its
-generated face is not the identity source. These are opaque near-black
-photographic plates, not transparent cutouts. Their
-frame edges blend into the scene through CSS; the subject is not
-approximated by a geometric cutout.
+The owner approved the natural standing black-polo portrait, based on the
+man on the right in his sunset family photograph. Image Gen preserves his
+smile, glasses and body; the tighter crop keeps the shorts out of view.
+These are opaque near-black photographic plates, not transparent cutouts.
+CSS blends the frame edges into the scene.
 
-The astronaut is restored byte-for-byte from `eb0606b`, including original
-prompts and provenance. Both have folded arms and the original warm edge
-light. The previous gray-background, arms-at-sides pair is superseded for
-the hero; its history remains in Git and the generated masters.
+The original folded-arm astronaut remains unchanged from `eb0606b`.
+The two poses differ. Desktop/mobile browser inspection confirmed both
+clean identity states and the alternating transition. No new shader or
+input changes are part of this portrait update.
 The adjacent `.webp.origin.json` and `.webp.json` files record prompts,
 source paths and processing. `assets/portrait-options/hero-services-correction.json`
 records the latest prompts; see [portrait-provenance.md](portrait-provenance.md).

@@ -1,0 +1,8 @@
+{
+  "source": "/social/en/home.png?v=portrait-5",
+  "sourceGenerator": "Built-in Image Gen",
+  "sourcePrompt": "Precise clothing COLOR edit only. This is the owner's approved website HERO photograph, already cropped correctly above the shorts length.\nChange ONLY the dark NAVY BLUE polo shirt to a neutral BLACK polo shirt, keeping the identical collar, buttons, fabric texture, folds, fit, shirt outline and lighting. The black should look like real matte black cotton, with enough detail to read against the existing near-black background.\nPreserve EVERYTHING ELSE exactly: the same real young man's face, thick black glasses with white temples, eye shape and gaze, real tooth-showing smile, teeth, short curly hair, stubble, earring, skin tone, head tilt, body proportions, relaxed arms, shoulders, pose, framing and near-black background. No new face, no beauty retouching, no change in expression, anatomy or composition.\nKeep natural full color. Do not zoom out or reveal shorts or legs; preserve this exact upper-body crop. The only requested visual change is navy fabric becoming BLACK. No suit, no white shirt, no logos, no text, no additional props or people.",
+  "rendering": "Actual localized social cover from lib/seo/social-image.tsx, approved black-polo hero, lunar landscape and existing fonts. This is a graphic cover, not a website screenshot.",
+  "bytes": 53088,
+  "sha256": "8d11b819eb4e95d3472bfc773618f6ae28e799c2f4242c03593f7f8535e86677"
+}

@@ -7,8 +7,8 @@ export const SITE_NAME = 'Matteo Dante'
 export const SITE_TITLE = 'Matteo Dante · Senior Software Engineer'
 
 export const ICON_PATH = '/icon.png'
-/** Color hero portrait based on the owner's latest face/body references. */
-export const PERSON_IMAGE_PATH = '/landing-v2/matteo-portrait-v4.webp'
+/** Approved natural portrait, shared by the hero and public identity schema. */
+export const PERSON_IMAGE_PATH = '/landing-v2/identity/matteo-polo-v1.webp'
 
 export const CV_MARKDOWN_PATHS: Record<Locale, string> = {
   en: '/resume/cv.md',

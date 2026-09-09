@@ -112,18 +112,17 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   captures live in `public/landing-v2/portfolio/`; cockpit links disable
   prefetch. See `docs/design/portfolio-evidence.md` for evidence boundaries.
   `HeroIdentity` progressively adds one native WebGL quad with two photographic
-  plates. `public/landing-v2/matteo-portrait-v4.webp` uses the owner's latest
-  Photo 1 for his smiling face and clear glasses, Photo 3 for body proportions,
-  and the original hero for its wider folded-arm pose only. Hero and Person
-  schema share `PERSON_IMAGE_PATH`. The restored `identity/astronaut.webp`
-  has the matching folded-arm pose. Both 960×1200 plates use near-black
-  backgrounds. The owner explicitly approved this hero. Services use
-  `matteo-services-closeup-bw-v2.webp` (560×640), a separate close-up edit
-  of the man in the latest boat selfie (attachment B7F1C78D), smiling without
-  glasses in monochrome, in the existing 7:8 frame at 220px/150px.
-  The rejected wide services edit is removed. Asset replacement preserves
-  renderer, timing and pointer behavior; provenance lives in
-  `docs/design/portrait-provenance.md` and adjacent origin manifests.
+  plates. `public/landing-v2/identity/matteo-polo-v1.webp` is the approved
+  natural standing hero: black polo, glasses and smile, based on the man on
+  the right in the owner's sunset family photo. Its crop excludes shorts.
+  Hero and Person schema share `PERSON_IMAGE_PATH`. The existing folded-arm
+  `identity/astronaut.webp` remains unchanged. Both plates are 960×1200 with
+  near-black backgrounds; their poses differ. Services uses the approved
+  `matteo-services-hero-closeup-v1.webp` (560×640), derived from the same hero
+  with glasses, polo and natural color, in the existing 220px/150px frame.
+  The owner rejected the suit portrait. Asset replacement preserves the
+  renderer, timing and pointer behavior; exact source prompts are in
+  `assets/portrait-options/polo-preview.json` and adjacent origin manifests.
   Image-derived refraction, tears and chromatic
   displacement alternate Matteo/astronaut every five seconds, starting
   on first load. Cursor movement, tap and passive touch drag add a short local refractive
@@ -140,11 +139,11 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   Content and email links work without JavaScript. Assets in
   `public/landing-v2/` include the approved photographic portrait, localized App Store
   captures, an Image Gen astronaut based on the cockpit GLB render, a
-  generated lunar landscape and `matteo-avatar-v4.webp`, a 200px square
-  CSS rendering of the approved monochrome close-up, shared through
+  generated lunar landscape and `matteo-avatar-v5.webp`, a 200px square
+  CSS rendering of the approved color close-up, shared through
   `BrandAvatar` across landing, commercial pages and cockpit. Current static assets
-  and social cards have local image verification; fresh desktop/mobile layout
-  and animated registration remain pending while the Mac is locked.
+  and social cards have local image verification; both homepage portraits
+  and the identity cycle were inspected at desktop and mobile sizes.
   The owner explicitly requires the old CV photograph: public/protected PDFs
   and `public/images/profile-pic.jpeg` stay unchanged. The other profile image
   uses the approved close-up. Localized project covers use the actual social
@@ -365,18 +364,18 @@ To update private content: edit files in `private-src/`, run
   and public llms.txt links. This describes content, not measured SEO results.
 - `lib/seo/social.ts` owns EN/IT sharing copy, image URLs and descriptors.
   `lib/seo/social-image.tsx` renders the shared 1200×630 Matteo portrait
-  composition from `public/social/hero-portrait-v4.jpg` and `lunar-background.jpg`,
-  with the exact approved smile, clear black glasses and folded arms. CSS
+  composition from `public/social/hero-portrait-v5.jpg` and `lunar-background.jpg`,
+  with the exact approved natural smile, glasses and black polo. CSS
   frame-edge masks blend the photo into the lunar background. Locally bundled
   Unbounded 900 and Space Grotesk 500 keep the existing typography and copy.
   `/social/{en|it}/{home|websites|apps|ai|piuudito|cockpit}.png` prerenders
   all twelve previews at build time. Homepage metadata explicitly sets
   page images so Next's file defaults do not override them; the existing
   localized OG/Twitter endpoints also render the new homepage image.
-  `socialImageUrl` adds `?v=portrait-4`. Schemas use matching social images;
+  `socialImageUrl` adds `?v=portrait-5`. Schemas use matching social images;
   Person uses `PERSON_IMAGE_PATH`. Favicon, Apple and manifest icons derive
-  from the same approved close-up as `matteo-avatar-v4.webp`; manifest paths are
-  `/social/avatar-v4-{192,512}.png`. Local build and HTTP verification are recorded
+  from the same approved close-up as `matteo-avatar-v5.webp`; manifest paths are
+  `/social/avatar-v5-{192,512}.png`. Local build and HTTP verification are recorded
   in `docs/design/identity-release.md`;
   public deployment and platform cache refresh are not verified for this
   replacement. See `docs/design/social-metadata.md` and the image

@@ -341,3 +341,42 @@ described as a cover, alongside the existing real cockpit screenshot.
 Mac lock prevents a fresh browser capture; no synthetic UI screenshot.
 Owner exception: retain the previous photograph in all CV documents and
 their original profile-pic.jpeg source.
+
+## Approved rollout — black-polo hero and matching close-up
+
+The owner approved the new natural standing hero with glasses, then clarified
+that the polo must be black in this HERO image. Crop above the shorts length.
+The owner rejected the suit portrait, asking for the same natural confidence
+as the hero. He approved a close-up generated directly from the approved
+black-polo hero: the same glasses, smile, polo and natural color, on a
+near-black background. Services now uses
+`matteo-services-hero-closeup-v1.webp` in its existing 7:8 frame. Remove the
+unused suit candidate from public assets; keep its generated master.
+
+The owner approved the remaining rollout and requested commit/push. Hero
+and Person schema share PERSON_IMAGE_PATH; all twelve OG/Twitter images and
+localized project covers use the exact hero. The shared avatar, favicon,
+Apple/manifest icons and standalone profile-photo derive from the approved
+color close-up through square CSS framing. No new face is generated.
+The original CV photo/PDFs, existing astronaut and shader remain unchanged.
+Exact prompts and framing are in `assets/portrait-options/polo-preview.json`.
+Versioned social URLs use portrait-5. See `docs/design/identity-release.md`.
+
+Previous local verification (2026-09-09): the Mac was unlocked and both sections were
+inspected in the in-app browser at 1440×900 and 390×844. The hero keeps the
+shorts out of view and alternates with the astronaut; the services portrait
+is in color with a jacket and white shirt. No horizontal overflow or browser
+errors/warnings were observed. Captures are in
+`.impeccable/tmp/polo-preview/{desktop,mobile}-{hero,services}.png`.
+`bun run check` and `bun run build` passed. Static design checks report
+45 existing advisories; React Doctor found no issues in the two changed
+components. Both localized pages and image URLs return HTTP 200; served
+image bytes match the new files. Shared social assets and CVs are unchanged.
+
+Close-up replacement verification (2026-09-09): the approved hero-derived
+portrait was inspected at 1440×900 and 390×844 with its full hairstyle,
+glasses, smile and black polo visible. Image loading and color rendering
+passed, with no horizontal overflow or console warnings/errors. Captures:
+`.impeccable/tmp/polo-preview/closeup-{desktop,mobile}.png`.
+`bun run check` (36 tests, 502 assertions) and `bun run build` passed.
+The shared avatar, social images, hero and CV were not changed in this step.

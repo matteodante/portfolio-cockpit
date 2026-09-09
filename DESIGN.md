@@ -694,23 +694,19 @@ section, contact and CV routes alongside the flight controls.
 ### Signature: Astronaut, photographic identity and outlined display
 
 The hero uses `public/landing-v2/identity/astronaut.webp` and
-`public/landing-v2/matteo-portrait-v4.webp`: two opaque 960 × 1200
-photographic plates. The human uses the owner's latest Photo 1 for his
-smiling face and clear glasses, Photo 3 for body proportions, and the old
-hero only for its wider folded-arm pose and lighting. The original
-folded-arm astronaut plate is restored from `eb0606b`, preserving the toy
-design. Flat near-black backgrounds replace the gray studio backdrop;
-CSS blends the rectangular frame edges, rather than approximating the
-subject with a geometric cutout. The shader transition and its fallbacks are
-documented above. Prompts and source history sit alongside the plates in
-`.origin.json` and `.webp.json`; direction and provenance are explained in
-`docs/design/identity-glitch.md`.
+`public/landing-v2/identity/matteo-polo-v1.webp`: two opaque 960 × 1200
+photographic plates. The owner approved the natural standing portrait with
+black polo, glasses, tilted head and real smile, based on the man at the
+right in his sunset family photograph. The crop excludes the shorts length.
+The existing folded-arm toy astronaut remains unchanged. The identities
+have different poses; the refractive transition preserves its existing
+renderer, timing, pointer and touch behavior. Near-black photographic
+backgrounds blend through CSS frame-edge masks. Exact prompts and sources
+are in `assets/portrait-options/polo-preview.json` and adjacent origins.
 
-The latest correction changes the plates, not the renderer, timing or
-pointer behavior. The previous scoped static-asset **SHIP** review predates
-this new pair. Fresh desktop/mobile layout, animated registration and
-cursor/touch review remain pending while the Mac is locked; earlier hero
-captures and historical project screenshots do not validate this pair.
+Both identities and the services close-up were inspected in the browser
+at desktop and mobile sizes. This asset release does not establish a new
+review of touch strength or measured GPU performance.
 
 `public/landing-v2/astronaut.webp` remains in source history as an original
 Image Gen reinterpretation based on a render of the existing
@@ -744,27 +740,24 @@ matching point light. Its material emissive intensity varies from 1.2 to
 both from the same sine pulse. This is the named scene exception; the
 landing keeps its Unbounded outlined first name and solid surname.
 
-The shared `BrandAvatar` uses `matteo-avatar-v4.webp` (200 × 200), displayed
+The shared `BrandAvatar` uses `matteo-avatar-v5.webp` (200 × 200), displayed
 as a 36px circle on desktop and 32px below 800px. It replaces the former
 orbit brand symbol. Services and contact no longer repeat that symbol.
-The services portrait uses its own `matteo-services-closeup-bw-v2.webp`
-(560 × 640), a close-up edit of the man in the owner's latest boat selfie
-(attachment B7F1C78D). Its black-and-white treatment preserves his natural
-smile, no glasses, curls and stubble against a near-black background. The existing
-7:8 frame stays 220px on desktop and 150px on mobile with a thin offset
-outline; centered `object-fit: cover` retains the close composition.
-Hero and Person schema share the color `matteo-portrait-v4.webp` through
-`PERSON_IMAGE_PATH`. The owner explicitly approved this color hero; its
-assets and rendering remain unchanged by the latest services refinement.
+Services use `matteo-services-hero-closeup-v1.webp` (560 × 640), a close-up
+Image Gen edit derived directly from the approved hero. It preserves the
+natural smile, glasses, black polo and color. The owner rejected the suit
+portrait and requested the same informal confidence as the hero. The
+existing 7:8 frame stays 220px/150px with its thin offset outline.
+Hero and Person schema share the approved hero through `PERSON_IMAGE_PATH`.
 
-These two images use the real photographs with distinct roles, documented
-in `assets/portrait-options/hero-services-correction.json`. The avatar and
-icons now use the approved monochrome close-up through square CSS image
-layout. Social cards use the exact color hero, without a new generated face.
-These are photographic edits, not untouched camera originals.
-Their provenance is in `docs/design/portrait-provenance.md`. Official app
-captures retain their actual UI and colors, documented in
-`docs/design/project-assets.md`; they need not imitate the site's palette.
+The avatar and icons use square CSS layout of the approved color close-up,
+aligned to the top to retain the full hairstyle. Social cards use the exact
+color hero, without generating another face. These are photographic edits,
+not untouched camera originals. Provenance lives in
+`docs/design/portrait-provenance.md`. The CV retains the original photograph;
+`public/images/profile-pic.jpeg` and all CV PDFs remain unchanged.
+Official app captures retain their real UI and colors, documented in
+`docs/design/project-assets.md`.
 
 **Not canonized:** compact role/navigation labels and remaining tiny helper
 text are not templates for decorative kickers or a new small-text scale.
@@ -774,8 +767,8 @@ are not promoted to shared tokens.
 ### Social sharing cards
 
 One static composition serves home, websites, apps, AI, PiùUDITO and cockpit
-in both languages. `public/social/hero-portrait-v4.jpg` is a JPEG encoding
-of the exact approved folded-arm hero. It sits on the right at 544 × 680,
+in both languages. `public/social/hero-portrait-v5.jpg` is a JPEG encoding
+of the exact approved natural black-polo hero. It sits on the right at 544 × 680,
 with complete head, smile and clear black glasses. The separate existing
 lunar image has a dark overlay for legible copy; CSS frame-edge masks blend
 the photo into that scene. No new face is generated. Typography is unchanged.
@@ -791,10 +784,10 @@ external rendering requests; `lib/seo/social.ts` supplies localized copy.
 All twelve PNGs are prerendered during the build. Page-specific copy names
 the actual destination; Matteo's portrait remains personal identity artwork,
 including on the PiùUDITO preview. It is not client work imagery.
-`socialImageUrl` appends `?v=portrait-4` to distinguish the updated previews
+`socialImageUrl` appends `?v=portrait-5` to distinguish the updated previews
 from previously cached images; live platform caches are not verified.
 The favicon, Apple icon and 192/512px manifest icons use the same approved
-monochrome portrait as the avatar. Source prompts, image processing and font
+color close-up as the avatar. Source prompts, image processing and font
 licenses are recorded in `public/social/origin.json`,
 `public/fonts/social-origin.json` and `docs/design/social-metadata.md`.
 

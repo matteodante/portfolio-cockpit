@@ -1,21 +1,21 @@
 {
   "date": "2026-09-09",
   "approvedImages": {
-    "hero": "public/landing-v2/matteo-portrait-v4.webp",
-    "portrait": "public/landing-v2/matteo-services-closeup-bw-v2.webp"
+    "hero": "public/landing-v2/identity/matteo-polo-v1.webp",
+    "portrait": "public/landing-v2/matteo-services-hero-closeup-v1.webp"
   },
   "socialCards": {
     "renderer": "lib/seo/social-image.tsx",
     "copy": "lib/seo/social.ts",
     "routes": "/social/{en|it}/{home|websites|apps|ai|piuudito|cockpit}.png",
     "size": "1200x630",
-    "version": "portrait-4",
-    "description": "Exact approved folded-arm hero photo, existing lunar landscape, localized type. CSS frame-edge masks blend the image; no newly generated face."
+    "version": "portrait-5",
+    "description": "Exact approved natural black-polo hero photograph, existing lunar landscape and localized typography. CSS frame-edge masks blend the photo without changing the face."
   },
   "sources": [
     {
-      "file": "hero-portrait-v4.jpg",
-      "source": "public/landing-v2/matteo-portrait-v4.webp",
+      "file": "hero-portrait-v5.jpg",
+      "source": "public/landing-v2/identity/matteo-polo-v1.webp",
       "processing": "JPEG encoding only."
     },
     {
@@ -25,21 +25,21 @@
     }
   ],
   "avatar": {
-    "file": "/landing-v2/matteo-avatar-v4.webp",
-    "source": "public/landing-v2/matteo-services-closeup-bw-v2.webp",
-    "rendering": "Next ImageResponse square CSS cover followed by WebP encoding; no generative edit."
+    "file": "/landing-v2/matteo-avatar-v5.webp",
+    "source": "public/landing-v2/matteo-services-hero-closeup-v1.webp",
+    "rendering": "Top-aligned square CSS cover of approved color close-up; WebP encoding only."
   },
   "icons": {
-    "source": "public/landing-v2/matteo-services-closeup-bw-v2.webp",
+    "source": "public/landing-v2/matteo-services-hero-closeup-v1.webp",
     "files": [
       "/icon.png",
       "/apple-icon.png",
       "/favicon.ico",
-      "/social/avatar-v4-192.png",
-      "/social/avatar-v4-512.png"
+      "/social/avatar-v5-192.png",
+      "/social/avatar-v5-512.png"
     ],
-    "rendering": "Next ImageResponse square CSS cover and PNG encoding. Favicon wraps the 48px PNG in ICO."
+    "rendering": "Same approved color close-up, square CSS cover and PNG encoding. Favicon wraps 48px RGBA PNG."
   },
-  "cvException": "Owner requires the existing CV photo. Public and protected PDF files and profile-pic.jpeg are restored unchanged.",
+  "cvException": "Owner requires the original CV photo: profile-pic.jpeg and all public/protected CVs remain unchanged.",
   "history": "Previous generated backgrounds, avatars and their prompts remain in Git history. New image origins retain the approved Image Gen prompts."
 }

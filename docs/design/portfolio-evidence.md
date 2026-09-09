@@ -31,11 +31,11 @@ architecture, employer metrics, testimonials or results were added.
 
 ## Project covers and actual cockpit capture
 
-`public/landing-v2/portfolio/website-{en,it}-v4.webp` are current localized
+`public/landing-v2/portfolio/website-{en,it}-v5.webp` are current localized
 covers emitted by the site's actual social renderer, using the approved
 hero. They replace the outdated homepage screenshot. Alt text identifies
-these as covers, and the image keeps its 1200×630 aspect ratio. Mac lock
-prevents a fresh browser capture; no synthetic screenshot is substituted.
+these as covers, and the image keeps its 1200×630 aspect ratio. The latest
+cover uses the approved natural black-polo hero; it is not a UI screenshot.
 
 `cockpit-mobile.jpg` remains the authentic historical public mobile gameplay
 capture. It contains no access code or private CV content. Its pixels and

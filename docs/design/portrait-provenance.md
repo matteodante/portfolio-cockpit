@@ -1,6 +1,30 @@
 # Matteo portrait and avatar provenance
 
-## Final approved integration
+## Current approved integration — portrait v5
+
+The owner approved the natural black-polo hero and a close-up derived from
+that same hero, then authorized all remaining site images, commit and push.
+The family sunset photograph supplies the hero identity (man on the right).
+The suit portrait was rejected. The close-up keeps the hero's glasses,
+natural smile, black polo and color, communicating the same informal confidence.
+
+- Hero/Person: `public/landing-v2/identity/matteo-polo-v1.webp`,
+  960×1200, 52,638 bytes; cropped above the shorts length.
+- Services: `public/landing-v2/matteo-services-hero-closeup-v1.webp`,
+  560×640, 38,956 bytes; close-up Image Gen edit of the approved hero.
+- Avatar/icons/profile-photo: square CSS layout of that close-up,
+  top aligned to preserve the full hairstyle, followed by image encoding.
+- All twelve social images and localized project covers use the exact
+  hero, existing lunar background and existing fonts. No new face generated.
+- The folded-arm astronaut and the original CV photo/PDFs are unchanged.
+
+Exact prompts, reference roles and master paths are in
+`assets/portrait-options/polo-preview.json` and adjacent image origins.
+See [identity-release.md](identity-release.md) for validation and deployment.
+Older approved/rejected versions below are retained as history only.
+
+
+## Historical integration — portrait v4
 
 Both current portraits are approved and the owner authorized commit/push.
 The release extends them to all site portraits, avatar/icons, twelve social
@@ -12,7 +36,7 @@ Owner correction: the CV keeps the earlier photo. Public and protected PDFs
 and `public/images/profile-pic.jpeg` are restored byte-for-byte; the separate
 `profile-photo.jpeg` uses the new approved close-up.
 
-## Current correction — explicit photo roles
+## Historical correction — photo roles before v5
 
 Attachment `A7C4C9E2-7CB1-43B2-A5AC-1F060B6E2B69` assigns Photo 1 to the
 hero face and Photo 3 to body proportions. The owner explicitly approved

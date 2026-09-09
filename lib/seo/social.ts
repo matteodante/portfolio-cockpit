@@ -65,7 +65,7 @@ export const SOCIAL_COPY = {
 } as const
 
 export function socialImageUrl(page: SocialPage, locale: Locale) {
-  return `${BASE_URL}/social/${locale}/${page}.png?v=portrait-4`
+  return `${BASE_URL}/social/${locale}/${page}.png?v=portrait-5`
 }
 
 export function socialImages(page: SocialPage, locale: Locale) {
@@ -77,8 +77,8 @@ export function socialImages(page: SocialPage, locale: Locale) {
       type: 'image/png',
       alt:
         locale === 'it'
-          ? `Matteo Dante — ${title} Matteo sorridente, con occhiali neri e braccia conserte, su un paesaggio lunare.`
-          : `Matteo Dante — ${title} Matteo smiling, wearing black glasses with his arms folded, in a lunar landscape.`,
+          ? `Matteo Dante — ${title} Matteo sorridente, con occhiali e polo nera, su un paesaggio lunare.`
+          : `Matteo Dante — ${title} Matteo smiling, wearing glasses and a black polo shirt, in a lunar landscape.`,
     },
   ] satisfies NonNullable<Metadata['openGraph']>['images']
 }

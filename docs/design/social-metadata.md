@@ -1,42 +1,27 @@
-# Social previews and metadata
+# Social images and metadata
 
-The owner approved the folded-arm color hero and the close-up monochrome
-portrait, then requested integration across the website, Open Graph,
-Twitter, avatar and icons. The hero itself remains byte-for-byte unchanged.
+The current twelve EN/IT previews share the approved natural black-polo hero,
+encoded as `public/social/hero-portrait-v5.jpg`, and the existing lunar
+background. `lib/seo/social-image.tsx` uses the exact photo, local fonts and
+existing composition. Copy and localized alt text live in `lib/seo/social.ts`;
+alt text describes glasses and a black polo, with no folded-arm claim.
 
-## Current composition
+`/social/{en|it}/{home|websites|apps|ai|piuudito|cockpit}.png?v=portrait-5`
+prerenders at build time. The existing localized OG/Twitter image endpoints
+use the same renderer. JSON-LD and sitemap images share these versioned URLs.
+Person uses `PERSON_IMAGE_PATH`, the exact approved hero.
 
-`lib/seo/social-image.tsx` renders 1200×630 cards using the exact approved
-hero, encoded as `public/social/hero-portrait-v4.jpg`, and the existing
-lunar landscape in `lunar-background.jpg`. The photo occupies the right
-544×680 area; CSS masks fade only the frame edges. A dark overlay preserves
-copy contrast. Unbounded 900, Space Grotesk 500, text placement and localized
-copy retain their existing values. No newly generated face or external
-asset/font request is involved in rendering.
+`matteo-avatar-v5.webp`, favicon, Apple icon and
+`/social/avatar-v5-{192,512}.png` derive from the approved color close-up
+`matteo-services-hero-closeup-v1.webp`. Square CSS framing preserves the hair
+and face; no new image generation is used for these derivatives. The original
+CV photo and PDFs remain unchanged. Current project covers are direct social
+renderer outputs, labeled as covers, alongside the historical cockpit capture.
 
-Six destinations (home, websites, apps, AI, PiùUDITO and cockpit) have EN/IT
-previews: `/social/{en|it}/{page}.png?v=portrait-4`. All twelve are prerendered
-at build time. Localized `opengraph-image` and `twitter-image` routes share
-the homepage renderer. Page metadata, Twitter/OG alt text, JSON-LD and
-sitemap image references select the corresponding versioned URL.
-
-## Other portraits and icons
-
-Person metadata uses `PERSON_IMAGE_PATH`, the approved color hero at
-`/landing-v2/matteo-portrait-v4.webp`. Services use the separate approved
-monochrome close-up. The shared 200px `matteo-avatar-v4.webp`, favicon,
-Apple/app icons and `/social/avatar-v4-{192,512}.png` use square CSS image
-layout of that close-up. The manifest references these new paths.
-The original CV photo is retained at the owner's explicit request.
-
-Current localized project covers are direct outputs of the social renderer,
-identified as covers, alongside the real historical cockpit capture. They
-are not fabricated browser screenshots. Sources, layout recipes and image
-hashes are in `public/social/origin.json` and adjacent origin records.
-Previous generated background/portrait versions remain in Git history.
-
-See [identity-release.md](identity-release.md) for this release's validation
-and deployment status. The earlier records below do not validate this set.
+See [identity-release.md](identity-release.md) for the current release and
+verification. Sources and recipes are in `public/social/origin.json` and
+`assets/portrait-options/polo-preview.json`. The following records concern
+superseded assets and do not validate this release.
 
 ## Earlier verification — 2026-09-09, before the approved portrait integration
 

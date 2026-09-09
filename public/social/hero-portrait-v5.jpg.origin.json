@@ -1,0 +1,8 @@
+{
+  "source": "public/landing-v2/identity/matteo-polo-v1.webp",
+  "sourceGenerator": "Built-in Image Gen",
+  "sourcePrompt": "Precise clothing COLOR edit only. This is the owner's approved website HERO photograph, already cropped correctly above the shorts length.\nChange ONLY the dark NAVY BLUE polo shirt to a neutral BLACK polo shirt, keeping the identical collar, buttons, fabric texture, folds, fit, shirt outline and lighting. The black should look like real matte black cotton, with enough detail to read against the existing near-black background.\nPreserve EVERYTHING ELSE exactly: the same real young man's face, thick black glasses with white temples, eye shape and gaze, real tooth-showing smile, teeth, short curly hair, stubble, earring, skin tone, head tilt, body proportions, relaxed arms, shoulders, pose, framing and near-black background. No new face, no beauty retouching, no change in expression, anatomy or composition.\nKeep natural full color. Do not zoom out or reveal shorts or legs; preserve this exact upper-body crop. The only requested visual change is navy fabric becoming BLACK. No suit, no white shirt, no logos, no text, no additional props or people.",
+  "rendering": "JPEG encoding of the approved hero only; no new generated face.",
+  "bytes": 116655,
+  "sha256": "817aa3ba2913716516f1f5c5ed5ccd6296af10a07e69284150ff41948b6ad4da"
+}

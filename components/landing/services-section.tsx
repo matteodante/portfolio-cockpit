@@ -40,7 +40,7 @@ export default function ServicesSection({ locale }: { locale: Locale }) {
             <figure className="hero-portrait">
               <div className="portrait-image">
                 <Image
-                  src="/landing-v2/matteo-services-closeup-bw-v2.webp"
+                  src="/landing-v2/matteo-services-hero-closeup-v1.webp"
                   alt={t('home.portrait.alt')}
                   width={560}
                   height={640}

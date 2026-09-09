@@ -35,7 +35,7 @@ export default function PortfolioEvidence({
     <article className="website-proof portfolio-proof">
       <div className="portfolio-proof-views">
         <Image
-          src={`/landing-v2/portfolio/website-${locale}-v4.webp`}
+          src={`/landing-v2/portfolio/website-${locale}-v5.webp`}
           alt={t.landingAlt}
           width={1200}
           height={630}
