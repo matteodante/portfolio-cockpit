@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
+import type { CreativeWork, Graph, Service } from 'schema-dts'
+import { NAME } from '@/lib/constants/contact'
 import { BASE_URL } from '@/lib/constants/site'
-import type { Locale } from '@/lib/i18n/config'
-import { socialImages, socialSchemaImage } from '@/lib/seo/social'
+import { BCP47_LOCALE, type Locale } from '@/lib/i18n/config'
+import { pageMetadata } from '@/lib/seo/page-metadata'
+import { socialSchemaImage } from '@/lib/seo/social'
 
 export const MARKETING_PAGES = {
   apps: {
@@ -42,8 +45,8 @@ export const MARKETING_PAGES = {
       en: 'Website development for professionals and small businesses',
     },
     description: {
-      it: 'Siti web su misura per professionisti, startup e piccole imprese in Italia e Ticino. Da 300 €, con un interlocutore diretto. Guarda il progetto PiùUDITO.',
-      en: 'Custom websites for professionals, startups and small businesses in Italy, Ticino and beyond. From €300, working directly with Matteo. Explore PiùUDITO.',
+      it: 'Siti web per professionisti, startup e imprese in Italia e Ticino, da 300 €. Esplora PiùUDITO, questo sito e il cockpit 3D realizzati da Matteo Dante.',
+      en: 'Custom websites for professionals, startups and businesses, from €300. Explore PiùUDITO, this website and the 3D cockpit built by Matteo Dante.',
     },
   },
   piuudito: {
@@ -72,62 +75,75 @@ export function marketingMetadata(
   locale: Locale
 ): Metadata {
   const content = MARKETING_PAGES[page]
-  const url = `${BASE_URL}${content.paths[locale]}`
-  const title = content.title[locale]
-  const description = content.description[locale]
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: url,
-      languages: {
-        it: `${BASE_URL}${content.paths.it}`,
-        en: `${BASE_URL}${content.paths.en}`,
-        'x-default': `${BASE_URL}${content.paths.en}`,
-      },
-    },
-    openGraph: {
-      title: `${title} · Matteo Dante`,
-      description,
-      url,
-      type: 'website',
-      siteName: 'Matteo Dante',
-      locale: locale === 'it' ? 'it_IT' : 'en_US',
-      images: socialImages(page, locale),
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${title} · Matteo Dante`,
-      description,
-      images: socialImages(page, locale),
-    },
-  }
+  return pageMetadata({
+    page,
+    locale,
+    paths: content.paths,
+    title: `${content.title[locale]} · ${NAME}`,
+    description: content.description[locale],
+  })
 }
 
 export function marketingSchema(page: MarketingPage, locale: Locale) {
   const content = MARKETING_PAGES[page]
   const url = `${BASE_URL}${content.paths[locale]}`
-  const entity = {
+  const details = {
     '@id': `${url}#subject`,
-    '@type': page === 'piuudito' ? 'CreativeWork' : 'Service',
     name: content.title[locale],
     description: content.description[locale],
     url,
-    ...(page !== 'piuudito'
+    mainEntityOfPage: { '@id': url },
+    image: socialSchemaImage(page, locale),
+  }
+  const entity: Service | CreativeWork =
+    page === 'piuudito'
       ? {
-          serviceType: content.title.en,
-          provider: { '@id': `${BASE_URL}/#person` },
-          areaServed: ['Italy', 'Ticino'],
+          ...details,
+          '@type': 'CreativeWork',
+          creator: { '@id': `${BASE_URL}/#person` },
+          inLanguage: BCP47_LOCALE[locale],
+          about: { '@type': 'Organization', name: 'PiùUDITO' },
+          hasPart: (
+            [
+              ['PiùUDITO', 'https://www.piuudito.it/'],
+              ['PiùUDITO Group', 'https://www.piuuditogroup.it/'],
+              ['Fabio Tomassetti', 'https://www.fabiotomassetti.it/'],
+            ] as const
+          ).map(([name, site]) => ({
+            '@type': 'WebSite',
+            name,
+            url: site,
+            creator: { '@id': `${BASE_URL}/#person` },
+          })),
         }
       : {
-          creator: { '@id': `${BASE_URL}/#person` },
-          about: [
-            'https://www.piuudito.it/',
-            'https://www.piuuditogroup.it/',
-            'https://www.fabiotomassetti.it/',
-          ].map((site) => ({ '@type': 'WebSite', url: site })),
-        }),
-  }
+          ...details,
+          '@type': 'Service',
+          serviceType: content.title[locale],
+          provider: { '@id': `${BASE_URL}/#person` },
+          areaServed: [
+            { '@type': 'Country', name: 'Italy' },
+            {
+              '@type': 'AdministrativeArea',
+              name: 'Ticino',
+              containedInPlace: { '@type': 'Country', name: 'Switzerland' },
+            },
+          ],
+          ...(page === 'websites'
+            ? {
+                offers: {
+                  '@type': 'Offer',
+                  url,
+                  priceSpecification: {
+                    '@type': 'PriceSpecification',
+                    minPrice: 300,
+                    priceCurrency: 'EUR',
+                  },
+                  seller: { '@id': `${BASE_URL}/#person` },
+                },
+              }
+            : {}),
+        }
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -138,9 +154,9 @@ export function marketingSchema(page: MarketingPage, locale: Locale) {
         url,
         name: content.title[locale],
         description: content.description[locale],
-        inLanguage: locale,
+        inLanguage: BCP47_LOCALE[locale],
         isPartOf: { '@id': `${BASE_URL}/#website` },
-        mainEntity: { '@id': entity['@id'] },
+        mainEntity: { '@id': details['@id'] },
         breadcrumb: { '@id': `${url}#breadcrumb` },
       },
       entity,
@@ -163,5 +179,5 @@ export function marketingSchema(page: MarketingPage, locale: Locale) {
         ],
       },
     ],
-  }
+  } satisfies Graph
 }

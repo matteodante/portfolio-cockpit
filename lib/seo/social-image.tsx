@@ -10,7 +10,7 @@ import {
 
 export async function renderSocialImage(page: SocialPage, locale: Locale) {
   const [background, displayFont, bodyFont] = await Promise.all([
-    readFile(join(process.cwd(), 'public/social/hero-background.jpg')),
+    readFile(join(process.cwd(), 'public/social/hero-background-v2.jpg')),
     readFile(join(process.cwd(), 'public/fonts/social-unbounded-900.ttf')),
     readFile(join(process.cwd(), 'public/fonts/social-space-grotesk-500.ttf')),
   ])

@@ -352,6 +352,16 @@
   gap: 32px;
   margin-top: 72px;
 }
+.marketing-extra-proof {
+  padding: 72px 0;
+  border-bottom: 1px solid var(--landing-line);
+}
+.marketing-extra-proof .portfolio-proof {
+  margin-bottom: 0;
+}
+.marketing-extra-proof .team-proof {
+  margin-top: 48px;
+}
 .marketing-app-evidence .project-proof {
   transform: none;
 }
@@ -372,5 +382,8 @@
     grid-template-columns: 1fr;
     gap: 24px;
     margin-top: 48px;
+  }
+  .marketing-extra-proof {
+    padding: 48px 0;
   }
 }

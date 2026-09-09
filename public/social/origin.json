@@ -1,43 +1,59 @@
 {
   "date": "2026-09-09",
   "background": {
-    "file": "hero-background.jpg",
+    "file": "hero-background-v2.jpg",
     "generator": "built-in Image Gen",
-    "prompt": "Edit reference image 1, the 1200:630 social-card background. Replace ONLY the astronaut on the right with Matteo, the exact recognizable real person in reference image 2. Use reference image 3 as additional face identity detail. Preserve his face proportions, curly short brown hair, black angular glasses with amber lenses, earring, natural skin texture, black short-sleeve t-shirt, folded arms and confident relaxed expression from reference 2. Do not beautify or change identity. Position him with the same scale and framing as the astronaut: complete head with about 5 percent headroom, head centered around 75 percent canvas width, visible crossed forearms and waist, torso wholly on the right 42 percent. Natural believable human anatomy, hands and forearms. Match the warm rim light to the existing lunar setting. Keep the entire left 57 percent quiet near-black for later text, keep the existing lunar foreground and original horizon and overall 1200:630 composition. The final image must contain Matteo in normal black clothing, no spacesuit and no astronaut anywhere. Photorealistic cinematic portrait composited naturally into the same brand landscape. No text, numbers, symbols, logos, graphic overlays, extra characters or watermark. Do not redraw the background unnecessarily. This is one finished background image, not a mockup.",
+    "prompt": "Create the updated landscape social-sharing background by replacing the old man in reference 2 with the exact approved photographic portrait from reference 1. Identity and face fidelity to reference 1 is absolute: preserve his exact clear black rectangular glasses, natural cheerful smile, facial geometry, hair, eyes, teeth, stubble, earring, black T-shirt and relaxed standing arms at his sides. Treat reference 1 as the supplied photograph to composite, without recasting or beautifying the face. Reference 2 is ONLY a composition and lunar-background reference: remove its old folded-arm man entirely. Retain its lunar foreground, near-black negative space on the left and overall 1200:630 landscape layout. Place the new portrait on the RIGHT 42 percent, head center around 76 percent of width and 25 percent of height, whole hair visible with comfortable top margin, torso down to lower crop, arms at sides. Keep all face and recognizable shoulder detail clear of the left 57 percent reserved for text. Preserve natural studio light on the face, add at most a subtle warm edge to integrate with the lunar environment. The background stays dark and quiet; do not make a bright orange flare. No astronaut or folded arms. No text, lettering, logos, props or watermark. One finished 1200:630 ratio background photograph, no mockup or collage.",
     "references": [
-      "public/landing-v2/identity/matteo.webp",
-      "public/landing-v2/matteo-portrait-v2.webp"
+      "/Users/matteodante/Projects/portfolio-cockpit/assets/portrait-options/matteo-a-real-reference.png",
+      "/Users/matteodante/Projects/portfolio-cockpit/public/social/hero-background.jpg"
     ],
-    "editTargetBeforeReplacement": {
-      "file": "hero-background.jpg",
-      "generator": "built-in Image Gen",
-      "prompt": "Create a finished photographic background for Matteo Dante's Open Graph / social sharing card, landscape 1200:630 ratio, high resolution, NO TEXT. It must faithfully translate the actual website hero, using reference image 1 as the exact astronaut portrait identity and reference image 2 as the exact lunar world and light palette. Preserve the realistic original astronaut's recognizably octagonal ivory helmet with deep opaque amber-black glass, folded arms, chest controls, hoses, orange arm stripes, adult proportions, camera angle and pose from reference 1. Place this astronaut on the RIGHT 42 percent of the composition, large from helmet to below crossed arms, helmet fully visible with about 5 percent top margin, shoulder silhouette not touching the right edge. Blend it naturally into the lunar ground from reference 2 occupying only the lower quarter, with subtle amber rim light and cool neutral shadows. The entire LEFT 57 percent must be very dark near-black #05060a and quiet, with only a barely visible lunar ridge at the very bottom. That area is reserved for typographic content composited in code later. The right side is sculptural and richly detailed; the left is negative space. Premium cinematic photography of a believable sci-fi physical prop, exact ivory/dark/amber brand palette, restrained saturation, clear confident silhouette, optically realistic glass, fine material texture. No other characters, no face in the visor, no giant planet, no bright nebula, no sparkles, no HUD, no emblems, no agency logos, no symbols, no letters, no numbers, no watermark, no caption, no graphic frame. One integrated background photograph, not a website screenshot or mockup.",
-      "references": [
-        "public/landing-v2/identity/astronaut.webp",
-        "public/landing-v2/lunar-world.webp"
-      ],
-      "processing": "Resize to1200x630 and JPEG encoding only.",
-      "sha256": "0f958f7db459c305e5fe7d1060e616fb3a812d3c2ddb188e90fcc19b660962d4"
-    },
-    "processing": "Resize to 1200x630 and JPEG encoding only.",
-    "identity": "Matteo in normal black clothing, per the owner correction; no astronaut in social previews."
+    "generatedSource": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-cc39075a-18cc-4bce-9722-1225fb19ce29.png",
+    "processing": "Resize to 1200x630 and JPEG quality 90 only.",
+    "identity": "Owner-approved smiling portrait with clear black glasses, black T-shirt and arms at sides."
   },
   "icons": {
-    "source": "/landing-v2/matteo-avatar-v2.webp",
+    "source": "/landing-v2/matteo-avatar-v3.webp",
     "files": [
       "/icon.png",
       "/apple-icon.png",
       "/favicon.ico",
-      "/social/avatar-192.png",
-      "/social/avatar-512.png"
+      "/social/avatar-v3-192.png",
+      "/social/avatar-v3-512.png"
     ],
-    "processing": "Format conversion and resampling only; no new face generation."
+    "processing": "Resampling and PNG encoding from the same Image Gen avatar crop; favicon wraps a 48px PNG with embedded provenance in ICO."
   },
   "socialCards": {
     "renderer": "lib/seo/social-image.tsx",
     "copy": "lib/seo/social.ts",
     "routes": "/social/{en|it}/{home|websites|apps|ai|piuudito|cockpit}.png",
     "size": "1200x630",
-    "description": "Programmatic Next ImageResponse composition of the original Matteo portrait on lunar terrain and local Unbounded 900 / Space Grotesk 500 fonts. Localized title and subtitle identify the actual page."
+    "description": "Next ImageResponse composition of the approved updated Matteo identity on lunar terrain, with local Unbounded 900 / Space Grotesk 500 and localized page copy.",
+    "version": "portrait-3"
+  },
+  "previousBackground": {
+    "gitRevision": "eb0606b",
+    "provenance": {
+      "file": "hero-background.jpg",
+      "generator": "built-in Image Gen",
+      "prompt": "Edit reference image 1, the 1200:630 social-card background. Replace ONLY the astronaut on the right with Matteo, the exact recognizable real person in reference image 2. Use reference image 3 as additional face identity detail. Preserve his face proportions, curly short brown hair, black angular glasses with amber lenses, earring, natural skin texture, black short-sleeve t-shirt, folded arms and confident relaxed expression from reference 2. Do not beautify or change identity. Position him with the same scale and framing as the astronaut: complete head with about 5 percent headroom, head centered around 75 percent canvas width, visible crossed forearms and waist, torso wholly on the right 42 percent. Natural believable human anatomy, hands and forearms. Match the warm rim light to the existing lunar setting. Keep the entire left 57 percent quiet near-black for later text, keep the existing lunar foreground and original horizon and overall 1200:630 composition. The final image must contain Matteo in normal black clothing, no spacesuit and no astronaut anywhere. Photorealistic cinematic portrait composited naturally into the same brand landscape. No text, numbers, symbols, logos, graphic overlays, extra characters or watermark. Do not redraw the background unnecessarily. This is one finished background image, not a mockup.",
+      "references": [
+        "public/landing-v2/identity/matteo.webp",
+        "public/landing-v2/matteo-portrait-v2.webp"
+      ],
+      "editTargetBeforeReplacement": {
+        "file": "hero-background.jpg",
+        "generator": "built-in Image Gen",
+        "prompt": "Create a finished photographic background for Matteo Dante's Open Graph / social sharing card, landscape 1200:630 ratio, high resolution, NO TEXT. It must faithfully translate the actual website hero, using reference image 1 as the exact astronaut portrait identity and reference image 2 as the exact lunar world and light palette. Preserve the realistic original astronaut's recognizably octagonal ivory helmet with deep opaque amber-black glass, folded arms, chest controls, hoses, orange arm stripes, adult proportions, camera angle and pose from reference 1. Place this astronaut on the RIGHT 42 percent of the composition, large from helmet to below crossed arms, helmet fully visible with about 5 percent top margin, shoulder silhouette not touching the right edge. Blend it naturally into the lunar ground from reference 2 occupying only the lower quarter, with subtle amber rim light and cool neutral shadows. The entire LEFT 57 percent must be very dark near-black #05060a and quiet, with only a barely visible lunar ridge at the very bottom. That area is reserved for typographic content composited in code later. The right side is sculptural and richly detailed; the left is negative space. Premium cinematic photography of a believable sci-fi physical prop, exact ivory/dark/amber brand palette, restrained saturation, clear confident silhouette, optically realistic glass, fine material texture. No other characters, no face in the visor, no giant planet, no bright nebula, no sparkles, no HUD, no emblems, no agency logos, no symbols, no letters, no numbers, no watermark, no caption, no graphic frame. One integrated background photograph, not a website screenshot or mockup.",
+        "references": [
+          "public/landing-v2/identity/astronaut.webp",
+          "public/landing-v2/lunar-world.webp"
+        ],
+        "processing": "Resize to1200x630 and JPEG encoding only.",
+        "sha256": "0f958f7db459c305e5fe7d1060e616fb3a812d3c2ddb188e90fcc19b660962d4"
+      },
+      "processing": "Resize to 1200x630 and JPEG encoding only.",
+      "identity": "Matteo in normal black clothing, per the owner correction; no astronaut in social previews."
+    }
   }
 }

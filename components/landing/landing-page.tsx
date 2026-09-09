@@ -6,6 +6,8 @@ import { makeT } from '@/components/landing/i18n'
 import LandingMotion from '@/components/landing/landing-motion'
 import ServicesSection from '@/components/landing/services-section'
 import WorkSequence from '@/components/landing/work-sequence'
+import PortfolioEvidence from '@/components/marketing/portfolio-evidence'
+import TeamExperience from '@/components/marketing/team-experience'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import LanguageSwitcher from '@/components/shared/language-switcher'
 import {
@@ -231,6 +233,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                   </span>
                 </div>
               </Link>
+              <PortfolioEvidence locale={locale} placement="home_work" />
               <div className="project-pair" data-parallax>
                 {PROJECTS.map((project) => (
                   <Link
@@ -270,6 +273,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                   </Link>
                 ))}
               </div>
+              <TeamExperience locale={locale} />
             </div>
           </div>
         </section>

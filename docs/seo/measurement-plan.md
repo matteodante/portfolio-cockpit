@@ -4,6 +4,12 @@ Stato al 2026-09-09: implementazione locale pronta; account Google, ID
 reali, verifica proprietà, pubblicazione e ricezione eventi ancora da
 completare. Nessun dato storico o miglioramento SEO è stato misurato.
 
+La revisione tecnica di metadati, JSON-LD, sitemap, robots e llms.txt è
+verificata nel build di produzione locale e pronta per il commit/push
+richiesto dal titolare. Dettagli, fonti e controlli:
+[technical-metadata.md](technical-metadata.md). La pubblicazione del codice
+non attiva automaticamente gli account Google né conferma l'indicizzazione.
+
 ## Pagine e acquisizione
 
 | Servizio / prova | Italiano | Inglese |
@@ -137,3 +143,12 @@ delle richieste e conversazioni reali rispetto a test A/B senza campione.
 - Nuove immagini: quattro catture, circa 580 KiB complessivi; provenienza
   incorporata in tutte. Le pagine servizio non importano la scena WebGL
   o la sequenza video della homepage.
+
+## Own-website proof links
+
+The homepage and website-development page now show matteodante.it and the
+cockpit as a personal project. Their existing `project_opened` event uses
+`portfolio_website` or `portfolio_cockpit`, with `home_work` or
+`service_proof` placement. These are explicit allowed labels. A click shows
+interest in an example; it is not game completion, a booking or a lead.
+Google receipt is still unverified until the existing activation steps run.

@@ -1,14 +1,11 @@
 import type { MetadataRoute } from 'next'
-import { BASE_URL, CV_MARKDOWN_PATHS } from '@/lib/constants/site'
+import { BASE_URL } from '@/lib/constants/site'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: ['/', CV_MARKDOWN_PATHS.en, CV_MARKDOWN_PATHS.it, '/llms.txt'],
-      disallow: ['/api/'],
-    },
+    // The same public access applies to search and AI crawlers. Keep rendering
+    // assets and llms.txt crawlable; authentication protects private CV data.
+    rules: { userAgent: '*', allow: '/', disallow: '/api/' },
     sitemap: `${BASE_URL}/sitemap.xml`,
-    host: BASE_URL,
   }
 }

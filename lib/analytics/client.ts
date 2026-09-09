@@ -214,6 +214,8 @@ export function trackMarketing(
       'maestro',
       'gymtree',
       'claude_local_docs',
+      'portfolio_website',
+      'portfolio_cockpit',
     ].includes(details.project ?? '')
       ? { project: details.project }
       : {}),

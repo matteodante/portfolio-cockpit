@@ -36,6 +36,15 @@ const nextConfig: NextConfig = {
   },
   headers: async () => [
     {
+      source: '/api/:path*',
+      headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+    },
+    {
+      // JSON provenance files are public records, not standalone search pages.
+      source: '/:path(.*\\.json)',
+      headers: [{ key: 'X-Robots-Tag', value: 'noindex' }],
+    },
+    {
       source: '/(.*)',
       headers: [
         { key: 'X-Content-Type-Options', value: 'nosniff' },

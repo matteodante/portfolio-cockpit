@@ -15,7 +15,7 @@ export const MARKETING_COPY = {
     price: 'A partire da 300 €',
     priceNote:
       'Pagine, contenuti e funzionalità si definiscono nel preventivo.',
-    proof: 'Un progetto, da vedere davvero.',
+    proof: 'Progetti da esplorare.',
     proofBody:
       'Per PiùUDITO ho realizzato tre siti: quello del centro, PiùUDITO Group e il sito di Fabio Tomassetti. Il caso studio raccoglie il lavoro pubblicato.',
     caseLink: 'Guarda il progetto PiùUDITO',
@@ -111,7 +111,7 @@ export const MARKETING_COPY = {
       'For professionals, startups and small businesses in Italy, Ticino and beyond. Work directly with me to present what you offer and make it easy to get in touch.',
     price: 'Starting from €300',
     priceNote: 'Pages, content and functionality are defined in your quote.',
-    proof: 'A project you can explore.',
+    proof: 'Work you can explore.',
     proofBody:
       'I built three websites for PiùUDITO: the centre’s website, PiùUDITO Group and Fabio Tomassetti’s website. The case study brings together the published work.',
     caseLink: 'Explore the PiùUDITO project',

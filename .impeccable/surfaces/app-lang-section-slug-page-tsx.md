@@ -76,3 +76,19 @@ The code-led extension uses the pinned direction contract above, without
 a decision comp or QUALITY BAR card. `DESIGN.md` and its sidecar record
 the built patterns. Google account activation and real event receipt
 remain pending; details are in `docs/seo/measurement-plan.md`.
+
+## Owner refinement — additional evidence
+
+Add this website and the cockpit as one personal project, beside PiùUDITO.
+Use real existing homepage/gameplay captures, clear personal authorship and
+localized links to explore the work. Homepage places it between PiùUDITO
+and the existing app pair; website development places it after the PiùUDITO
+proof paragraph. A compact company-team section presents the public roles
+at Pilatus Aircraft and DonTouch; no corporate screenshots or private scope.
+
+Inherit the current editorial proof-row and flat-control language. No new
+visual world, animation, client claim or generated screenshot. Touch and
+keyboard links stay native; cockpit prefetch stays off. Current source and
+HTTP verification live in `docs/design/portfolio-evidence.md`. Browser
+validation remains pending while the owner's Mac is locked; existing
+captures document the projects and do not validate this new section layout.

@@ -4,7 +4,9 @@ import BookingPopup from '@/components/landing/booking-popup'
 import AppEvidence from '@/components/marketing/app-evidence'
 import CaseDetails from '@/components/marketing/case-details'
 import { MARKETING_COPY } from '@/components/marketing/marketing-copy'
+import PortfolioEvidence from '@/components/marketing/portfolio-evidence'
 import { AI_COPY, APP_COPY } from '@/components/marketing/service-copy'
+import TeamExperience from '@/components/marketing/team-experience'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import LanguageSwitcher from '@/components/shared/language-switcher'
 import {
@@ -166,6 +168,12 @@ export default function MarketingPageContent({
                 )}
               </div>
             </section>
+            {website && (
+              <div className="marketing-extra-proof">
+                <PortfolioEvidence locale={locale} placement="service_proof" />
+                <TeamExperience locale={locale} />
+              </div>
+            )}
             <section
               className="marketing-section marketing-split"
               aria-labelledby="marketing-scope"

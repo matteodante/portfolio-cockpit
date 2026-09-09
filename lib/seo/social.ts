@@ -18,6 +18,22 @@ export const HOME_METADATA: Record<
   },
 }
 
+export const COCKPIT_METADATA: Record<
+  Locale,
+  { title: string; description: string }
+> = {
+  en: {
+    title: 'Cockpit — the playable CV · Matteo Dante',
+    description:
+      'Explore Matteo Dante’s career in a playable 3D cockpit: projects, experience, skills and an AI assistant. Public CV summary in English and Italian.',
+  },
+  it: {
+    title: 'Cockpit — il CV giocabile · Matteo Dante',
+    description:
+      'Esplora il percorso di Matteo Dante in un cockpit 3D giocabile: progetti, esperienza, competenze e assistente AI. Profilo pubblico in italiano e inglese.',
+  },
+}
+
 export const SOCIAL_PAGES = [
   'home',
   'websites',
@@ -49,7 +65,7 @@ export const SOCIAL_COPY = {
 } as const
 
 export function socialImageUrl(page: SocialPage, locale: Locale) {
-  return `${BASE_URL}/social/${locale}/${page}.png`
+  return `${BASE_URL}/social/${locale}/${page}.png?v=portrait-3`
 }
 
 export function socialImages(page: SocialPage, locale: Locale) {
@@ -61,8 +77,8 @@ export function socialImages(page: SocialPage, locale: Locale) {
       type: 'image/png',
       alt:
         locale === 'it'
-          ? `Matteo Dante — ${title} Ritratto di Matteo con le braccia conserte su un paesaggio lunare.`
-          : `Matteo Dante — ${title} Matteo’s portrait with folded arms in a lunar landscape.`,
+          ? `Matteo Dante — ${title} Matteo sorridente, con occhiali neri e maglietta scura, su un paesaggio lunare.`
+          : `Matteo Dante — ${title} Matteo smiling, wearing black glasses and a dark T-shirt, in a lunar landscape.`,
     },
   ] satisfies NonNullable<Metadata['openGraph']>['images']
 }

@@ -14,60 +14,10 @@ import {
 } from '@/lib/constants/contact'
 import { BASE_URL, CV_MARKDOWN_PATHS, SITE_NAME } from '@/lib/constants/site'
 import { I18nProvider } from '@/lib/i18n'
-import {
-  isValidLocale,
-  type Locale,
-  locales,
-  OG_LOCALE,
-} from '@/lib/i18n/config'
+import { isValidLocale, type Locale, locales } from '@/lib/i18n/config'
 import { getJsonLdGraph } from '@/lib/seo/schemas'
-import { HOME_METADATA, socialImages } from '@/lib/seo/social'
+import { HOME_METADATA } from '@/lib/seo/social'
 import '@/lib/styles/css/index.css'
-
-const SHARED_KEYWORDS = [
-  'Matteo Dante',
-  'CV',
-  'Curriculum Vitae',
-  'TypeScript',
-  'Next.js',
-  'React',
-  'Node.js',
-  'LLM',
-  'RAG',
-  'OpenAI',
-  'Anthropic',
-  'Three.js',
-  'WebGL',
-]
-
-const KEYWORDS: Record<Locale, string[]> = {
-  en: [
-    ...SHARED_KEYWORDS,
-    'Freelance Software Engineer',
-    'AI Consultant',
-    'Web Development',
-    'App Development',
-    'Interactive CV',
-    'Cockpit Portfolio',
-    'Senior Software Engineer',
-    'Full-Stack Developer',
-    'Backend Engineer',
-    'Switzerland',
-  ],
-  it: [
-    ...SHARED_KEYWORDS,
-    'Software Engineer Freelance',
-    'Sviluppatore Freelance',
-    'Consulente AI',
-    'Sviluppo Siti Web',
-    'Sviluppo App',
-    'CV Interattivo',
-    'Portfolio Cockpit',
-    'Senior Software Engineer',
-    'Sviluppatore Full-Stack',
-    'Svizzera',
-  ],
-}
 
 const display = Unbounded({
   subsets: ['latin'],
@@ -99,7 +49,6 @@ export async function generateMetadata({
   if (!isValidLocale(lang)) return {}
   const locale = lang as Locale
   const t = HOME_METADATA[locale]
-  const url = `${BASE_URL}/${locale}`
 
   return {
     metadataBase: new URL(BASE_URL),
@@ -112,38 +61,11 @@ export async function generateMetadata({
     authors: [{ name: NAME, url: BASE_URL }],
     creator: NAME,
     publisher: NAME,
-    keywords: KEYWORDS[locale],
     category: 'technology',
     formatDetection: {
       email: false,
       address: false,
       telephone: false,
-    },
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `${BASE_URL}/en`,
-        it: `${BASE_URL}/it`,
-        'x-default': `${BASE_URL}/en`,
-      },
-    },
-    openGraph: {
-      type: 'website',
-      images: socialImages('home', locale),
-      title: t.title,
-      description: t.description,
-      url,
-      siteName: SITE_NAME,
-      locale: OG_LOCALE[locale],
-      alternateLocale: locales
-        .filter((l) => l !== locale)
-        .map((l) => OG_LOCALE[l]),
-    },
-    twitter: {
-      card: 'summary_large_image',
-      images: socialImages('home', locale),
-      title: t.title,
-      description: t.description,
     },
     robots: {
       index: true,
@@ -206,20 +128,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       suppressHydrationWarning
     >
       <head>
-        <link
-          rel="alternate"
-          type="text/markdown"
-          hrefLang="en"
-          href={CV_MARKDOWN_PATHS.en}
-          title={`${NAME} — CV (English, Markdown)`}
-        />
-        <link
-          rel="alternate"
-          type="text/markdown"
-          hrefLang="it"
-          href={CV_MARKDOWN_PATHS.it}
-          title={`${NAME} — CV (Italiano, Markdown)`}
-        />
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
         <link rel="me" href={GITHUB_URL} />
         <link rel="me" href={LINKEDIN_URL} />
         <link rel="me" href={INSTAGRAM_URL} />

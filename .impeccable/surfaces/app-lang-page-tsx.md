@@ -26,7 +26,7 @@ replace an already chosen reference. No global buildPath is inferred.
 ## Direction contract
 
 THESIS: A personal introduction suspended in space, with a direct path to discussing a real project.
-OWN-WORLD: Near-black sky, warm ivory typography, orange booking controls and amber portrait glasses. Outlined first name, solid surname, thin rectangular frames.
+OWN-WORLD: Near-black sky, warm ivory typography, orange booking controls and the approved smiling portrait with clear-lens black glasses. Outlined first name, solid surname, thin rectangular frames.
 STORY: Meet Matteo, understand websites/apps/AI and pricing, see work relationships, inspect two shipped products, book a call.
 FIRST VIEWPORT: Monumental name and concise offer over lunar terrain, with registered cinematic portraits of Matteo and his astronaut alter ego. A refractive glitch changes identity on load and every five seconds. Booking in hero/header; personal portrait introduces services.
 FORM: Dungyov lettering, Oakley cinematic layers. Seed 8b53fb21 acknowledged; explicit references override assignment. GSAP scroll drives sticky stages on desktop/mobile; pause/reduced motion use static flow.
@@ -109,7 +109,7 @@ project keeps its real name. Z1’s process sequence on Awwwards informs
 the accelerating horizontal travel and short GSAP scrub. No scroll
 interception. Pause/reduced motion/no-JS uses the complete static grid.
 
-## Owner refinement: cinematic identity glitch
+## Owner refinement: cinematic identity glitch — original pose, superseded
 
 Create AI-generated Matteo and astronaut portraits in the same folded-arm
 pose, camera and lighting. Preserve Matteo's recognizable face and the
@@ -127,6 +127,9 @@ Render only during transitions, suspend offscreen/hidden, share the
 existing motion toggle. Reduced motion, blocked assets, unavailable GPU
 or lost context leave a fully composed static poster and working CTAs.
 No sound, no loading gate, no full-screen flash or synthetic social proof.
+
+The folded-arm pose above records the original direction. The approved
+portrait replacement below supersedes its imagery; the motion brief remains.
 
 ## Owner refinement: inertial brand orbit — 2026-09-09
 
@@ -252,3 +255,47 @@ until the Mac is unlocked. Keep that verification boundary explicit.
 Owner correction: touch must be much stronger. Use a distinct 2.6–3.8
 strength range and a wider local distortion field, retaining mouse hover
 0.32–0.55 and mouse drag 0.72–1. No identity reveal or input capture.
+
+## Owner refinement — additional evidence
+
+Add this website and the cockpit as one personal project, beside PiùUDITO.
+Use real existing homepage/gameplay captures, clear personal authorship and
+localized links to explore the work. Homepage places it between PiùUDITO
+and the existing app pair; website development places it after the PiùUDITO
+proof paragraph. A compact company-team section presents the public roles
+at Pilatus Aircraft and DonTouch; no corporate screenshots or private scope.
+
+Inherit the current editorial proof-row and flat-control language. No new
+visual world, animation, client claim or generated screenshot. Touch and
+keyboard links stay native; cockpit prefetch stays off. Current source and
+HTTP verification live in `docs/design/portfolio-evidence.md`. Browser
+validation remains pending while the owner's Mac is locked; existing
+captures document the projects and do not validate this new section layout.
+
+## Owner refinement — approved portrait replacement — 2026-09-09
+
+Use the selected `assets/portrait-options/matteo-a-real-reference.png` to
+replace the current site portraits. Preserve its recognizable smile,
+clear-lens black glasses, black T-shirt and relaxed arms at the sides.
+The runtime human plate is that exact approved master resized to 960 × 1200
+and encoded as `matteo-portrait-v3.webp`; hero, services and Person schema
+share `PERSON_IMAGE_PATH`. Services keep the existing 7:8 CSS frame.
+
+The shared avatar is a square Image Gen headshot edit of the approved
+master. The matching astronaut plate follows its open posture. Social
+previews retain the existing lunar composition and typography, using the
+approved human identity; all twelve localized image URLs carry
+`?v=portrait-3`. Icons derive from the same avatar. Renderer, timing,
+pointer behavior, page composition and historical proof captures retain
+their existing scope. Prompts and processing are recorded in
+`docs/design/portrait-provenance.md` and adjacent asset origins.
+
+The independent finish review returned **SHIP for static assets and social
+cards only**, with all five review sections completed and no fixes. Local
+checks, build, provenance and production HTTP verification passed. Evidence
+is in `.impeccable/review/portrait-integration/` and its corresponding
+`.impeccable/tmp/portrait-integration/` logs. Fresh desktop/mobile layout,
+animated plate registration, cursor/touch, fallback and GPU behavior remain
+pending: Computer Use confirmed the Mac was still locked this turn. Older
+reviews and historical portfolio screenshots do not validate these changes.
+No public deployment, commit or push is included in this replacement.

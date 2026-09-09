@@ -15,13 +15,13 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#05060a',
     icons: [
       {
-        src: '/social/avatar-192.png',
+        src: '/social/avatar-v3-192.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'any',
       },
       {
-        src: '/social/avatar-512.png',
+        src: '/social/avatar-v3-512.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any',

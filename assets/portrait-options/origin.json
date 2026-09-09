@@ -1,0 +1,34 @@
+{
+  "tool": "Built-in Image Gen",
+  "status": "Original alternatives retained for history. The owner selected the subsequent real-reference refinement.",
+  "created": "2026-09-09",
+  "choices": [
+    {
+      "id": "a-glasses",
+      "label": "Alternativa A — occhiali, sorriso naturale",
+      "file": "matteo-a-glasses.png",
+      "generatedSource": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-bc6a85a6-6038-4971-91c7-62ea26489cc4.png",
+      "prompt": "Create one exceptionally realistic professional editorial portrait of Matteo, the SAME real man shown in all four supplied reference photographs. Identity fidelity is the highest priority. In reference 1 use only the man on the LEFT; exclude the woman entirely. References 2 and 3 establish his actual frontal facial proportions and glasses; reference 4 establishes his actual face without glasses, hair shape, slim natural face and friendly smile. Preserve his exact recognizable face, real age, natural asymmetry, nose shape, lips, eye spacing and eyelids, short uneven brown curls with short sides, natural sparse stubble, small hoop earring and realistic body proportions. Do not idealize him into a model, widen his jaw, enlarge muscles, change his nose, make perfect veneers or overly smooth the skin. A high-quality real portrait photograph, not AI glamour, illustration or 3D. Framing: vertical 4:5, mid-torso portrait, eye-level 70mm camera, head fully visible with 8 percent headroom, face in the upper middle, torso naturally turned about 10 degrees while eyes meet the lens, shoulders relaxed, arms resting naturally below the frame, NO crossed arms. Neutral charcoal near-black seamless studio background, compatible with a dark personal website; large soft window-like key light, natural skin tone, a very restrained warm edge light, no dramatic orange glow. Real pores, subtle fine facial hair, authentic fabric texture, natural photographic sharpness and depth. No phone, chair, office props, space imagery, other people, logos, captions, letters or watermark. OPTION A: Wear the exact thick glossy black rectangular clear-lens eyeglasses from references 2 and 3, with both eyes clearly visible and subtle realistic reflections; no sunglasses and no orange tint. Plain black crew-neck T-shirt, a natural warm open smile with a little teeth showing, like reference 3, lively but relaxed eyes. Fresh approachable presence, like a photographer caught a genuine friendly moment. Medium-close composition with ample shoulders, not a stiff corporate headshot.",
+      "references": [
+        "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/905E455F-A4D3-4572-822F-8C543F2B2498/1-Foto-1.jpg",
+        "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/905E455F-A4D3-4572-822F-8C543F2B2498/2-Foto-2.jpg",
+        "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/905E455F-A4D3-4572-822F-8C543F2B2498/3-Foto-3.jpg",
+        "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/905E455F-A4D3-4572-822F-8C543F2B2498/4-Foto-4.jpg"
+      ]
+    },
+    {
+      "id": "b-no-glasses",
+      "label": "Alternativa B — senza occhiali, rilassata",
+      "file": "matteo-b-no-glasses.png",
+      "generatedSource": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-297df767-8a04-4189-aead-801740140d6f.png",
+      "prompt": "Create one exceptionally realistic professional editorial portrait of Matteo, the SAME real man shown in all four supplied reference photographs. Identity fidelity is the highest priority. In reference 1 use only the man on the LEFT; exclude the woman entirely. References 2 and 3 establish his actual frontal facial proportions and glasses; reference 4 establishes his actual face without glasses, hair shape, slim natural face and friendly smile. Preserve his exact recognizable face, real age, natural asymmetry, nose shape, lips, eye spacing and eyelids, short uneven brown curls with short sides, natural sparse stubble, small hoop earring and realistic body proportions. Do not idealize him into a model, widen his jaw, enlarge muscles, change his nose, make perfect veneers or overly smooth the skin. A high-quality real portrait photograph, not AI glamour, illustration or 3D. Framing: vertical 4:5, mid-torso portrait, eye-level 70mm camera, head fully visible with 8 percent headroom, face in the upper middle, torso naturally turned about 10 degrees while eyes meet the lens, shoulders relaxed, arms resting naturally below the frame, NO crossed arms. Neutral charcoal near-black seamless studio background, compatible with a dark personal website; large soft window-like key light, natural skin tone, a very restrained warm edge light, no dramatic orange glow. Real pores, subtle fine facial hair, authentic fabric texture, natural photographic sharpness and depth. No phone, chair, office props, space imagery, other people, logos, captions, letters or watermark. OPTION B: No glasses at all. Closely follow the unglassed face and warm, slightly asymmetric smile in reference 4, and use references 2 and 3 only to reinforce his identity, never copying the spectacles. Wear a simple charcoal-black textured knit polo with an open top button, as in reference 4. Natural small relaxed smile with a hint of teeth, soft open gaze and a very slight head tilt. Refined candid editorial mood: approachable and self-assured, never stern or artificially posed. Preserve his real skin, subtle stubble and actual facial geometry.",
+      "references": [
+        "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/905E455F-A4D3-4572-822F-8C543F2B2498/1-Foto-1.jpg",
+        "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/905E455F-A4D3-4572-822F-8C543F2B2498/2-Foto-2.jpg",
+        "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/905E455F-A4D3-4572-822F-8C543F2B2498/3-Foto-3.jpg",
+        "/tmp/codex-remote-attachments/01a08106-7e99-7e90-ae74-8779c820f97d/905E455F-A4D3-4572-822F-8C543F2B2498/4-Foto-4.jpg"
+      ]
+    }
+  ],
+  "approvedMaster": "assets/portrait-options/matteo-a-real-reference.png"
+}

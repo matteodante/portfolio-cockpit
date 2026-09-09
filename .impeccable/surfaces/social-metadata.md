@@ -12,7 +12,7 @@ Owner request: update all Open Graph and related metadata with images like
 the hero of matteodante.it. Preserve the current site and unrelated work.
 
 THESIS: Recognize Matteo and the offer before opening the shared page.
-OWN-WORLD: Matteo’s recognizable photographic portrait with crossed arms, lunar terrain,
+OWN-WORLD: Matteo’s approved smiling portrait with clear black glasses, relaxed arms, lunar terrain,
 near-black, ivory, restrained amber and orange, Unbounded and Space Grotesk.
 STORY: Name first, actual service/project next, public domain as destination.
 FIRST VIEWPORT: A single 1200x630 card with name and localized copy left,
@@ -44,7 +44,7 @@ The corrected Image Gen background uses the existing hero portrait and
 photographic services portrait as identity references. Alt text describes
 Matteo in normal black clothing. The homepage keeps both identity states.
 
-Status: ship for the corrected portrait sharing images only. A fresh
+Historical status, before the new portrait approval: ship for the corrected portrait sharing images only. A fresh
 independent finish review completed all five sections with no material fixes.
 Evidence: `.impeccable/review/social-metadata/home-it.png` at 1200×630 and
 all twelve `{home,websites,apps,ai,piuudito,cockpit}-{it,en}-mobile.png`
@@ -56,3 +56,22 @@ the owner unlocks the Mac at 18:00; no current hero capture is available.
 This social verdict does not approve the hero interaction or establish
 touch behavior or GPU performance. Public deployment and platform cache
 refresh remain unverified; H3 videos remain a separate pending task.
+
+## Approved portrait replacement — 2026-09-09
+
+The owner approved `assets/portrait-options/matteo-a-real-reference.png`
+and requested its use throughout the site. All twelve sharing previews now
+use `public/social/hero-background-v2.jpg`: the approved smiling identity,
+clear black glasses, black T-shirt and relaxed arms on the lunar landscape.
+Fonts, copy and composition remain unchanged. Metadata URLs append
+`?v=portrait-3`; localized descriptions and Person schema use the new identity.
+The favicon, Apple icon and versioned manifest icons derive from the new
+shared avatar. Prompts and processing are in `public/social/origin.json`.
+
+Current status: **ship for static assets and social cards only**, from a
+fresh independent review of `.impeccable/review/portrait-integration/home-it.png`
+and all twelve `{page}-{it,en}-small.png` outputs. Local build, 31 tests and
+HTTP checks pass; served social PNGs match the reviewed renders. The Mac is
+still locked, so this does not validate desktop/mobile page layout, animated
+registration, pointer/touch or GPU behavior. Public deployment and social
+platform cache refresh remain unverified. See `docs/design/portrait-provenance.md`.

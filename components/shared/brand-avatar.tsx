@@ -4,7 +4,7 @@ export default function BrandAvatar() {
   return (
     <Image
       className="brand-avatar"
-      src="/landing-v2/matteo-avatar-v2.webp"
+      src="/landing-v2/matteo-avatar-v3.webp"
       alt=""
       width={40}
       height={40}

@@ -22,7 +22,9 @@ describe('localized commercial pages', () => {
         const image = socialImages(page, locale)
         expect(metadata.openGraph?.images).toEqual(image)
         expect(metadata.twitter?.images).toEqual(image)
-        expect(image[0]?.url).toBe(`${BASE_URL}/social/${locale}/${page}.png`)
+        expect(image[0]?.url).toBe(
+          `${BASE_URL}/social/${locale}/${page}.png?v=portrait-3`
+        )
         expect(metadata.alternates?.canonical).toBe(
           `${BASE_URL}${paths[locale]}`
         )

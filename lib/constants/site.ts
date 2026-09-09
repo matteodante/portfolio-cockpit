@@ -3,12 +3,12 @@ import type { Locale } from '@/lib/i18n/config'
 // Previews keep the production canonical instead of publishing localhost URLs.
 export const BASE_URL = 'https://matteodante.it'
 
-export const SITE_NAME = 'Matteo Dante · Portfolio'
+export const SITE_NAME = 'Matteo Dante'
 export const SITE_TITLE = 'Matteo Dante · Senior Software Engineer'
 
 export const ICON_PATH = '/icon.png'
-/** Current 768px portrait shared with the homepage services introduction. */
-export const PERSON_IMAGE_PATH = '/landing-v2/matteo-portrait-v2.webp'
+/** Approved portrait shared by the hero, services and Person metadata. */
+export const PERSON_IMAGE_PATH = '/landing-v2/matteo-portrait-v3.webp'
 
 export const CV_MARKDOWN_PATHS: Record<Locale, string> = {
   en: '/resume/cv.md',

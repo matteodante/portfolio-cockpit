@@ -148,9 +148,9 @@ Axiom Space informs media scale and native-scroll depth, not asset identity.
 The hero alternates between matched photographic portraits of Matteo and
 his astronaut alter ego through a brief, localized optical glitch. The toy
 character connects these portraits to the existing Three.js model. Two
-opposing film planes introduce the real app cards in Work. A natural
-photographic avatar and services portrait share
-one edit of the owner’s real photograph.
+opposing film planes introduce the real app cards in Work. The owner-approved
+smiling portrait with clear-lens black glasses supplies the human hero and
+services image; a square headshot edit of that master supplies the avatar.
 The landing is spacious and direct; the cockpit is playful and
 instrument-dense. Flat controls, the shared avatar and equal EN/IT treatment
 connect them while scrolling and gameplay retain their functional layouts.
@@ -161,10 +161,16 @@ native disclosures. Their flat booking and consent controls use the same
 palette and focus language as the landing.
 
 Social previews extend the current hero into one fixed 1200×630 image:
-Matteo's photographic portrait with folded arms and the lunar terrain sit
+Matteo's smiling photographic portrait with relaxed arms and the lunar terrain sit
 right of a stacked solid name, orange punctuation, localized page title
 and subtitle, and the public domain. Six destinations share this composition
 equally in EN/IT. The photographic avatar also supplies the favicon and app icons.
+
+The homepage and website-development page also show matteodante.it and the
+playable cockpit as a personal project, with two real screenshot previews
+and native links. A compact public Pilatus/DonTouch role summary identifies
+company-team experience. Their new layout awaits fresh browser review;
+the shared proof-row and control patterns are retained.
 
 **Key Characteristics:**
 
@@ -298,6 +304,9 @@ its heading caps at `min(1160px, calc(100% - 100px))` with 48px below it.
 Below 800px, section padding is 66px top and 72px bottom, heading width
 is `calc(100% - 50px)` and the heading-to-wall gap is 36px. There is no
 sticky brand stage or scroll-controlled horizontal travel.
+The work collection adds matteodante.it and its cockpit as a personal
+project between PiùUDITO and the app pair. A compact company-team summary
+follows the apps.
 Services, the real project cards after the work scene, and contact remain
 in normal flow. Their panels have a 100svh minimum height, 140px 70px
 padding and 1040px composition width. The hero composition caps at 1160px
@@ -315,7 +324,7 @@ caps at `min(880px, 82%)`, uses `calc(100% - 44px)` on mobile, and caps at
 follow in normal flow; the former two-app explanatory note is removed
 in both languages.
 
-Registered folded-arm human/astronaut portraits occupy the hero foreground
+Human/astronaut portraits with relaxed arms at their sides occupy the hero foreground
 over restrained lunar terrain; the 220px framed portrait introduces services. Three squared
 service cards form a three-column grid; shipped products form a two-column
 pair. Cards have 20px gaps on wide screens, 32px at the compact-desktop
@@ -684,17 +693,24 @@ section, contact and CV routes alongside the flight controls.
 
 ### Signature: Astronaut, photographic identity and outlined display
 
-The hero uses `public/landing-v2/identity/astronaut.webp` and `matteo.webp`:
-two opaque 960 × 1200 Image Gen photographic plates, 199,564 bytes combined.
-Matched folded arms, camera perspective, head/shoulder placement and warm
-rim light make the transition coherent. Matteo’s source is the supplied
-real photograph; the astronaut plate references the generated human pose
-and established toy design. Dark studio backgrounds are part of the images;
+The hero uses `public/landing-v2/identity/astronaut-v2.webp` and
+`public/landing-v2/matteo-portrait-v3.webp`: two opaque 960 × 1200
+photographic plates, 194,470 bytes combined. The human image is the exact
+owner-approved `assets/portrait-options/matteo-a-real-reference.png`, only
+resized and encoded. The new Image Gen astronaut follows its relaxed arms,
+camera and head/shoulder placement while preserving the established toy
+design. Dark studio backgrounds are part of the images;
 CSS blends the rectangular frame edges, rather than approximating the
 subject with a geometric cutout. The shader transition and its fallbacks are
 documented above. Prompts and source history sit alongside the plates in
 `.origin.json` and `.webp.json`; direction and provenance are explained in
 `docs/design/identity-glitch.md`.
+
+The 2026-09-09 replacement changes the plates, not the renderer, timing or
+pointer behavior. Static assets and all twelve social cards received a
+scoped **SHIP** review. Fresh desktop/mobile layout, animated registration
+and cursor/touch review remain pending while the Mac is locked; earlier
+hero captures and historical project screenshots do not validate this pair.
 
 `public/landing-v2/astronaut.webp` remains in source history as an original
 Image Gen reinterpretation based on a render of the existing
@@ -728,17 +744,20 @@ matching point light. Its material emissive intensity varies from 1.2 to
 both from the same sine pulse. This is the named scene exception; the
 landing keeps its Unbounded outlined first name and solid surname.
 
-The shared `BrandAvatar` uses `matteo-avatar-v2.webp` (200 × 200), displayed
+The shared `BrandAvatar` uses `matteo-avatar-v3.webp` (200 × 200), displayed
 as a 36px circle on desktop and 32px below 800px. It replaces the former
 orbit brand symbol. Services and contact no longer repeat that symbol.
-The services portrait uses `matteo-portrait-v2.webp` (768 × 768), cropped in
-a 7:8 frame at 220px desktop and 150px mobile with a thin offset outline.
+The services portrait shares the hero's `matteo-portrait-v3.webp`
+(960 × 1200) through `PERSON_IMAGE_PATH`, cropped in the existing 7:8
+frame at 220px desktop and 150px mobile with a thin offset outline.
+The Person schema uses that same path.
 
-Both personal images derive from the same identity-preserving Image Gen
-edit of the owner’s real photograph. Natural skin tone and texture, amber
-glasses, curly hair, stubble and the earring retain a recognizable face
-with a relaxed, confident expression. The dark background and lighting are
-edited; these are generated photographic edits, not untouched originals.
+Both personal images derive from the owner-approved photographic edit of
+his real reference photographs. Clear-lens black glasses, a natural open
+smile, short curls, stubble, earring and black T-shirt define the current
+identity. The avatar is an Image Gen square headshot edit of the approved
+master; the hero/services portrait receives no further generative edit.
+These are photographic edits, not untouched camera originals.
 Their provenance is in `docs/design/portrait-provenance.md`. Official app
 captures retain their actual UI and colors, documented in
 `docs/design/project-assets.md`; they need not imitate the site's palette.
@@ -751,9 +770,11 @@ are not promoted to shared tokens.
 ### Social sharing cards
 
 One static composition serves home, websites, apps, AI, PiùUDITO and cockpit
-in both languages. The original hero-derived Image Gen JPEG places the
+in both languages. `public/social/hero-background-v2.jpg` places the
 recognizable Matteo in a black shirt on the right, with his complete head
-and folded arms visible and quiet dark space for copy on the left.
+and relaxed arms at his sides, a smile and clear black glasses, with quiet
+dark space for copy on the left. Image Gen used the approved portrait and
+the existing lunar composition; typography and layout are unchanged.
 The stacked solid name begins at
 64px left and 74px top in a 610px column; title and subtitle sit 36px below
 it in a 570px column. The domain sits at 66px left and 42px from the bottom.
@@ -766,6 +787,8 @@ external rendering requests; `lib/seo/social.ts` supplies localized copy.
 All twelve PNGs are prerendered during the build. Page-specific copy names
 the actual destination; Matteo's portrait remains personal identity artwork,
 including on the PiùUDITO preview. It is not client work imagery.
+`socialImageUrl` appends `?v=portrait-3` to distinguish the updated previews
+from previously cached images; live platform caches are not verified.
 The favicon, Apple icon and 192/512px manifest icons are resampled from the
 current photographic avatar. Source prompts, image processing and font
 licenses are recorded in `public/social/origin.json`,
@@ -784,8 +807,8 @@ licenses are recorded in `public/social/origin.json`,
   reduced-motion behavior in both languages.
 - **Do** preserve the toy character across the existing cockpit model and
   original generated landing artwork, with recorded provenance.
-- **Do** use the matching natural avatar and services portrait derived from
-  the owner’s photograph, alongside actual shipped product imagery.
+- **Do** use the owner-approved smiling portrait and its matching avatar
+  edit, alongside actual shipped product imagery.
 - **Do** retain official logo provenance, relationship captions and complete
   static access to the wall's ten items, distinguishing personal work from
   clients.
@@ -805,3 +828,19 @@ licenses are recorded in `public/social/origin.json`,
   completing the cockpit.
 - **Don't** confuse a booking-link click with a completed appointment or
   confirmed lead.
+
+### Personal website and team evidence
+
+`PortfolioEvidence` reuses the two-column website-proof row, pairing an
+actual homepage capture with a narrow mobile gameplay capture. Both retain
+their full aspect ratio, thin frame and two-pixel corners. The image group
+uses a fluid main column and a 24% companion column; the entire proof row
+stacks below 800px. Its heading and concise copy identify a personal project.
+A dark squared action opens the localized cockpit; the website-service
+version also has a plain homepage link. Both disable automatic prefetch.
+
+`TeamExperience` is a quiet row with a top divider and two company/role
+columns, stacking on mobile. It states the public Pilatus and DonTouch
+roles as employment/team experience. These additions are implemented;
+fresh desktop/mobile layout inspection is pending the owner's Mac unlock.
+The reused project captures do not constitute review of the new layout.

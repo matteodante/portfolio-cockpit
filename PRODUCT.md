@@ -87,9 +87,12 @@ Non vincolante (esplicitamente lasciato libero di evolvere): la palette
 attuale dark `#05060a` + accento arancio `#ff6b35`. È l'incumbent, non un
 impegno.
 
-Asset di identità: nome "Matteo Dante", astronauta toy e foto reale fornita
-dall’utente. Avatar circolare e ritratto sono elaborazioni della stessa foto,
-con volto realistico e riconoscibile. Il simbolo orbitale negli header e nei
+Asset di identità: nome "Matteo Dante", astronauta toy e foto reali fornite
+dall’utente. Il ritratto sorridente approvato in
+`assets/portrait-options/matteo-a-real-reference.png`, con occhiali neri a
+lenti chiare e braccia rilassate, è il riferimento attuale. Hero e servizi
+usano quel master ridimensionato; avatar e social sono elaborazioni dello
+stesso riferimento. Il simbolo orbitale negli header e nei
 servizi è stato rimosso su richiesta; la hero include il link al CV giocabile.
 Font e trattamento dei controlli sono documentati in DESIGN.md.
 
@@ -201,3 +204,29 @@ touch drag intensify the distortion. The automatic identity cycle remains.
 
 The owner subsequently requested a substantially stronger touch glitch,
 with mouse hover and dragging retaining their existing behavior.
+
+## Owner refinement — approved photographic identity
+
+Confirmed 2026-09-09: the owner selected
+`assets/portrait-options/matteo-a-real-reference.png` and authorized replacing
+the current site portraits with it: “Ok usiamo me per sostituire le attuali
+sul sito”. It is an approved photographic edit based on his supplied real
+photos, preserving his natural smile and clear-lens black glasses.
+
+The approved master now supplies the human hero, services and Person schema.
+A square headshot edit supplies the shared avatar and icons; the social
+background uses the same identity in the existing lunar composition. The
+astronaut counterpart follows the relaxed arms-at-sides pose. The hero's
+alternation, cursor/touch behavior and the site's visual system continue.
+Existing profile/CV photos and historical portfolio screenshots are outside
+this replacement; they remain evidence of their original content.
+
+## Owner refinement — website and company-team evidence
+
+The owner explicitly approved using matteodante.it and its playable cockpit
+as personal-project evidence in the homepage and website-development page,
+alongside the PiùUDITO client case. Pilatus Aircraft and DonTouch may also
+support credibility where appropriate. The implementation uses their
+existing public role/sector summaries as company-team experience; it does
+not claim freelance client status, sole authorship of corporate products,
+or new commercial outcomes.

@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-09",
+  "tool": "Built-in Image Gen",
+  "approvedMaster": "assets/portrait-options/matteo-a-real-reference.png",
+  "jobs": [
+    {
+      "id": "avatar",
+      "references": [
+        "/Users/matteodante/Projects/portfolio-cockpit/assets/portrait-options/matteo-a-real-reference.png"
+      ],
+      "prompt": "Make a faithful square head-and-shoulders crop of this exact approved photograph for a small circular website avatar. This is a framing task: preserve the man's exact face, hair, clear-lens black glasses, smile, eyes, teeth, earring, black T-shirt, lighting and photographic texture, without redesigning or beautifying any feature. Zoom into the existing head and upper shoulders, center the face, retain the entire hairstyle with comfortable top margin. The hair should start about 8 percent from the top, the chin around 72 percent, with upper shoulders below. Keep the existing charcoal background. Output one square 1:1 photograph; do not draw a circular mask or border. No face changes, new expression, orange lenses, text, logos or additions.",
+      "generatedSource": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-753752c1-9d62-4f05-9323-39fac1e54413.png"
+    },
+    {
+      "id": "astronaut",
+      "references": [
+        "/Users/matteodante/Projects/portfolio-cockpit/assets/portrait-options/matteo-a-real-reference.png",
+        "/Users/matteodante/Projects/portfolio-cockpit/public/landing-v2/identity/astronaut.webp"
+      ],
+      "prompt": "Create a registered astronaut alter-ego photographic plate matching reference 1, the approved new standing portrait of Matteo. Reference 1 is the exact composition template: same vertical 4:5 canvas, same framing, same camera, head center, upright head angle, neck and shoulder placement, slight torso turn, relaxed arms hanging down at the sides, hands below crop and same torso scale. Replace the man with the astronaut character in reference 2. Keep reference 2's recognizable octagonal ivory helmet, opaque amber-black visor, ivory suit, orange arm fittings, compact rectangular chest panel, metallic hoses and restrained blue/orange chest fittings. Repose this character to the standing open posture in reference 1, with no crossed arms. The helmet encloses the head at exactly the location in reference 1, slightly larger than the hairstyle; visor center aligns to the face center. Preserve adult natural proportions, convincing suit anatomy, and a closely matched shoulder/body silhouette. Match the soft neutral studio lighting and charcoal background of reference 1 across the entire frame. Premium photorealistic practical sci-fi suit materials, believable seams and optical visor reflections. No human face through visor, no backpack silhouette, no extra limbs, no background scenery, no text, logos or baked-in glitch. One opaque 4:5 image to alternate with reference 1 on a cinematic website.",
+      "generatedSource": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-19aeff66-b46b-4c50-8124-26a2db63750a.png"
+    },
+    {
+      "id": "social",
+      "references": [
+        "/Users/matteodante/Projects/portfolio-cockpit/assets/portrait-options/matteo-a-real-reference.png",
+        "/Users/matteodante/Projects/portfolio-cockpit/public/social/hero-background.jpg"
+      ],
+      "prompt": "Create the updated landscape social-sharing background by replacing the old man in reference 2 with the exact approved photographic portrait from reference 1. Identity and face fidelity to reference 1 is absolute: preserve his exact clear black rectangular glasses, natural cheerful smile, facial geometry, hair, eyes, teeth, stubble, earring, black T-shirt and relaxed standing arms at his sides. Treat reference 1 as the supplied photograph to composite, without recasting or beautifying the face. Reference 2 is ONLY a composition and lunar-background reference: remove its old folded-arm man entirely. Retain its lunar foreground, near-black negative space on the left and overall 1200:630 landscape layout. Place the new portrait on the RIGHT 42 percent, head center around 76 percent of width and 25 percent of height, whole hair visible with comfortable top margin, torso down to lower crop, arms at sides. Keep all face and recognizable shoulder detail clear of the left 57 percent reserved for text. Preserve natural studio light on the face, add at most a subtle warm edge to integrate with the lunar environment. The background stays dark and quiet; do not make a bright orange flare. No astronaut or folded arms. No text, lettering, logos, props or watermark. One finished 1200:630 ratio background photograph, no mockup or collage.",
+      "generatedSource": "/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-cc39075a-18cc-4bce-9722-1225fb19ce29.png"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "preparedAt": "2026-09-09",
+  "type": "Actual application screenshots reused as evidence of a personal project",
+  "processing": "JPEG encoding only; no crop, retouch, generation or compositing. Layout pairs the two captures in CSS.",
+  "files": [
+    {
+      "file": "landing.jpg",
+      "capture": ".impeccable/review/glitch/desktop-matteo.png",
+      "description": "Italian homepage at the settled Matteo identity; photographed UI capture from prior local browser validation. The later service navigation link is not pictured. No images were generated or UI details retouched.",
+      "sourceSha256": "16443822246f69943e394d99cf83e5ef01e2b829a1e39f77f8ee1de95697eaf5"
+    },
+    {
+      "file": "cockpit-mobile.jpg",
+      "capture": ".impeccable/review/controls/mobile-hud.png",
+      "description": "Actual public mobile cockpit gameplay, with astronaut, planets and controls; captured in prior local browser validation. No access code or private CV content is shown.",
+      "sourceSha256": "9cbfb97437bc199787669fcfe83d664172a347ca9efa86b3f09a5233b499d9f0"
+    }
+  ]
+}

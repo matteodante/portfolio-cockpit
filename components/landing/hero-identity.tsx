@@ -7,9 +7,10 @@ import {
   type IdentityInput,
 } from '@/components/landing/identity-pointer'
 import { identityFrame } from '@/components/landing/identity-timing'
+import { PERSON_IMAGE_PATH } from '@/lib/constants/site'
 
-const ASTRONAUT = '/landing-v2/identity/astronaut.webp'
-const MATTEO = '/landing-v2/identity/matteo.webp'
+const ASTRONAUT = '/landing-v2/identity/astronaut-v2.webp'
+const MATTEO = PERSON_IMAGE_PATH
 
 export default function HeroIdentity() {
   const hostRef = useRef<HTMLDivElement>(null)

@@ -1,7 +1,10 @@
 # Brand media
 
-2026-09-08. Generated using the built-in Image Gen tool, with the owner's
-requested references. The landing uses still-image depth layers, not video.
+Generated using the built-in Image Gen tool, with the owner's requested
+references. Original media dates from 2026-09-08; the approved portrait
+integration below is current as of 2026-09-09. The hero uses photographic
+depth layers; Work separately uses the temporary films documented in
+[work-video-sequence.md](work-video-sequence.md).
 
 ## Astronaut
 
@@ -12,28 +15,36 @@ controls, hoses and orange fittings, with smoother sculpted materials and
 warmer cinematic light. The runtime Three.js model is unchanged.
 
 The full figure has genuine alpha, 1122 × 1402, encoded WebP quality 92.
-It is framed closely with CSS in the hero and shown full length in the
-work scene, keeping one consistent character throughout the scroll. Raw
+It is retained as a source asset; the current hero uses the photographic
+identity pair and Work uses its separate films. Raw
 GLB renders were reference inputs only and have been removed from public
-landing assets. No live WebGL renderer was added to the homepage.
+landing assets. The identity pair now has its own optional native WebGL
+quad; the cockpit's Three.js model is unchanged.
 
 Exact prompt: [astronaut.webp.json](../../public/landing-v2/astronaut.webp.json).
 Generated master: `/Users/matteodante/.codex/generated_images/01a08106-7e99-7e90-ae74-8779c820f97d/exec-7e58c4cc-c322-4e3d-98a3-81c6054fc2ed.png`.
 
 ## Personal photographs
 
-The circular header avatar and framed services portrait use the same
-identity-preserving photographic edit of the owner's real photo. The owner
-requested a more convincing, realistic face. Final files:
+The owner selected `assets/portrait-options/matteo-a-real-reference.png`
+and authorized replacing the site's portraits on 2026-09-09. This approved
+photographic edit follows his real reference photos, natural smile,
+clear-lens black glasses, short curls, stubble, earring and black T-shirt.
+Current files:
 
-- `public/landing-v2/matteo-avatar-v2.webp`, 200 × 200; circular CSS display.
-- `public/landing-v2/matteo-portrait-v2.webp`, 768 × 768; CSS frames the portrait.
+- `public/landing-v2/matteo-avatar-v3.webp`, 200 × 200, 5,160 bytes;
+  Image Gen square headshot edit of the approved master, circular CSS display.
+- `public/landing-v2/matteo-portrait-v3.webp`, 960 × 1200, 75,748 bytes;
+  exact approved master resized and encoded only, shared by the human hero,
+  services portrait and Person schema through `PERSON_IMAGE_PATH`.
 
-Both retain natural skin color and texture, amber glasses, curly hair,
-stubble, the earring and black crew-neck. Background and lighting were
-cleaned up; expression was directed to be relaxed and confident. They are
-generated edits, not unmodified camera originals. See
-[portrait provenance](portrait-provenance.md) for the exact final prompt.
+Services retain the existing 7:8 frame. `BrandAvatar` shares the new avatar
+across landing, commercial pages and cockpit; favicon, Apple and manifest
+icons derive from it. These are photographic edits, not unmodified camera
+originals. Old runtime portraits were removed in favor of versioned paths;
+source masters and Git history preserve provenance. Existing profile/CV
+photos and historical portfolio screenshots are outside this replacement.
+See [portrait provenance](portrait-provenance.md) for sources and exact prompts.
 
 ## Landscape
 
@@ -91,9 +102,19 @@ No booking is created by opening the calendar.
 
 ## Hero identity plates
 
-The hero now uses two registered Image Gen studio portraits: Matteo and
-his astronaut alter ego in a matching folded-arm pose. They replace the
-hero's use of the full-body astronaut; the work scene keeps that asset.
-The new images have opaque dark backgrounds and are composited through
-a native WebGL transformation. See [identity-glitch.md](identity-glitch.md)
-for source prompts, timing, implementation and research references.
+The hero pairs the approved `matteo-portrait-v3.webp` with
+`identity/astronaut-v2.webp` (960 × 1200, 118,722 bytes), generated to follow
+the approved relaxed arms-at-sides pose. The pair totals 194,470 bytes and
+replaces the old folded-arm plates. Opaque dark studio backgrounds blend
+into the existing scene through CSS and the native WebGL transformation.
+The renderer, timing and pointer behavior are unchanged. See
+[identity-glitch.md](identity-glitch.md) for prompts and verification limits.
+
+## Current verification — 2026-09-09
+
+The approved portrait, avatar, astronaut, social background and icon assets,
+plus all twelve localized social cards, received a scoped **SHIP** finish
+review with no fixes. Build, checks, provenance and local production HTTP
+verification passed. Browser layout, animated registration and cursor/touch
+validation remain pending while the Mac is locked; static review does not
+establish those behaviors. No public deployment is updated by these checks.

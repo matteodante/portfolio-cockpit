@@ -106,8 +106,19 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   service page. Header, hero and contact booking links remain direct Cal.com links.
   Work adds a PiùUDITO case link with an actual website capture before
   the existing Maestro/GymTree pair; the film sequence stays unchanged.
-  `HeroIdentity` progressively adds one native WebGL quad with two registered
-  photographic plates. Image-derived refraction, tears and chromatic
+  `PortfolioEvidence` adds this site/cockpit as a personal project after
+  PiùUDITO; `TeamExperience` adds public Pilatus/DonTouch role summaries
+  after the apps. Both are also used by website development. Project
+  captures live in `public/landing-v2/portfolio/`; cockpit links disable
+  prefetch. See `docs/design/portfolio-evidence.md` for evidence boundaries.
+  `HeroIdentity` progressively adds one native WebGL quad with two photographic
+  plates. The owner-approved `assets/portrait-options/matteo-a-real-reference.png`
+  is resized/encoded as `public/landing-v2/matteo-portrait-v3.webp` and shared
+  by hero, services and Person schema through `PERSON_IMAGE_PATH`; services
+  retain their 7:8 CSS frame. `identity/astronaut-v2.webp` follows its relaxed
+  arms-at-sides pose. The 960×1200 pair totals 194,470 bytes. This asset
+  replacement does not change renderer, timing or pointer behavior.
+  Image-derived refraction, tears and chromatic
   displacement alternate Matteo/astronaut every five seconds, starting
   on first load. Cursor movement, tap and passive touch drag add a short local refractive
   wake that distorts the visible identity; touch is stronger and wider than
@@ -121,9 +132,15 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   landing never requires WebGL for copy or contact. No custom scroll interception. Pause,
   reduced motion and no JavaScript use static imagery and normal flow.
   Content and email links work without JavaScript. Assets in
-  `public/landing-v2/` include the generated portrait, localized App Store
+  `public/landing-v2/` include the approved photographic portrait, localized App Store
   captures, an Image Gen astronaut based on the cockpit GLB render, a
-  generated lunar landscape and a circular photo avatar. The hero has a
+  generated lunar landscape and `matteo-avatar-v3.webp`, a 200px square
+  Image Gen headshot edit of the approved master, shared through
+  `BrandAvatar` across landing, commercial pages and cockpit. Static assets
+  and social cards passed a scoped finish review; fresh desktop/mobile layout
+  and animated registration remain pending while the Mac is locked.
+  Existing profile/CV photos and historical portfolio screenshots are outside
+  the replacement scope. The hero has a
   secondary localized link to the playable CV. Provenance is stored alongside each raster; source notes in
   `docs/design/brand-media.md`. The earlier Oakley photos were replaced;
   Work now temporarily uses authorized Oakley hero-frame and visor films
@@ -326,19 +343,33 @@ To update private content: edit files in `private-src/`, run
 
 ## SEO
 
+- `lib/seo/page-metadata.ts` owns shared page metadata construction and
+  language alternatives. Canonical, title and social fields belong to each
+  page; the layout owns common defaults. Only the cockpit declares a public
+  CV Markdown alternative. Every page links the public `/llms.txt` guide.
+- JSON-LD describes public identity and visible services/projects. Keep
+  detailed employer scope and private CV information out of the shared
+  graph. Website pricing is a minimum of EUR 300, not a fixed package.
+  Public APIs and standalone JSON records have noindex headers; images
+  remain indexable. See `docs/seo/technical-metadata.md` and discovery tests.
 - Commercial pages have localized canonical/hreflang, Open Graph,
   WebPage + Service/CreativeWork + breadcrumb JSON-LD, sitemap entries
   and public llms.txt links. This describes content, not measured SEO results.
 - `lib/seo/social.ts` owns EN/IT sharing copy, image URLs and descriptors.
   `lib/seo/social-image.tsx` renders the shared 1200×630 Matteo portrait
-  composition with locally bundled Unbounded 900 and Space Grotesk 500.
+  composition from `public/social/hero-background-v2.jpg`, with the approved
+  smile, clear black glasses and relaxed arms, locally bundled Unbounded 900
+  and Space Grotesk 500. Typography and layout are unchanged.
   `/social/{en|it}/{home|websites|apps|ai|piuudito|cockpit}.png` prerenders
   all twelve previews at build time. Homepage metadata explicitly sets
   page images so Next's file defaults do not override them; the existing
   localized OG/Twitter endpoints also render the new homepage image.
-  Schemas use matching social images; Person retains the photographic
-  portrait. Favicon, Apple and manifest icons derive from the current
-  photographic avatar. See `docs/design/social-metadata.md` and the image
+  `socialImageUrl` adds `?v=portrait-3`. Schemas use matching social images;
+  Person uses `PERSON_IMAGE_PATH`. Favicon, Apple and manifest icons derive
+  from `matteo-avatar-v3.webp`; manifest paths are
+  `/social/avatar-v3-{192,512}.png`. Local build and HTTP verification passed;
+  public deployment and platform cache refresh are not verified for this
+  replacement. See `docs/design/social-metadata.md` and the image
   and font origin manifests for provenance and local verification limits.
 - `components/analytics/marketing-analytics.tsx` mounts from the locale
   layout. A valid `NEXT_PUBLIC_GA_MEASUREMENT_ID` enables the optional

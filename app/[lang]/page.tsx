@@ -1,31 +1,26 @@
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import LandingPage from '@/components/landing/landing-page'
 import { isValidLocale } from '@/lib/i18n/config'
+import { HOME_PATHS, pageMetadata } from '@/lib/seo/page-metadata'
 import { getLandingPageSchema } from '@/lib/seo/schemas'
-import { socialImages } from '@/lib/seo/social'
+import { HOME_METADATA } from '@/lib/seo/social'
 import '@/components/landing/landing.css'
 
 type PageProps = { params: Promise<{ lang: string }> }
 
-export async function generateMetadata(
-  { params }: PageProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { lang } = await params
   if (!isValidLocale(lang)) return {}
-  const inherited = await parent
   // Explicit page images take precedence over Next's file-based defaults.
-  return {
-    openGraph: {
-      ...inherited.openGraph,
-      images: socialImages('home', lang),
-    },
-    twitter: {
-      ...inherited.twitter,
-      images: socialImages('home', lang),
-    },
-  }
+  return pageMetadata({
+    page: 'home',
+    locale: lang,
+    paths: HOME_PATHS,
+    ...HOME_METADATA[lang],
+  })
 }
 
 export default async function Page({ params }: PageProps) {
