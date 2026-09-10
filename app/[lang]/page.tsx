@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import HomeAssistant from '@/components/landing/home-assistant'
 import LandingPage from '@/components/landing/landing-page'
 import { isValidLocale } from '@/lib/i18n/config'
 import { HOME_PATHS, pageMetadata } from '@/lib/seo/page-metadata'
@@ -40,6 +41,7 @@ export default async function Page({ params }: PageProps) {
         }}
       />
       <LandingPage locale={lang} />
+      <HomeAssistant key={lang} locale={lang} />
     </>
   )
 }

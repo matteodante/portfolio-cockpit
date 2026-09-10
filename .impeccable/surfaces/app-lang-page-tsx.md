@@ -416,3 +416,12 @@ proof rows and original CV photo stay unchanged. The selected geometry,
 research and bounded desktop/mobile review live in
 `docs/design/depth-release.md`. This refinement supersedes the earlier
 1040px layout, cropped films and PiùUDITO-first gallery order.
+
+## Homepage assistant extension — 2026-09-10
+
+THESIS: A useful conversation about Matteo's work, leading to his booking page.
+OWN-WORLD: Existing near-black, ivory, orange, two-pixel corners and shared fonts; a simple helmet icon identifies the assistant.
+STORY: Understand services, explore real work, describe a need, continue to Cal.com.
+FIRST VIEWPORT: Compact lower-right launcher above motion controls. A 400px console opens with three suggested questions, readable replies and a persistent booking link. Cookie choices sit lower-left; on mobile the open chat occupies the available viewport and temporarily covers the cookie panel.
+FORM: Local extension of the approved homepage, code-led; no concept seed required. One short console entrance, respecting reduced motion and the site pause control.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

@@ -2,6 +2,10 @@ import OpenAI from 'openai'
 import type { ResponseInputItem } from 'openai/resources/responses/responses'
 import { z } from 'zod'
 import {
+  LANDING_CHAT_MODEL,
+  landingInstructions,
+} from '@/lib/ai/landing-context'
+import {
   CHAT_MAX_MESSAGE_LENGTH,
   CHAT_MAX_MESSAGES,
   CHAT_MAX_TOTAL_INPUT_CHARS,
@@ -265,6 +269,7 @@ const chatMessageSchema = z.object({
 const chatRequestSchema = z.object({
   messages: z.array(chatMessageSchema).min(1).max(CHAT_MAX_MESSAGES),
   locale: z.string().optional(),
+  surface: z.enum(['cockpit', 'home']).default('cockpit'),
 })
 
 export async function POST(req: Request) {
@@ -289,7 +294,7 @@ export async function POST(req: Request) {
     return new Response('Invalid request body', { status: 400 })
   }
 
-  const { messages, locale } = parsed.data
+  const { messages, locale, surface } = parsed.data
   const totalChars = messages.reduce((sum, m) => sum + m.content.length, 0)
   if (totalChars > CHAT_MAX_TOTAL_INPUT_CHARS) {
     return new Response('Input too large', { status: 413 })
@@ -340,13 +345,18 @@ export async function POST(req: Request) {
   try {
     stream = await getOpenAI().responses.create(
       {
-        model: 'gpt-5.4-nano',
-        instructions: await resolveInstructions(
-          language,
-          (await hasAccess()) ? 'private' : 'public'
-        ),
+        model: surface === 'home' ? LANDING_CHAT_MODEL : 'gpt-5.4-nano',
+        instructions:
+          surface === 'home'
+            ? landingInstructions(language, locale === 'it' ? 'it' : 'en')
+            : await resolveInstructions(
+                language,
+                (await hasAccess()) ? 'private' : 'public'
+              ),
         input: inputItems,
-        temperature: 0.4,
+        ...(surface === 'home'
+          ? { reasoning: { effort: 'none' as const } }
+          : { temperature: 0.4 }),
         max_output_tokens: 400,
         store: false,
         stream: true,
@@ -366,6 +376,13 @@ export async function POST(req: Request) {
       try {
         for await (const event of stream) {
           if (req.signal.aborted) break
+          if (
+            event.type === 'response.failed' ||
+            event.type === 'error' ||
+            event.type === 'response.incomplete'
+          ) {
+            throw new Error('AI response did not complete')
+          }
           if (event.type === 'response.output_text.delta') {
             controller.enqueue(encoder.encode(event.delta))
           }
@@ -375,7 +392,7 @@ export async function POST(req: Request) {
         if (!req.signal.aborted) {
           console.error('chat.route: stream loop aborted', err)
         }
-        controller.close()
+        controller.error(new Error('AI stream interrupted'))
       }
     },
     cancel() {

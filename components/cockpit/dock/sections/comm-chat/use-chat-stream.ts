@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { CHAT_MAX_MESSAGES } from '@/lib/ai/limits'
+import { CHAT_MAX_MESSAGE_LENGTH, CHAT_MAX_MESSAGES } from '@/lib/ai/limits'
 import { useT } from '@/lib/i18n'
 import type { Locale } from '@/lib/i18n/config'
 
@@ -24,7 +24,10 @@ type ChatStream = {
  * Owns the chat transcript + the fetch → reader streaming loop against
  * `/api/chat`. Cancels the in-flight request on unmount.
  */
-export function useChatStream(locale: Locale): ChatStream {
+export function useChatStream(
+  locale: Locale,
+  surface: 'cockpit' | 'home' = 'cockpit'
+): ChatStream {
   const t = useT()
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [sending, setSending] = useState(false)
@@ -72,9 +75,13 @@ export function useChatStream(locale: Locale): ChatStream {
         signal: controller.signal,
         body: JSON.stringify({
           locale,
+          surface,
           messages: nextHistory
             .filter((m) => m.id !== assistantId && m.content.trim().length > 0)
-            .map((m) => ({ role: m.role, content: m.content })),
+            .map((m) => ({
+              role: m.role,
+              content: m.content.slice(0, CHAT_MAX_MESSAGE_LENGTH),
+            })),
         }),
       })
 

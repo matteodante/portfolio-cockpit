@@ -923,3 +923,21 @@ the approved landscape. The 7s silent 1920×1270 encode is 4,151,303 bytes.
 It loads only at the visible contact scene, pauses offscreen/hidden, and
 uses its poster for disabled motion, no JavaScript, errors or rejected
 autoplay. Scope, research, provenance and local QA: `docs/design/depth-release.md`.
+
+
+### Homepage assistant and cookie choices — 2026-09-10
+
+The homepage adds a lower-right helmet launcher and a 400px conversation
+console using the existing Unbounded/Space Grotesk roles, ivory, orange
+and two-pixel corners. Its local near-black surface and lighter muted
+text support readable streamed replies; they do not replace shared tokens.
+A scrollable transcript sits above the persistent booking link and composer,
+whose send control retains its 44px width. Below 800px, the open console
+fits the dynamic viewport and temporarily hides the lower-left cookie
+panel. A short entrance respects reduced motion and the site pause control.
+The cookie panel uses matching flat controls, native expandable details,
+and equal accept/reject treatment when Google Analytics is configured;
+without an ID it shows a necessary-preferences acknowledgment. This scoped
+extension passed local finish review after focus and clipping corrections.
+Implementation, public-context boundaries and bounded desktop/mobile QA
+are recorded in `docs/design/home-assistant.md`; deployment is unverified.

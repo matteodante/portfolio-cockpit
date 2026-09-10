@@ -36,6 +36,14 @@ export default function MarketingAnalytics({
   )
   const [editing, setEditing] = useState(false)
   const it = locale === 'it'
+  const cookieDescription = it
+    ? 'Con il tuo consenso, Google Analytics usa cookie per misurare le visite e le interazioni. Puoi cambiare scelta in qualsiasi momento.'
+    : 'With your consent, Google Analytics uses cookies to measure visits and interactions. You can change your choice at any time.'
+  const necessaryDescription = it
+    ? 'Google Analytics non è attivo. Salviamo solo le preferenze necessarie al funzionamento del sito sul tuo dispositivo.'
+    : 'Google Analytics is not active. We only save preferences needed for the site to work on your device.'
+  const rejectLabel = it ? 'Rifiuta' : 'Reject'
+  const acknowledgeLabel = it ? 'Ho capito' : 'Got it'
 
   useEffect(() => {
     if (!id) return
@@ -64,7 +72,7 @@ export default function MarketingAnalytics({
     return () => document.removeEventListener('click', onClick)
   }, [id, consent, isMarketingPage])
 
-  if (!id || consent === undefined || !isMarketingPage) return null
+  if (consent === undefined || !isMarketingPage) return null
   const choose = (choice: 'granted' | 'denied') => {
     saveConsent(choice)
     if (choice === 'denied') disableAnalytics()
@@ -75,32 +83,47 @@ export default function MarketingAnalytics({
       {consent === null || editing ? (
         <section className="analytics-panel" aria-labelledby="analytics-title">
           <h2 id="analytics-title">
-            {it ? 'Statistiche facoltative' : 'Optional analytics'}
+            {it ? 'Cookie, scegli tu.' : 'Cookies. Your choice.'}
           </h2>
-          <p>
-            {it
-              ? 'Con il tuo consenso, Google Analytics usa cookie per misurare le visite e le interazioni sul sito. Puoi continuare senza attivarli e cambiare scelta in qualsiasi momento.'
-              : 'With your consent, Google Analytics uses cookies to measure visits and interactions on this website. You can continue without enabling them and change your choice at any time.'}
-          </p>
-          <p>
-            {it
-              ? 'La scelta viene conservata per 180 giorni. La misurazione pubblicitaria è disattivata.'
-              : 'Your choice is saved for 180 days. Advertising measurement is disabled.'}{' '}
-            <Link
-              href="https://policies.google.com/technologies/partner-sites"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {it ? 'Come Google utilizza i dati' : 'How Google uses data'}
-            </Link>
-          </p>
+          <p>{id ? cookieDescription : necessaryDescription}</p>
+          <details className="analytics-details">
+            <summary>
+              {it ? 'Dettagli e preferenze' : 'Details and preferences'}
+            </summary>
+            <p>
+              {it
+                ? 'Preferenze tecniche: sempre attive. La scelta sui cookie viene conservata per 180 giorni. La chat si attiva solo quando invii un messaggio, elaborato da OpenAI. La conversazione non viene salvata sul dispositivo.'
+                : 'Technical preferences: always active. Your cookie choice is saved for 180 days. The chat activates when you send a message, processed by OpenAI. The conversation is not saved on your device.'}
+            </p>
+            <p>
+              {it
+                ? 'Vercel fornisce statistiche e misure di prestazione senza cookie. Cal.com si apre solo quando scegli di prenotare.'
+                : 'Vercel provides cookieless analytics and performance measurements. Cal.com opens only when you choose to book.'}
+            </p>
+            {id && (
+              <p>
+                {it
+                  ? 'Statistiche Google facoltative. Misurazione pubblicitaria disattivata.'
+                  : 'Optional Google analytics. Advertising measurement is disabled.'}{' '}
+                <Link
+                  href="https://policies.google.com/technologies/partner-sites"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {it ? 'Come Google usa i dati' : 'How Google uses data'}
+                </Link>
+              </p>
+            )}
+          </details>
           <div className="analytics-actions">
             <button type="button" onClick={() => choose('denied')}>
-              {it ? 'Continua senza' : 'Continue without'}
+              {id ? rejectLabel : acknowledgeLabel}
             </button>
-            <button type="button" onClick={() => choose('granted')}>
-              {it ? 'Consenti statistiche' : 'Allow analytics'}
-            </button>
+            {id && (
+              <button type="button" onClick={() => choose('granted')}>
+                {it ? 'Accetta statistiche' : 'Accept analytics'}
+              </button>
+            )}
           </div>
           {editing && (
             <button
@@ -118,7 +141,7 @@ export default function MarketingAnalytics({
           type="button"
           onClick={() => setEditing(true)}
         >
-          {it ? 'Preferenze statistiche' : 'Analytics preferences'}
+          {it ? 'Preferenze cookie' : 'Cookie preferences'}
         </button>
       )}
     </div>

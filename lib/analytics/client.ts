@@ -191,6 +191,7 @@ export function trackMarketing(
     'services',
     'home_work',
     'home_contact',
+    'home_assistant',
     'service_hero',
     'case_hero',
     'showcase',

@@ -7,17 +7,18 @@
 .analytics-panel {
   position: fixed;
   z-index: 45;
-  bottom: 68px;
-  right: 24px;
+  bottom: 76px;
+  left: 24px;
   text-align: left;
-  width: 420px;
+  width: 370px;
   max-width: calc(100vw - 48px);
   padding: 24px;
   background: #0c0d11;
   border: 1px solid #f2ede333;
 }
 .analytics-panel h2 {
-  font-size: 20px;
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: 18px;
   line-height: 1.3;
   font-weight: 500;
   margin: 0 0 14px;
@@ -75,11 +76,54 @@
 }
 @media (max-width: 799px) {
   .analytics-panel {
-    right: 16px;
-    bottom: 64px;
+    left: 16px;
+    bottom: calc(136px + env(safe-area-inset-bottom));
     max-width: calc(100vw - 32px);
     padding: 20px;
     max-height: calc(100dvh - 156px);
     overflow: auto;
+  }
+}
+
+.analytics-panel {
+  border-radius: 2px;
+  max-height: calc(100dvh - 170px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #77736b #0c0d11;
+}
+.analytics-details {
+  margin-bottom: 18px;
+}
+.analytics-details summary {
+  display: list-item;
+  min-height: 44px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.analytics-details summary::marker {
+  color: #ff6b35;
+}
+.analytics-details p {
+  color: #c9c5bc;
+  font-size: 12px;
+}
+.analytics-actions button {
+  border-radius: 2px;
+  cursor: pointer;
+}
+.analytics-actions button:hover {
+  background: #25262b;
+}
+.analytics-settings {
+  cursor: pointer;
+  border-radius: 2px;
+}
+@media (max-width: 799px) {
+  .analytics-panel {
+    max-height: calc(100dvh - 230px);
   }
 }
