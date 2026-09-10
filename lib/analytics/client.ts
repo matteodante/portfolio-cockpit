@@ -110,6 +110,20 @@ export function safePageLocation(url: string): string {
   return `${parsed.origin}${known ? parsed.pathname : '/not-found'}`
 }
 
+// Campaign labels only, never arbitrary query strings, click IDs or search terms.
+// Called only after analytics consent; no campaign storage before that choice.
+export function campaignParameters(url: string): Record<string, string> {
+  const query = new URL(url).searchParams
+  const campaign: Record<string, string> = {}
+  for (const key of ['source', 'medium', 'campaign', 'content', 'id']) {
+    const value = query.get(`utm_${key}`)
+    if (!(value && /^[a-z0-9][a-z0-9_-]{0,79}$/i.test(value))) continue
+    const field = key === 'campaign' ? 'name' : key
+    campaign[`campaign_${field}`] = value
+  }
+  return campaign
+}
+
 export function enableAnalytics(id: string) {
   if (!validMeasurementId(id) || readConsent() !== 'granted') return
   if (enabled && activeId === id) return
@@ -130,6 +144,7 @@ export function enableAnalytics(id: string) {
   if (initialized) return
   window.gtag('config', id, {
     send_page_view: false,
+    ...campaignParameters(location.href),
     allow_google_signals: false,
     allow_ad_personalization_signals: false,
     page_location: safePageLocation(location.href),

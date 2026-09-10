@@ -1,8 +1,13 @@
 # SEO e misurazione — prima fase
 
-Stato al 2026-09-09: implementazione locale pronta; account Google, ID
-reali, verifica proprietà, pubblicazione e ricezione eventi ancora da
-completare. Nessun dato storico o miglioramento SEO è stato misurato.
+Stato al 2026-09-10: GA4 creato nell'account Google del titolare
+`matteo.dante659@gmail.com` (Google visualizza la forma senza punti).
+Account Analytics esistente `238824806`, proprietà `MatteoDante.it`
+`553514237`, flusso web `15753370678`, ID `G-RNBF9FLEY4`.
+Timezone Italia / Europe-Rome, valuta EUR. ID salvato come variabile
+Vercel Production; le anteprime non inviano dati a questa proprietà.
+Vercel Web Analytics e Speed Insights sono già abilitati e mostrano dati.
+La ricezione GA4 sarà verificata dopo il deploy di questa attivazione.
 
 La revisione tecnica di metadati, JSON-LD, sitemap, robots e llms.txt è
 verificata nel build di produzione locale e pronta per il commit/push
@@ -75,14 +80,20 @@ ripetitive o articoli generici solo per aumentare il numero di URL.
 Le proprietà inviate sono etichette interne ammesse: placement, service,
 project, method, locale e URL della pagina ripulito. Non vengono inviati
 query string, frammenti, percorsi sconosciuti, dati dei form o payload di
-Cal.com. Il referrer è limitato all’origine. I parametri UTM non vengono
-conservati da questa prima integrazione: l’attribuzione delle campagne
-richiederà una scelta esplicita prima delle Ads. Non confondere questa
+Cal.com. Il referrer è limitato all’origine. Su richiesta del titolare, i parametri UTM source, medium, campaign,
+content e id sono ora mappati ai campi campagna GA4 solo dopo consenso.
+Accettiamo etichette di massimo 80 caratteri, lettere/numeri/trattino/underscore.
+Il resto della query, i termini liberi e gli identificatori gclid/fbclid
+non vengono inoltrati dal codice applicativo. I dati di campagna non vengono
+salvati dal sito prima del consenso; un cambio pagina prima di accettare
+può perdere l'attribuzione iniziale. Non confondere questa
 predisposizione con un setup pubblicitario già attivo.
 
 ## Consenso e confini
 
-- Senza ID valido, nessun tag Google e nessuna interfaccia di consenso GA.
+- Senza ID valido, nessun tag Google; il pannello mostra solo le preferenze tecniche.
+- Alla prima visita il pannello appare dopo 20 secondi. L'apertura manuale
+  delle preferenze nel footer è immediata; il ritardo non concede consenso.
 - Con ID valido, il tag viene caricato solo dopo scelta esplicita positiva.
   Prima della scelta e dopo il rifiuto, nessuna richiesta al tag Google.
 - Scelta in localStorage `matteo-analytics-consent-v1`, durata 180 giorni.
@@ -152,3 +163,46 @@ cockpit as a personal project. Their existing `project_opened` event uses
 `service_proof` placement. These are explicit allowed labels. A click shows
 interest in an example; it is not game completion, a booking or a lead.
 Google receipt is still unverified until the existing activation steps run.
+
+
+## Configurazione operativa — 2026-09-10
+
+- Misurazione avanzata del flusso disattivata; `page_view` manuale per
+  evitare doppi eventi e raccolta automatica di moduli/ricerche/link.
+- Google Signals e raccolta dati forniti dagli utenti non attivati.
+  Personalizzazione annunci disabilitata in tutte le 307 regioni.
+- Dimensioni evento registrate: placement (Posizione del clic), service
+  (Servizio), project (Progetto), method (Metodo prenotazione), locale
+  (Lingua del sito). Nessuna contiene testo della chat o dati del calendario.
+- Vercel usa `beforeSend` per ripulire gli URL in Analytics e Speed Insights,
+  rimuovendo query/frammenti e sostituendo percorsi sconosciuti con /not-found.
+  Il cockpit può apparire come pagina pubblica Vercel; GA resta limitato
+  alla parte commerciale. Chat, CV e operazioni private non sono eventi GA.
+- Piano Vercel Hobby: traffico e prestazioni disponibili; eventi custom
+  Vercel richiedono Pro/Enterprise. Nessun upgrade o costo attivato: gli
+  eventi commerciali restano in GA4.
+
+## Campagne future
+
+Convenzione: slug brevi e senza dati personali. Esempio illustrativo,
+non campagna attiva:
+`https://matteodante.it/it/servizi/sviluppo-siti-web?utm_source=google&utm_medium=cpc&utm_campaign=siti_it&utm_content=annuncio_a`
+
+GA4 distingue sempre `booking_opened` (intenzione), `booking_created`
+(callback del calendario incorporato), contatto email cliccato e risultato
+commerciale. Non usare aperture o clic email come conversione primaria
+per offerte automatiche Ads. Il calendario diretto su Cal.com non riporta
+automaticamente l'esito sul sito; per quello serve collegamento Cal o
+webhook e prova end-to-end. Nessuna prenotazione fittizia è stata creata.
+
+Prima di avviare Ads: scegliere account/campagna, conversione primaria e
+budget con Matteo; verificare una vera prenotazione autorizzata, quindi
+registrare/importare l'evento chiave; collegare Google Ads e configurare
+l'eventuale consenso pubblicitario, informativa e gestione dei click ID.
+Non ci sono tag AW, remarketing, enhanced conversions, liste pubblico o
+spesa pubblicitaria attivi. Il consenso analytics non abilita advertising:
+`ad_storage`, `ad_user_data` e `ad_personalization` restano denied.
+
+Fonti: [configurazione gtag](https://developers.google.com/tag-platform/gtagjs/reference),
+[eventi custom Vercel](https://vercel.com/docs/analytics/custom-events),
+[filtri Speed Insights](https://vercel.com/docs/speed-insights/package).

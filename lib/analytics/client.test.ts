@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test'
 import {
+  campaignParameters,
   consentFromStorage,
   safePageLocation,
   validMeasurementId,
@@ -52,5 +53,29 @@ describe('analytics privacy boundary', () => {
     expect(safePageLocation('https://matteodante.it/api/cv/pdf/it')).toBe(
       'https://matteodante.it/not-found'
     )
+  })
+})
+
+describe('campaign attribution', () => {
+  test('maps campaign slugs while leaving the tracked URL clean', () => {
+    const url =
+      'https://matteodante.it/it?utm_source=google&utm_medium=cpc&utm_campaign=websites_it&utm_content=hero_a&utm_id=launch_01'
+    expect(campaignParameters(url)).toEqual({
+      campaign_source: 'google',
+      campaign_medium: 'cpc',
+      campaign_name: 'websites_it',
+      campaign_content: 'hero_a',
+      campaign_id: 'launch_01',
+    })
+    expect(safePageLocation(url)).toBe('https://matteodante.it/it')
+  })
+  test('excludes contact details, click IDs, free-text terms and oversized values', () => {
+    expect(
+      campaignParameters(
+        'https://matteodante.it/it?utm_source=private@example.com&utm_medium=https://example.com&utm_campaign=' +
+          'a'.repeat(81) +
+          '&gclid=secret&fbclid=secret&utm_term=someone'
+      )
+    ).toEqual({})
   })
 })

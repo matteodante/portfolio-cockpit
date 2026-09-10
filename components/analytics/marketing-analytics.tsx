@@ -110,8 +110,8 @@ export default function MarketingAnalytics({
             {id && (
               <p>
                 {it
-                  ? 'Statistiche Google facoltative. Misurazione pubblicitaria disattivata.'
-                  : 'Optional Google analytics. Advertising measurement is disabled.'}{' '}
+                  ? 'Statistiche Google facoltative: visite, interazioni e provenienza delle campagne. Misurazione pubblicitaria disattivata.'
+                  : 'Optional Google analytics: visits, interactions and campaign sources. Advertising measurement is disabled.'}{' '}
                 <Link
                   href="https://policies.google.com/technologies/partner-sites"
                   target="_blank"
