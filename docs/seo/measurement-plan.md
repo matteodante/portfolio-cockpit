@@ -7,7 +7,8 @@ Account Analytics esistente `238824806`, proprietà `MatteoDante.it`
 Timezone Italia / Europe-Rome, valuta EUR. ID salvato come variabile
 Vercel Production; le anteprime non inviano dati a questa proprietà.
 Vercel Web Analytics e Speed Insights sono già abilitati e mostrano dati.
-La ricezione GA4 sarà verificata dopo il deploy di questa attivazione.
+Il deploy di attivazione è completato. Richieste reali accettate da Google
+(HTTP 204); il report Realtime mostra la visita di prova.
 
 La revisione tecnica di metadati, JSON-LD, sitemap, robots e llms.txt è
 verificata nel build di produzione locale e pronta per il commit/push
@@ -206,3 +207,32 @@ spesa pubblicitaria attivi. Il consenso analytics non abilita advertising:
 Fonti: [configurazione gtag](https://developers.google.com/tag-platform/gtagjs/reference),
 [eventi custom Vercel](https://vercel.com/docs/analytics/custom-events),
 [filtri Speed Insights](https://vercel.com/docs/speed-insights/package).
+
+
+## Verifica reale dell'attivazione
+
+- Account proprietario verificato nel selettore Google; nessun account o
+  destinatario aggiuntivo ha ricevuto accesso.
+- Google: nessuna richiesta prima del consenso, dopo rifiuto o dopo revoca.
+  L'accettazione carica un tag per `G-RNBF9FLEY4`; i cookie GA vengono
+  rimossi alla revoca.
+- `page_view` e `service_opened` reali hanno ricevuto HTTP 204. L'evento
+  servizio include `service=web` e `placement=services`.
+- Campagna di prova `setup_qa / internal / analytics_setup` presente nei
+  campi campagna; page_location è `https://matteodante.it/it` senza query.
+- La disattivazione scelta durante la creazione dello stream non era
+  rimasta salvata: il test iniziale ha rilevato scroll automatico e doppio
+  page_view. Corretto nello stream esistente e riverificato dopo ricarica:
+  un solo page_view per il cambio pagina IT→EN, nessuno scroll automatico.
+  I primi eventi di prova restano dati QA, non traffico commerciale.
+- Realtime GA4 ha mostrato 1 utente attivo. I report standard di una nuova
+  proprietà possono richiedere elaborazione; non sono risultati di campagna.
+- Vercel Web Analytics mostra traffico e Speed Insights dati prestazionali.
+  Il payload `/view` osservato contiene l'URL pubblico senza query. Il
+  controllo client riguarda il campo URL; gli altri metadati restano
+  governati dal SDK Vercel e dal suo servizio.
+- Corretto il footer: le preferenze cookie ora riservano spazio sopra i
+  controlli fissi, per consentire accettazione/rifiuto/revoca con il mouse.
+- `bun run check`: 42 test / 518 asserzioni; build superato. React Doctor
+  93, una segnalazione preesistente di complessità nel pannello consenso.
+- Nessuna prenotazione reale, email di prova o campagna Ads inviata.

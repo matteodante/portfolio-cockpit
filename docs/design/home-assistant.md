@@ -116,3 +116,11 @@ or at 18 seconds; it appeared at approximately 20 seconds. Footer
 preferences opened immediately, and saved choices persisted after reload.
 Desktop retained its labeled launcher. Check/build passed; React Doctor
 reported 92 with two existing complexity advisories and no errors.
+
+
+## Analytics activation follow-up
+
+GA4 is now configured in production; see `docs/seo/measurement-plan.md`
+for the verified property, consent tests and campaign boundaries. Footer
+preferences are left-aligned with 144px bottom padding so persistent
+chat and motion controls cannot cover their click target.

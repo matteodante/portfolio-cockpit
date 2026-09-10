@@ -943,3 +943,7 @@ without an ID it shows a necessary-preferences acknowledgment. This scoped
 extension passed local finish review after focus and clipping corrections.
 Implementation, public-context boundaries and bounded desktop/mobile QA
 are recorded in `docs/design/home-assistant.md`; deployment is unverified.
+
+
+Analytics footer preferences reserve 144px below their left-aligned button
+to clear the persistent chat and motion controls (2026-09-10 activation QA).
