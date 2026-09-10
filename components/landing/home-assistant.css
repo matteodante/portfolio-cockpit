@@ -298,7 +298,29 @@
     transform: translateY(0);
   }
 }
+.assistant-launcher > .assistant-launcher-chat {
+  display: none;
+}
 @media (max-width: 799px) {
+  .assistant-launcher {
+    width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    justify-content: center;
+  }
+  .assistant-launcher > svg,
+  .assistant-launcher-label,
+  .assistant-launcher-mark {
+    display: none;
+  }
+  .assistant-launcher > .assistant-launcher-chat {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+  body:has(.home-assistant) .landing-scroll-hint {
+    right: 72px;
+  }
   .home-assistant {
     right: 16px;
     bottom: calc(70px + env(safe-area-inset-bottom));

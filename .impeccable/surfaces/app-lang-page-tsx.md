@@ -425,3 +425,10 @@ STORY: Understand services, explore real work, describe a need, continue to Cal.
 FIRST VIEWPORT: Compact lower-right launcher above motion controls. A 400px console opens with three suggested questions, readable replies and a persistent booking link. Cookie choices sit lower-left; on mobile the open chat occupies the available viewport and temporarily covers the cookie panel.
 FORM: Local extension of the approved homepage, code-led; no concept seed required. One short console entrance, respecting reduced motion and the site pause control.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+
+## Owner refinement — compact mobile chat and delayed cookies
+
+On mobile, use a 44px icon-only chat launcher with its accessible name.
+Desktop retains the helmet and text. Delay automatic first-visit cookie
+display by 20 seconds; manual footer preferences open immediately.

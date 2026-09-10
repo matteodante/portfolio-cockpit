@@ -252,6 +252,7 @@ export default function HomeAssistant({ locale }: { locale: Locale }) {
         className="assistant-launcher"
         type="button"
         ref={launcher}
+        aria-label={it ? 'Chiedi all’AI' : 'Ask the AI'}
         aria-expanded={open}
         aria-controls="home-assistant-panel"
         onClick={() => {
@@ -260,7 +261,20 @@ export default function HomeAssistant({ locale }: { locale: Locale }) {
         }}
       >
         <Helmet />
-        <span>{it ? 'Chiedi all’AI' : 'Ask the AI'}</span>
+        <svg
+          className="assistant-launcher-chat"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          aria-hidden="true"
+        >
+          <path d="M20 14a3 3 0 0 1-3 3H9l-5 4V6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8Z" />
+          <path d="M8 8h8M8 12h5" />
+        </svg>
+        <span className="assistant-launcher-label">
+          {it ? 'Chiedi all’AI' : 'Ask the AI'}
+        </span>
         <span className="assistant-launcher-mark" aria-hidden="true" />
       </button>
     </aside>

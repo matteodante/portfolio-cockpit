@@ -35,6 +35,7 @@ export default function MarketingAnalytics({
     serverConsent
   )
   const [editing, setEditing] = useState(false)
+  const [bannerReady, setBannerReady] = useState(false)
   const it = locale === 'it'
   const cookieDescription = it
     ? 'Con il tuo consenso, Google Analytics usa cookie per misurare le visite e le interazioni. Puoi cambiare scelta in qualsiasi momento.'
@@ -44,6 +45,12 @@ export default function MarketingAnalytics({
     : 'Google Analytics is not active. We only save preferences needed for the site to work on your device.'
   const rejectLabel = it ? 'Rifiuta' : 'Reject'
   const acknowledgeLabel = it ? 'Ho capito' : 'Got it'
+
+  useEffect(() => {
+    if (!isMarketingPage || consent !== null || bannerReady) return
+    const timer = window.setTimeout(() => setBannerReady(true), 20_000)
+    return () => window.clearTimeout(timer)
+  }, [isMarketingPage, consent, bannerReady])
 
   useEffect(() => {
     if (!id) return
@@ -80,7 +87,7 @@ export default function MarketingAnalytics({
   }
   return (
     <div className="analytics-controls">
-      {consent === null || editing ? (
+      {(consent === null && bannerReady) || editing ? (
         <section className="analytics-panel" aria-labelledby="analytics-title">
           <h2 id="analytics-title">
             {it ? 'Cookie, scegli tu.' : 'Cookies. Your choice.'}

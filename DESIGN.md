@@ -934,7 +934,9 @@ text support readable streamed replies; they do not replace shared tokens.
 A scrollable transcript sits above the persistent booking link and composer,
 whose send control retains its 44px width. Below 800px, the open console
 fits the dynamic viewport and temporarily hides the lower-left cookie
-panel. A short entrance respects reduced motion and the site pause control.
+panel. The mobile launcher is a 44px icon-only chat control; desktop retains
+the helmet and label. First-visit cookie display waits 20 seconds, while
+opening preferences manually is immediate. A short entrance respects reduced motion and the site pause control.
 The cookie panel uses matching flat controls, native expandable details,
 and equal accept/reject treatment when Google Analytics is configured;
 without an ID it shows a necessary-preferences acknowledgment. This scoped

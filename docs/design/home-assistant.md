@@ -7,7 +7,9 @@ resolving composer focus and narrow-screen send-button clipping.
 ## Interaction and appearance
 
 `components/landing/home-assistant.tsx` adds an IT/EN lower-right helmet
-launcher above the motion controls. The code-drawn SVG needs no raster
+launcher above the motion controls. On mobile, the launcher is a compact
+44×44px chat icon with an accessible label; desktop retains the helmet
+and visible label. The code-drawn SVG needs no raster
 asset. Its 400px console uses near-black, ivory, orange, two-pixel corners,
 Unbounded headings and Space Grotesk reading text. Local neutral shades
 support transcript contrast without changing the shared palette.
@@ -54,7 +56,10 @@ is an API setting; it is not a claim of zero provider retention.
 ## Cookie choices
 
 The localized marketing-page panel now appears even without a Google
-measurement ID. That mode states that Google Analytics is inactive and
+measurement ID, after a 20-second first-visit delay. Manual opening from
+footer preferences is immediate, and previously saved choices suppress
+automatic display. Google still requires positive consent during the delay.
+That mode states that Google Analytics is inactive and
 offers an acknowledgment. With an ID, reject and accept have equal visual
 weight. An expandable explanation covers technical preferences, 180-day
 choice persistence, OpenAI chat processing, Vercel measurements and the
@@ -102,3 +107,12 @@ The selected model is documented in the official
 Provider statements informing the Vercel explanation are the
 [Web Analytics privacy documentation](https://vercel.com/docs/analytics/privacy-policy)
 and [Speed Insights privacy documentation](https://vercel.com/docs/speed-insights/privacy-policy).
+
+## Compact launcher follow-up
+
+The mobile launcher is 44×44px with a 22px chat icon. The scroll hint
+reserves space beside it. Browser checks found no cookie panel initially
+or at 18 seconds; it appeared at approximately 20 seconds. Footer
+preferences opened immediately, and saved choices persisted after reload.
+Desktop retained its labeled launcher. Check/build passed; React Doctor
+reported 92 with two existing complexity advisories and no errors.
