@@ -27,13 +27,16 @@ approved portrait are the source of truth for this revision.
   client work, personal products, public roles and real contact destinations.
   Commercial links come from the same route definitions as the pages. It
   reads no private content, cookies or decrypted CV documents.
-- Robots keeps the shared public allow rule and excludes API paths.
-  Rendering assets and llms.txt remain crawlable. API responses also carry
+- Robots keeps the shared public allow rule, including API paths so crawlers
+  can read their exclusion headers. Rendering assets and llms.txt remain
+  crawlable. Authentication still protects private content. API responses carry
   `X-Robots-Tag: noindex, nofollow`; standalone JSON/provenance records carry
   `noindex`, without blocking portrait or social image indexing.
 - Sitemap lists twelve canonical EN/IT HTML pages, their corresponding
   social images, reciprocal language alternatives and two public CV
-  Markdown files. No artificial freshness dates or guessed schedules.
+  Markdown files. Stable content-revision dates are maintained in the sitemap;
+  no build-time freshness dates or guessed schedules. See
+  [the Search Console verification](search-console.md) for current evidence.
 
 ## Sources and limits
 

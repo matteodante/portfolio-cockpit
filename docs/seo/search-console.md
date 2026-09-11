@@ -26,7 +26,8 @@ superare la verifica. Nessun DNS modificato o accesso assegnato a terzi.
 - Siti web e app/software: rilevate tramite sitemap ma non ancora scansionate
   né indicizzate. Richieste di indicizzazione accettate nella coda prioritaria.
 - Automazioni AI: inizialmente sconosciuta a Google; richiesta di scansione
-  avviata durante questa verifica.
+  accettata nella coda prioritaria.
+- Caso PiùUDITO: rilevato ma non ancora indicizzato; richiesta accettata.
 - I report aggregati della nuova proprietà sono in elaborazione; Google
   indica di ricontrollare tra un giorno o due. Non sono ancora dati finali.
 
@@ -59,6 +60,11 @@ redirect; le 12 pagine HTML hanno canonical coerente e non hanno noindex.
 Sul build locale aggiornato: sitemap XML valida con 14 date, robots
 accessibile, file Google 200 + noindex, API protette 401 + noindex e
 servizio inesistente 404 + noindex.
+
+Commit applicativo `17bf6f7` pubblicato tramite il deploy GitHub/Vercel
+`dpl_FrrKFnH6wEdCcFcBW6cU9dZcAbP7` (Ready). Verificati anche sul dominio
+pubblico robots aggiornato, 14 lastmod, file Google 200 + noindex,
+API protette 401 + noindex e pagina inesistente 404 + noindex.
 
 ## Sitelink e limiti
 
