@@ -131,7 +131,10 @@ describe('public search discovery', () => {
       expect(url.origin).toBe(BASE_URL)
       expect(url.search).toBe('')
       expect(url.pathname).not.toStartWith('/api/')
-      expect(entry).not.toHaveProperty('lastModified')
+      expect(entry.lastModified).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+      expect(Date.parse(String(entry.lastModified))).toBeLessThanOrEqual(
+        Date.now()
+      )
       if (entry.alternates) {
         const locale = url.pathname.split('/')[1] as Locale
         expect(entry.alternates.languages?.[locale]).toBe(entry.url)
@@ -163,7 +166,6 @@ describe('public search discovery', () => {
     expect(robots().rules).toEqual({
       userAgent: '*',
       allow: '/',
-      disallow: '/api/',
     })
   })
 })

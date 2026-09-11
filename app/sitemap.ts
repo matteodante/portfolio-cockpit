@@ -11,24 +11,28 @@ import { type SocialPage, socialImageUrl } from '@/lib/seo/social'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
-    { id: 'home', paths: HOME_PATHS },
+    { id: 'home', paths: HOME_PATHS, lastModified: '2026-09-10' },
     ...Object.entries(MARKETING_PAGES).map(([id, page]) => ({
       id,
       paths: page.paths,
+      lastModified: '2026-09-09',
     })),
-    { id: 'cockpit', paths: COCKPIT_PATHS },
+    { id: 'cockpit', paths: COCKPIT_PATHS, lastModified: '2026-09-10' },
   ]
-  // No build-time timestamps: lastmod should describe a real content revision.
+  // Dates reflect published content revisions, not builds (see
+  // docs/seo/search-console.md). Update only after meaningful page changes.
   return [
-    ...pages.flatMap(({ id, paths }) =>
+    ...pages.flatMap(({ id, paths, lastModified }) =>
       locales.map((locale) => ({
         url: `${BASE_URL}${paths[locale]}`,
+        lastModified,
         alternates: { languages: languageAlternates(paths) },
         images: [socialImageUrl(id as SocialPage, locale)],
       }))
     ),
     ...locales.map((locale) => ({
       url: `${BASE_URL}${CV_MARKDOWN_PATHS[locale]}`,
+      lastModified: '2026-07-08',
     })),
   ]
 }

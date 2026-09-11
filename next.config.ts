@@ -36,6 +36,10 @@ const nextConfig: NextConfig = {
   },
   headers: async () => [
     {
+      source: '/google1080ef41ff116224.html',
+      headers: [{ key: 'X-Robots-Tag', value: 'noindex' }],
+    },
+    {
       source: '/api/:path*',
       headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
     },
