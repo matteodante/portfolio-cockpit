@@ -8,6 +8,11 @@ Freelance portfolio with two experiences: a cinematic landing for web,
 mobile and AI projects, and a playable 3D cockpit CV. Streaming AI chat
 and a password-gated full CV (AES-256-GCM encrypted at rest). EN/IT.
 
+Business setup, prospecting and client delivery live in the sibling
+[freelance workspace](../freelance/README.md). Its
+[strategy](../freelance/STRATEGIA.md) records the restaurant focus and
+website-plus-management model; this does not change public offer terms.
+
 **Live demo:** <https://matteodante.it>
 
 ## Featured App Store products

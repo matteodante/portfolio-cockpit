@@ -262,3 +262,31 @@ project preview uses the actual localized social cover while the Mac is
 locked; the cockpit retains its authentic historical gameplay screenshot.
 The owner explicitly requires the previous photo to remain in the CV:
 public and protected PDFs and their `profile-pic.jpeg` source are unchanged.
+
+
+## Owner decisions — second-job business setup
+
+Confirmed 2026-09-09 in the sibling freelance workspace: restaurants and
+venues in Italy are the initial acquisition focus, with Rome, Milan and
+Como as candidate areas. The chosen model is a website paid initially plus
+monthly management. The owner wants carefully qualified prospects and to
+maximize earnings using his strong AI skills; available time is roughly
+three hours/day plus more on weekends, with short calls possible.
+
+The current task is setup, documentation and research of comparable business
+models, not prospect research or outreach. Commercial prices, first city,
+support scope, demo hosting and publication remain undecided. The existing
+public starting price of EUR 300 and broader service pages are not changed
+by these internal decisions. The historical PiùUDITO case is not restaurant
+client evidence. Canonical decisions and workflow live in
+[../freelance/STRATEGIA.md](../freelance/STRATEGIA.md) and
+[../freelance/GOAL.md](../freelance/GOAL.md), not in a second CRM here.
+
+Further owner clarification: one polished base per niche is reused with very
+few changes for selected prospects (around 20 in the example), and sent as the
+first-contact preview. Each variant contains `/offerta` in matteodante.it's
+visual identity with the complete offer; the restaurant keeps its own theme.
+The assistant performs the operational work from the freelance repo, which
+also holds website hosting configuration. "Sushi in Lugano" illustrates the
+method, without selecting the first campaign. This is a product requirement,
+not a claim that batch generation, the new offer design or deployment exists.

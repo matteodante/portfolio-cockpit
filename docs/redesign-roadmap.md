@@ -5,7 +5,8 @@ landing, whose source remains in Git history. The owner then selected
 Dungyov.com as the reference and made client enquiries the homepage's
 priority. The implemented replacement has four sections, a portrait,
 real localized App Store captures, brief EN/IT copy and booking CTAs.
-The exact Cal.com URL is still required before booking can work.
+The current confirmed booking destination is `https://cal.com/matteo-dante`;
+current measurement status is in `docs/seo/measurement-plan.md`.
 This redesign is not evidence of conversion lift.
 
 ## Starting evidence
@@ -125,6 +126,6 @@ conversations, without claiming statistical significance.
 
 ## Open decisions
 
-- Exact Cal.com event URL.
+- Booking destination is confirmed; verify account-side availability when needed.
 - No lasting preference for code or generated composition workflows is recorded.
 - Traffic/analytics baseline and access to the measurement dashboard.

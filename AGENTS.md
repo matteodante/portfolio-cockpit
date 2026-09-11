@@ -2,6 +2,42 @@
 
 Shared instructions for Codex and Claude Code in this repo.
 
+## Freelance business context
+
+- This is Matteo's public showcase, matteodante.it. The sibling
+  `../freelance/` owns strategy, CRM, drafts, proposals and client delivery.
+  Read its `STRATEGIA.md` for decisions and `GOAL.md` for the operating phase;
+  do not duplicate pipeline or price tables here.
+- Confirmed 2026-09-09: this is a second job. Initial commercial focus is
+  restaurants and venues in Italy, with Rome, Milan and Como as candidate
+  areas. The chosen model is an initially paid website plus monthly
+  management. No first city, price, term or support allowance is approved.
+- Matteo reports strong AI skills, around three hours/day and more time
+  on weekends, with brief calls possible. Do not keep asking for an hourly
+  budget or constrain the plan using conventional development estimates.
+- Current phase is setup: inspect documentation, research comparable
+  business models and configure the workflow. Do not discover prospects,
+  contact businesses or produce their demos until Matteo requests that phase.
+- Matteo wants reasoned recommendations and final choice on commercial
+  decisions. Keep facts, proposals and approved decisions separate.
+- Public pricing remains a starting price of EUR 300. It is not the new
+  restaurant package or a subscription setup fee. The homepage remains a
+  general showcase for websites, apps/software and AI; no restaurant-only
+  public repositioning has been approved. Existing IT/EN content and identity
+  decisions in PRODUCT.md remain authoritative.
+- Clarified workflow: create one niche website base, then reuse it with very
+  few changes for a selected batch (roughly 20 in the example). Each preview
+  includes its own `/offerta` page in matteodante.it's visual identity, with
+  Matteo's complete offer, distinct from the restaurant's theme. "Sushi in
+  Lugano" is an example, not an approved Swiss campaign. The assistant performs
+  the operational work; commercial choices remain Matteo's.
+- The sibling freelance repo owns preview/client code and hosting configuration.
+  Its deployment stays separate from this portfolio; a matteodante.it subdomain
+  is the proposed connection. Provider, name, cost and publication remain open.
+  Do not migrate the portfolio or change DNS to finish setup.
+- Preserve ongoing work in both repos. Business setup does not authorize
+  sending messages, publishing, committing or pushing unrelated changes.
+
 Prefer the simplest working solution. Avoid speculative abstractions,
 unnecessary layers and hypothetical edge cases. Preserve existing user
 work; implement the requested scope.
