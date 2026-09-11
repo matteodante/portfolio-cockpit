@@ -11,8 +11,10 @@ Il deploy di attivazione è completato. Richieste reali accettate da Google
 (HTTP 204); il report Realtime mostra la visita di prova.
 
 La revisione tecnica di metadati, JSON-LD, sitemap, robots e llms.txt è
-verificata nel build di produzione locale e pronta per il commit/push
-richiesto dal titolare. Dettagli, fonti e controlli:
+pubblicata e verificata sul dominio. Search Console è verificata e ha letto
+la sitemap con 14 URL; richieste di indicizzazione inviate per homepage IT,
+tre servizi IT e caso PiùUDITO. Evidenze in [search-console.md](search-console.md).
+Dettagli tecnici, fonti e controlli:
 [technical-metadata.md](technical-metadata.md). La pubblicazione del codice
 non attiva automaticamente gli account Google né conferma l'indicizzazione.
 
@@ -37,7 +39,12 @@ collegamenti pubblici in llms.txt. I dati strutturati descrivono il contenuto:
 non garantiscono rich result o ranking. Non sono state create pagine locali
 ripetitive o articoli generici solo per aumentare il numero di URL.
 
-## Attivazione Google
+## Procedura di attivazione Google (storico)
+
+I passaggi di accesso, GA4, deploy, verifica Search Console e invio sitemap
+sono completati. La sequenza seguente documenta la procedura, non una lista
+di attività tutte ancora da eseguire. Rimane aperta la verifica di una vera
+prenotazione prima di registrarla/importarla come conversione pubblicitaria.
 
 1. Accedere all’account Google del titolare. La sessione controllata nel
    browser di Codex risultava disconnessa; richiesta di accesso già inviata.
@@ -163,7 +170,8 @@ cockpit as a personal project. Their existing `project_opened` event uses
 `portfolio_website` or `portfolio_cockpit`, with `home_work` or
 `service_proof` placement. These are explicit allowed labels. A click shows
 interest in an example; it is not game completion, a booking or a lead.
-Google receipt is still unverified until the existing activation steps run.
+Google receipt was verified for page_view and service_opened during setup;
+receipt of these specific project events was not separately verified.
 
 
 ## Configurazione operativa — 2026-09-10
@@ -259,3 +267,23 @@ operative attuali. Costi pubblicitari e clienti non sono sincronizzati con
 GA4. Le bozze complete, URL UTM e criteri del confronto sono nel repository
 freelance, `outreach/drafts/ads-siti-web-2026-09/README.md`. Sono file di bozza,
 non campagne native pubblicate. Nessuna attivazione Ads o spesa effettuata.
+
+## Chiusura del setup — 2026-09-11
+
+- Bozze Google/ChatGPT consegnate nel repo freelance; nessun lancio, spesa,
+  collegamento Ads, fatturazione o rinnovo attivato durante questo lavoro.
+- Il confronto 50 EUR + 50 EUR resta una proposta di test. Valuta e minimi
+  ChatGPT, date e limite complessivo vanno verificati prima dell'avvio.
+- Dashboard attuale: GA4 per visite/interazioni con consenso, Cal.com per
+  prenotazioni; non esiste ancora un report unificato di costi e clienti.
+- Verifica finale pre-push: typecheck e 42 test / 532 asserzioni superati.
+  Gli ultimi aggiornamenti sono documentali, senza nuove modifiche React.
+- Nessun monitoraggio periodico automatico impostato. Alla ripresa leggere
+  Search Console per lo stato effettivo, senza reinviare subito le stesse
+  richieste; verificare la prima prenotazione reale autorizzata.
+
+Lezioni operative: la verifica HTML di Search Console funziona senza
+anticipare GA prima del consenso; i messaggi iniziali della sitemap possono
+essere transitori. Conservare il file di verifica e le date lastmod reali.
+La domanda Cal raccoglie una fonte dichiarata: non sostituisce gli UTM né
+prova che il contatto provenga da un annuncio. Non usare dati QA come lead.
