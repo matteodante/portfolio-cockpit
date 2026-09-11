@@ -236,3 +236,26 @@ Fonti: [configurazione gtag](https://developers.google.com/tag-platform/gtagjs/r
 - `bun run check`: 42 test / 518 asserzioni; build superato. React Doctor
   93, una segnalazione preesistente di complessità nel pannello consenso.
 - Nessuna prenotazione reale, email di prova o campagna Ads inviata.
+
+## Provenienza delle prenotazioni — 2026-09-11
+
+Nell'evento Cal.com esistente `Talk with me` (`matteo-dante/30min`) è stata
+salvata la domanda facoltativa bilingue «Come mi hai trovato? / How did you
+find me?», identificatore `discovery_source`. Placeholder: Google, ChatGPT,
+passaparola/referral, altro/other. Salvataggio verificato riaprendo la sezione
+Booking form; campo presente anche nell'anteprima. Nessun appuntamento o
+messaggio di prova inviato, nessuna modifica a durata, disponibilità o URL.
+
+La risposta rimane nel calendario: non viene copiata in GA4 o nel repository.
+È provenienza dichiarata, non attribuzione certa a un annuncio; “Google”
+può indicare ricerca organica. Serve anche per le prenotazioni dai link Cal
+diretti, il cui esito non ritorna automaticamente al sito. L'integrazione
+embed esistente distingue `booking_created` da `booking_opened`, ma la
+ricezione di una vera prenotazione resta da verificare. Non è stato
+configurato un nuovo evento chiave sulla base di un clic o di un test finto.
+
+Il report GA4 esistente e la pagina Bookings di Cal.com sono le viste
+operative attuali. Costi pubblicitari e clienti non sono sincronizzati con
+GA4. Le bozze complete, URL UTM e criteri del confronto sono nel repository
+freelance, `outreach/drafts/ads-siti-web-2026-09/README.md`. Sono file di bozza,
+non campagne native pubblicate. Nessuna attivazione Ads o spesa effettuata.
