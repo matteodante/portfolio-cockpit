@@ -10,7 +10,8 @@ related_targets: ["components/cockpit","components/cockpit/cockpit-app.tsx","com
 ## Scope and mode
 
 Mode: Experience. `/{locale}/cockpit` is the playable CV, with its intro,
-scene, HUD and docked content. This setup does not redesign the game.
+scene, HUD and docked content. The September 14 refinement updates the HUD,
+lighting, materials and effects within the existing game.
 
 ## Job and outcome
 
@@ -64,3 +65,26 @@ hero CV link is styled as a dark squared button. Cockpit avatar links
 return to the localized homepage from intro and active gameplay. Restore
 the original orange extruded MATTEO DANTE scene lettering, including its
 physical material; this scene-only exception preserves shared UI fonts.
+
+## Owner approval — compact HUD on desktop and mobile, 2026-09-14
+
+The owner approved the compact desktop HUD proposal in
+`docs/design/cockpit-study/index.html` and requested the same direction
+on mobile. This supersedes the initial study constraint to preserve the
+mobile layout. Adapt the composition for touch and safe areas, retaining
+the existing control functions and accessible paths to CV, contact and
+chat. The intended structure is edge-mounted instruments and a central
+contextual action, with the 3D world visible behind the lower controls.
+
+The owner subsequently approved the 3D work, emphasizing global illumination
+and particles without sacrificing older-device performance. iPhone 16 is an
+indicative mobile reference, not a certified minimum. Implementation reuses the
+existing light budget and baked environment, preserves the astronaut mesh, and
+batches the jets. Black-hole shader/config and global post-processing settings
+remain protected. Runtime quality still adapts to sustained frame rate.
+
+The compact HUD is now implemented on desktop and touch layouts, including
+landscape safe areas. Menu and dock content suspend scene rendering. The
+study's mockups remain historical proposals; current captures and measured
+limits are in `docs/design/cockpit-visual-upgrade-validation.md`. This is a
+local preview, not a published release or physical-phone performance claim.

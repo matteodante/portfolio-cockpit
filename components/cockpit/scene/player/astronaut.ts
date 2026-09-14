@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { disposeSceneGraph } from '@/components/cockpit/scene/three/dispose-helpers'
 import type { PlayerPhase } from '@/lib/types/player'
-import { disposeSceneGraph } from '../three/dispose-helpers'
 
 const ASTRO_MODEL_PATH = '/models/astronaut.glb'
 const ASTRO_TARGET_HEIGHT = 2.25
@@ -110,7 +110,8 @@ function buildFallbackAstronaut(accent: THREE.Color) {
 
 export function createAstronaut(
   scene: THREE.Scene,
-  accentHex: string
+  accentHex: string,
+  environment: THREE.Texture
 ): AstronautBundle {
   const accentColor = new THREE.Color(accentHex)
 
@@ -139,9 +140,58 @@ export function createAstronaut(
   loader.load(
     ASTRO_MODEL_PATH,
     (gltf) => {
-      if (disposed) return
+      if (disposed) {
+        disposeSceneGraph(gltf.scene)
+        return
+      }
       const model = gltf.scene
       loadedModel = model
+
+      // One existing mesh and colour atlas. Differentiate the dark visor
+      // from fabric in the same material, without a new texture or draw.
+      model.traverse((object) => {
+        if (!(object instanceof THREE.Mesh)) return
+        const material = object.material
+        if (!(material instanceof THREE.MeshStandardMaterial)) return
+        object.geometry.computeBoundingBox()
+        const box = object.geometry.boundingBox
+        if (!box) return
+        material.envMap = environment
+        material.envMapIntensity = 0.08
+        material.roughness = 0.82
+        material.onBeforeCompile = (shader) => {
+          shader.uniforms.suitMinY = { value: box.min.y }
+          shader.uniforms.suitHeight = { value: box.max.y - box.min.y }
+          shader.vertexShader = shader.vertexShader
+            .replace(
+              '#include <common>',
+              `#include <common>
+              uniform float suitMinY;
+              uniform float suitHeight;
+              varying float vSuitHeight;`
+            )
+            .replace(
+              '#include <begin_vertex>',
+              `#include <begin_vertex>
+              vSuitHeight = (position.y - suitMinY) / suitHeight;`
+            )
+          shader.fragmentShader = shader.fragmentShader
+            .replace(
+              '#include <common>',
+              `#include <common>
+              varying float vSuitHeight;`
+            )
+            .replace(
+              '#include <roughnessmap_fragment>',
+              `#include <roughnessmap_fragment>
+              float albedo = dot(diffuseColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+              float visor = smoothstep(0.68, 0.77, vSuitHeight)
+                * (1.0 - smoothstep(0.015, 0.09, albedo));
+              roughnessFactor = mix(roughnessFactor, 0.18, visor);`
+            )
+        }
+        material.customProgramCacheKey = () => 'cockpit-suit-visor-v1'
+      })
 
       // Feet land at ASTRO_FOOT_Y so the follow-camera lookAt offset matches.
       const bounds = new THREE.Box3().setFromObject(model)
@@ -208,7 +258,17 @@ export function createAstronaut(
       }
       scene.remove(group)
       disposeSceneGraph(fallback)
-      if (loadedModel) disposeSceneGraph(loadedModel)
+      if (loadedModel) {
+        loadedModel.traverse((object) => {
+          if (
+            object instanceof THREE.Mesh &&
+            object.material instanceof THREE.MeshStandardMaterial
+          ) {
+            object.material.envMap = null
+          }
+        })
+        disposeSceneGraph(loadedModel)
+      }
     },
   }
 }

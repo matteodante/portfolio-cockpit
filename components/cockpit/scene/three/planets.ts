@@ -1,14 +1,18 @@
 import * as THREE from 'three'
-import type {
-  CockpitSectionId,
-  PlanetSection,
-} from '@/lib/data/cockpit-sections'
-import { disposeSceneGraph } from './dispose-helpers'
+import { disposeSceneGraph } from '@/components/cockpit/scene/three/dispose-helpers'
+import {
+  createAtmosphereMaterial,
+  createRingMaterial,
+} from '@/components/cockpit/scene/three/planet-materials'
 import {
   buildLabelTexture,
   loadPlanetTexture,
   PLANET_TEXTURES,
-} from './textures'
+} from '@/components/cockpit/scene/three/textures'
+import type {
+  CockpitSectionId,
+  PlanetSection,
+} from '@/lib/data/cockpit-sections'
 
 export type PlanetEntry = {
   group: THREE.Group
@@ -62,11 +66,11 @@ function buildPlanet(
 
   const geometry = new THREE.SphereGeometry(section.radius, 48, 32)
   const material = new THREE.MeshStandardMaterial({
-    color: section.color,
+    color: colorMap ? 0xffffff : section.color,
     emissive: section.emissive,
     emissiveIntensity: 0.12,
     roughness: section.isEarth ? 0.85 : 0.78,
-    metalness: 0.08,
+    metalness: 0,
     map: colorMap,
   })
   const mesh = new THREE.Mesh(geometry, material)
@@ -75,18 +79,22 @@ function buildPlanet(
   let landMesh: THREE.Mesh | null = null
   if (section.isEarth) {
     const cloudMap = sectionTextures?.clouds
-      ? loadPlanetTexture(textureLoader, sectionTextures.clouds)
+      ? loadPlanetTexture(
+          textureLoader,
+          sectionTextures.clouds,
+          THREE.NoColorSpace
+        )
       : null
     if (cloudMap) collectTexture(cloudMap)
 
     const cloudGeo = new THREE.SphereGeometry(section.radius * 1.012, 48, 32)
     const cloudMat = new THREE.MeshStandardMaterial({
       color: 0xffffff,
-      map: cloudMap,
+      alphaMap: cloudMap,
       emissive: 0x8fb7ff,
       emissiveIntensity: 0.06,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.62,
       roughness: 0.95,
       metalness: 0,
       depthWrite: false,
@@ -94,14 +102,8 @@ function buildPlanet(
     landMesh = new THREE.Mesh(cloudGeo, cloudMat)
     group.add(landMesh)
 
-    const atmoGeo = new THREE.SphereGeometry(section.radius * 1.08, 32, 24)
-    const atmoMat = new THREE.MeshBasicMaterial({
-      color: 0x4a90e2,
-      transparent: true,
-      opacity: 0.15,
-      side: THREE.BackSide,
-      depthWrite: false,
-    })
+    const atmoGeo = new THREE.SphereGeometry(section.radius * 1.035, 32, 24)
+    const atmoMat = createAtmosphereMaterial()
     group.add(new THREE.Mesh(atmoGeo, atmoMat))
   }
 
@@ -111,12 +113,7 @@ function buildPlanet(
       section.radius * 1.9,
       64
     )
-    const ringMat = new THREE.MeshBasicMaterial({
-      color: 0x887766,
-      side: THREE.DoubleSide,
-      transparent: true,
-      opacity: 0.5,
-    })
+    const ringMat = createRingMaterial(section.radius)
     const ring = new THREE.Mesh(ringGeo, ringMat)
     ring.rotation.x = Math.PI / 2 - 0.25
     group.add(ring)

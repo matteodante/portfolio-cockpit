@@ -108,7 +108,7 @@ export function createAsteroids(
 
   const geometry = buildAsteroidGeometry()
   const material = new THREE.MeshStandardMaterial({
-    color: 0x6b5a4a,
+    color: 0xb3a18c,
     roughness: 0.95,
     metalness: 0.05,
     flatShading: true,

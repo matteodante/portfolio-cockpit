@@ -1,0 +1,87 @@
+{
+  "production": true,
+  "checks": [
+    {
+      "name": "menu rendering suspended",
+      "ok": true
+    },
+    {
+      "name": "native menu focus trap",
+      "ok": true
+    },
+    {
+      "name": "menu Escape and focus return",
+      "ok": true
+    },
+    {
+      "name": "menu input cleared on return",
+      "ok": true
+    },
+    {
+      "name": "chat rendering suspended",
+      "ok": true
+    },
+    {
+      "name": "underlying HUD inert",
+      "ok": true
+    },
+    {
+      "name": "chat Escape and focus return",
+      "ok": true
+    },
+    {
+      "name": "contact email available",
+      "ok": true
+    },
+    {
+      "name": "public CV HTTP status",
+      "ok": true
+    },
+    {
+      "name": "hidden lifecycle rendering suspended",
+      "ok": true
+    },
+    {
+      "name": "foreground rendering resumes",
+      "ok": true
+    },
+    {
+      "name": "desktop 200 percent equivalent layout fits",
+      "ok": true
+    },
+    {
+      "name": "mobile coarse pointer and DPR3",
+      "ok": true
+    },
+    {
+      "name": "mobile controls and no overflow",
+      "ok": true
+    },
+    {
+      "name": "native touch hold propels astronaut",
+      "ok": true
+    },
+    {
+      "name": "mobile CV route",
+      "ok": true
+    },
+    {
+      "name": "landscape coarse controls stay visible",
+      "ok": true
+    },
+    {
+      "name": "320px fits",
+      "ok": true
+    },
+    {
+      "name": "no runtime JS errors",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "WebGL fallback CV, email and home",
+      "ok": true
+    }
+  ],
+  "nativeVisibilityChange": false
+}

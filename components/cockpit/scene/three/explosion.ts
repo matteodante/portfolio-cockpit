@@ -36,6 +36,16 @@ export function createExplosion(scene: THREE.Scene): ExplosionBundle {
 
   const points = new THREE.Points(geometry, material)
   points.frustumCulled = false
+  points.visible = false
+  material.onBeforeCompile = (shader) => {
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <color_fragment>',
+      `#include <color_fragment>
+      float sparkRadius = length(gl_PointCoord - 0.5) * 2.0;
+      diffuseColor.a *= 1.0 - smoothstep(0.1, 1.0, sparkRadius);`
+    )
+  }
+  material.customProgramCacheKey = () => 'cockpit-soft-sparks-v1'
   scene.add(points)
 
   const particles: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
@@ -55,6 +65,7 @@ export function createExplosion(scene: THREE.Scene): ExplosionBundle {
   return {
     points,
     spawn(pos) {
+      points.visible = true
       for (let i = 0; i < PARTICLE_COUNT; i++) {
         const p = particles[i] as Particle
         p.alive = true
@@ -112,6 +123,7 @@ export function createExplosion(scene: THREE.Scene): ExplosionBundle {
           true
         ;(geometry.attributes.color as THREE.BufferAttribute).needsUpdate = true
       }
+      points.visible = anyAlive
     },
     dispose() {
       scene.remove(points)

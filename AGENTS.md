@@ -247,12 +247,16 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
 
 ## Cockpit
 
-`components/cockpit/cockpit-app.tsx` owns three state vars:
+`components/cockpit/cockpit-app.tsx` owns the main gameplay state:
 
 - `near` — planet within docking range
 - `docked` — section in overlay (or `null`)
 - `started` — intro gate. `false` until the player launches; gates the
   chrome, the background music, gameplay input and camera framing.
+
+The shared native menu also owns `menuOpen`; menu/dock state suspends world
+input, simulation and rendering. `sceneUnavailable` provides direct CV,
+email and home links when WebGL initialization fails.
 
 Composition (single `position: relative` container, `100vw` ×
 `100dvh`, `overflow: hidden`):
@@ -271,12 +275,13 @@ Composition (single `position: relative` container, `100vw` ×
   physics steps + constants.
 - `scene/camera/*` — follow camera + constants.
 - `scene/blackhole/*` — simulation, shader, config.
-- `chrome/*` — HUD. Read-only gauges (top bar, left/right consoles,
-  mini radar, cockpit frame) subscribe to `useHud`; `bottom-console/*`
-  (DOCK / COMM / actions), `intro-overlay` (access code + start),
-  `language-switcher`, `music-toggle`, `mobile-actions`,
-  `mobile-game-controls` and `death-overlay` are interactive and call
-  back into `cockpit-app.tsx` (or dispatch player events).
+- `chrome/*` — compact shared desktop/touch HUD. Top bar carries identity,
+  direct desktop links, language, music and the native menu in `mobile-actions`.
+  Bottom console combines radar/telemetry, contextual target action and chat.
+  `mobile-game-controls` adds touch turn buttons; the contextual target retains
+  information and takeoff actions. Telemetry subscribes to `useHud`; the loop
+  publishes at 10 Hz with immediate phase/target changes. Older frame/right
+  console files are no longer part of the active composition.
 - `dock/dock-overlay.tsx` — full-screen modal shell (focus trap, focus
   return). The per-section switch lives in `dock/dock-content.tsx`;
   bodies in `dock/sections/*`.

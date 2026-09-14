@@ -1,6 +1,16 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { useEffect, useMemo, useState } from 'react'
+import BottomConsole from '@/components/cockpit/chrome/bottom-console'
+import DeathOverlay from '@/components/cockpit/chrome/death-overlay'
+import IntroOverlay from '@/components/cockpit/chrome/intro-overlay'
+import MobileGameControls from '@/components/cockpit/chrome/mobile-game-controls'
+import TopBar from '@/components/cockpit/chrome/top-bar'
+import DockOverlay from '@/components/cockpit/dock/dock-overlay'
+import { CockpitScene } from '@/components/cockpit/scene/cockpit-scene'
+import { EMAIL_HREF } from '@/lib/constants/contact'
+import { cvPdfPath } from '@/lib/constants/site'
 import {
   COMM_SECTION,
   type CockpitSection,
@@ -9,20 +19,8 @@ import {
 } from '@/lib/data/cockpit-sections'
 import { useBackgroundMusic } from '@/lib/hooks/use-background-music'
 import { useIsMobile } from '@/lib/hooks/use-is-mobile'
-import { type TranslationKey, useT } from '@/lib/i18n'
+import { type TranslationKey, useT, useUnlock } from '@/lib/i18n'
 import type { Locale } from '@/lib/i18n/config'
-import BottomConsole from './chrome/bottom-console'
-import CockpitFrame from './chrome/cockpit-frame'
-import DeathOverlay from './chrome/death-overlay'
-import IntroOverlay from './chrome/intro-overlay'
-import LeftConsole from './chrome/left-console'
-import MobileActions from './chrome/mobile-actions'
-import MobileGameControls from './chrome/mobile-game-controls'
-import MusicToggle from './chrome/music-toggle'
-import RightConsole from './chrome/right-console'
-import TopBar, { ApproachBanner } from './chrome/top-bar'
-import DockOverlay from './dock/dock-overlay'
-import { CockpitScene } from './scene/cockpit-scene'
 
 type Props = { locale: Locale }
 
@@ -43,10 +41,13 @@ const ALL_SECTIONS: readonly CockpitSection[] = [...SECTIONS, COMM_SECTION]
  */
 export default function CockpitApp({ locale }: Props) {
   const t = useT()
+  const { unlocked } = useUnlock()
+  const [sceneUnavailable, setSceneUnavailable] = useState(false)
   const [near, setNear] = useState<CockpitSection | null>(null)
   const [docked, setDocked] = useState<CockpitSection | null>(null)
   const [started, setStarted] = useState(false)
   const isMobile = useIsMobile()
+  const [menuOpen, setMenuOpen] = useState(false)
   const contactSection = SECTIONS.find((s) => s.id === 'contact') ?? null
   const { muted, toggle: toggleMusic } = useBackgroundMusic(started)
 
@@ -60,13 +61,41 @@ export default function CockpitApp({ locale }: Props) {
     return () => window.removeEventListener('keydown', onKey)
   }, [docked])
 
-  const sectionLabels: Record<CockpitSectionId, string> = (() => {
+  const sectionLabels = useMemo(() => {
     const out = {} as Record<CockpitSectionId, string>
     for (const s of ALL_SECTIONS) {
       out[s.id] = t(`${s.i18nKey}.label` as TranslationKey)
     }
     return out
-  })()
+  }, [t])
+
+  if (sceneUnavailable) {
+    return (
+      <main className="flight-fallback">
+        <h1>{t('cockpit.flight.unavailable')}</h1>
+        <p>{t('cockpit.flight.unavailableHint')}</p>
+        <div className="flight-fallback-actions">
+          <Link
+            className="brand-button"
+            href={cvPdfPath(locale, unlocked) as `/${string}`}
+            download
+          >
+            {t('cockpit.mobile.downloadCv')}
+          </Link>
+          <Link
+            className="brand-button"
+            data-variant="secondary"
+            href={EMAIL_HREF}
+          >
+            {t('cockpit.mobile.contact')}
+          </Link>
+        </div>
+        <Link className="flight-return" href={`/${locale}`}>
+          {t('cockpit.mobile.backToHome')}
+        </Link>
+      </main>
+    )
+  }
 
   return (
     <div
@@ -82,54 +111,37 @@ export default function CockpitApp({ locale }: Props) {
         sections={SECTIONS}
         sectionLabels={sectionLabels}
         started={started}
-        docked={docked !== null}
+        docked={docked !== null || menuOpen}
         onNearChange={setNear}
         onDockRequest={setDocked}
+        onUnavailable={() => setSceneUnavailable(true)}
       />
       {!started && (
         <IntroOverlay locale={locale} onStart={() => setStarted(true)} />
       )}
-      {started && isMobile && (
-        <>
-          <MobileActions
+      {started && (
+        <div className="cockpit-hud" inert={docked !== null}>
+          <TopBar
             locale={locale}
+            muted={muted}
+            onToggleMusic={toggleMusic}
             onContact={() => {
               if (contactSection) setDocked(contactSection)
             }}
             onOpenChat={() => setDocked(COMM_SECTION)}
+            onMenuChange={setMenuOpen}
           />
-          {docked ? null : (
-            <MobileGameControls onOpenChat={() => setDocked(COMM_SECTION)} />
-          )}
-        </>
-      )}
-      {started && !isMobile && (
-        <>
-          <CockpitFrame />
-          <TopBar near={near} />
-          <LeftConsole />
-          <RightConsole locale={locale} />
           <BottomConsole
             near={near}
-            locale={locale}
             onDock={() => {
               if (near) setDocked(near)
             }}
             onOpenComm={() => setDocked(COMM_SECTION)}
           />
-          {near && !docked ? <ApproachBanner near={near} /> : null}
-        </>
+          {isMobile && !docked && !menuOpen && <MobileGameControls />}
+        </div>
       )}
       {started && <DeathOverlay />}
-      {started && !docked && (
-        <MusicToggle
-          muted={muted}
-          onToggle={toggleMusic}
-          ariaLabel={t(
-            muted ? 'cockpit.audio.toggleOff' : 'cockpit.audio.toggleOn'
-          )}
-        />
-      )}
       <DockOverlay
         section={docked}
         onClose={() => setDocked(null)}

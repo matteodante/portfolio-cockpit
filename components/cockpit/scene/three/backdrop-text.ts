@@ -7,6 +7,7 @@ import { type Font, FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 type BackdropTextBundle = {
   mesh: THREE.Mesh
   light: THREE.PointLight
+  environment: THREE.Texture
   update(dt: number): void
   dispose(): void
 }
@@ -46,11 +47,13 @@ export function createBackdropText(
   // PMREM env from a tiny RoomEnvironment scene. Without an envMap the
   // clearcoat layer reads as flat; this gives the clearcoat actual
   // specular highlights to grab onto, redrawing the glyph borders even
-  // when the emissive is on. Kept on the material only (not bound to
-  // scene.environment) so other meshes — astronaut, planets — don't
-  // suddenly inherit a different IBL.
+  // when the emissive is on. Also reused by the astronaut, with a lower
+  // material intensity. Planets keep the inexpensive global light fill.
   const pmrem = new THREE.PMREMGenerator(renderer)
-  const envTexture = pmrem.fromScene(new RoomEnvironment(), 0.04).texture
+  const room = new RoomEnvironment()
+  const environmentTarget = pmrem.fromScene(room, 0.04)
+  const envTexture = environmentTarget.texture
+  room.dispose()
   pmrem.dispose()
 
   // Physical material: dark metallic base + moderate warm emissive +
@@ -88,6 +91,7 @@ export function createBackdropText(
   return {
     mesh,
     light,
+    environment: envTexture,
     update(_dt) {
       // Breath in sync with the rest of the scene (same 1.25s period as
       // the BH disc pulse in cockpit-scene.tsx).
@@ -101,7 +105,7 @@ export function createBackdropText(
       scene.remove(light)
       geo.dispose()
       mat.dispose()
-      envTexture.dispose()
+      environmentTarget.dispose()
     },
   }
 }

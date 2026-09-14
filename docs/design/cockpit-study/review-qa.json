@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "name": "header Contact keyboard focus return",
+      "ok": true
+    },
+    {
+      "name": "menu to Contatto focus return",
+      "ok": true
+    },
+    {
+      "name": "menu to Apri chat AI focus return",
+      "ok": true
+    },
+    {
+      "name": "menu time does not expire respawn",
+      "ok": true
+    },
+    {
+      "name": "respawn completes after active time",
+      "ok": true
+    },
+    {
+      "name": "native two-finger release stops acceleration",
+      "ok": true,
+      "detail": {
+        "speedHeld": 10.4,
+        "speedReleased": 6.5
+      }
+    },
+    {
+      "name": "mobile menu dock focus return",
+      "ok": true
+    },
+    {
+      "name": "no JavaScript or shader errors",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

@@ -142,9 +142,11 @@ export class GodRaysPass extends Pass {
   ): void {
     // Step 1: rays at half-res. LinearFilter on the target lets the
     // composite step bilinear-upsample for free.
-    this.raysDiffuseUniform.value = readBuffer.texture
-    renderer.setRenderTarget(this.raysTarget)
-    this.raysQuad.render(renderer)
+    if (this.uniforms.visibility.value >= 0.001) {
+      this.raysDiffuseUniform.value = readBuffer.texture
+      renderer.setRenderTarget(this.raysTarget)
+      this.raysQuad.render(renderer)
+    }
 
     // Step 2: composite at full-res into writeBuffer (or screen).
     // Re-bind the rays texture each frame: a future setSize that resizes

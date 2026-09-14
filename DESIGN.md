@@ -179,8 +179,8 @@ character connects these portraits to the existing Three.js model. Two
 opposing film planes introduce four real project presentations in Work. The owner-approved
 smiling portrait with clear-lens black glasses supplies the human hero and
 services image; a square headshot edit of that master supplies the avatar.
-The landing is spacious and direct; the cockpit is playful and
-instrument-dense. Flat controls, the shared avatar and equal EN/IT treatment
+The landing is spacious and direct; the cockpit is playful with compact
+instruments at its edges. Flat controls, the shared avatar and equal EN/IT treatment
 connect them while scrolling and gameplay retain their functional layouts.
 
 The commercial pages extend this identity through ordinary reading flow:
@@ -542,8 +542,15 @@ controls by two pixels and project captures by seven pixels.
 
 Cockpit chrome uses the same flat dark panels, ivory hairlines and orange
 state feedback. Interface halos, scanlines, metal fasteners and inset metal
-highlights have been removed. The 3D scene retains its lighting, planet
-effects and functional signals. Its restored orange name sign has beveled,
+highlights have been removed. The 3D scene uses neutral shadowless fill,
+a cool directional rim and restrained warm source lights. Planet albedo stays
+neutral, Earth clouds use alpha, the existing atmospheric shell has a Fresnel
+edge, and the ring geometry carries radial bands. The astronaut retains its
+mesh and atlas, with differentiated visor roughness and the lettering
+environment reused for subdued reflections. Jets share one 64-slot Points
+buffer; impact sparks retain their 40-slot buffer. These changes add no
+lights, shadow maps, downloaded assets or full-screen passes. The black-hole
+shader, configuration and global bloom/rays parameters are unchanged. Its restored orange name sign has beveled,
 extruded lettering with a dark metallic base, clearcoat and warm emissive
 light. The sign material and its point light pulse together, as explicitly
 requested by the owner; this scene treatment does not apply to controls.
@@ -649,7 +656,27 @@ Maestro and GymTree frames, labels both as personal products and keeps
 their real App Store links. The AI page also links to the personal
 `claude-local-docs` repository as document-search evidence.
 
-Cockpit containers use the shared Panel fill and thin Frame Line border.
+The cockpit flight HUD uses compact edge instruments over the visible world,
+with a transparent 180px lower gradient replacing the old opaque console.
+Identity, CV/contact, languages, music and a menu sit in the header; radar and
+quantized telemetry sit at bottom left, the contextual planet action at
+center, and chat at right. The menu holds the full command legend and links.
+Below 800px or with a coarse pointer, a compact speed readout moves below
+the header, navigation moves into the menu, and 48px turn controls flank the
+lower touch area. The contextual action stays above them in portrait and
+between them in short landscape. Safe-area insets remain part of placement.
+Core labels are 12–17px; nearby planet names use 23px. Secondary HUD ink is
+`#c4beb4`, against restrained dark control fills. No live HUD backdrop blur.
+
+The shared native menu dialog is at most 440px wide and scrolls within the
+viewport. It owns focus trapping, Escape and return; menu and dock opening
+suspend simulation and GPU drawing. Telemetry publishes at most 10 times per
+second, with immediate phase/target changes. Hidden documents suspend RAF.
+A failed WebGL initialization exposes direct CV, email and home links.
+See `docs/design/cockpit-visual-upgrade-validation.md` for local production
+measurements and limits; no old-device field performance is established.
+
+Cockpit dock containers use the shared Panel fill and thin Frame Line border.
 Dock headers use Panel Light; content remains in a readable scroll area.
 The dialog is `min(760px, 92vw)` wide and capped at 85vh on desktop; mobile
 uses a full 100vw × 100dvh surface with safe-area padding. Focus trapping,

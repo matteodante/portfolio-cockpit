@@ -1,5 +1,34 @@
 import type { RefObject } from 'react'
 import * as THREE from 'three'
+import { BlackHoleSimulation } from '@/components/cockpit/scene/blackhole/blackhole'
+import { CAM_UP_LERP } from '@/components/cockpit/scene/camera/camera-constants'
+import { updateFollowCamera } from '@/components/cockpit/scene/camera/follow-camera'
+import { createAstronaut } from '@/components/cockpit/scene/player/astronaut'
+import {
+  BH_DEATH_RADIUS,
+  DEATH_DURATION,
+  RESPAWN_POS,
+  VMAX_FLY,
+} from '@/components/cockpit/scene/player/player-constants'
+import { createInputController } from '@/components/cockpit/scene/player/player-input'
+import {
+  createPlayerState,
+  lerpUpToWorld,
+  projectForwardOntoUp,
+  stepFlight,
+  stepLanded,
+  stepTransition,
+  tryLand,
+  tryTakeoff,
+  updateNearestLocked,
+} from '@/components/cockpit/scene/player/player-physics'
+import { createThrusters } from '@/components/cockpit/scene/player/thrusters'
+import { createAsteroids } from '@/components/cockpit/scene/three/asteroids'
+import { createBackdropText } from '@/components/cockpit/scene/three/backdrop-text'
+import { createExplosion } from '@/components/cockpit/scene/three/explosion'
+import { createLights } from '@/components/cockpit/scene/three/lights'
+import { createPlanets } from '@/components/cockpit/scene/three/planets'
+import { createRenderer } from '@/components/cockpit/scene/three/renderer'
 import { COCKPIT_ACCENT } from '@/lib/constants/theme'
 import type {
   CockpitSectionId,
@@ -12,36 +41,6 @@ import {
   QUALITY_PRESETS,
   type SceneQuality,
 } from '@/lib/utils/scene-quality'
-import { BlackHoleSimulation } from './blackhole/blackhole'
-import { CAM_UP_LERP } from './camera/camera-constants'
-import { updateFollowCamera } from './camera/follow-camera'
-import { createAstronaut } from './player/astronaut'
-import {
-  BH_DEATH_RADIUS,
-  DEATH_DURATION,
-  RESPAWN_POS,
-  VMAX_FLY,
-} from './player/player-constants'
-import { createInputController } from './player/player-input'
-import {
-  createPlayerState,
-  lerpUpToWorld,
-  type PlayerInput,
-  projectForwardOntoUp,
-  stepFlight,
-  stepLanded,
-  stepTransition,
-  tryLand,
-  tryTakeoff,
-  updateNearestLocked,
-} from './player/player-physics'
-import { createThrusters } from './player/thrusters'
-import { createAsteroids } from './three/asteroids'
-import { createBackdropText } from './three/backdrop-text'
-import { createExplosion } from './three/explosion'
-import { createLights } from './three/lights'
-import { createPlanets } from './three/planets'
-import { createRenderer } from './three/renderer'
 
 export type AstronautInstance = ReturnType<typeof createAstronaut>
 export type ThrustersInstance = ReturnType<typeof createThrusters>
@@ -75,8 +74,7 @@ export type BuildWorldArgs = {
   sections: readonly PlanetSection[]
   initialLabels: Record<CockpitSectionId, string>
   startedRef: RefObject<boolean>
-  /** `true` while the dock overlay is open: the world keeps rendering,
-   *  but gameplay input and dock requests are ignored. */
+  /** `true` while dock/menu content is open: suspend world and input. */
   dockedRef: RefObject<boolean>
   handlersRef: RefObject<BuildWorldHandlers>
   refs: BuildWorldRefs
@@ -93,21 +91,11 @@ const INTRO_LOOK_OFFSET = 1.0
 // period absorbs the warm-up jitter; cooldown prevents oscillating
 // downgrades when the threshold sits right around the measured fps.
 const FPS_SAMPLE_INTERVAL_MS = 1000
-const FPS_THRESHOLD = 40
+const FPS_THRESHOLD = 50
 const ADAPTIVE_GRACE_MS = 3000
 const ADAPTIVE_COOLDOWN_MS = 2000
 
 const PLAYER_COLLISION_R = 1.6
-
-// Fed to the physics step while docked: the player keeps being pinned to
-// its orbiting planet, but nothing behind the overlay drives it.
-const NEUTRAL_INPUT: PlayerInput = {
-  forward: false,
-  back: false,
-  turnLeft: false,
-  turnRight: false,
-  run: false,
-}
 
 // Radar blip rotation is published in half-degree steps — enough to track
 // a 4°/s orbit without waking React on every frame.
@@ -170,16 +158,6 @@ export function buildWorld(args: BuildWorldArgs): () => void {
   })
   refs.planets.current = planets
 
-  const astronaut = createAstronaut(scene, COCKPIT_ACCENT)
-  refs.astronaut.current = astronaut
-  const thrusters = createThrusters(scene, COCKPIT_ACCENT)
-  refs.thrusters.current = thrusters
-  const asteroids = createAsteroids(scene, {
-    count: 10,
-    innerRadius: 12,
-    outerRadius: 95,
-  })
-  const explosion = createExplosion(scene)
   // Original orange 3D lettering sitting beyond the spawn point.
   // Acts as the title plate during the intro (the cinematic camera looks
   // toward -Z, so the astronaut sits silhouetted against the glyphs) and
@@ -189,8 +167,23 @@ export function buildWorld(args: BuildWorldArgs): () => void {
     size: 5,
   })
 
+  const astronaut = createAstronaut(
+    scene,
+    COCKPIT_ACCENT,
+    backdropText.environment
+  )
+  refs.astronaut.current = astronaut
+  const thrusters = createThrusters(scene, COCKPIT_ACCENT)
+  refs.thrusters.current = thrusters
+  const asteroids = createAsteroids(scene, {
+    count: 10,
+    innerRadius: 12,
+    outerRadius: 95,
+  })
+  const explosion = createExplosion(scene)
+
   const player = createPlayerState()
-  let deathAt = 0
+  let deathElapsed = 0
   const inputCtrl = createInputController({
     onDockKey: () => {
       if (player.phase === 'dead') return
@@ -232,9 +225,16 @@ export function buildWorld(args: BuildWorldArgs): () => void {
   let fpsSampleStart = startedAt
   let fpsSampleFrames = 0
   let lastDowngradeAt = 0
+  let lastHudAt = 0
+  let lastHudPhase = player.phase
+  let lastHudNearestId: CockpitSectionId | null = null
+  const benchmark =
+    new URLSearchParams(window.location.search).get('benchmark') === '1'
+  mount.dataset.quality = currentQuality.preset
 
   const applyRuntimeQuality = (q: SceneQuality) => {
     currentQuality = q
+    mount.dataset.quality = q.preset
     const dpr = Math.min(window.devicePixelRatio, q.dprMax)
     rendererBundle.renderer.setPixelRatio(dpr)
     rendererBundle.composer.setPixelRatio(dpr)
@@ -246,23 +246,21 @@ export function buildWorld(args: BuildWorldArgs): () => void {
   }
 
   const stepGameplay = (
-    now: number,
     dt: number,
     nearest: ReturnType<typeof updateNearestLocked>['nearest']
   ) => {
-    if (player.phase === 'flying') lerpUpToWorld(player, CAM_UP_LERP)
+    if (player.phase === 'flying')
+      lerpUpToWorld(player, 1 - (1 - CAM_UP_LERP) ** (dt * 60))
 
-    // Drained even while docked so a Space press behind the overlay can't
-    // fire a landing the instant the player undocks.
     const spaceEdge = inputCtrl.consumeSpaceEdge()
-    if (spaceEdge && !dockedRef.current) {
+    if (spaceEdge) {
       if (player.phase === 'flying') tryLand(player)
       else if (player.phase === 'landed') tryTakeoff(player)
     }
 
     projectForwardOntoUp(player)
 
-    const activeInput = dockedRef.current ? NEUTRAL_INPUT : inputCtrl.input
+    const activeInput = inputCtrl.input
 
     if (player.phase === 'flying') {
       stepFlight(player, activeInput, dt, planets.planets)
@@ -276,7 +274,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
         explosion.spawn(player.position)
         player.phase = 'dead'
         player.velocity.set(0, 0, 0)
-        deathAt = now
+        deathElapsed = 0
       }
       return
     }
@@ -285,10 +283,12 @@ export function buildWorld(args: BuildWorldArgs): () => void {
       return
     }
     if (player.phase === 'transitioning') {
-      stepTransition(player, now)
+      stepTransition(player, dt)
       return
     }
-    if (player.phase === 'dead' && (now - deathAt) / 1000 >= DEATH_DURATION) {
+    if (player.phase === 'dead') {
+      deathElapsed += dt
+      if (deathElapsed < DEATH_DURATION) return
       player.position.set(RESPAWN_POS[0], RESPAWN_POS[1], RESPAWN_POS[2])
       player.velocity.set(0, 0, 0)
       player.up.set(0, 1, 0)
@@ -299,6 +299,16 @@ export function buildWorld(args: BuildWorldArgs): () => void {
   }
 
   const loop = (now: number) => {
+    // Menus and dock content cover the game. Keep input/state frozen and
+    // avoid all GPU work until the visitor returns to the scene.
+    if (dockedRef.current) {
+      inputCtrl.reset()
+      last = now
+      fpsSampleStart = now
+      fpsSampleFrames = 0
+      raf = requestAnimationFrame(loop)
+      return
+    }
     const dt = Math.min(0.05, (now - last) / 1000)
     last = now
 
@@ -313,7 +323,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
 
     const { nearest, locked } = updateNearestLocked(player, planets.planets)
 
-    if (startedRef.current) stepGameplay(now, dt, nearest)
+    if (startedRef.current) stepGameplay(dt, nearest)
 
     astronaut.setTransform(player.position, player.forward, player.up)
     const speed = player.velocity.length()
@@ -329,7 +339,6 @@ export function buildWorld(args: BuildWorldArgs): () => void {
     // the disc + ring lights so planet rim lighting breathes with the BH.
     const glowPulse = 0.5 + Math.sin(now * 0.00125) * 0.5
     lights.setDiskGlow(glowPulse)
-    blackHole.update(dt, camera)
 
     if (startedRef.current) {
       updateFollowCamera({
@@ -338,6 +347,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
         forward: player.forward,
         up: player.up,
         phase: player.phase,
+        dt,
       })
     } else {
       // Recomputed every frame so the pose tracks the astronaut's idle
@@ -358,6 +368,8 @@ export function buildWorld(args: BuildWorldArgs): () => void {
     // dot-product so the rays disappear when the BH is behind the camera
     // (NDC z alone is ambiguous past the far plane).
     camera.getWorldDirection(_camForward)
+    // Match shader rays to this frame's final camera matrix and position.
+    blackHole.update(dt, camera)
     _bhFromCam.set(0, 0, 0).sub(camera.position)
     const bhInFront = _camForward.dot(_bhFromCam) > 0
     _bhProj.set(0, 0, 0).project(camera)
@@ -370,7 +382,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
     // Cubemap feeds planet lensing in the BH shader. Skipped during intro
     // (cinematic camera doesn't see the BH), when the BH is behind the
     // main camera, and when the adaptive quality monitor turned cubemap
-    // off — each saves a full extra scene render per frame.
+    // off — each update otherwise renders six cubemap faces.
     if (currentQuality.cubemapEnabled && startedRef.current && bhInFront) {
       blackHole.updateCubemap(rendererBundle.renderer)
     }
@@ -382,15 +394,27 @@ export function buildWorld(args: BuildWorldArgs): () => void {
       handlersRef.current.onNearChange(locked)
     }
 
-    setHud({
-      speed,
-      coords: [player.position.x, player.position.z],
-      gravity: player.lastGravity,
-      landed: player.phase === 'landed',
-      phase: player.phase,
-      nearestId: nowNearId,
-      orbitAngle: quantizeAngle(planets.getOrbitAngle()),
-    })
+    if (
+      now - lastHudAt >= 100 ||
+      lastHudPhase !== player.phase ||
+      nowNearId !== lastHudNearestId
+    ) {
+      lastHudAt = now
+      lastHudPhase = player.phase
+      lastHudNearestId = nowNearId
+      setHud({
+        speed: Math.round(speed * 10) / 10,
+        coords: [
+          Math.round(player.position.x * 10) / 10,
+          Math.round(player.position.z * 10) / 10,
+        ],
+        gravity: Math.round(player.lastGravity * 100) / 100,
+        landed: player.phase === 'landed',
+        phase: player.phase,
+        nearestId: nowNearId,
+        orbitAngle: quantizeAngle(planets.getOrbitAngle()),
+      })
+    }
 
     rendererBundle.composer.render()
 
@@ -404,6 +428,7 @@ export function buildWorld(args: BuildWorldArgs): () => void {
     if (sampleElapsed >= FPS_SAMPLE_INTERVAL_MS) {
       const elapsedSinceStart = now - startedAt
       if (
+        !benchmark &&
         elapsedSinceStart > ADAPTIVE_GRACE_MS &&
         now - lastDowngradeAt > ADAPTIVE_COOLDOWN_MS
       ) {
@@ -422,9 +447,21 @@ export function buildWorld(args: BuildWorldArgs): () => void {
 
     raf = requestAnimationFrame(loop)
   }
-  raf = requestAnimationFrame(loop)
+  const onVisibilityChange = () => {
+    cancelAnimationFrame(raf)
+    inputCtrl.reset()
+    if (document.hidden) return
+    last = performance.now()
+    fpsSampleStart = last
+    fpsSampleFrames = 0
+    lastDowngradeAt = last
+    raf = requestAnimationFrame(loop)
+  }
+  document.addEventListener('visibilitychange', onVisibilityChange)
+  if (!document.hidden) raf = requestAnimationFrame(loop)
 
   return () => {
+    document.removeEventListener('visibilitychange', onVisibilityChange)
     cancelAnimationFrame(raf)
     resetHud()
     resizeObserver.disconnect()

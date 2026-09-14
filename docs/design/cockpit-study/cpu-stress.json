@@ -1,0 +1,95 @@
+{
+  "kind": "Chromium mobile emulation, M4 GPU unchanged, CPU 6x slowdown; not physical iPhone performance",
+  "measurements": [
+    {
+      "name": "high-cpu6x",
+      "viewport": [390, 844],
+      "dpr": 3,
+      "quality": "high",
+      "drawingBuffer": [780, 1688],
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "hidden": false,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "samples": 1152,
+      "frameMs": {
+        "mean": 6.946180555555555,
+        "p50": 6.899999999999636,
+        "p95": 8.5,
+        "max": 8.700000000000728
+      },
+      "drawCallsPerFrame": {
+        "mean": 46.771701388888886,
+        "p50": 47,
+        "p95": 49,
+        "max": 49
+      },
+      "submittedTrianglesPerFrame": {
+        "mean": 50300.697916666664,
+        "p50": 50407,
+        "p95": 53385,
+        "max": 53385
+      },
+      "over33ms": 0
+    },
+    {
+      "name": "low-cpu6x",
+      "viewport": [390, 844],
+      "dpr": 3,
+      "quality": "low",
+      "drawingBuffer": [390, 844],
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "hidden": false,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "samples": 1148,
+      "frameMs": {
+        "mean": 6.969773519163763,
+        "p50": 6.899999999999636,
+        "p95": 8.5,
+        "max": 34.599999999999454
+      },
+      "drawCallsPerFrame": {
+        "mean": 9.999128919860627,
+        "p50": 10,
+        "p95": 11,
+        "max": 11
+      },
+      "submittedTrianglesPerFrame": {
+        "mean": 16431.252613240416,
+        "p50": 17768,
+        "p95": 17770,
+        "max": 17770
+      },
+      "over33ms": 1
+    },
+    {
+      "name": "auto-cpu6x",
+      "viewport": [390, 844],
+      "dpr": 3,
+      "quality": "high",
+      "drawingBuffer": [780, 1688],
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "hidden": false,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "samples": 1152,
+      "frameMs": {
+        "mean": 6.9469618055555555,
+        "p50": 6.899999999999636,
+        "p95": 8.5,
+        "max": 8.700000000000728
+      },
+      "drawCallsPerFrame": {
+        "mean": 46.76475694444444,
+        "p50": 47,
+        "p95": 49,
+        "max": 49
+      },
+      "submittedTrianglesPerFrame": {
+        "mean": 50290.35763888889,
+        "p50": 50407,
+        "p95": 53385,
+        "max": 53385
+      },
+      "over33ms": 0
+    }
+  ]
+}

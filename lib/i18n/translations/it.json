@@ -344,5 +344,17 @@
   "home.services.app.details": "Scopri app e software",
   "home.services.ai.details": "Scopri le automazioni AI",
   "home.projects.title": "Progetti da esplorare.",
-  "home.projects.body": "Siti, prodotti e software che puoi vedere in azione."
+  "home.projects.body": "Siti, prodotti e software che puoi vedere in azione.",
+  "cockpit.flight.playableCv": "CV giocabile",
+  "cockpit.flight.freeFlight": "Volo libero",
+  "cockpit.flight.speed": "velocità",
+  "cockpit.flight.explore": "Scegli un pianeta da esplorare",
+  "cockpit.flight.approaching": "In avvicinamento",
+  "cockpit.flight.landed": "Atterrato",
+  "cockpit.flight.keyboardHint": "W A S D muovi · SPAZIO atterra",
+  "cockpit.flight.touchHint": "Tieni premuto nello spazio per volare",
+  "cockpit.flight.touchInstructions": "Tieni un dito sullo spazio per avanzare. Trascina o usa le frecce per girare. Avvicinati a un pianeta per aprire le informazioni; dopo l’atterraggio usa Decolla per ripartire.",
+  "cockpit.flight.menuHint": "Comandi e collegamenti nel menu",
+  "cockpit.flight.unavailable": "Il volo 3D non è disponibile",
+  "cockpit.flight.unavailableHint": "Questo browser non riesce ad avviare la grafica 3D. Puoi comunque consultare il CV e contattarmi."
 }

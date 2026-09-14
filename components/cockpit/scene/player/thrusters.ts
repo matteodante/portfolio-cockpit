@@ -1,112 +1,129 @@
 import * as THREE from 'three'
 
+const MAX_PARTICLES = 64
 const PARTICLE_LIFE = 0.6
-const EMIT_CHANCE = 0.6
-const SPAWN_OFFSET_BACK = 0.7
-const SPAWN_OFFSET_UP = 0.2
-const SPAWN_JITTER = 0.3
-const MIN_SPEED = 1
-const FADE_MULT = 1.5
-const SHRINK = 0.95
-const MAX_PARTICLES = 96
+const PAIRS_PER_SECOND = 30
+const SIDES = [-1, 1] as const
 
-type Particle = {
-  mesh: THREE.Mesh<THREE.SphereGeometry, THREE.MeshBasicMaterial>
-  life: number
+type ThrusterInput = {
+  flying: boolean
+  speed: number
+  position: THREE.Vector3
+  forward: THREE.Vector3
+  up: THREE.Vector3
 }
 
-type ThrusterBundle = {
-  material: THREE.MeshBasicMaterial
-  update(
-    dt: number,
-    opts: {
-      flying: boolean
-      speed: number
-      position: THREE.Vector3
-      forward: THREE.Vector3
-      up: THREE.Vector3
-    }
-  ): void
-  setAccent(color: THREE.Color): void
-  dispose(): void
-}
-
-export function createThrusters(
-  scene: THREE.Scene,
-  accentHex: string
-): ThrusterBundle {
-  const accentColor = new THREE.Color(accentHex)
-  const geometry = new THREE.SphereGeometry(0.15, 6, 4)
-  const material = new THREE.MeshBasicMaterial({
-    color: accentColor.clone(),
+/** Both jets share one bounded pool and one draw, with no per-frame
+ *  objects, materials, textures or geometry allocations. */
+export function createThrusters(scene: THREE.Scene, accentHex: string) {
+  const positions = new Float32Array(MAX_PARTICLES * 3)
+  const sizes = new Float32Array(MAX_PARTICLES)
+  const lives = new Float32Array(MAX_PARTICLES)
+  const geometry = new THREE.BufferGeometry()
+  const positionAttribute = new THREE.BufferAttribute(positions, 3).setUsage(
+    THREE.DynamicDrawUsage
+  )
+  const sizeAttribute = new THREE.BufferAttribute(sizes, 1).setUsage(
+    THREE.DynamicDrawUsage
+  )
+  geometry.setAttribute('position', positionAttribute)
+  geometry.setAttribute('particleSize', sizeAttribute)
+  const color = new THREE.Color(accentHex)
+  const viewportHeight = { value: 1 }
+  const material = new THREE.ShaderMaterial({
+    uniforms: { accent: { value: color }, viewportHeight },
+    vertexShader: `
+      attribute float particleSize;
+      uniform float viewportHeight;
+      varying float vLife;
+      void main() {
+        vec4 viewPosition = modelViewMatrix * vec4(position, 1.0);
+        gl_Position = projectionMatrix * viewPosition;
+        gl_PointSize = clamp(particleSize * projectionMatrix[1][1]
+          * viewportHeight * 0.5 / max(0.1, -viewPosition.z), 0.0, 32.0);
+        vLife = particleSize / 0.42;
+      }`,
+    fragmentShader: `
+      uniform vec3 accent;
+      varying float vLife;
+      #include <common>
+      void main() {
+        float radius = length(gl_PointCoord - 0.5) * 2.0;
+        float glow = 1.0 - smoothstep(0.05, 1.0, radius);
+        float core = 1.0 - smoothstep(0.0, 0.4, radius);
+        gl_FragColor = vec4(mix(accent, vec3(1.0, 0.88, 0.62), core),
+          glow * glow * vLife * 0.8);
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
+      }`,
     transparent: true,
-    opacity: 0.8,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
   })
-  const particles: Particle[] = []
-  const _offset = new THREE.Vector3()
-
-  const spawn = (
-    position: THREE.Vector3,
-    forward: THREE.Vector3,
-    up: THREE.Vector3
-  ): Particle => {
-    const pMat = material.clone()
-    pMat.opacity = 0.9
-    const pMesh = new THREE.Mesh(geometry, pMat)
-    _offset.copy(forward).multiplyScalar(-SPAWN_OFFSET_BACK)
-    pMesh.position
-      .copy(position)
-      .add(_offset)
-      .addScaledVector(up, SPAWN_OFFSET_UP)
-    pMesh.position.x += (Math.random() - 0.5) * SPAWN_JITTER
-    pMesh.position.y += (Math.random() - 0.5) * SPAWN_JITTER
-    pMesh.position.z += (Math.random() - 0.5) * SPAWN_JITTER
-    scene.add(pMesh)
-    return { mesh: pMesh, life: PARTICLE_LIFE }
+  const points = new THREE.Points(geometry, material)
+  points.frustumCulled = false
+  points.visible = false
+  const viewport = new THREE.Vector4()
+  points.onBeforeRender = (renderer) => {
+    viewportHeight.value = renderer.getCurrentViewport(viewport).w
+    material.uniformsNeedUpdate = true
   }
+  scene.add(points)
 
-  const removeAt = (i: number) => {
-    const p = particles[i]
-    if (!p) return
-    scene.remove(p.mesh)
-    p.mesh.material.dispose()
-    // Swap-and-pop: O(1) removal without shifting the tail.
-    const last = particles.length - 1
-    if (i !== last) particles[i] = particles[last] as Particle
-    particles.pop()
-  }
+  const previous = new THREE.Vector3()
+  const source = new THREE.Vector3()
+  const right = new THREE.Vector3()
+  let cursor = 0
+  let emission = 0
+  let emitting = false
 
   return {
-    material,
-    update(dt, { flying, speed, position, forward, up }) {
-      if (
-        flying &&
-        speed > MIN_SPEED &&
-        particles.length < MAX_PARTICLES &&
-        Math.random() < EMIT_CHANCE
-      ) {
-        particles.push(spawn(position, forward, up))
+    update(dt: number, input: ThrusterInput) {
+      let alive = false
+      for (let i = 0; i < MAX_PARTICLES; i++) {
+        lives[i] = Math.max(0, (lives[i] ?? 0) - dt)
+        sizes[i] = 0.42 * ((lives[i] ?? 0) / PARTICLE_LIFE) ** 1.4
+        if ((lives[i] ?? 0) > 0) alive = true
       }
-
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i]
-        if (!p) continue
-        p.life -= dt
-        p.mesh.material.opacity = Math.max(0, p.life * FADE_MULT)
-        p.mesh.scale.multiplyScalar(SHRINK)
-        if (p.life <= 0) removeAt(i)
+      const active = input.flying && input.speed > 1
+      if (!emitting) previous.copy(input.position)
+      if (active) {
+        emission += dt * PAIRS_PER_SECOND
+        const pairs = Math.floor(emission)
+        emission -= pairs
+        right.crossVectors(input.forward, input.up).normalize()
+        for (let pair = 0; pair < pairs; pair++) {
+          source
+            .lerpVectors(previous, input.position, (pair + 1) / pairs)
+            .addScaledVector(input.forward, -0.55)
+            .addScaledVector(input.up, 0.6)
+          for (const side of SIDES) {
+            const offset = cursor * 3
+            positions[offset] = source.x + right.x * side * 0.25
+            positions[offset + 1] = source.y + right.y * side * 0.25
+            positions[offset + 2] = source.z + right.z * side * 0.25
+            lives[cursor] = PARTICLE_LIFE
+            sizes[cursor] = 0.42
+            cursor = (cursor + 1) % MAX_PARTICLES
+            alive = true
+          }
+        }
+      } else {
+        emission = 0
+      }
+      previous.copy(input.position)
+      emitting = active
+      points.visible = alive
+      if (alive) {
+        positionAttribute.needsUpdate = true
+        sizeAttribute.needsUpdate = true
       }
     },
-    setAccent(color) {
-      material.color.copy(color)
-      material.needsUpdate = true
+    setAccent(value: THREE.Color) {
+      color.copy(value)
     },
     dispose() {
-      for (const p of particles) {
-        scene.remove(p.mesh)
-        p.mesh.material.dispose()
-      }
-      particles.length = 0
+      scene.remove(points)
       geometry.dispose()
       material.dispose()
     },

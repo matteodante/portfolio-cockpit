@@ -14,24 +14,22 @@ const DISK_COLOR = 0xffa060
 const RING_COLOR = 0xc7d4ff
 
 // Linear falloff (decay=1) so the disc-lit side of every planet picks up
-// a clearly warm rim even at ~95u away. With intensity 60, a planet at
-// d=90 receives 60/90 ≈ 0.67 — comparable to a direct-sun kick.
-const DISK_BASE = 450
-const DISK_AMPL = 140
-const RING_BASE = 110
-const RING_AMPL = 40
+// a warm rim even at ~95u away, balanced against the neutral sky fill.
+const DISK_BASE = 180
+const DISK_AMPL = 55
+const RING_BASE = 60
+const RING_AMPL = 18
 
 export function createLights(scene: THREE.Scene): LightsBundle {
-  // Ambient + hemi global fill so the BH-shadowed side of planets stays
-  // visible and the overall scene reads brighter. Higher than the
-  // previous tuning at the cost of slightly less BH-driven contrast.
-  const ambient = new THREE.AmbientLight(0x1a2030, 0.4)
-  const skyFill = new THREE.HemisphereLight(0x9fb8e8, 0x0f1018, 0.32)
+  // Neutral, shadowless fill preserves material colour on the night side.
+  // Reuse the existing light budget: no shadow maps or extra light passes.
+  const ambient = new THREE.AmbientLight(0xc3d1e6, 0.2)
+  const skyFill = new THREE.HemisphereLight(0xf2f4ff, 0x697b94, 0.7)
 
   // Cold counter-rim (a distant cold star) so silhouettes stay readable
   // on the BH-shadowed side.
-  const rim = new THREE.DirectionalLight(0x6688ff, 0.55)
-  rim.position.set(-50, 18, -60)
+  const rim = new THREE.DirectionalLight(0xd7e6ff, 0.9)
+  rim.position.set(-45, 65, -110)
 
   // Accretion-disc PointLight at the origin. `distance: 0` + `decay: 1`
   // gives linear falloff with no hard cutoff — the warm rim reaches

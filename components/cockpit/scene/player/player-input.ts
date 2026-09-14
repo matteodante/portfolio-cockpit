@@ -5,8 +5,8 @@ import {
   COCKPIT_EVENT_TURN_LEFT_UP,
   COCKPIT_EVENT_TURN_RIGHT_DOWN,
   COCKPIT_EVENT_TURN_RIGHT_UP,
-} from './player-events'
-import type { PlayerInput } from './player-physics'
+} from '@/components/cockpit/scene/player/player-events'
+import type { PlayerInput } from '@/components/cockpit/scene/player/player-physics'
 
 type InputController = {
   /** Held-key state, mutated in place. Readers must NOT retain a copy. */
@@ -17,6 +17,7 @@ type InputController = {
    * auto-repeat.
    */
   consumeSpaceEdge(): boolean
+  reset(): void
   dispose(): void
 }
 
@@ -75,10 +76,33 @@ export function createInputController({
     turnRight: false,
     run: false,
   }
+  const keyboardTurn = { turnLeft: false, turnRight: false }
+  let leftButtonHeld = false
+  let rightButtonHeld = false
+  let gestureTurn: 'left' | 'right' | null = null
+  const syncTurn = () => {
+    input.turnLeft =
+      keyboardTurn.turnLeft || leftButtonHeld || gestureTurn === 'left'
+    input.turnRight =
+      keyboardTurn.turnRight || rightButtonHeld || gestureTurn === 'right'
+  }
+
+  const setKeyboardInput = (field: keyof PlayerInput, held: boolean) => {
+    if (field === 'turnLeft' || field === 'turnRight') {
+      keyboardTurn[field] = held
+      syncTurn()
+    } else input[field] = held
+  }
+
   let spaceHeld = false
   let spaceEdge = false
 
   const releaseAll = () => {
+    keyboardTurn.turnLeft = false
+    keyboardTurn.turnRight = false
+    leftButtonHeld = false
+    rightButtonHeld = false
+    gestureTurn = null
     input.forward = false
     input.back = false
     input.turnLeft = false
@@ -101,7 +125,7 @@ export function createInputController({
     const k = e.key.toLowerCase()
     const field = KEY_BINDINGS[k]
     if (field) {
-      input[field] = true
+      setKeyboardInput(field, true)
       return
     }
     if (k === 'e') onDockKey()
@@ -117,7 +141,7 @@ export function createInputController({
       return
     }
     const field = KEY_BINDINGS[e.key.toLowerCase()]
-    if (field) input[field] = false
+    if (field) setKeyboardInput(field, false)
   }
 
   const onJumpEvent = () => {
@@ -125,16 +149,20 @@ export function createInputController({
   }
   const onInfoEvent = () => onDockKey()
   const onTurnLeftDown = () => {
-    input.turnLeft = true
+    leftButtonHeld = true
+    syncTurn()
   }
   const onTurnLeftUp = () => {
-    input.turnLeft = false
+    leftButtonHeld = false
+    syncTurn()
   }
   const onTurnRightDown = () => {
-    input.turnRight = true
+    rightButtonHeld = true
+    syncTurn()
   }
   const onTurnRightUp = () => {
-    input.turnRight = false
+    rightButtonHeld = false
+    syncTurn()
   }
   const onBlur = () => releaseAll()
 
@@ -158,8 +186,8 @@ export function createInputController({
   let turnTimer: ReturnType<typeof setTimeout> | null = null
 
   const clearTurn = () => {
-    input.turnLeft = false
-    input.turnRight = false
+    gestureTurn = null
+    syncTurn()
     if (turnTimer) {
       clearTimeout(turnTimer)
       turnTimer = null
@@ -168,8 +196,8 @@ export function createInputController({
 
   const onTouchStart = (e: TouchEvent) => {
     if (isTypingTarget()) return
-    if (e.touches.length !== 1) return
-    const touch = e.touches[0]
+    if (e.targetTouches.length !== 1) return
+    const touch = e.targetTouches[0]
     if (!touch) return
     input.forward = true
     lastTouchX = touch.clientX
@@ -177,15 +205,15 @@ export function createInputController({
   }
 
   const onTouchMove = (e: TouchEvent) => {
-    if (e.touches.length !== 1 || lastTouchX === null) return
-    const touch = e.touches[0]
+    if (e.targetTouches.length !== 1 || lastTouchX === null) return
+    const touch = e.targetTouches[0]
     if (!touch) return
     const dx = touch.clientX - lastTouchX
     const adx = Math.abs(dx)
     if (adx <= TURN_DEADZONE_PX) return
     lastTouchX = touch.clientX
-    input.turnRight = dx > 0
-    input.turnLeft = dx < 0
+    gestureTurn = dx > 0 ? 'right' : 'left'
+    syncTurn()
     if (turnTimer) clearTimeout(turnTimer)
     // Auto-reset emulates keyboard keyup once the finger stops moving.
     const holdMs = Math.min(
@@ -193,21 +221,21 @@ export function createInputController({
       Math.max(TURN_HOLD_MIN_MS, adx * TURN_HOLD_SCALE)
     )
     turnTimer = setTimeout(() => {
-      input.turnLeft = false
-      input.turnRight = false
+      gestureTurn = null
+      syncTurn()
       turnTimer = null
     }, holdMs)
     e.preventDefault()
   }
 
   const onTouchEnd = (e: TouchEvent) => {
-    if (e.touches.length === 0) {
+    if (e.targetTouches.length === 0) {
       input.forward = false
       clearTurn()
       lastTouchX = null
       return
     }
-    const touch = e.touches[0]
+    const touch = e.targetTouches[0]
     if (touch) lastTouchX = touch.clientX
   }
 
@@ -229,6 +257,12 @@ export function createInputController({
 
   return {
     input,
+    reset() {
+      releaseAll()
+      clearTurn()
+      spaceEdge = false
+      lastTouchX = null
+    },
     consumeSpaceEdge() {
       if (!spaceEdge) return false
       spaceEdge = false

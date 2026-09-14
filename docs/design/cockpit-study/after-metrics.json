@@ -1,0 +1,126 @@
+{
+  "builtAt": "2026-09-14T09:18:44.986Z",
+  "kind": "local production build, instrumented WebGL draw calls, foreground Chromium, not GPU timings",
+  "measurements": [
+    {
+      "name": "desktop-flight-idle",
+      "viewport": [1440, 900],
+      "dpr": 1,
+      "quality": "high",
+      "drawingBuffer": [1440, 900],
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "hidden": false,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "samples": 1152,
+      "frameMs": {
+        "mean": 6.945746527777777,
+        "p50": 6.900000000000546,
+        "p95": 8.099999999999454,
+        "max": 8.700000000000728
+      },
+      "drawCallsPerFrame": {
+        "mean": 52.05815972222222,
+        "p50": 52,
+        "p95": 52,
+        "max": 55
+      },
+      "submittedTrianglesPerFrame": {
+        "mean": 56604.70659722222,
+        "p50": 56491,
+        "p95": 56491,
+        "max": 62445
+      },
+      "over33ms": 0
+    },
+    {
+      "name": "desktop-forward",
+      "viewport": [1440, 900],
+      "dpr": 1,
+      "quality": "high",
+      "drawingBuffer": [1440, 900],
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "hidden": false,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "samples": 432,
+      "frameMs": {
+        "mean": 6.945601851851852,
+        "p50": 6.900000000001455,
+        "p95": 7.800000000001091,
+        "max": 8.600000000000364
+      },
+      "drawCallsPerFrame": {
+        "mean": 61.673611111111114,
+        "p50": 62,
+        "p95": 63,
+        "max": 63
+      },
+      "submittedTrianglesPerFrame": {
+        "mean": 63181.90740740741,
+        "p50": 63915,
+        "p95": 63917,
+        "max": 63917
+      },
+      "over33ms": 0
+    },
+    {
+      "name": "qhd-flight-idle",
+      "viewport": [2560, 1440],
+      "dpr": 1,
+      "quality": "high",
+      "drawingBuffer": [2560, 1440],
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "hidden": false,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "samples": 738,
+      "frameMs": {
+        "mean": 10.851490514905148,
+        "p50": 13.100000000000364,
+        "p95": 14.799999999999272,
+        "max": 15.5
+      },
+      "drawCallsPerFrame": {
+        "mean": 52.046070460704605,
+        "p50": 52,
+        "p95": 52,
+        "max": 55
+      },
+      "submittedTrianglesPerFrame": {
+        "mean": 56579.74796747968,
+        "p50": 56491,
+        "p95": 56491,
+        "max": 62445
+      },
+      "over33ms": 0
+    },
+    {
+      "name": "mobile-viewport-flight-idle",
+      "viewport": [390, 844],
+      "dpr": 1,
+      "quality": "high",
+      "drawingBuffer": [390, 844],
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "hidden": false,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "samples": 1152,
+      "frameMs": {
+        "mean": 6.945746527777778,
+        "p50": 6.900000000000546,
+        "p95": 8.199999999999818,
+        "max": 8.700000000000728
+      },
+      "drawCallsPerFrame": {
+        "mean": 46.43836805555556,
+        "p50": 47,
+        "p95": 47,
+        "max": 48
+      },
+      "submittedTrianglesPerFrame": {
+        "mean": 49791.45659722222,
+        "p50": 50407,
+        "p95": 50407,
+        "max": 53383
+      },
+      "over33ms": 0
+    }
+  ]
+}

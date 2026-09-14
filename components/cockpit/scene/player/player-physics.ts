@@ -1,7 +1,4 @@
 import * as THREE from 'three'
-import type { PlanetSection } from '@/lib/data/cockpit-sections'
-import type { PlayerPhase } from '@/lib/types/player'
-import type { PlanetEntry } from '../three/planets'
 import {
   ACCEL_FLY,
   BH_GRAV_RADIUS,
@@ -19,7 +16,10 @@ import {
   TURN_RATE_LANDED,
   VMAX_FLY,
   WALK_SPEED,
-} from './player-constants'
+} from '@/components/cockpit/scene/player/player-constants'
+import type { PlanetEntry } from '@/components/cockpit/scene/three/planets'
+import type { PlanetSection } from '@/lib/data/cockpit-sections'
+import type { PlayerPhase } from '@/lib/types/player'
 
 export type PlayerState = {
   position: THREE.Vector3
@@ -28,7 +28,8 @@ export type PlayerState = {
   forward: THREE.Vector3
   phase: PlayerPhase
   nearestPlanet: PlanetEntry | null
-  transitionStart: number
+  /** Active simulation seconds; menu/visibility pauses do not consume it. */
+  transitionElapsed: number
   transitionFromPos: THREE.Vector3
   transitionToPos: THREE.Vector3
   transitionFromUp: THREE.Vector3
@@ -79,7 +80,7 @@ export function createPlayerState(
     forward: new THREE.Vector3(0, 0, 1),
     phase: 'flying',
     nearestPlanet: null,
-    transitionStart: 0,
+    transitionElapsed: 0,
     transitionFromPos: new THREE.Vector3(),
     transitionToPos: new THREE.Vector3(),
     transitionFromUp: new THREE.Vector3(),
@@ -145,7 +146,7 @@ export function beginTransition(
   planet: PlanetEntry
 ): void {
   state.phase = 'transitioning'
-  state.transitionStart = performance.now()
+  state.transitionElapsed = 0
   state.transitionTarget = target
   state.transitionPlanet = planet
   state.transitionFromPos.copy(state.position)
@@ -333,9 +334,13 @@ export function stepLanded(
 }
 
 /** Animate land/takeoff lerp. Returns true when the transition finishes. */
-export function stepTransition(state: PlayerState, now: number): boolean {
-  const elapsed = (now - state.transitionStart) / 1000
-  const t = THREE.MathUtils.clamp(elapsed / TRANS_DURATION, 0, 1)
+export function stepTransition(state: PlayerState, dt: number): boolean {
+  state.transitionElapsed += dt
+  const t = THREE.MathUtils.clamp(
+    state.transitionElapsed / TRANS_DURATION,
+    0,
+    1
+  )
   const e = easeInOutCubic(t)
 
   // Track the (possibly moving) planet so the lerp target stays aligned

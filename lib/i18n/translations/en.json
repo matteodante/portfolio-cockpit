@@ -344,5 +344,17 @@
   "home.services.app.details": "Explore apps & software",
   "home.services.ai.details": "Explore AI automation",
   "home.projects.title": "Projects to explore.",
-  "home.projects.body": "Websites, products and software you can see in action."
+  "home.projects.body": "Websites, products and software you can see in action.",
+  "cockpit.flight.playableCv": "Playable CV",
+  "cockpit.flight.freeFlight": "Free flight",
+  "cockpit.flight.speed": "speed",
+  "cockpit.flight.explore": "Choose a planet to explore",
+  "cockpit.flight.approaching": "Approaching",
+  "cockpit.flight.landed": "Landed",
+  "cockpit.flight.keyboardHint": "W A S D move · SPACE land",
+  "cockpit.flight.touchHint": "Hold anywhere in space to fly",
+  "cockpit.flight.touchInstructions": "Hold a finger in space to move forward. Drag or use the arrows to turn. Approach a planet to open its information; after landing, use Take off to fly again.",
+  "cockpit.flight.menuHint": "Controls and links in the menu",
+  "cockpit.flight.unavailable": "3D flight is unavailable",
+  "cockpit.flight.unavailableHint": "This browser cannot start the 3D scene. You can still view my CV and get in touch."
 }

@@ -1,162 +1,80 @@
 'use client'
 
 import Link from 'next/link'
-import Led from '@/components/cockpit/chrome/primitives/led'
+import CockpitMenu from '@/components/cockpit/chrome/mobile-actions'
+import MusicToggle from '@/components/cockpit/chrome/music-toggle'
 import BrandAvatar from '@/components/shared/brand-avatar'
-import { COCKPIT_ACCENT } from '@/lib/constants/theme'
-import type { CockpitSection } from '@/lib/data/cockpit-sections'
-import { useHud } from '@/lib/hooks/cockpit-store'
-import { type TranslationKey, useI18n, useT } from '@/lib/i18n'
+import LanguageSwitcher from '@/components/shared/language-switcher'
+import { cvPdfPath } from '@/lib/constants/site'
+import { useT, useUnlock } from '@/lib/i18n'
+import type { Locale } from '@/lib/i18n/config'
 
-type TopBarProps = {
-  near: CockpitSection | null
+type Props = {
+  locale: Locale
+  muted: boolean
+  onToggleMusic: () => void
+  onContact: () => void
+  onOpenChat: () => void
+  onMenuChange: (open: boolean) => void
 }
 
-export default function TopBar({ near }: TopBarProps) {
-  const { locale, t } = useI18n()
-  const nearLabel = near ? t(`${near.i18nKey}.label` as TranslationKey) : ''
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 70,
-        zIndex: 12,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 120px',
-        pointerEvents: 'none',
-      }}
-    >
-      {/* Ship id */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-        <Link
-          href={`/${locale}`}
-          className="cockpit-home-avatar"
-          aria-label={t('cockpit.mobile.backToHome')}
-        >
-          <BrandAvatar />
-        </Link>
-        <div>
-          <div
-            style={{
-              fontFamily: 'var(--font-body), sans-serif',
-              fontSize: 14,
-              fontWeight: 600,
-              letterSpacing: 0,
-              color: 'var(--color-cockpit-text)',
-            }}
-          >
-            {t('cockpit.vessel.name')}
-          </div>
-          <div
-            style={{
-              fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
-              fontSize: 9,
-              color: 'var(--color-cockpit-text-dim)',
-              letterSpacing: 0.5,
-            }}
-          >
-            {t('cockpit.vessel.id')}
-          </div>
-        </div>
-      </div>
-      {/* Mission status */}
-      <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-        <Led color="#6aff9e" on pulse label={t('cockpit.hud.lifeSupport')} />
-        <Led color={COCKPIT_ACCENT} on label={t('cockpit.hud.navOnline')} />
-        <Led
-          color={near ? '#ffb347' : '#444'}
-          on={!!near}
-          label={
-            near
-              ? `${t('cockpit.hud.targetLocked')} · ${nearLabel}`
-              : t('cockpit.hud.scanning')
-          }
-          pulse={!!near}
-        />
-      </div>
-    </div>
-  )
-}
-
-type ApproachBannerProps = {
-  near: CockpitSection
-}
-
-export function ApproachBanner({ near }: ApproachBannerProps) {
+export default function TopBar({
+  locale,
+  muted,
+  onToggleMusic,
+  onContact,
+  onOpenChat,
+  onMenuChange,
+}: Props) {
   const t = useT()
-  const landed = useHud((s) => s.landed)
-  const label = t(`${near.i18nKey}.label` as TranslationKey)
-
-  if (landed) {
-    const color = '#f4f1ea'
-    return (
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '30%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 6,
-          pointerEvents: 'none',
-          zIndex: 20,
-          animation: 'fade-in 0.3s ease',
-        }}
-      >
-        <div
-          style={{
-            padding: '10px 22px',
-            background: 'rgba(5,6,10,0.75)',
-            border: `1px solid ${color}`,
-            color,
-            fontFamily: 'var(--font-body), sans-serif',
-            letterSpacing: 0,
-            fontSize: 12,
-          }}
-        >
-          {t('cockpit.banner.landed').replace('{label}', label)}
-        </div>
-        <div
-          style={{
-            fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
-            fontSize: 10,
-            color: 'rgba(244,241,234,0.75)',
-            letterSpacing: 0.5,
-          }}
-        >
-          {t('cockpit.banner.takeoffHint')}
-        </div>
-      </div>
-    )
-  }
-
+  const { unlocked } = useUnlock()
   return (
-    <div
-      style={{
-        position: 'absolute',
-        top: '22%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        padding: '10px 22px',
-        background: 'rgba(5,6,10,0.75)',
-        border: `1px solid ${COCKPIT_ACCENT}`,
-        color: COCKPIT_ACCENT,
-        fontFamily: 'var(--font-body), sans-serif',
-        letterSpacing: 0,
-        fontSize: 12,
-        pointerEvents: 'none',
-        zIndex: 20,
-        animation: 'fade-in 0.3s ease',
-      }}
-    >
-      {t('cockpit.banner.approaching').replace('{label}', label)}
-    </div>
+    <header className="flight-header">
+      <Link
+        href={`/${locale}`}
+        className="flight-identity"
+        aria-label={t('cockpit.mobile.backToHome')}
+      >
+        <BrandAvatar />
+        <span>
+          Matteo Dante<small>{t('cockpit.flight.playableCv')}</small>
+        </span>
+      </Link>
+      <nav
+        className="flight-header-actions"
+        aria-label={t('cockpit.mobile.menu')}
+      >
+        <Link
+          href={cvPdfPath(locale, unlocked) as `/${string}`}
+          download
+          className="flight-desktop-link"
+        >
+          {t('cockpit.mobile.downloadCv')}
+        </Link>
+        <button
+          type="button"
+          className="flight-desktop-link"
+          onClick={onContact}
+        >
+          {t('cockpit.mobile.contact')}
+        </button>
+        <div className="flight-desktop-language">
+          <LanguageSwitcher locale={locale} cockpit />
+        </div>
+        <MusicToggle
+          muted={muted}
+          onToggle={onToggleMusic}
+          ariaLabel={t(
+            muted ? 'cockpit.audio.toggleOff' : 'cockpit.audio.toggleOn'
+          )}
+        />
+        <CockpitMenu
+          locale={locale}
+          onContact={onContact}
+          onOpenChat={onOpenChat}
+          onOpenChange={onMenuChange}
+        />
+      </nav>
+    </header>
   )
 }

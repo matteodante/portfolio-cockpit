@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import type { PlayerPhase } from '@/lib/types/player'
 import {
   CAM_BACK_FLY,
   CAM_BACK_LANDED,
@@ -9,7 +8,8 @@ import {
   CAM_POS_LERP_FLY,
   CAM_POS_LERP_LANDED,
   CAM_UP_LERP,
-} from './camera-constants'
+} from '@/components/cockpit/scene/camera/camera-constants'
+import type { PlayerPhase } from '@/lib/types/player'
 
 const WORLD_UP = new THREE.Vector3(0, 1, 0)
 
@@ -24,6 +24,7 @@ type FollowParams = {
   forward: THREE.Vector3
   up: THREE.Vector3
   phase: PlayerPhase
+  dt: number
 }
 
 /**
@@ -37,6 +38,7 @@ export function updateFollowCamera({
   forward,
   up,
   phase,
+  dt,
 }: FollowParams): void {
   const height = phase === 'landed' ? CAM_HEIGHT_LANDED : CAM_HEIGHT_FLY
   const back = phase === 'landed' ? CAM_BACK_LANDED : CAM_BACK_FLY
@@ -46,9 +48,12 @@ export function updateFollowCamera({
     .copy(position)
     .addScaledVector(up, height)
     .addScaledVector(forward, -back)
-  camera.position.lerp(_target, posLerp)
+  camera.position.lerp(_target, 1 - (1 - posLerp) ** (dt * 60))
 
-  _up.copy(camera.up).lerp(up, CAM_UP_LERP).normalize()
+  _up
+    .copy(camera.up)
+    .lerp(up, 1 - (1 - CAM_UP_LERP) ** (dt * 60))
+    .normalize()
   camera.up.copy(_up.lengthSq() > 0.0001 ? _up : WORLD_UP)
 
   _look.copy(position).addScaledVector(up, CAM_LOOK_OFFSET)

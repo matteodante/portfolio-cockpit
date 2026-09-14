@@ -16,19 +16,7 @@ export default function MiniRadar() {
   const sin = Math.sin(orbitAngle)
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        width: 76,
-        height: 76,
-        border: `1px solid ${COCKPIT_ACCENT}`,
-        borderRadius: '50%',
-        background:
-          'radial-gradient(circle, rgba(0,30,20,0.4), rgba(0,0,0,0.9))',
-        boxShadow: `inset 0 0 12px ${COCKPIT_ACCENT}44`,
-        marginLeft: 'auto',
-      }}
-    >
+    <div className="flight-radar" aria-hidden="true">
       {/* grid */}
       <div
         style={{
@@ -48,17 +36,6 @@ export default function MiniRadar() {
           bottom: 0,
           width: 1,
           background: `${COCKPIT_ACCENT}22`,
-        }}
-      />
-      {/* sweep */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          borderRadius: '50%',
-          background: `conic-gradient(from 0deg, ${COCKPIT_ACCENT}66, transparent 60deg)`,
-          animation: 'cockpit-spin 3s linear infinite',
-          mixBlendMode: 'screen',
         }}
       />
       {/* sections */}
@@ -81,7 +58,6 @@ export default function MiniRadar() {
               height: 6,
               borderRadius: '50%',
               background: 'var(--color-cockpit-text)',
-              boxShadow: '0 0 4px #fff',
             }}
           />
         )
@@ -97,7 +73,6 @@ export default function MiniRadar() {
           height: 6,
           borderRadius: '50%',
           background: COCKPIT_ACCENT,
-          boxShadow: `0 0 6px ${COCKPIT_ACCENT}`,
         }}
       />
     </div>

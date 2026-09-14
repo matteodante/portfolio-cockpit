@@ -12,12 +12,12 @@
  *
  * React bridge:
  *   - `onNearChange(section)` fires when the locked planet changes,
- *     so the chrome can show the approach banner.
+ *     so the HUD can show the contextual planet action.
  *   - `onDockRequest(section)` fires when the player presses E while
  *     locked onto a planet, so the orchestrator can open the overlay.
- *   - `useHud` (Zustand) carries the per-frame gauges (speed, coords,
+ *   - `useHud` (Zustand) carries the sampled gauges (speed, coords,
  *     gravity, phase). Writes go through `setHud`, which diffs before
- *     mutating so 60 Hz calls don't translate to 60 Hz renders.
+ *     mutating, at most 10 Hz with immediate phase/target changes.
  *
  * RAF loop, per frame: see the doc on `buildWorld`.
  *
@@ -27,17 +27,17 @@
  * transitions, where re-rendering chrome is fine.
  */
 
-import { useEffect, useRef } from 'react'
-import type {
-  CockpitSectionId,
-  PlanetSection,
-} from '@/lib/data/cockpit-sections'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import {
   type AstronautInstance,
   buildWorld,
   type PlanetsInstance,
   type ThrustersInstance,
-} from './build-world'
+} from '@/components/cockpit/scene/build-world'
+import type {
+  CockpitSectionId,
+  PlanetSection,
+} from '@/lib/data/cockpit-sections'
 
 type Props = {
   /** Planet definitions. Captured at mount; later changes don't tear
@@ -49,8 +49,8 @@ type Props = {
   /** `false` during the intro cinematic; `true` once the player has
    *  begun flying. Drives camera framing and input gating. */
   started: boolean
-  /** `true` while a dock overlay is open. The world keeps rendering but
-   *  gameplay input and dock requests are ignored. */
+  /** `true` while a dock overlay is open. The world and its input are suspended
+   *  until the visitor returns to the game. */
   docked: boolean
   /** Called when the locked section changes (entering or leaving the
    *  docking range of a planet). Pass `null` to clear. */
@@ -58,6 +58,7 @@ type Props = {
   /** Called when the player presses E while locked onto a planet.
    *  The orchestrator decides whether to actually open the overlay. */
   onDockRequest: (section: PlanetSection) => void
+  onUnavailable: () => void
 }
 
 export function CockpitScene({
@@ -67,6 +68,7 @@ export function CockpitScene({
   docked,
   onNearChange,
   onDockRequest,
+  onUnavailable,
 }: Props) {
   const mountRef = useRef<HTMLDivElement | null>(null)
 
@@ -75,15 +77,17 @@ export function CockpitScene({
   const planetsRef = useRef<PlanetsInstance | null>(null)
   const lockedRef = useRef<PlanetSection | null>(null)
 
-  const handlersRef = useRef({ onNearChange, onDockRequest })
-  handlersRef.current.onNearChange = onNearChange
-  handlersRef.current.onDockRequest = onDockRequest
+  const handlersRef = useRef({ onNearChange, onDockRequest, onUnavailable })
 
   const startedRef = useRef(started)
-  startedRef.current = started
 
   const dockedRef = useRef(docked)
-  dockedRef.current = docked
+
+  useLayoutEffect(() => {
+    handlersRef.current = { onNearChange, onDockRequest, onUnavailable }
+    startedRef.current = started
+    dockedRef.current = docked
+  }, [onNearChange, onDockRequest, onUnavailable, started, docked])
 
   const mountLabelsRef = useRef(sectionLabels)
   // Captured at mount — re-renders must not tear down the WebGL context.
@@ -92,20 +96,25 @@ export function CockpitScene({
   useEffect(() => {
     const mount = mountRef.current
     if (!mount) return
-    return buildWorld({
-      mount,
-      sections: initialSectionsRef.current,
-      initialLabels: mountLabelsRef.current,
-      startedRef,
-      dockedRef,
-      handlersRef,
-      refs: {
-        astronaut: astronautRef,
-        thrusters: thrustersRef,
-        planets: planetsRef,
-        locked: lockedRef,
-      },
-    })
+    try {
+      return buildWorld({
+        mount,
+        sections: initialSectionsRef.current,
+        initialLabels: mountLabelsRef.current,
+        startedRef,
+        dockedRef,
+        handlersRef,
+        refs: {
+          astronaut: astronautRef,
+          thrusters: thrustersRef,
+          planets: planetsRef,
+          locked: lockedRef,
+        },
+      })
+    } catch {
+      handlersRef.current.onUnavailable()
+      return undefined
+    }
   }, [])
 
   useEffect(() => {

@@ -18,10 +18,11 @@ export const PLANET_TEXTURES: Partial<
 
 export function loadPlanetTexture(
   loader: THREE.TextureLoader,
-  path: string
+  path: string,
+  colorSpace: THREE.ColorSpace = THREE.SRGBColorSpace
 ): THREE.Texture {
   const tex = loader.load(path)
-  tex.colorSpace = THREE.SRGBColorSpace
+  tex.colorSpace = colorSpace
   tex.wrapS = THREE.RepeatWrapping
   tex.wrapT = THREE.ClampToEdgeWrapping
   tex.anisotropy = 4
@@ -41,7 +42,7 @@ export function buildLabelTexture(label: string): THREE.CanvasTexture {
   const ctx = canvas.getContext('2d')
   if (ctx) {
     ctx.clearRect(0, 0, LABEL_CANVAS_W, LABEL_CANVAS_H)
-    ctx.font = 'bold 48px "Architects Daughter", monospace'
+    ctx.font = '500 40px "Space Grotesk", sans-serif'
     ctx.fillStyle = '#ffffff'
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
