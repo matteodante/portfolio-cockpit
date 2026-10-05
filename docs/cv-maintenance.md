@@ -72,3 +72,7 @@ The links set it at click time; the full PDF endpoint sets the same name
 in `Content-Disposition`. Locale and access checks still select the
 appropriate document. The source filenames and static public URLs remain
 stable. The date denotes download day, not the date of a content revision.
+For public PDFs, `next.config.ts` sets `Content-Disposition: inline` without
+a filename. Vercel otherwise adds the source filename, which browsers prefer
+over the dated `download` attribute. Verify the actual saved filename after
+deployment, as this default header is absent from the local Next server.

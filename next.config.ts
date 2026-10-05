@@ -36,6 +36,12 @@ const nextConfig: NextConfig = {
   },
   headers: async () => [
     {
+      // Vercel's default filename overrides the dated download attribute.
+      // Keep direct PDF viewing, but let download links choose the filename.
+      source: '/resume/cv-:locale.pdf',
+      headers: [{ key: 'Content-Disposition', value: 'inline' }],
+    },
+    {
       source: '/google1080ef41ff116224.html',
       headers: [{ key: 'X-Robots-Tag', value: 'noindex' }],
     },
