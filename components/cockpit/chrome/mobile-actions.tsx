@@ -6,12 +6,13 @@ import ControlsPanel from '@/components/cockpit/chrome/bottom-console/controls-p
 import LanguageSwitcher from '@/components/shared/language-switcher'
 import { GITHUB_URL } from '@/lib/constants/contact'
 import { cvDownloadFilename, cvPdfPath } from '@/lib/constants/site'
-import { useT, useUnlock } from '@/lib/i18n'
+import { type CockpitSection, SECTIONS } from '@/lib/data/cockpit-sections'
+import { type TranslationKey, useT, useUnlock } from '@/lib/i18n'
 import type { Locale } from '@/lib/i18n/config'
 
 type Props = {
   locale: Locale
-  onContact: () => void
+  onOpenSection: (section: CockpitSection) => void
   onOpenChat: () => void
   onOpenChange: (open: boolean) => void
 }
@@ -19,7 +20,7 @@ type Props = {
 /** Shared navigation: native dialog owns focus trapping, Escape and return. */
 export default function CockpitMenu({
   locale,
-  onContact,
+  onOpenSection,
   onOpenChat,
   onOpenChange,
 }: Props) {
@@ -91,15 +92,18 @@ export default function CockpitMenu({
           >
             {t('cockpit.mobile.downloadCv')}
           </Link>
-          <button
-            type="button"
-            onClick={() => {
-              close()
-              onContact()
-            }}
-          >
-            {t('cockpit.mobile.contact')}
-          </button>
+          {SECTIONS.map((section) => (
+            <button
+              key={section.id}
+              type="button"
+              onClick={() => {
+                close()
+                onOpenSection(section)
+              }}
+            >
+              {t(`${section.i18nKey}.label` as TranslationKey)}
+            </button>
+          ))}
           <button
             type="button"
             onClick={() => {

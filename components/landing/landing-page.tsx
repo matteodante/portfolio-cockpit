@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import BrandsSection from '@/components/landing/brands-section'
+import CvDownloadLink from '@/components/landing/cv-download-link'
 import HeroIdentity from '@/components/landing/hero-identity'
 import { makeT } from '@/components/landing/i18n'
 import LandingMotion from '@/components/landing/landing-motion'
@@ -223,6 +224,10 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                     {t('home.hero.play')}
                   </Link>
                 </div>
+                <CvDownloadLink
+                  locale={locale}
+                  label={t('home.hero.download')}
+                />
                 <p className="hero-experience">{t('home.hero.experience')}</p>
               </div>
             </div>

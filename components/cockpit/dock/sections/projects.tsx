@@ -6,7 +6,9 @@ import {
   CLAUDE_LOCAL_DOCS_REPO_URL,
   GYMTREE_APP_STORE_URL,
   MAESTRO_APP_STORE_URL,
+  MINIFORM_REPO_URL,
   PORTFOLIO_REPO_URL,
+  THERAPIST_REPO_URL,
 } from '@/lib/constants/contact'
 import { type TranslationKey, useT } from '@/lib/i18n'
 import SectionCard from '../primitives/section-card'
@@ -42,6 +44,20 @@ const PROJECTS: readonly Project[] = [
     linkKey: 'projects.claudeLocalDocs.link',
   },
   {
+    titleKey: 'projects.miniform.title',
+    descKey: 'projects.miniform.desc',
+    badgeKey: 'projects.miniform.badge',
+    href: MINIFORM_REPO_URL,
+    linkKey: 'projects.miniform.link',
+  },
+  {
+    titleKey: 'projects.therapist.title',
+    descKey: 'projects.therapist.desc',
+    badgeKey: 'projects.therapist.badge',
+    href: THERAPIST_REPO_URL,
+    linkKey: 'projects.therapist.link',
+  },
+  {
     titleKey: 'projects.portfolio.title',
     descKey: 'projects.portfolio.desc',
     badgeKey: 'projects.portfolio.badge',
@@ -52,6 +68,8 @@ const PROJECTS: readonly Project[] = [
 
 const LINK_STYLE = {
   display: 'inline-flex',
+  alignItems: 'center',
+  minHeight: 44,
   marginTop: 10,
   color: 'var(--color-cockpit-accent)',
   fontFamily: 'var(--font-body), sans-serif',

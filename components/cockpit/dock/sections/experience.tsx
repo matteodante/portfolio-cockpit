@@ -3,16 +3,10 @@
 import { COCKPIT_ACCENT } from '@/lib/constants/theme'
 import { type TranslationKey, useT } from '@/lib/i18n'
 
-type ExperienceKey = '01' | '02' | '03' | '04' | '05'
+type ExperienceKey = '01' | '02' | '03' | '04'
 
-const EXPERIENCES: readonly ExperienceKey[] = [
-  '03',
-  '04',
-  '02',
-  '01',
-  '05',
-] as const
-// order: Pilatus → DonTouch → Hexa → Galileo → GymTree
+const EXPERIENCES: readonly ExperienceKey[] = ['03', '04', '02', '01'] as const
+// order: Pilatus → DonTouch → Hexa → Galileo
 
 export default function ExperienceSection() {
   const t = useT()

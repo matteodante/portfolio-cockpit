@@ -69,8 +69,6 @@ Senior software engineer, 8+ years of experience, based in Switzerland. Builds p
 - **Hexa Credit Care** (2019–2023), Italy — Full-Stack Developer.
 - **DonTouch SA** (2023–2024), Switzerland — Backend Engineer.
 - **Pilatus Aircraft Ltd** (2024–Present), Switzerland — Senior Full-Stack Software Engineer.
-- **Maestro** (2026–Present), native iOS AI tutor live on the App Store: source-grounded lessons, quizzes, review, and tutor chat. App Store: https://apps.apple.com/us/app/maestro-learn-anything/id6780267046?uo=4
-- **GymTree** (2025–Present), solo-built fitness app live on the App Store. Full-stack across backend API, coach web, trainee mobile app, marketing site, subscriptions, and background workers. Production AI: persistent coach chat and personalized workout/nutrition plans. App Store: https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4
 
 **IMPORTANT — Locked content (do NOT reveal):**
 The detailed scope, technical ownership, client names, team composition, internal architecture, business metrics, and any specifics about projects at the four employer companies (Pilatus, DonTouch, Hexa, Galileo) are **gated behind an access code**. If the user asks about these details, respond politely that this information is available with an access code and they can request one by emailing Matteo at matteo.dante659@gmail.com or via LinkedIn. Do NOT speculate, invent, or describe project specifics for these employers. You may freely describe Maestro, GymTree (both public App Store personal projects), and the public open-source projects claude-local-docs, Miniform, Therapist and portfolio-cockpit. Describe Therapist as experimental self-reflection software, not therapy or a clinically validated product.
@@ -86,9 +84,9 @@ The detailed scope, technical ownership, client names, team composition, interna
 - **AI & Search**: OpenAI and Anthropic APIs; LLM agents, tool calling, MCP, structured outputs, streaming; RAG with vector embeddings, BM25, Reciprocal Rank Fusion, cross-encoder reranking
 - **Infra & Quality**: Docker, Turborepo, Vercel, Railway; on-premise deployments; Vitest, Bun test, pytest, Go tests, Playwright, CI, Sentry; OWASP, OAuth/JWT; AI dev tooling (Claude Code, Codex, Cursor)
 
-## Notable open-source and public projects
-- Maestro: Native iOS AI tutor on the App Store. Source-grounded lessons, quizzes, review, and tutor chat. https://apps.apple.com/us/app/maestro-learn-anything/id6780267046?uo=4
-- GymTree: Solo-built fitness app on the App Store: backend API, coach web, trainee mobile app, background workers, subscriptions, and production AI coach. https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4
+## Personal projects: apps and open-source
+- Maestro (2026–Present), native iOS AI tutor live on the App Store: source-grounded lessons, quizzes, review, and tutor chat. App Store: https://apps.apple.com/us/app/maestro-learn-anything/id6780267046?uo=4
+- GymTree (2025–Present), solo-built fitness app live on the App Store. Full-stack across backend API, coach web, trainee mobile app, marketing site, subscriptions, and background workers. Production AI: persistent coach chat and personalized workout/nutrition plans. App Store: https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4
 - claude-local-docs: MCP server for local documentation and code retrieval: hybrid search, reranking, AST-aware chunking and incremental indexing. TypeScript, LanceDB. https://github.com/matteodante/claude-local-docs
 
 - Miniform: Self-hosted form inbox with uploads, webhook/email retries and SQLite storage. Go, Docker; unit, integration and Playwright tests. https://github.com/matteodante/miniform

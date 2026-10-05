@@ -6,6 +6,7 @@ import MusicToggle from '@/components/cockpit/chrome/music-toggle'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import LanguageSwitcher from '@/components/shared/language-switcher'
 import { cvDownloadFilename, cvPdfPath } from '@/lib/constants/site'
+import type { CockpitSection } from '@/lib/data/cockpit-sections'
 import { useT, useUnlock } from '@/lib/i18n'
 import type { Locale } from '@/lib/i18n/config'
 
@@ -14,6 +15,7 @@ type Props = {
   muted: boolean
   onToggleMusic: () => void
   onContact: () => void
+  onOpenSection: (section: CockpitSection) => void
   onOpenChat: () => void
   onMenuChange: (open: boolean) => void
 }
@@ -23,6 +25,7 @@ export default function TopBar({
   muted,
   onToggleMusic,
   onContact,
+  onOpenSection,
   onOpenChat,
   onMenuChange,
 }: Props) {
@@ -73,7 +76,7 @@ export default function TopBar({
         />
         <CockpitMenu
           locale={locale}
-          onContact={onContact}
+          onOpenSection={onOpenSection}
           onOpenChat={onOpenChat}
           onOpenChange={onMenuChange}
         />

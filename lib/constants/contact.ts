@@ -12,6 +12,8 @@ export const GITHUB_DISPLAY = `github.com/${GITHUB_USER}` as const
 export const CLAUDE_LOCAL_DOCS_REPO_URL =
   `${GITHUB_URL}/claude-local-docs` as const
 export const PORTFOLIO_REPO_URL = `${GITHUB_URL}/portfolio-cockpit` as const
+export const MINIFORM_REPO_URL = `${GITHUB_URL}/miniform` as const
+export const THERAPIST_REPO_URL = `${GITHUB_URL}/therapist` as const
 
 const LINKEDIN_SLUG = 'matteo-dante-3705b5164'
 export const LINKEDIN_URL = `https://linkedin.com/in/${LINKEDIN_SLUG}` as const

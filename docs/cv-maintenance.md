@@ -2,6 +2,8 @@
 
 Confirmed on 2026-10-05: keep the CV general, in English and Italian, with
 one A4 page per PDF and the original `public/images/profile-pic.jpeg`.
+The October 5 refinement uses 10pt body text, concise project descriptions
+and a consistent first-person summary. Keep all six selected projects.
 The owner requested restoring Java in the existing skill lists. Do not infer
 Java work experience or projects from this entry.
 
@@ -18,6 +20,10 @@ Swift are evidenced by personal projects. The current project selection is
 Maestro, GymTree, claude-local-docs, Miniform, Therapist and the portfolio.
 Describe Therapist as experimental. Keep detailed employer scope and
 metrics in the full CV only.
+
+Cockpit navigation lists every CV section in the menu. Experience contains
+four employers; GymTree belongs to personal projects. The homepage offers
+a direct public PDF link; full downloads continue to require access.
 
 ## Compile and verify
 
@@ -55,6 +61,8 @@ Keep the passphrase, salt and derived key in local/Vercel environment
 configuration, never in Git. The runtime reads the derived key; it does not
 derive it on each request. Changing the encryption key requires re-encrypting
 all seven blobs and deploying them with the matching production key.
+`load-encrypted.ts` resolves reads within the three literal asset directories
+so Next's tracing stays bounded. Keep `outputFileTracingIncludes` in place.
 
 ## Download filename
 

@@ -150,6 +150,7 @@ export default function DockOverlay({
               color: 'var(--color-cockpit-text-dim)',
               fontFamily: 'var(--font-body), sans-serif',
               fontSize: 11,
+              minHeight: 44,
               padding: '10px 14px',
               cursor: 'pointer',
               letterSpacing: 0,

@@ -21,23 +21,23 @@ Switzerland · 1998 · matteo.dante659@gmail.com · [matteodante.it](https://mat
 
 ## Summary
 
-Senior software engineer with 8+ years across aviation, high-traffic consumer platforms and retail. Builds web applications, backend services and AI products. Personal work includes two App Store apps and open-source tools for document retrieval, agents and self-hosted services.
+Senior software engineer with 8+ years across aviation, consumer platforms and retail. I build web applications and backend services. Personal work includes two App Store apps and open-source tools for AI and document retrieval.
 
 ---
 
 ## Skills (high-level)
 
-**Web & backend**: TypeScript, Node.js, PHP, .NET, Java; React, Next.js, Laravel, Hono, REST, microfrontends
+**Web & backend**: TypeScript, Node.js, PHP, .NET, Java; React, Next.js, Laravel, microfrontends
 
 **Personal projects**: Go, Python, Swift/SwiftUI, React Native (Expo), Three.js/WebGL
 
 **Data & infrastructure**: PostgreSQL, MySQL, SQL Server, SQLite, Redis, BullMQ; Docker, Vercel, Railway, on-premise
 
-**AI & retrieval**: OpenAI/Anthropic APIs, tool calling, MCP, structured outputs, streaming, RAG, BM25, RRF, reranking
+**AI & retrieval**: OpenAI/Anthropic APIs, tool calling, MCP, structured outputs, RAG and reranking
 
 **Quality & security**: Vitest, Bun test, pytest, Go tests, Playwright, CI; Sentry, OAuth/JWT
 
-**AI-assisted development**: Claude Code, Codex, Cursor; code review and automated checks
+**AI-assisted development**: Claude Code, Codex, Cursor; code review and tests
 
 ---
 
@@ -57,22 +57,22 @@ Senior software engineer with 8+ years across aviation, high-traffic consumer pl
 Personal projects, developed independently. Therapist is experimental, not a clinical product.
 
 **[Maestro](https://apps.apple.com/us/app/maestro-learn-anything/id6780267046?uo=4)**
-Native iOS AI tutor on the App Store: source-grounded lessons, quizzes and tutor chat. SwiftUI, SwiftData, Hono, PostgreSQL.
+iOS AI tutor on the App Store: source-grounded lessons, quizzes and chat. SwiftUI, SwiftData.
 
 **[GymTree](https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4)**
-Fitness app on the App Store: backend, coach web, mobile app, subscriptions and AI coach. TypeScript, Expo, PostgreSQL, Redis, BullMQ.
+Fitness app on the App Store: backend, coach web, mobile app, subscriptions and AI coach. Expo, Hono.
 
 **[claude-local-docs](https://github.com/matteodante/claude-local-docs)**
-MCP server for local documentation and code retrieval: hybrid search, reranking, AST-aware chunking and incremental indexing. TypeScript, LanceDB.
+MCP server for documents and code: hybrid search, reranking and incremental indexing. TypeScript, LanceDB.
 
 **[Miniform](https://github.com/matteodante/miniform)**
-Self-hosted form inbox with uploads, webhook/email retries and SQLite storage. Go, Docker; unit, integration and Playwright tests.
+Form inbox with uploads, webhook/email retries, unit, integration and end-to-end tests. Go, SQLite.
 
 **[Therapist](https://github.com/matteodante/therapist)**
-Experimental self-reflection agent with encrypted memory, tool calling, validated outputs and regression tests. Python, PydanticAI.
+Experimental self-reflection agent: encrypted memory, validated outputs and tests. Python, PydanticAI.
 
 **[matteodante.it](https://matteodante.it)**
-Interactive portfolio and playable CV with a streaming AI assistant. Next.js, vanilla Three.js, OpenAI Responses API; English/Italian.
+Playable CV in English/Italian with a streaming AI assistant. Next.js, vanilla Three.js, OpenAI.
 
 ---
 

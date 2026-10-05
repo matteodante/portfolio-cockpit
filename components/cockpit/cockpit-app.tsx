@@ -132,6 +132,7 @@ export default function CockpitApp({ locale }: Props) {
               if (contactSection) setDocked(contactSection)
             }}
             onOpenChat={() => setDocked(COMM_SECTION)}
+            onOpenSection={setDocked}
             onMenuChange={setMenuOpen}
           />
           <BottomConsole
