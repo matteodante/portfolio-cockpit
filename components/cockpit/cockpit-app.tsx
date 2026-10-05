@@ -10,7 +10,7 @@ import TopBar from '@/components/cockpit/chrome/top-bar'
 import DockOverlay from '@/components/cockpit/dock/dock-overlay'
 import { CockpitScene } from '@/components/cockpit/scene/cockpit-scene'
 import { EMAIL_HREF } from '@/lib/constants/contact'
-import { cvPdfPath } from '@/lib/constants/site'
+import { cvDownloadFilename, cvPdfPath } from '@/lib/constants/site'
 import {
   COMM_SECTION,
   type CockpitSection,
@@ -79,6 +79,9 @@ export default function CockpitApp({ locale }: Props) {
             className="brand-button"
             href={cvPdfPath(locale, unlocked) as `/${string}`}
             download
+            onClick={(event) => {
+              event.currentTarget.download = cvDownloadFilename()
+            }}
           >
             {t('cockpit.mobile.downloadCv')}
           </Link>

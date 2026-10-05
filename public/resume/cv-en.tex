@@ -6,7 +6,7 @@
 \documentclass[a4paper,10pt]{article}
 
 \usepackage{latexsym}
-\usepackage[empty]{fullpage}
+\usepackage[a4paper,margin=12mm]{geometry}
 \usepackage{titlesec}
 \usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
@@ -26,18 +26,15 @@
 \DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
 \DeclareTextFontCommand{\texteb}{\ebseries}
 
-\usepackage{contour}
 \usepackage[normalem]{ulem}
 \renewcommand{\ULdepth}{1.8pt}
-\contourlength{0.8pt}
-\newcommand{\myuline}[1]{%
-  \uline{\phantom{#1}}%
-  \llap{\contour{white}{#1}}%
-}
+\newcommand{\myuline}[1]{\uline{#1}}
 
 \usepackage{tgheros}
 \renewcommand*\familydefault{\sfdefault}
 \usepackage[T1]{fontenc}
+\renewcommand{\small}{\fontsize{9.5}{11.5}\selectfont}
+\hypersetup{pdftitle={Matteo Dante - CV},pdfauthor={Matteo Dante}}
 
 \graphicspath{{../images/}}
 
@@ -47,11 +44,6 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-\addtolength{\oddsidemargin}{-0.7in}
-\addtolength{\evensidemargin}{0in}
-\addtolength{\textwidth}{1.4in}
-\addtolength{\topmargin}{-1.2in}
-\addtolength{\textheight}{2.3in}
 \setlength{\footskip}{4pt}
 
 \urlstyle{same}
@@ -63,7 +55,7 @@
 \titleformat{\section}{
     \bfseries \raggedright \large
 }{}{0em}{}[\color{light-grey}{\titlerule[2pt]} \vspace{-4pt}]
-\titlespacing*{\section}{0pt}{8pt}{6pt}
+\titlespacing*{\section}{0pt}{6pt}{5pt}
 
 \newcommand{\resumeItem}[1]{
   \item\small{
@@ -81,9 +73,9 @@
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={},itemsep=3pt,topsep=2pt]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=1pt,topsep=3pt]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
 
 \color{text-grey}
@@ -91,10 +83,10 @@
 \begin{document}
 
 %----------HEADER----------
-\begin{minipage}[c]{0.20\textwidth}
+\begin{minipage}[c]{0.13\textwidth}
   \includegraphics[width=\linewidth]{profile-pic.jpeg}
 \end{minipage}\hfill
-\begin{minipage}[c]{0.78\textwidth}
+\begin{minipage}[c]{0.85\textwidth}
   \raggedright
   {\Huge \textbf{Matteo Dante}}\\[4pt]
   {\large Senior Software Engineer \textperiodcentered{} Full-Stack \& Backend}\\[6pt]
@@ -106,70 +98,37 @@
   Switzerland
 \end{minipage}
 
-\vspace{8pt}
+\vspace{4pt}
 
-%-----------SUMMARY-----------
 \section{SUMMARY}
 \small
-Senior software engineer, 8+ years across aviation, high-traffic consumer platforms, and retail. Full-stack and backend. Production AI: LLM agents, RAG pipelines, structured outputs.
-
-\vspace{4pt}
-\small
-\textit{This is a public summary. The detailed CV is available with an access code -- contact Matteo via email or LinkedIn to request one.}
-
-%-----------EXPERIENCE-----------
+Senior software engineer with 8+ years across aviation, high-traffic consumer platforms and retail. Builds web applications, backend services and AI products. Personal work includes two App Store apps and open-source tools for document retrieval, agents and self-hosted services.
+\par\vspace{3pt}\textit{Public summary. Request access to the detailed CV via email or LinkedIn.}
 \section{EXPERIENCE}
-  \resumeSubHeadingListStart
-
-    \resumeSubheading
-      {Pilatus Aircraft Ltd}{04/2024 -- Present}
-      {Senior Full-Stack Software Engineer}{Switzerland}
-
-    \resumeSubheading
-      {DonTouch SA}{07/2023 -- 04/2024}
-      {Backend Engineer}{Switzerland}
-
-    \resumeSubheading
-      {Hexa Credit Care}{11/2019 -- 07/2023}
-      {Full-Stack Developer}{Italy}
-
-    \resumeSubheading
-      {Galileo SpA}{03/2018 -- 11/2019}
-      {Full-Stack Developer}{Italy}
-
-  \resumeSubHeadingListEnd
-
-\vspace{4pt}
+\resumeSubHeadingListStart
+\resumeSubheading{Pilatus Aircraft Ltd}{04/2024 -- Present}{Senior Full-Stack Software Engineer}{Switzerland}
+\resumeSubheading{DonTouch SA}{07/2023 -- 04/2024}{Backend Engineer}{Switzerland}
+\resumeSubheading{Hexa Credit Care}{11/2019 -- 07/2023}{Full-Stack Developer}{Italy}
+\resumeSubheading{Galileo SpA}{03/2018 -- 11/2019}{Full-Stack Developer}{Italy}
+\resumeSubHeadingListEnd
+\section{PERSONAL PROJECTS}
 \small
-\textit{Detailed scope, ownership, team sizes, and technical contributions for each role are gated. Request access at matteo.dante659@gmail.com.}
-
-%-----------PROJECTS-----------
-\section{PROJECTS}
-\small
-\textbf{\href{https://apps.apple.com/us/app/maestro-learn-anything/id6780267046?uo=4}{Maestro: Learn Anything}} -- native iOS AI tutor on the App Store: source-grounded lessons, quizzes, review, and tutor chat.\\[2pt]
-\textbf{\href{https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4}{GymTree: Workout \& AI Coach}} -- solo-built fitness app on the App Store: coach web, trainee mobile app, subscriptions, background workers, and production AI coach.
-
-%-----------EDUCATION-----------
-\section{EDUCATION}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Unitelma Sapienza University}{09/2018 -- 2021}
-      {B.Sc. in Computer Science \textit{(not completed)}}{Rome, Italy}
-    \resumeSubheading
-      {Istituto E. Fermi}{09/2012 -- 07/2017}
-      {Diploma in Business Information Systems}{Italy}
-  \resumeSubHeadingListEnd
-
-%-----------SKILLS-----------
+\textbf{\href{https://apps.apple.com/us/app/maestro-learn-anything/id6780267046?uo=4}{Maestro}} -- Native iOS AI tutor on the App Store: source-grounded lessons, quizzes and tutor chat. SwiftUI, SwiftData, Hono, PostgreSQL.\\[3pt]
+\textbf{\href{https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4}{GymTree}} -- Fitness app on the App Store: backend, coach web, mobile app, subscriptions and AI coach. TypeScript, Expo, PostgreSQL, Redis, BullMQ.\\[3pt]
+\textbf{\href{https://github.com/matteodante/claude-local-docs}{claude-local-docs}} -- MCP server for local documentation and code retrieval: hybrid search, reranking, AST-aware chunking and incremental indexing. TypeScript, LanceDB.\\[3pt]
+\textbf{\href{https://github.com/matteodante/miniform}{Miniform}} -- Self-hosted form inbox with uploads, webhook/email retries and SQLite storage. Go, Docker; unit, integration and Playwright tests.\\[3pt]
+\textbf{\href{https://github.com/matteodante/therapist}{Therapist}} -- Experimental self-reflection agent with encrypted memory, tool calling, validated outputs and regression tests. Python, PydanticAI.\\[3pt]
+\textbf{\href{https://matteodante.it}{matteodante.it}} -- Interactive portfolio and playable CV with a streaming AI assistant. Next.js, vanilla Three.js, OpenAI Responses API; English/Italian.
 \section{SKILLS}
- \begin{itemize}[leftmargin=0in, label={}]
-    \small{\item{
-     \textbf{Languages \& Runtimes}: TypeScript, Node.js, PHP, .NET, Java\vspace{2pt}\\
-     \textbf{Frontend \& Mobile}: React, Next.js, React Native, microfrontends\vspace{2pt}\\
-     \textbf{Backend \& Data}: Laravel, Hono, Express, SQL/NoSQL, Redis\vspace{2pt}\\
-     \textbf{AI \& Search}: OpenAI / Anthropic; LLM agents, RAG, embeddings, reranking\vspace{2pt}\\
-     \textbf{Infra \& Quality}: Docker, Vercel, Railway, on-premise; OWASP, OAuth/JWT
-    }}
- \end{itemize}
-
+\small
+\textbf{Web \& backend}: TypeScript, Node.js, PHP, .NET, Java; React, Next.js, Laravel, Hono, REST, microfrontends\\[2pt]
+\textbf{Personal projects}: Go, Python, Swift/SwiftUI, React Native (Expo), Three.js/WebGL\\[2pt]
+\textbf{Data \& infrastructure}: PostgreSQL, MySQL, SQL Server, SQLite, Redis, BullMQ; Docker, Vercel, Railway, on-premise\\[2pt]
+\textbf{AI \& retrieval}: OpenAI/Anthropic APIs, tool calling, MCP, structured outputs, streaming, RAG, BM25, RRF, reranking\\[2pt]
+\textbf{Quality \& security}: Vitest, Bun test, pytest, Go tests, Playwright, CI; Sentry, OAuth/JWT\\[2pt]
+\textbf{AI-assisted development}: Claude Code, Codex, Cursor; code review and automated checks
+\section{EDUCATION \& LANGUAGES}
+\small
+Computer Science, Unitelma Sapienza, Rome, 2018--2021 (degree not completed).\\[2pt]
+Diploma in Business Information Systems, Istituto E. Fermi, 2017. Italian: native; English: professional, daily use.
 \end{document}

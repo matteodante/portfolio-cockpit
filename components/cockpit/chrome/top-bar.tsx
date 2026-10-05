@@ -5,7 +5,7 @@ import CockpitMenu from '@/components/cockpit/chrome/mobile-actions'
 import MusicToggle from '@/components/cockpit/chrome/music-toggle'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import LanguageSwitcher from '@/components/shared/language-switcher'
-import { cvPdfPath } from '@/lib/constants/site'
+import { cvDownloadFilename, cvPdfPath } from '@/lib/constants/site'
 import { useT, useUnlock } from '@/lib/i18n'
 import type { Locale } from '@/lib/i18n/config'
 
@@ -47,6 +47,9 @@ export default function TopBar({
         <Link
           href={cvPdfPath(locale, unlocked) as `/${string}`}
           download
+          onClick={(event) => {
+            event.currentTarget.download = cvDownloadFilename()
+          }}
           className="flight-desktop-link"
         >
           {t('cockpit.mobile.downloadCv')}

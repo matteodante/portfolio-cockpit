@@ -25,3 +25,17 @@ export const cvPrivatePdfPath = (locale: Locale) =>
 
 export const cvPdfPath = (locale: Locale, unlocked: boolean) =>
   unlocked ? cvPrivatePdfPath(locale) : cvPublicPdfPath(locale)
+
+const cvDownloadDateFormat = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Europe/Rome',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+})
+
+/** Compute at download time, using the same calendar date on client and server. */
+export function cvDownloadFilename(date = new Date()): string {
+  const day = cvDownloadDateFormat.format(date)
+
+  return `matteo-dante-cv-${day}.pdf`
+}

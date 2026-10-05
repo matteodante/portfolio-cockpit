@@ -162,6 +162,14 @@ blobs. Set `CV_ACCESS_PASSWORD`, `CV_ACCESS_SECRET`, `CV_DECRYPT_KEY`
 on your host (Vercel env vars) and share the password with whoever
 should see the full CV.
 
+The EN/IT public and full PDFs each fit one A4 page and retain the original
+CV photo. Keep Markdown, LaTeX and assistant profile facts aligned. Compilation and verification instructions
+are in [docs/cv-maintenance.md](docs/cv-maintenance.md).
+
+The cockpit download controls and gated PDF response use
+`matteo-dante-cv-YYYY-MM-DD.pdf`, computed when downloaded in the
+`Europe/Rome` timezone. Static PDF URLs stay unchanged.
+
 ## Rate limiting
 
 `/api/chat` caps at **10 req / 60s / IP**; `/api/unlock` caps at

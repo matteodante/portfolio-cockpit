@@ -17,6 +17,7 @@
       "!**/public",
       "!.github",
       "!.vercel",
+      "!.impeccable/hook.cache.json",
       "!bun.lock",
       "!**/*.md",
       "!**/*.mdx",

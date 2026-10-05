@@ -1,5 +1,6 @@
 import { serveGatedFile } from '@/lib/api/gated-file'
 import { cvPdfEnc } from '@/lib/auth/encrypted-paths'
+import { cvDownloadFilename } from '@/lib/constants/site'
 import { isValidLocale } from '@/lib/i18n/config'
 
 export const runtime = 'nodejs'
@@ -18,6 +19,6 @@ export async function GET(
     encryptedRelPath: cvPdfEnc(locale),
     contentType: 'application/pdf',
     disposition: 'attachment',
-    downloadFilename: `MatteoDante_CV_${locale}.pdf`,
+    downloadFilename: cvDownloadFilename(),
   })
 }

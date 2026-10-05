@@ -6,7 +6,7 @@
 \documentclass[a4paper,10pt]{article}
 
 \usepackage{latexsym}
-\usepackage[empty]{fullpage}
+\usepackage[a4paper,margin=12mm]{geometry}
 \usepackage{titlesec}
 \usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
@@ -26,18 +26,15 @@
 \DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
 \DeclareTextFontCommand{\texteb}{\ebseries}
 
-\usepackage{contour}
 \usepackage[normalem]{ulem}
 \renewcommand{\ULdepth}{1.8pt}
-\contourlength{0.8pt}
-\newcommand{\myuline}[1]{%
-  \uline{\phantom{#1}}%
-  \llap{\contour{white}{#1}}%
-}
+\newcommand{\myuline}[1]{\uline{#1}}
 
 \usepackage{tgheros}
 \renewcommand*\familydefault{\sfdefault}
 \usepackage[T1]{fontenc}
+\renewcommand{\small}{\fontsize{9.5}{11.5}\selectfont}
+\hypersetup{pdftitle={Matteo Dante - CV},pdfauthor={Matteo Dante}}
 
 \graphicspath{{../images/}}
 
@@ -47,11 +44,6 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-\addtolength{\oddsidemargin}{-0.7in}
-\addtolength{\evensidemargin}{0in}
-\addtolength{\textwidth}{1.4in}
-\addtolength{\topmargin}{-1.2in}
-\addtolength{\textheight}{2.3in}
 \setlength{\footskip}{4pt}
 
 \urlstyle{same}
@@ -63,7 +55,7 @@
 \titleformat{\section}{
     \bfseries \raggedright \large
 }{}{0em}{}[\color{light-grey}{\titlerule[2pt]} \vspace{-4pt}]
-\titlespacing*{\section}{0pt}{8pt}{6pt}
+\titlespacing*{\section}{0pt}{6pt}{5pt}
 
 \newcommand{\resumeItem}[1]{
   \item\small{
@@ -81,9 +73,9 @@
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={},itemsep=3pt,topsep=2pt]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=1pt,topsep=3pt]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
 
 \color{text-grey}
@@ -91,10 +83,10 @@
 \begin{document}
 
 %----------HEADER----------
-\begin{minipage}[c]{0.20\textwidth}
+\begin{minipage}[c]{0.13\textwidth}
   \includegraphics[width=\linewidth]{profile-pic.jpeg}
 \end{minipage}\hfill
-\begin{minipage}[c]{0.78\textwidth}
+\begin{minipage}[c]{0.85\textwidth}
   \raggedright
   {\Huge \textbf{Matteo Dante}}\\[4pt]
   {\large Senior Software Engineer \textperiodcentered{} Full-Stack \& Backend}\\[6pt]
@@ -106,70 +98,38 @@
   Svizzera
 \end{minipage}
 
-\vspace{8pt}
+\vspace{4pt}
 
 %-----------PROFILO-----------
 \section{PROFILO}
 \small
-Senior software engineer, 8+ anni tra aviazione, piattaforme consumer ad alto traffico e retail. Full-stack e backend. AI in produzione: agenti LLM, pipeline RAG, structured output.
-
-\vspace{4pt}
-\small
-\textit{Questa \`e una sintesi pubblica. Il CV dettagliato \`e disponibile con un codice di accesso -- contatta Matteo via email o LinkedIn per richiederlo.}
-
-%-----------ESPERIENZA-----------
+Senior software engineer con oltre 8 anni tra aviazione, piattaforme consumer ad alto traffico e retail. Sviluppa applicazioni web, servizi backend e prodotti AI. I progetti personali includono due app su App Store e strumenti open source per ricerca documentale, agenti e servizi self-hosted.
+\par\vspace{3pt}\textit{Sintesi pubblica. Richiedi il CV completo via email o LinkedIn.}
 \section{ESPERIENZA}
-  \resumeSubHeadingListStart
-
-    \resumeSubheading
-      {Pilatus Aircraft Ltd}{04/2024 -- Presente}
-      {Senior Full-Stack Software Engineer}{Svizzera}
-
-    \resumeSubheading
-      {DonTouch SA}{07/2023 -- 04/2024}
-      {Backend Engineer}{Svizzera}
-
-    \resumeSubheading
-      {Hexa Credit Care}{11/2019 -- 07/2023}
-      {Full-Stack Developer}{Italia}
-
-    \resumeSubheading
-      {Galileo SpA}{03/2018 -- 11/2019}
-      {Full-Stack Developer}{Italia}
-
-  \resumeSubHeadingListEnd
-
-\vspace{4pt}
+\resumeSubHeadingListStart
+\resumeSubheading{Pilatus Aircraft Ltd}{04/2024 -- Oggi}{Senior Full-Stack Software Engineer}{Svizzera}
+\resumeSubheading{DonTouch SA}{07/2023 -- 04/2024}{Backend Engineer}{Svizzera}
+\resumeSubheading{Hexa Credit Care}{11/2019 -- 07/2023}{Full-Stack Developer}{Italia}
+\resumeSubheading{Galileo SpA}{03/2018 -- 11/2019}{Full-Stack Developer}{Italia}
+\resumeSubHeadingListEnd
+\section{PROGETTI PERSONALI}
 \small
-\textit{Scope dettagliato, responsabilit\`a, dimensione del team e contributi tecnici per ogni ruolo sono protetti. Richiedi l'accesso a matteo.dante659@gmail.com.}
-
-%-----------PROGETTI-----------
-\section{PROGETTI}
-\small
-\textbf{\href{https://apps.apple.com/it/app/maestro-impara-tutto/id6780267046?uo=4}{Maestro: Impara Tutto}} -- tutor AI nativo iOS su App Store: lezioni con fonti, quiz, ripasso e chat tutor.\\[2pt]
-\textbf{\href{https://apps.apple.com/it/app/gymtree-palestra-coach-ai/id6761392403?uo=4}{GymTree: Palestra \& Coach AI}} -- app fitness sviluppata in autonomia su App Store: web coach, app trainee, abbonamenti, worker e AI coach in produzione.
-
-%-----------FORMAZIONE-----------
-\section{FORMAZIONE}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Universit\`a Telematica Unitelma Sapienza}{09/2018 -- 2021}
-      {Laurea in Informatica \textit{(non completata)}}{Roma, Italia}
-    \resumeSubheading
-      {Istituto E. Fermi}{09/2012 -- 07/2017}
-      {Diploma in Sistemi Informativi Aziendali}{Italia}
-  \resumeSubHeadingListEnd
-
-%-----------COMPETENZE-----------
+\textbf{\href{https://apps.apple.com/it/app/maestro-impara-tutto/id6780267046?uo=4}{Maestro}} -- Tutor AI iOS su App Store: lezioni con fonti, quiz e chat tutor. SwiftUI, SwiftData, Hono, PostgreSQL.\\[3pt]
+\textbf{\href{https://apps.apple.com/it/app/gymtree-palestra-coach-ai/id6761392403?uo=4}{GymTree}} -- App fitness su App Store: backend, web coach, app mobile, abbonamenti e coach AI. TypeScript, Expo, PostgreSQL, Redis, BullMQ.\\[3pt]
+\textbf{\href{https://github.com/matteodante/claude-local-docs}{claude-local-docs}} -- Server MCP per documentazione e codice locali: ricerca ibrida, reranking, segmentazione AST e indicizzazione incrementale. TypeScript, LanceDB.\\[3pt]
+\textbf{\href{https://github.com/matteodante/miniform}{Miniform}} -- Inbox self-hosted per form, con allegati, retry webhook/email e storage SQLite. Go, Docker; test unitari, di integrazione e Playwright.\\[3pt]
+\textbf{\href{https://github.com/matteodante/therapist}{Therapist}} -- Agente sperimentale di autoriflessione con memoria cifrata, tool calling, output validati e test di regressione. Python, PydanticAI.\\[3pt]
+\textbf{\href{https://matteodante.it}{matteodante.it}} -- Portfolio interattivo e CV giocabile con assistente AI in streaming. Next.js, Three.js vanilla, OpenAI Responses API; italiano/inglese.
 \section{COMPETENZE}
- \begin{itemize}[leftmargin=0in, label={}]
-    \small{\item{
-     \textbf{Linguaggi \& Runtime}: TypeScript, Node.js, PHP, .NET, Java\vspace{2pt}\\
-     \textbf{Frontend \& Mobile}: React, Next.js, React Native, microfrontend\vspace{2pt}\\
-     \textbf{Backend \& Dati}: Laravel, Hono, Express, SQL/NoSQL, Redis\vspace{2pt}\\
-     \textbf{AI \& Search}: OpenAI / Anthropic; agenti LLM, RAG, embeddings, reranking\vspace{2pt}\\
-     \textbf{Infra \& Qualit\`a}: Docker, Vercel, Railway, on-premise; OWASP, OAuth/JWT
-    }}
- \end{itemize}
-
+\small
+\textbf{Web e backend}: TypeScript, Node.js, PHP, .NET, Java; React, Next.js, Laravel, Hono, REST, microfrontend\\[2pt]
+\textbf{Progetti personali}: Go, Python, Swift/SwiftUI, React Native (Expo), Three.js/WebGL\\[2pt]
+\textbf{Dati e infrastruttura}: PostgreSQL, MySQL, SQL Server, SQLite, Redis, BullMQ; Docker, Vercel, Railway, on-premise\\[2pt]
+\textbf{AI e retrieval}: API OpenAI/Anthropic, tool calling, MCP, output strutturati, streaming, RAG, BM25, RRF, reranking\\[2pt]
+\textbf{Qualità e sicurezza}: Vitest, Bun test, pytest, test Go, Playwright, CI; Sentry, OAuth/JWT\\[2pt]
+\textbf{Sviluppo assistito da AI}: Claude Code, Codex, Cursor; code review e verifiche automatiche
+\section{FORMAZIONE E LINGUE}
+\small
+Informatica, Unitelma Sapienza, Roma, 2018--2021 (laurea non conseguita).\\[2pt]
+Diploma in Sistemi Informativi Aziendali, Istituto E. Fermi, 2017. Italiano: madrelingua; inglese: professionale, uso quotidiano.
 \end{document}

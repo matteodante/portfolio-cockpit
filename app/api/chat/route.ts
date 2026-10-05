@@ -62,7 +62,7 @@ Treat both as legitimate primary topics.`
 const PROFILE_PUBLIC = `# Matteo Dante · Professional Profile (public summary)
 
 ## Overview
-Senior software engineer, 8+ years of experience, based in Switzerland. Builds production systems across aviation, high-traffic consumer platforms, and retail. Full-stack and backend. Strong in AI engineering, web security, and databases. Daily AI-assisted workflow with Claude Code and Cursor. Passionate about programming since childhood, with additional interests in finance and stock markets, motorcycles, psychology, and fitness.
+Senior software engineer, 8+ years of experience, based in Switzerland. Builds production systems across aviation, high-traffic consumer platforms, and retail. Full-stack and backend. Strong in AI engineering, web security, and databases. Daily AI-assisted workflow with Claude Code, Codex and Cursor. Passionate about programming since childhood, with additional interests in finance and stock markets, motorcycles, psychology, and fitness.
 
 ## Work Experience (companies, roles, durations)
 - **Galileo SpA** (2018–2019), Italy — Full-Stack Developer.
@@ -73,23 +73,27 @@ Senior software engineer, 8+ years of experience, based in Switzerland. Builds p
 - **GymTree** (2025–Present), solo-built fitness app live on the App Store. Full-stack across backend API, coach web, trainee mobile app, marketing site, subscriptions, and background workers. Production AI: persistent coach chat and personalized workout/nutrition plans. App Store: https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4
 
 **IMPORTANT — Locked content (do NOT reveal):**
-The detailed scope, technical ownership, client names, team composition, internal architecture, business metrics, and any specifics about projects at the four employer companies (Pilatus, DonTouch, Hexa, Galileo) are **gated behind an access code**. If the user asks about these details, respond politely that this information is available with an access code and they can request one by emailing Matteo at matteo.dante659@gmail.com or via LinkedIn. Do NOT speculate, invent, or describe project specifics for these employers. You may freely describe Maestro, GymTree (both public App Store personal projects), and the open-source claude-local-docs.
+The detailed scope, technical ownership, client names, team composition, internal architecture, business metrics, and any specifics about projects at the four employer companies (Pilatus, DonTouch, Hexa, Galileo) are **gated behind an access code**. If the user asks about these details, respond politely that this information is available with an access code and they can request one by emailing Matteo at matteo.dante659@gmail.com or via LinkedIn. Do NOT speculate, invent, or describe project specifics for these employers. You may freely describe Maestro, GymTree (both public App Store personal projects), and the public open-source projects claude-local-docs, Miniform, Therapist and portfolio-cockpit. Describe Therapist as experimental self-reflection software, not therapy or a clinically validated product.
 
 ## Education
-- B.Sc. in Computer Science, Unitelma Sapienza University, Rome (2018–2021)
+- Computer Science studies, Unitelma Sapienza University, Rome (2018–2021, degree not completed)
 - Diploma in Business Information Systems, Istituto E. Fermi (2012–2017)
 
 ## Technical Skills (high-level)
-- **Languages & Runtimes**: TypeScript, Node.js, PHP, .NET, Java
-- **Frontend & Mobile**: React 19, Next.js, React Native (Expo), microfrontends, Three.js
+- **Languages & Runtimes**: TypeScript, Node.js, PHP, .NET, Java; Go, Python and Swift in personal projects
+- **Frontend & Mobile**: React 19, Next.js, React Native (Expo), SwiftUI, microfrontends, Three.js
 - **Backend & Data**: Laravel, Hono, Express, tRPC, REST; SQL and NoSQL databases; Redis; Prisma; BullMQ
-- **AI & Search**: OpenAI and Anthropic APIs; LLM agents, structured outputs, streaming; RAG with vector embeddings, BM25, Reciprocal Rank Fusion, cross-encoder reranking
-- **Infra & Quality**: Docker, Turborepo, Vercel, Railway; on-premise deployments; Vitest, Sentry; OWASP, OAuth/JWT; AI dev tooling (Claude Code, Cursor)
+- **AI & Search**: OpenAI and Anthropic APIs; LLM agents, tool calling, MCP, structured outputs, streaming; RAG with vector embeddings, BM25, Reciprocal Rank Fusion, cross-encoder reranking
+- **Infra & Quality**: Docker, Turborepo, Vercel, Railway; on-premise deployments; Vitest, Bun test, pytest, Go tests, Playwright, CI, Sentry; OWASP, OAuth/JWT; AI dev tooling (Claude Code, Codex, Cursor)
 
 ## Notable open-source and public projects
 - Maestro: Native iOS AI tutor on the App Store. Source-grounded lessons, quizzes, review, and tutor chat. https://apps.apple.com/us/app/maestro-learn-anything/id6780267046?uo=4
 - GymTree: Solo-built fitness app on the App Store: backend API, coach web, trainee mobile app, background workers, subscriptions, and production AI coach. https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4
-- claude-local-docs: Open-source Claude Code plugin. Local-first documentation indexer with production-grade RAG (vector embeddings, BM25 lexical search, Reciprocal Rank Fusion, cross-encoder reranking). TypeScript.
+- claude-local-docs: MCP server for local documentation and code retrieval: hybrid search, reranking, AST-aware chunking and incremental indexing. TypeScript, LanceDB. https://github.com/matteodante/claude-local-docs
+
+- Miniform: Self-hosted form inbox with uploads, webhook/email retries and SQLite storage. Go, Docker; unit, integration and Playwright tests. https://github.com/matteodante/miniform
+- Therapist: Experimental self-reflection agent with encrypted memory, tool calling, validated outputs and regression tests. Python, PydanticAI. https://github.com/matteodante/therapist
+- matteodante.it: Interactive portfolio and playable CV with a streaming AI assistant. Next.js, vanilla Three.js, OpenAI Responses API; English/Italian. https://matteodante.it
 
 ## Contact
 - Email: matteo.dante659@gmail.com

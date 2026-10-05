@@ -5,7 +5,7 @@ import { useRef } from 'react'
 import ControlsPanel from '@/components/cockpit/chrome/bottom-console/controls-panel'
 import LanguageSwitcher from '@/components/shared/language-switcher'
 import { GITHUB_URL } from '@/lib/constants/contact'
-import { cvPdfPath } from '@/lib/constants/site'
+import { cvDownloadFilename, cvPdfPath } from '@/lib/constants/site'
 import { useT, useUnlock } from '@/lib/i18n'
 import type { Locale } from '@/lib/i18n/config'
 
@@ -84,7 +84,10 @@ export default function CockpitMenu({
           <Link
             href={cvPdfPath(locale, unlocked) as `/${string}`}
             download
-            onClick={close}
+            onClick={(event) => {
+              event.currentTarget.download = cvDownloadFilename()
+              close()
+            }}
           >
             {t('cockpit.mobile.downloadCv')}
           </Link>

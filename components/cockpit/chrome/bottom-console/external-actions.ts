@@ -1,5 +1,5 @@
 import { EMAIL_HREF, GITHUB_URL } from '@/lib/constants/contact'
-import { cvPdfPath } from '@/lib/constants/site'
+import { cvDownloadFilename, cvPdfPath } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
 
 type ExternalActions = {
@@ -16,7 +16,7 @@ export function externalActions(
   const downloadCv = () => {
     const a = document.createElement('a')
     a.href = cvPdfPath(locale, unlocked)
-    a.download = `MatteoDante_CV_${locale}.pdf`
+    a.download = cvDownloadFilename()
     a.rel = 'noopener'
     document.body.appendChild(a)
     a.click()
