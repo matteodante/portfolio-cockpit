@@ -66,10 +66,15 @@ next-env.d.ts
 # private plaintext sources — encrypt with bun run encrypt:private
 /private-src/
 
+# Agent research, reviews, drafts and verification output stay local.
+/.private-notes/
+/docs/research/
+
 # claude
 .claude
 
 # Impeccable session output (keep config and briefs tracked)
+/.impeccable/hook.cache.json
 /.impeccable/config.local.json
 /.impeccable/review/
 /.impeccable/live/

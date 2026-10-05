@@ -2,6 +2,33 @@
 
 Shared instructions for Codex and Claude Code in this repo.
 
+## Public repository and local artifacts
+
+- This repository is open source. Agent research, audits, review reports,
+  proposals, CV/career assessments, session notes, screenshots, QA logs and
+  other working artifacts are local material, not public project documentation.
+- Store these artifacts under the hidden, gitignored `/.private-notes/`
+  directory. Keep private CV sources and exports under the existing ignored
+  `/private-src/`; existing ignored Impeccable session directories are also
+  valid. Never put working artifacts under `public/` or tracked `docs/` paths.
+- Redirect skill/tool output to those local directories even when a generic
+  workflow suggests saving a report in `docs/`. Verify the destination with
+  `git check-ignore` before writing a new artifact. Do not force-add ignored
+  files or expose local artifacts through public deployment assets or public
+  attachments.
+- Do not commit or push working artifacts unless Matteo explicitly asks to
+  publish the specific artifact. A general instruction to release changes
+  does not authorize publishing research, drafts or verification reports.
+- Keep intentional public maintainer documentation, source code, approved
+  product/design specifications and required asset provenance versioned.
+  Document how the project works without copying private assessments or
+  conversation history into public docs.
+- Before committing or pushing, inspect the staged file list and diff for
+  local artifacts, private plaintext and secrets. If a working artifact is
+  already tracked, preserve a local copy and remove the versioned copy;
+  removal does not erase earlier commits. Do not rewrite Git history without
+  an explicit request.
+
 ## Freelance business context
 
 - This is Matteo's public showcase, matteodante.it. The sibling
