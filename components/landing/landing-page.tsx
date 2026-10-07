@@ -223,7 +223,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                     {t('home.hero.play')}
                   </Link>
                 </div>
-                <p className="hero-experience">{t('home.hero.experience')}</p>
               </div>
             </div>
           </div>
