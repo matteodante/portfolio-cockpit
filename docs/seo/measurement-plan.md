@@ -29,8 +29,8 @@ non attiva automaticamente gli account Google né conferma l'indicizzazione.
 
 Le card della homepage portano alle rispettive pagine. La pagina servizio
 spiega l’offerta, mostra progetti reali, risponde a domande concrete e porta
-a Cal.com. I siti partono da 300 €; app e AI hanno preventivo su richiesta.
-Nessun pacchetto o prezzo superiore è stato confermato.
+a Cal.com. Siti web, app e AI hanno preventivo su richiesta, con prezzo
+da concordare in base al progetto. Nessun pacchetto a prezzo fisso è confermato.
 
 Tutte le pagine sono renderizzate staticamente, con titolo e descrizione
 propri, canonical sul dominio `https://matteodante.it`, hreflang IT/EN,

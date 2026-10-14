@@ -39,9 +39,9 @@ streaming and `store: false`. It never selects the private CV instructions,
 even with a valid access cookie. The cockpit branch retains its existing
 model and gated/public context behavior.
 
-The prompt distinguishes the EUR 300 website starting price from a fixed
-package, personal products from client work, and public career names from
-private employer details. It instructs concise localized replies and one
+The prompt describes all services as quoted on request, without published
+fixed or starting prices. It distinguishes personal products from client work
+and public career names from private employer details. It instructs concise localized replies and one
 relevant question at a time. It cannot read availability, book appointments,
 send follow-up messages or confirm bookings. These are prompt boundaries,
 not guarantees that a model can never make a mistake. The visible disclosure

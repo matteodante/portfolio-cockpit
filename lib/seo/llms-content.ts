@@ -25,7 +25,7 @@ export const LLMS_PUBLIC = `# Matteo Dante
 
 > Freelance software engineer based in Switzerland. Websites, apps, custom software and AI automation for professionals, startups and small businesses in Italy, Ticino and beyond. Work directly with Matteo in Italian or English.
 
-Website development starts from EUR 300. The quote defines pages, content, functionality, revisions and any domain, hosting or ongoing management costs. App/software development and AI automation are quoted on request. Remote collaboration is available in Italian and English; larger and international businesses are welcome.
+Website development, app/software development and AI automation are quoted on request. Scope and price are agreed with Matteo for each project. The website quote defines pages, content, functionality, revisions and any domain, hosting or ongoing management costs. Remote collaboration is available in Italian and English; larger and international businesses are welcome.
 
 Matteo has over eight years of software engineering experience. Public role summaries include Senior Full-Stack Software Engineer at Pilatus Aircraft, Backend Engineer at DonTouch, and Full-Stack Developer at Hexa Credit Care and Galileo. These are roles within company teams, not claims that their entire products were freelance client projects.
 

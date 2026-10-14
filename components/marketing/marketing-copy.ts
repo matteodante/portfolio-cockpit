@@ -12,7 +12,7 @@ export const MARKETING_COPY = {
     hero: 'Siti web, fatti per la tua attività.',
     intro:
       'Per professionisti, startup e piccole imprese in Italia e Ticino. Un interlocutore diretto per dare forma a ciò che offri e rendere semplice contattarti.',
-    price: 'A partire da 300 €',
+    price: 'Preventivo su richiesta',
     priceNote:
       'Pagine, contenuti e funzionalità si definiscono nel preventivo.',
     proof: 'Progetti da esplorare.',
@@ -55,8 +55,8 @@ export const MARKETING_COPY = {
     faqTitle: 'Prima di cominciare.',
     faqs: [
       [
-        'Cosa comprende il prezzo da 300 €?',
-        'È il prezzo di partenza. Il preventivo specifica pagine, contenuti, funzionalità e revisioni, insieme agli eventuali costi di dominio, hosting e gestione.',
+        'Come viene definito il prezzo del sito?',
+        'Il prezzo si concorda in base al progetto. Il preventivo specifica pagine, contenuti, funzionalità e revisioni, insieme agli eventuali costi di dominio, hosting e gestione.',
       ],
       [
         'Devo avere già testi e immagini?',
@@ -109,7 +109,7 @@ export const MARKETING_COPY = {
     hero: 'Websites, made for your business.',
     intro:
       'For professionals, startups and small businesses in Italy, Ticino and beyond. Work directly with me to present what you offer and make it easy to get in touch.',
-    price: 'Starting from €300',
+    price: 'Quote on request',
     priceNote: 'Pages, content and functionality are defined in your quote.',
     proof: 'Work you can explore.',
     proofBody:
@@ -150,8 +150,8 @@ export const MARKETING_COPY = {
     faqTitle: 'Before we start.',
     faqs: [
       [
-        'What does the €300 starting price cover?',
-        'It is the starting price. Your quote specifies pages, content, features and revisions, along with any domain, hosting and ongoing management costs.',
+        'How is the website price determined?',
+        'The price is agreed based on the project. Your quote specifies pages, content, features and revisions, along with any domain, hosting and ongoing management costs.',
       ],
       [
         'Do I need to have text and images ready?',

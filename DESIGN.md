@@ -640,9 +640,9 @@ captures.
 
 Services use three dark squared cards with full thin borders, two-pixel
 corners and 28px padding, reducing to 25px on mobile. Each card contains a
-title, brief description, price and dark service-page link. Websites start at
-300 €; apps/software and custom AI are on request. These are owner-confirmed
-prices, not implied fixed scopes or delivery promises. A flexible price
+title, brief description, quote availability and dark service-page link.
+Websites, apps/software and custom AI are all on request, with scope and
+price agreed per project and no implied delivery promises. A flexible price
 area keeps controls aligned; service icons remain removed.
 
 Website evidence uses actual public captures, with a caption and project

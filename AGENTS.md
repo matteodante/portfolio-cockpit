@@ -47,8 +47,8 @@ Shared instructions for Codex and Claude Code in this repo.
   contact businesses or produce their demos until Matteo requests that phase.
 - Matteo wants reasoned recommendations and final choice on commercial
   decisions. Keep facts, proposals and approved decisions separate.
-- Public pricing remains a starting price of EUR 300. It is not the new
-  restaurant package or a subscription setup fee. The homepage remains a
+- Public pricing is on request for websites, apps/software and AI; scope
+  and price are agreed per project. The homepage remains a
   general showcase for websites, apps/software and AI; no restaurant-only
   public repositioning has been approved. Existing IT/EN content and identity
   decisions in PRODUCT.md remain authoritative.
@@ -164,8 +164,8 @@ at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
   It has no horizontal bar; the global progress indicator hides while
   Brands is active. Pause, reduced motion and no JavaScript show the
   complete four-/two-column static grid. See `docs/design/brand-wall.md`; other
-  sections stay in normal flow. Services are three cards: websites from 300 €, apps
-  and AI on request. Each dark card link opens its specific localized
+  sections stay in normal flow. Services are three cards: websites, apps
+  and AI, all on request. Each dark card link opens its specific localized
   service page. Header, hero and contact booking links remain direct Cal.com links.
   Work introduces “Progetti da esplorare” / “Projects to explore”.
   `PortfolioEvidence` presents this site/cockpit first, then a PiùUDITO case
@@ -442,7 +442,7 @@ To update private content: edit files in `private-src/`, run
   CV Markdown alternative. Every page links the public `/llms.txt` guide.
 - JSON-LD describes public identity and visible services/projects. Keep
   detailed employer scope and private CV information out of the shared
-  graph. Website pricing is a minimum of EUR 300, not a fixed package.
+  graph. All services are quoted on request, with no numeric price offers.
   Public APIs and standalone JSON records have noindex headers; images
   remain indexable. See `docs/seo/technical-metadata.md` and discovery tests.
 - Commercial pages have localized canonical/hreflang, Open Graph,

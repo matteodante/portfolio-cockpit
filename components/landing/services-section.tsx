@@ -65,14 +65,7 @@ export default function ServicesSection({ locale }: { locale: Locale }) {
                 <h3>{t(`home.services.${id}.title`)}</h3>
                 <p>{t(`home.services.${id}.body`)}</p>
                 <div className="service-price">
-                  {id === 'web' ? (
-                    <>
-                      <span>{t('home.services.from')}</span>
-                      <strong>300 €</strong>
-                    </>
-                  ) : (
-                    <strong>{t('home.services.onRequest')}</strong>
-                  )}
+                  <strong>{t('home.services.onRequest')}</strong>
                 </div>
 
                 <Link

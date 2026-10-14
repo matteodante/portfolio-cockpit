@@ -64,8 +64,8 @@ demo" resta un supporto veritiero già presente nel copy.)
   un ritratto generato. CTA diretta a Cal.com: l’utente ha poi confermato
   `https://cal.com/matteo-dante`, ora collegato ai pulsanti di prenotazione.
 - Terminologia ricorrente: decollo/takeoff, PLAY, cockpit, COMM, DOCK.
-- Prezzi confermati dall’utente: siti web a partire da 300 €; app e
-  software, AI su misura su richiesta. Tre card con pulsanti che aprono le rispettive pagine servizio
+- Prezzi su richiesta per siti web, app e software, AI su misura;
+  importi da concordare per progetto. Tre card con pulsanti che aprono le rispettive pagine servizio
   (correzione del titolare, 2026-09-09). Nelle pagine servizio la CTA finale
   apre Cal.com in un popup, con link diretto come fallback.
 
@@ -137,8 +137,8 @@ Confirmed 2026-09-09:
 - The owner reports no established search/analytics measurement setup.
   Vercel Analytics and Speed Insights are mounted in code; account setup,
   collected data and conversion instrumentation still need verification.
-- The proposed scope of the 300 € offer and the suggested 1,000–2,000 €
-  project range are recommendations, not confirmed public offer terms.
+- No fixed package scope or numeric project range is confirmed as a public
+  offer term; all services are quoted on request.
 
 ## Product Principles
 
@@ -275,9 +275,9 @@ three hours/day plus more on weekends, with short calls possible.
 
 The current task is setup, documentation and research of comparable business
 models, not prospect research or outreach. Commercial prices, first city,
-support scope, demo hosting and publication remain undecided. The existing
-public starting price of EUR 300 and broader service pages are not changed
-by these internal decisions. The historical PiùUDITO case is not restaurant
+support scope, demo hosting and publication remain undecided. All public
+services are quoted on request; the broader service positioning remains
+unchanged. The historical PiùUDITO case is not restaurant
 client evidence. Canonical decisions and workflow live in
 [../freelance/STRATEGIA.md](../freelance/STRATEGIA.md) and
 [../freelance/GOAL.md](../freelance/GOAL.md), not in a second CRM here.

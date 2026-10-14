@@ -92,23 +92,12 @@ describe('public search discovery', () => {
     }
   })
 
-  test('website offer is a starting price; other services have no invented price', () => {
+  test('all services are quoted on request without published price offers', () => {
     for (const locale of ['it', 'en'] as const) {
-      expect(marketingSchema('websites', locale)['@graph'][1]).toMatchObject({
-        '@type': 'Service',
-        offers: {
-          '@type': 'Offer',
-          priceSpecification: {
-            '@type': 'PriceSpecification',
-            minPrice: 300,
-            priceCurrency: 'EUR',
-          },
-        },
-      })
-      for (const page of ['apps', 'ai'] as const) {
-        expect(marketingSchema(page, locale)['@graph'][1]).not.toHaveProperty(
-          'offers'
-        )
+      for (const page of ['websites', 'apps', 'ai'] as const) {
+        const service = marketingSchema(page, locale)['@graph'][1]
+        expect(service).toMatchObject({ '@type': 'Service' })
+        expect(service).not.toHaveProperty('offers')
       }
       expect(marketingSchema('piuudito', locale)['@graph'][1]).toMatchObject({
         '@type': 'CreativeWork',
@@ -149,7 +138,7 @@ describe('public search discovery', () => {
   test('llms.txt has public canonical links, real booking and clear pricing', () => {
     expect(LLMS_PUBLIC).toStartWith('# Matteo Dante\n\n> ')
     expect(LLMS_PUBLIC).toContain(CAL_BOOKING_URL)
-    expect(LLMS_PUBLIC).toContain('starts from EUR 300')
+    expect(LLMS_PUBLIC).not.toContain('300')
     expect(LLMS_PUBLIC).toContain('quoted on request')
     expect(LLMS_PUBLIC).not.toContain('/api/')
     expect(LLMS_PUBLIC).not.toContain('greenfield')

@@ -11,11 +11,11 @@ import { type SocialPage, socialImageUrl } from '@/lib/seo/social'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
-    { id: 'home', paths: HOME_PATHS, lastModified: '2026-09-10' },
+    { id: 'home', paths: HOME_PATHS, lastModified: '2026-10-14' },
     ...Object.entries(MARKETING_PAGES).map(([id, page]) => ({
       id,
       paths: page.paths,
-      lastModified: '2026-09-09',
+      lastModified: id === 'websites' ? '2026-10-14' : '2026-09-09',
     })),
     { id: 'cockpit', paths: COCKPIT_PATHS, lastModified: '2026-09-10' },
   ]

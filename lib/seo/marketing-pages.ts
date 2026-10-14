@@ -45,8 +45,8 @@ export const MARKETING_PAGES = {
       en: 'Website development for professionals and small businesses',
     },
     description: {
-      it: 'Siti web per professionisti, startup e imprese in Italia e Ticino, da 300 €. Esplora PiùUDITO, questo sito e il cockpit 3D realizzati da Matteo Dante.',
-      en: 'Custom websites for professionals, startups and businesses, from €300. Explore PiùUDITO, this website and the 3D cockpit built by Matteo Dante.',
+      it: 'Siti web per professionisti, startup e imprese in Italia e Ticino. Preventivo su richiesta. Esplora PiùUDITO, questo sito e il cockpit 3D di Matteo Dante.',
+      en: 'Custom websites for professionals, startups and businesses. Quote on request. Explore PiùUDITO, this website and the 3D cockpit built by Matteo Dante.',
     },
   },
   piuudito: {
@@ -129,20 +129,6 @@ export function marketingSchema(page: MarketingPage, locale: Locale) {
               containedInPlace: { '@type': 'Country', name: 'Switzerland' },
             },
           ],
-          ...(page === 'websites'
-            ? {
-                offers: {
-                  '@type': 'Offer',
-                  url,
-                  priceSpecification: {
-                    '@type': 'PriceSpecification',
-                    minPrice: 300,
-                    priceCurrency: 'EUR',
-                  },
-                  seller: { '@id': `${BASE_URL}/#person` },
-                },
-              }
-            : {}),
         }
   return {
     '@context': 'https://schema.org',

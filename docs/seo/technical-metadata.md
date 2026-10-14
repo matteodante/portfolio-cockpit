@@ -1,6 +1,6 @@
 # Search metadata and public discovery
 
-Updated 2026-09-09. The commercial pages, public portfolio evidence and
+Updated 2026-10-14. The commercial pages, public portfolio evidence and
 approved portrait are the source of truth for this revision.
 
 ## Implemented
@@ -18,10 +18,9 @@ approved portrait are the source of truth for this revision.
   The homepage is a commercial `WebPage`; the cockpit is a separate page
   about the same Person. WebSite declares both supported languages.
 - Service and case graphs use Schema.org types, stable connected IDs and
-  BCP-47 language tags. Website pricing uses `minPrice: 300` with EUR,
-  representing the visible starting price. Apps and AI retain quotes on
-  request without invented prices. The PiùUDITO creative-work node identifies
-  one company and its three website examples. No ratings or outcome claims
+  BCP-47 language tags. Websites, apps and AI use quotes on request without
+  numeric price offers in their structured data. The PiùUDITO creative-work
+  node identifies one company and its three website examples. No ratings or outcome claims
   are introduced.
 - `/llms.txt` is a concise public Markdown guide to services, pricing,
   client work, personal products, public roles and real contact destinations.
@@ -43,9 +42,7 @@ approved portrait are the source of truth for this revision.
 Structured data must reflect the page's real content; adding markup alone
 does not establish eligibility or appearance in search.
 [Google structured-data policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies).
-The website offer uses Schema.org's minimum-price property, rather than
-presenting EUR 300 as a fixed all-inclusive fee.
-[Schema.org minPrice](https://schema.org/minPrice).
+Service graphs omit price offers because all services are quoted individually.
 
 The public allow rule includes OAI-SearchBot. Search crawling and model
 training are different uses; no training-policy change is made here.
