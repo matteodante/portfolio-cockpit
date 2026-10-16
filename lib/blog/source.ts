@@ -6,7 +6,7 @@ import { z } from 'zod'
 import { readingMinutes, renderMarkdown } from '@/lib/blog/markdown'
 
 // Articles are Markdown files in the `articles/` folder of the public profile repository, each starting with
-// YAML frontmatter (see Frontmatter). Publishing one is a push there: pages revalidate every hour. The blog and
+// YAML frontmatter (see Frontmatter). Publishing one is a push there: pages revalidate every five minutes. The blog and
 // its articles are in English only.
 // BLOG_LOCAL_DIR=<path to that folder> reads a local checkout instead, to preview before pushing.
 
@@ -15,7 +15,7 @@ const REPO = 'matteodante'
 const BRANCH = 'main'
 const DIR = 'articles'
 
-export const ARTICLES_REVALIDATE = 3600
+export const ARTICLES_REVALIDATE = 300
 export const ARTICLES_REPO_URL = `https://github.com/${OWNER}/${REPO}/tree/${BRANCH}/${DIR}`
 const RAW_BASE = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${DIR}/`
 const BLOB_BASE = `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/${DIR}/`

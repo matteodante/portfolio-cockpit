@@ -12,7 +12,7 @@ import '@/components/blog/blog.css'
 
 // The blog is in English only: /it/blog redirects here. Articles come from GitHub (lib/blog/source.ts), so the
 // list is rebuilt at most once an hour.
-export const revalidate = 3600
+export const revalidate = 300
 
 type Props = { params: Promise<{ lang: string }> }
 

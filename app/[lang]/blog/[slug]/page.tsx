@@ -12,7 +12,7 @@ import '@/components/blog/blog.css'
 
 // The blog is in English only: /it/blog/<slug> redirects here. Articles come from GitHub (lib/blog/source.ts):
 // pages are rebuilt at most once an hour, and an article pushed after the build renders on its first visit.
-export const revalidate = 3600
+export const revalidate = 300
 
 type Props = { params: Promise<{ lang: string; slug: string }> }
 
