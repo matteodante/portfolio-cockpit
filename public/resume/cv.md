@@ -21,7 +21,7 @@ Switzerland · 1998 · matteo.dante659@gmail.com · [matteodante.it](https://mat
 
 ## Summary
 
-Senior software engineer with 8+ years across aviation, consumer platforms and retail. I build web applications and backend services. Personal work includes two App Store apps and open-source tools for AI and document retrieval.
+Senior software engineer with 8+ years across aviation, consumer platforms and retail. I build web applications and backend services. Personal work includes two App Store apps and open-source tools for AI, document retrieval and running Windows C++ programs in the browser.
 
 ---
 
@@ -29,7 +29,7 @@ Senior software engineer with 8+ years across aviation, consumer platforms and r
 
 **Web & backend**: TypeScript, Node.js, PHP, .NET, Java; React, Next.js, Laravel, microfrontends
 
-**Personal projects**: Go, Python, Swift/SwiftUI, React Native (Expo), Three.js/WebGL
+**Personal projects**: Go, Python, Swift/SwiftUI, C++/WebAssembly (Emscripten), React Native (Expo), Three.js/WebGL
 
 **Data & infrastructure**: PostgreSQL, MySQL, SQL Server, SQLite, Redis, BullMQ; Docker, Vercel, Railway, on-premise
 
@@ -61,6 +61,9 @@ iOS AI tutor on the App Store: source-grounded lessons, quizzes and chat. SwiftU
 
 **[GymTree](https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4)**
 Fitness app on the App Store: backend, coach web, mobile app, subscriptions and AI coach. Expo, Hono.
+
+**[Portico](https://github.com/matteodante/portico)**
+Open-source library: runs Direct3D 9 C++ programs in the browser from source, tested against real Direct3D 9. C++, WebGL2.
 
 **[claude-local-docs](https://github.com/matteodante/claude-local-docs)**
 MCP server for documents and code: hybrid search, reranking and incremental indexing. TypeScript, LanceDB.

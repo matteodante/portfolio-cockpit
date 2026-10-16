@@ -3,7 +3,7 @@
 Confirmed on 2026-10-05: keep the CV general, in English and Italian, with
 one A4 page per PDF and the original `public/images/profile-pic.jpeg`.
 The October 5 refinement uses 10pt body text, concise project descriptions
-and a consistent first-person summary. Keep all six selected projects.
+and a consistent first-person summary. Keep all seven selected projects (Portico added on 2026-10-16 at the owner's request).
 The owner requested restoring Java in the existing skill lists. Do not infer
 Java work experience or projects from this entry.
 
@@ -17,7 +17,9 @@ Java work experience or projects from this entry.
 
 Keep professional roles separate from personal projects. Go, Python and
 Swift are evidenced by personal projects. The current project selection is
-Maestro, GymTree, claude-local-docs, Miniform, Therapist and the portfolio.
+Maestro, GymTree, Portico, claude-local-docs, Miniform, Therapist and the
+portfolio. C++/WebAssembly is evidenced by Portico. Portico came out of a
+private browser port of a Windows MMO client: do not name that game.
 Describe Therapist as experimental. Keep detailed employer scope and
 metrics in the full CV only.
 

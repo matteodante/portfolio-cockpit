@@ -8,6 +8,7 @@ import {
   MAESTRO_APP_STORE_URL,
   MINIFORM_REPO_URL,
   PORTFOLIO_REPO_URL,
+  PORTICO_REPO_URL,
   THERAPIST_REPO_URL,
 } from '@/lib/constants/contact'
 import { type TranslationKey, useT } from '@/lib/i18n'
@@ -35,6 +36,13 @@ const PROJECTS: readonly Project[] = [
     badgeKey: 'projects.gymtree.badge',
     href: GYMTREE_APP_STORE_URL,
     linkKey: 'projects.gymtree.link',
+  },
+  {
+    titleKey: 'projects.portico.title',
+    descKey: 'projects.portico.desc',
+    badgeKey: 'projects.portico.badge',
+    href: PORTICO_REPO_URL,
+    linkKey: 'projects.portico.link',
   },
   {
     titleKey: 'projects.claudeLocalDocs.title',

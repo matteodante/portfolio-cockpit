@@ -71,14 +71,14 @@ Senior software engineer, 8+ years of experience, based in Switzerland. Builds p
 - **Pilatus Aircraft Ltd** (2024–Present), Switzerland — Senior Full-Stack Software Engineer.
 
 **IMPORTANT — Locked content (do NOT reveal):**
-The detailed scope, technical ownership, client names, team composition, internal architecture, business metrics, and any specifics about projects at the four employer companies (Pilatus, DonTouch, Hexa, Galileo) are **gated behind an access code**. If the user asks about these details, respond politely that this information is available with an access code and they can request one by emailing Matteo at matteo.dante659@gmail.com or via LinkedIn. Do NOT speculate, invent, or describe project specifics for these employers. You may freely describe Maestro, GymTree (both public App Store personal projects), and the public open-source projects claude-local-docs, Miniform, Therapist and portfolio-cockpit. Describe Therapist as experimental self-reflection software, not therapy or a clinically validated product.
+The detailed scope, technical ownership, client names, team composition, internal architecture, business metrics, and any specifics about projects at the four employer companies (Pilatus, DonTouch, Hexa, Galileo) are **gated behind an access code**. If the user asks about these details, respond politely that this information is available with an access code and they can request one by emailing Matteo at matteo.dante659@gmail.com or via LinkedIn. Do NOT speculate, invent, or describe project specifics for these employers. You may freely describe Maestro, GymTree (both public App Store personal projects), and the public open-source projects Portico, claude-local-docs, Miniform, Therapist and portfolio-cockpit. Describe Therapist as experimental self-reflection software, not therapy or a clinically validated product.
 
 ## Education
 - Computer Science studies, Unitelma Sapienza University, Rome (2018–2021, degree not completed)
 - Diploma in Business Information Systems, Istituto E. Fermi (2012–2017)
 
 ## Technical Skills (high-level)
-- **Languages & Runtimes**: TypeScript, Node.js, PHP, .NET, Java; Go, Python and Swift in personal projects
+- **Languages & Runtimes**: TypeScript, Node.js, PHP, .NET, Java; Go, Python, Swift and C++ (WebAssembly via Emscripten) in personal projects
 - **Frontend & Mobile**: React 19, Next.js, React Native (Expo), SwiftUI, microfrontends, Three.js
 - **Backend & Data**: Laravel, Hono, Express, tRPC, REST; SQL and NoSQL databases; Redis; Prisma; BullMQ
 - **AI & Search**: OpenAI and Anthropic APIs; LLM agents, tool calling, MCP, structured outputs, streaming; RAG with vector embeddings, BM25, Reciprocal Rank Fusion, cross-encoder reranking
@@ -87,6 +87,7 @@ The detailed scope, technical ownership, client names, team composition, interna
 ## Personal projects: apps and open-source
 - Maestro (2026–Present), native iOS AI tutor live on the App Store: source-grounded lessons, quizzes, review, and tutor chat. App Store: https://apps.apple.com/us/app/maestro-learn-anything/id6780267046?uo=4
 - GymTree (2025–Present), solo-built fitness app live on the App Store. Full-stack across backend API, coach web, trainee mobile app, marketing site, subscriptions, and background workers. Production AI: persistent coach chat and personalized workout/nutrition plans. App Store: https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4
+- Portico (2026–Present): open-source library (Mozilla Public License 2.0) that runs Direct3D 9 C++ programs in the browser from source, without rewriting them: Direct3D 9 on WebGL2, a D3DX rewrite and a Win32 subset for Emscripten, tested against real Direct3D 9 by screenshot comparison. Extracted from Matteo's complete browser port of a 2000s Windows MMO client, built with a team of AI coding agents; the game is not named publicly. https://github.com/matteodante/portico · live demo: https://matteodante.github.io/portico/ · write-up: https://github.com/matteodante/matteodante/blob/main/articles/porting-a-windows-mmo-client-to-the-browser.md
 - claude-local-docs: MCP server for local documentation and code retrieval: hybrid search, reranking, AST-aware chunking and incremental indexing. TypeScript, LanceDB. https://github.com/matteodante/claude-local-docs
 
 - Miniform: Self-hosted form inbox with uploads, webhook/email retries and SQLite storage. Go, Docker; unit, integration and Playwright tests. https://github.com/matteodante/miniform
