@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-09T20:11:43.979018+00:00",
+  "generatedAt": "2026-10-16T10:43:49.953880+00:00",
   "title": "Design System: Portfolio Cockpit",
   "extensions": {
     "colorMeta": {
@@ -319,6 +319,11 @@
         "name": "contact-film",
         "value": "Silent 7s native video loop; 1920×1270 H264, 4,151,303 bytes",
         "purpose": "Original H3 lunar scene starts only when visible with motion enabled. Offscreen/hidden/cleanup pauses it. NoJS/cold reduced mode requests no MP4; autoplay rejection/error preserves the poster."
+      },
+      {
+        "name": "blog-cover-drift",
+        "value": "translate 0 -4.5% → 0 4.5% over the cover's view() timeline, scale 1.1",
+        "purpose": "Article covers drift inside their frame while scrolling (CSS scroll-driven animation); off with reduced motion."
       }
     ],
     "breakpoints": [
@@ -485,6 +490,14 @@
       "description": "Compact edge instruments over the full 3D world. Shared desktop/touch navigation uses a native menu; the live runtime adds contextual docking, telemetry and turn controls. See DESIGN.md and the cockpit validation report for the implemented scene and performance boundaries.",
       "html": "<div class=\"ds-flight-hud\"><header><span>Matteo Dante<small>Playable CV</small></span><button type=\"button\">Menu</button></header><footer><span>Free flight<br><b>0.0</b></span><span>Choose a planet to explore</span><button type=\"button\">Open AI chat →</button></footer></div>",
       "css": ".ds-flight-hud{position:relative;min-height:360px;background:#05060a;color:#f2ede3;font-family:\"Space Grotesk\",sans-serif}.ds-flight-hud header,.ds-flight-hud footer{position:absolute;left:24px;right:24px;display:flex;align-items:center;justify-content:space-between;gap:24px}.ds-flight-hud header{top:20px}.ds-flight-hud footer{bottom:26px}.ds-flight-hud small{display:block;margin-top:4px;color:#c4beb4;font-size:11px}.ds-flight-hud b{font-family:monospace;font-size:24px;font-weight:400}.ds-flight-hud button{min-height:48px;padding:12px 18px;border:1px solid #77716a;border-radius:2px;background:#111318db;color:inherit}.ds-flight-hud button:focus-visible{outline:2px solid #ff6b35;outline-offset:4px}@media(max-width:799px){.ds-flight-hud header,.ds-flight-hud footer{left:16px;right:16px;gap:12px}.ds-flight-hud footer{flex-wrap:wrap;font-size:12px}}"
+    },
+    {
+      "name": "Article Entry and Reading Column",
+      "kind": "card",
+      "refersTo": "blog",
+      "description": "The English-only blog (/en/blog): a framed 3:2 cover beside date, reading time, Unbounded title and muted subtitle; articles read in a 680px Space Grotesk column with orange link underlines and list markers.",
+      "html": "<a class=\"ds-article-entry\" href=\"#\"><span class=\"ds-article-cover\"></span><span class=\"ds-article-text\"><span class=\"ds-article-meta\"><time>16 October 2026</time><span>11-minute read</span></span><strong>Porting a Windows client to the browser</strong><span class=\"ds-article-sub\">The platform layer, the loop that never returns, and what we measured.</span></span></a><p class=\"ds-article-prose\">A paragraph of the reading column with <a href=\"#\">an inline link</a>.</p>",
+      "css": ".ds-article-entry { display: grid; grid-template-columns: 1.55fr 1fr; gap: 32px; align-items: end; padding-top: 24px; border-top: 1px solid #f2ede333; color: #f2ede3; text-decoration: none; font-family: var(--font-body), sans-serif; } .ds-article-cover { aspect-ratio: 3 / 2; border: 1px solid #f2ede333; border-radius: 2px; background: linear-gradient(135deg, #14161c, #0c0d11 60%, #ff6b3533); } .ds-article-text { display: grid; gap: 12px; } .ds-article-meta { display: flex; gap: 18px; color: #a7a5a1; font-size: 14px; font-variant-numeric: tabular-nums; } .ds-article-entry strong { font-family: var(--font-display), sans-serif; font-weight: 400; font-size: 28px; line-height: 1.16; letter-spacing: -0.02em; text-decoration: underline 2px transparent; text-underline-offset: 0.18em; transition: text-decoration-color 0.25s ease-out; } .ds-article-entry:hover strong { text-decoration-color: #ff6b35; } .ds-article-entry:focus-visible { outline: 2px solid #ff6b35; outline-offset: 10px; } .ds-article-sub { color: #a7a5a1; font-size: 17px; line-height: 1.6; } .ds-article-prose { max-width: 680px; margin-top: 32px; color: #ddd8ce; font-family: var(--font-body), sans-serif; font-size: 19px; line-height: 1.75; } .ds-article-prose a { color: #f2ede3; text-decoration: underline 1px #ff6b35; text-underline-offset: 0.2em; }"
     }
   ],
   "narrative": {
@@ -526,7 +539,8 @@
       "Do preserve the toy character across the existing cockpit model and original generated landing artwork, with recorded provenance.",
       "Do use the owner-approved smiling portrait and its matching avatar edit, alongside actual shipped product imagery.",
       "Do retain official logo provenance, relationship captions and complete static access to the wall's ten items, distinguishing personal work from clients.",
-      "Do keep clean settled photographs and the composed astronaut fallback; extend input feedback only through the hero’s decorative text and edge layers."
+      "Do keep clean settled photographs and the composed astronaut fallback; extend input feedback only through the hero’s decorative text and edge layers.",
+      "Do read articles in a 680px Space Grotesk column at 19px/1.75, with covers and diagrams on the wider column and orange only for links, list markers and actions."
     ],
     "donts": [
       "Don't restore the orbit brand symbol, service-row icons or raw GLB renders as landing artwork.",
