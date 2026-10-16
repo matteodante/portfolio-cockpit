@@ -346,5 +346,6 @@
   "projects.portico.title": "Portico",
   "projects.portico.desc": "Libreria open source che porta nel browser programmi C++ Direct3D 9 dal sorgente, senza riscriverli: Direct3D 9 su WebGL2, D3DX e un sottoinsieme di Win32 per Emscripten, verificata contro il Direct3D 9 reale. Nata dal porting completo nel browser di un client MMO per Windows.",
   "projects.portico.badge": "OSS",
-  "projects.portico.link": "Apri GitHub"
+  "projects.portico.link": "Apri GitHub",
+  "home.nav.blog": "Blog"
 }

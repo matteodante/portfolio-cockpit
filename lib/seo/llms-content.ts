@@ -55,6 +55,10 @@ ${pageLinks}
 - [claude-local-docs](${CLAUDE_LOCAL_DOCS_REPO_URL}): open-source documentation search tooling using local indexing and retrieval.
 - [Portico](${PORTICO_REPO_URL}): open-source library that runs Direct3D 9 C++ programs in the browser from source.
 
+## Articles
+
+- [Articles](${BASE_URL}/en/blog): long-form notes, in English, on software Matteo has built.
+
 ## Contact
 
 - [Discuss a project on Cal.com](${CAL_BOOKING_URL}): Matteo's project booking page.

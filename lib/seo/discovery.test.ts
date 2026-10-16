@@ -113,7 +113,7 @@ describe('public search discovery', () => {
 
   test('sitemap contains canonical public destinations and matching images', () => {
     const entries = sitemap()
-    expect(entries).toHaveLength(14)
+    expect(entries).toHaveLength(15)
     expect(new Set(entries.map((entry) => entry.url)).size).toBe(entries.length)
     for (const entry of entries) {
       const url = new URL(entry.url)

@@ -974,3 +974,21 @@ are recorded in `docs/design/home-assistant.md`; deployment is unverified.
 
 Analytics footer preferences reserve 144px below their left-aligned button
 to clear the persistent chat and motion controls (2026-09-10 activation QA).
+
+
+### Articles (blog) — 2026-10-16
+
+`/en/blog` and `/en/blog/<slug>` (English only; `/it` redirects) extend the
+commercial reading surface: the shared header with a current "Blog" link,
+Unbounded 700 titles (`clamp(48px, 7vw, 96px)` on the index,
+`clamp(36px, 4.4vw, 62px)` on an article), Space Grotesk prose at 19px/1.75
+in a 680px column (17.5px on phones), and Unbounded 400 section headings.
+Covers sit in a one-pixel Frame Line border with two-pixel corners, 3:2 on
+the index and 16:9 above an article (3:2 on phones); the image drifts ±4.5%
+inside the frame with a CSS scroll-driven animation, disabled for reduced
+motion. Code, tables, quotes and Mermaid diagrams use the Panel fill and
+Frame Line border; diagrams are drawn in the browser with Mermaid's base
+theme set to the palette. Orange marks only actions, link underlines and
+list markers. Articles, covers and their provenance live in the public
+`matteodante/matteodante` repository; the brief is
+`.impeccable/surfaces/app-lang-blog-page-tsx.md`.

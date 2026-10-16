@@ -44,7 +44,7 @@ function Arrow() {
   )
 }
 
-function BookingLink({
+export function BookingLink({
   label,
   shortLabel,
   compact = false,
@@ -140,6 +140,9 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           </Link>
           <Link className="landing-work-link" href="#work">
             {t('home.nav.work')}
+          </Link>
+          <Link className="landing-work-link" href="/en/blog" hrefLang="en">
+            {t('home.nav.blog')}
           </Link>
           <LanguageSwitcher locale={locale} />
           <BookingLink
@@ -365,6 +368,9 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               <div className="contact-socials">
                 <Link href={LINKEDIN_URL}>LinkedIn</Link>
                 <Link href={GITHUB_URL}>GitHub</Link>
+                <Link href="/en/blog" hrefLang="en">
+                  {t('home.nav.blog')}
+                </Link>
               </div>
               <Link
                 className="cockpit-invitation"
