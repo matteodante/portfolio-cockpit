@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portico demo · Matteo Dante</title>
+<meta name="description" content="Microsoft's Direct3D 9 tutorials, compiled unchanged to WebAssembly and running on Portico.">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #05060a; --fg: #f2ede3; --muted: #a7a5a1; --card: #0c0d11; --line: #f2ede333; --accent: #ff6b35;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, sans-serif; }
+  main { max-width: 880px; margin: 0 auto; padding: 56px 20px 72px; }
+  h1 { font-size: 2.2rem; margin: 0 0 10px; letter-spacing: -0.01em; }
+  p.lead { color: var(--muted); margin: 0 0 32px; max-width: 640px; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  li a { display: flex; gap: 16px; align-items: baseline; padding: 16px 18px; background: var(--card);
+         border: 1px solid var(--line); border-radius: 2px; color: inherit; text-decoration: none; }
+  li a:hover, li a:focus-visible { border-color: var(--accent); outline: none; }
+  .n { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 600; min-width: 1.5em; }
+  .t { font-weight: 600; }
+  .d { color: var(--muted); }
+  #jspi { margin: 0 0 24px; padding: 12px 14px; border-radius: 2px; border: 1px solid var(--accent); display: none; }
+  footer { margin-top: 40px; color: var(--muted); font-size: 0.92rem; }
+  footer a { color: var(--fg); text-decoration: underline 1px var(--accent); text-underline-offset: 0.2em; }
+  ::selection { background: var(--accent); color: var(--bg); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Portico</h1>
+  <p class="lead">Microsoft's Direct3D 9 tutorials from the DirectX SDK, compiled unchanged to WebAssembly. Their
+    Direct3D 9 calls run on WebGL2, their Win32 window and message loop on this page.</p>
+  <p id="jspi">This browser lacks WebAssembly JSPI, which the samples need: use Chrome or Edge 137+, Firefox 153+ or
+    Safari 27+.</p>
+  <ul>
+    <li><a href="tut01_createdevice.html"><span class="n">1</span><span><span class="t">CreateDevice</span>
+      <span class="d">— a device and a cleared back buffer</span></span></a></li>
+    <li><a href="tut02_vertices.html"><span class="n">2</span><span><span class="t">Vertices</span>
+      <span class="d">— a vertex buffer of pre-transformed, colored vertices</span></span></a></li>
+    <li><a href="tut03_matrices.html"><span class="n">3</span><span><span class="t">Matrices</span>
+      <span class="d">— world, view and projection transforms</span></span></a></li>
+    <li><a href="tut04_lights.html"><span class="n">4</span><span><span class="t">Lights</span>
+      <span class="d">— a material and a directional light</span></span></a></li>
+    <li><a href="tut05_textures.html"><span class="n">5</span><span><span class="t">Textures</span>
+      <span class="d">— a texture loaded with D3DX and texture stages</span></span></a></li>
+  </ul>
+  <footer>
+    <p>Portico is the Direct3D 9 layer of a complete browser port of a Windows MMO client, described in
+      <a href="/en/blog/porting-a-windows-mmo-client-to-the-browser">this article</a>. The library is private for
+      now: if you would like to use it, <a href="mailto:matteo.dante659@gmail.com">write to Matteo</a>.</p>
+    <p>© 2026 <a href="/en">Matteo Dante</a>. The samples are Microsoft's (<a href="LICENSE-samples.txt">MIT
+      license</a>). Direct3D is a trademark of Microsoft; Portico is not affiliated with Microsoft.</p>
+  </footer>
+</main>
+<script>
+  if (!('Suspending' in WebAssembly && 'promising' in WebAssembly)) document.getElementById('jspi').style.display = 'block';
+</script>
+</body>
+</html>

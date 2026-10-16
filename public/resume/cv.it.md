@@ -21,7 +21,7 @@ Svizzera · 1998 · matteo.dante659@gmail.com · [matteodante.it](https://matteo
 
 ## Profilo
 
-Senior software engineer con oltre 8 anni tra aviazione, piattaforme consumer e retail. Progetto applicazioni web e servizi backend. Realizzo in autonomia due app su App Store e strumenti open source per AI, ricerca documentale e programmi C++ per Windows nel browser.
+Senior software engineer con oltre 8 anni tra aviazione, piattaforme consumer e retail. Progetto applicazioni web e servizi backend. Realizzo in autonomia due app su App Store e strumenti open source per AI e ricerca documentale, e una libreria che porta nel browser programmi C++ per Windows.
 
 ---
 
@@ -62,8 +62,8 @@ Tutor AI iOS su App Store: lezioni con fonti, quiz e chat. SwiftUI, SwiftData.
 **[GymTree](https://apps.apple.com/it/app/gymtree-palestra-coach-ai/id6761392403?uo=4)**
 App fitness su App Store: backend, web coach, app mobile, abbonamenti e coach AI. Expo, Hono.
 
-**[Portico](https://github.com/matteodante/portico)**
-Libreria open source: porta nel browser programmi C++ Direct3D 9 dal sorgente, verificata contro il Direct3D 9 reale. C++, WebGL2.
+**[Portico](https://matteodante.it/portico-demo/index.html)**
+Libreria, per ora privata: porta nel browser programmi C++ Direct3D 9 dal sorgente, verificata contro il Direct3D 9 reale. C++, WebGL2.
 
 **[claude-local-docs](https://github.com/matteodante/claude-local-docs)**
 Server MCP per documentazione e codice: ricerca ibrida, reranking e indicizzazione incrementale. TypeScript, LanceDB.

@@ -7,7 +7,6 @@ import {
   LINKEDIN_URL,
   MAESTRO_APP_STORE_URL,
   PORTFOLIO_REPO_URL,
-  PORTICO_REPO_URL,
 } from '@/lib/constants/contact'
 import { BASE_URL, CV_MARKDOWN_PATHS } from '@/lib/constants/site'
 import { MARKETING_PAGES } from '@/lib/seo/marketing-pages'
@@ -53,7 +52,7 @@ ${pageLinks}
 - [Maestro: Learn Anything](${MAESTRO_APP_STORE_URL}): personal iOS learning app with AI-assisted lessons, quizzes and tutor chat.
 - [GymTree: Workout & AI Coach](${GYMTREE_APP_STORE_URL}): personal fitness app with coaching and AI features.
 - [claude-local-docs](${CLAUDE_LOCAL_DOCS_REPO_URL}): open-source documentation search tooling using local indexing and retrieval.
-- [Portico](${PORTICO_REPO_URL}): open-source library that runs Direct3D 9 C++ programs in the browser from source.
+- [Portico demo](${BASE_URL}/portico-demo/index.html): Microsoft's Direct3D 9 tutorials running unchanged in the browser on Portico, a library that is private for now.
 
 ## Articles
 

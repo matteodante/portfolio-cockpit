@@ -23,7 +23,8 @@ of 2026-10-16 was made from the blobs and rebuilt LaTeX).
 Keep professional roles separate from personal projects. Go, Python and
 Swift are evidenced by personal projects. The current project selection is
 Maestro, GymTree, Portico, claude-local-docs, Miniform, Therapist and the
-portfolio. C++/WebAssembly is evidenced by Portico. Portico came out of a
+portfolio. C++/WebAssembly is evidenced by Portico, which is private since 2026-10-16:
+link its demo (`/portico-demo/index.html` on this site), not GitHub. Portico came out of a
 private browser port of a Windows MMO client: do not name that game.
 Describe Therapist as experimental. Keep detailed employer scope and
 metrics in the full CV only.
