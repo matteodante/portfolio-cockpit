@@ -15,6 +15,11 @@ Java work experience or projects from this entry.
   `private-src/chat-profile.md`.
 - Public skill labels: `lib/i18n/translations/{en,it}.json`.
 
+The `.enc` blobs are the source of truth for private content: before editing
+on a machine whose `private-src/` may be older, decrypt the current blobs
+into it first, or re-encrypting will drop later changes (the Portico update
+of 2026-10-16 was made from the blobs and rebuilt LaTeX).
+
 Keep professional roles separate from personal projects. Go, Python and
 Swift are evidenced by personal projects. The current project selection is
 Maestro, GymTree, Portico, claude-local-docs, Miniform, Therapist and the
