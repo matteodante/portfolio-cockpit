@@ -349,6 +349,25 @@ never leaks via a cached private response.
 For the PDFs, recompile from the `.tex` sources (`tectonic
 private-src/cv-en.tex`) before encrypting.
 
+## Blog (`app/[lang]/blog/`, `lib/blog/`)
+
+- Articles are Markdown files with YAML frontmatter (`title`, `subtitle`,
+  `date`, optional `cover`, `coverAlt`, `draft`) in the `articles/` folder
+  of the public profile repository `matteodante/matteodante`, read from
+  GitHub (`lib/blog/source.ts`). Publishing or fixing one is a push
+  there; no deploy of this site.
+- The list, the article pages and the fetches revalidate every five
+  minutes (`ARTICLES_REVALIDATE = 300`), so fixes reach readers before
+  shared posts spread. `BLOG_LOCAL_DIR=<articles folder>` reads a local
+  checkout to preview before pushing.
+- English only: `/it/blog/...` redirects to the English page. The
+  subtitle is the page description and the link preview text.
+- `lib/blog/markdown.ts`: GFM, heading slugs, highlighted code; ```` ```mermaid ````
+  blocks become figures drawn in the browser (`MermaidDiagrams`).
+- Keep the slug when an article is renamed, since shared links point to
+  it. After a change to the title, description or cover, re-scrape the
+  URL in LinkedIn's Post Inspector to refresh the preview.
+
 ## SEO
 
 - `app/[lang]/layout.tsx` injects JSON-LD from `lib/seo/schemas.ts`
