@@ -71,8 +71,11 @@ work; implement the requested scope.
 
 ## Design and conversion work
 
-- Use the global Impeccable skill at `~/.agents/skills/impeccable`,
-  managed by `npx skills -g`. Do not install a second copy in this repo.
+- Use the global Impeccable skill at `~/.agents/skills/impeccable`
+  (Claude Code reads its copy at `~/.claude/skills/impeccable`), installed
+  and updated with Impeccable's own CLI (`npx impeccable install|update
+  --global`), which also installs its engine and its design hooks. Do not
+  install a second copy in this repo.
 - Read `PRODUCT.md` for confirmed product truth, `DESIGN.md` for the
   existing visual system, and the target's `.impeccable/surfaces/`
   brief for its purpose. Do not turn proposals into confirmed facts.
@@ -120,7 +123,7 @@ bun run analyze          # ANALYZE=true bun run build
 bun run design:context   # global Impeccable: landing context (once/session)
 bun run design:doctor    # Impeccable artifact/schema checks
 bun run design:check     # landing static design detector
-bun run design:update    # npx skills update impeccable --global --yes
+bun run design:update    # npx impeccable@latest update --global --yes
 ```
 
 Single test: `bun test path/to/file.test.ts -t "name"`. Bun runs tests

@@ -68,7 +68,7 @@ bun run analyze          # bundle analyzer
 bun run design:context   # load product, design and landing brief
 bun run design:doctor    # validate Impeccable context/config schemas
 bun run design:check     # static design checks for the landing
-bun run design:update    # update only the global Impeccable skill via npx skills
+bun run design:update    # update the global Impeccable skill with Impeccable's CLI
 ```
 
 `setup:styles` regenerates `lib/styles/css/{tailwind,root}.css` from
@@ -88,9 +88,10 @@ Impeccable setup, how to choose a command, and the checks required for
 shipping a visual change. [`docs/redesign-roadmap.md`](./docs/redesign-roadmap.md)
 records the starting evidence, priorities, and measurement plan.
 
-Impeccable is a global skill managed with `npx skills -g`, under
-`~/.agents/skills/impeccable`; no copy or application dependency is
-installed in this repo. Product context, design config and surface
+Impeccable is a global skill managed with its own CLI
+(`npx impeccable install|update --global`), under
+`~/.agents/skills/impeccable` and `~/.claude/skills/impeccable`; no copy
+or application dependency is installed in this repo. Product context, design config and surface
 briefs are versioned. The design commands use that global installation
 on macOS/Linux. See the workflow guide for first-time installation.
 

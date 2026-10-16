@@ -1,29 +1,37 @@
 # Design workflow
 
-Impeccable is installed globally through `npx skills`, at
-`~/.agents/skills/impeccable`. Keep tooling global and project knowledge
-in this repo. Verified on 2026-09-08: skill 4.2.2, engine 0.1.3.
+Impeccable is installed globally with its own CLI, at
+`~/.agents/skills/impeccable` (Codex and other agents) and
+`~/.claude/skills/impeccable` (Claude Code). Keep tooling global and project
+knowledge in this repo. Verified on 2026-10-16: skill 4.6.0, engine 0.1.15.
 
 ## Tooling
 
-If Impeccable is already installed, update only that skill:
+If Impeccable is already installed, update it:
 
 ```bash
 bun run design:update
-# equivalent: npx skills update impeccable --global --yes
+# equivalent: npx --yes impeccable@latest update --global --yes
 ```
 
-First-time installation on another machine:
+First-time installation on another machine (from the home folder):
 
 ```bash
-npx skills add pbakaus/impeccable --skill impeccable --global --agent codex --yes
+npx --yes impeccable@latest install --global --providers=claude,codex --yes
 ```
+
+Use one manager only: an installation made earlier with `npx skills add` is
+found and updated by `impeccable update --global` as well. The user-level
+install also writes the design hooks: Claude Code's go in
+`~/.claude/settings.json` (not `~/.claude/settings.local.json`, which Claude
+Code reads only for sessions started in the home folder), Codex's in
+`~/.codex/hooks.json`. Hooks load when a session starts.
 
 The skill ships a launcher that resolves its engine and downloads it
 on first use if needed. The `design:*` commands expect the standard
 global Skills path on macOS/Linux. They do not install dependencies
-in the application or modify agent hooks. New agent sessions discover
-the updated global skill.
+in the application; `design:update` also refreshes the user-level design
+hooks. New agent sessions discover the updated global skill.
 
 ```bash
 bun run design:context   # once at the start of a landing design session

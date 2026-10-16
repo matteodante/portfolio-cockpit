@@ -24,7 +24,7 @@
     "analyze": "ANALYZE=true bun run build",
     "test": "bun test",
     "setup:styles": "bun ./lib/styles/scripts/setup-styles.ts",
-    "design:update": "npx --yes skills update impeccable --global --yes",
+    "design:update": "npx --yes impeccable@latest update --global --yes",
     "design:context": "\"$HOME/.agents/skills/impeccable/scripts/impeccable\" context --target 'app/[lang]/page.tsx'",
     "design:doctor": "\"$HOME/.agents/skills/impeccable/scripts/impeccable\" doctor --json",
     "design:check": "\"$HOME/.agents/skills/impeccable/scripts/impeccable\" detect 'app/[lang]/page.tsx' components/landing lib/styles/css/global.css",
