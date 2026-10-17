@@ -962,6 +962,14 @@
   .landing-work-link {
     display: none;
   }
+  /* The blog is the one header link kept on phones. */
+  .landing-header .landing-blog-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 6px;
+    font-size: 10px;
+  }
   .brand-languages {
     gap: 3px;
     font-size: 10px;
@@ -1161,6 +1169,16 @@
     right: 12px;
     bottom: calc(env(safe-area-inset-bottom) + 13px);
     font-size: 10px;
+  }
+}
+/* On the home the header also holds the language switcher: below 430px the name gives way to the blog link
+   (the avatar stays, and the hero shows the name right below). */
+@media (width < 430px) {
+  .landing-header-home .landing-brand {
+    min-width: 44px;
+  }
+  .landing-header-home .landing-brand > span {
+    display: none;
   }
 }
 @media (width < 360px) {

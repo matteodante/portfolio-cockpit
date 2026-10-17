@@ -126,7 +126,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
       <Link className="landing-skip" href="#services">
         {t('home.skip')}
       </Link>
-      <header className="landing-header">
+      <header className="landing-header landing-header-home">
         <Link className="landing-brand" href={`/${locale}`} aria-label={NAME}>
           <BrandAvatar />
           <span>{NAME}</span>
@@ -141,7 +141,11 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           <Link className="landing-work-link" href="#work">
             {t('home.nav.work')}
           </Link>
-          <Link className="landing-work-link" href="/en/blog" hrefLang="en">
+          <Link
+            className="landing-work-link landing-blog-link"
+            href="/en/blog"
+            hrefLang="en"
+          >
             {t('home.nav.blog')}
           </Link>
           <LanguageSwitcher locale={locale} />

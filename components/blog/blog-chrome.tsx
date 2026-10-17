@@ -46,7 +46,7 @@ export function BlogHeader() {
           aria-label={t('home.header.label')}
         >
           <Link
-            className="landing-work-link blog-nav-current"
+            className="landing-work-link landing-blog-link blog-nav-current"
             href={BLOG_PATH}
             aria-current="page"
           >

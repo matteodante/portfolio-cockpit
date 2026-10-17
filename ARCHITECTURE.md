@@ -362,6 +362,9 @@ private-src/cv-en.tex`) before encrypting.
   checkout to preview before pushing.
 - English only: `/it/blog/...` redirects to the English page. The
   subtitle is the page description and the link preview text.
+- The header's Blog link (`landing-blog-link`) is the one header link
+  kept on phones. Below 430px the home header shows only the avatar,
+  since it also holds the language switcher.
 - `lib/blog/markdown.ts`: GFM, heading slugs, highlighted code; ```` ```mermaid ````
   blocks become figures drawn in the browser (`MermaidDiagrams`).
 - Keep the slug when an article is renamed, since shared links point to
