@@ -13,7 +13,7 @@ export const CLAUDE_LOCAL_DOCS_REPO_URL =
   `${GITHUB_URL}/claude-local-docs` as const
 export const PORTFOLIO_REPO_URL = `${GITHUB_URL}/portfolio-cockpit` as const
 export const MINIFORM_REPO_URL = `${GITHUB_URL}/miniform` as const
-// Portico is private for now: its public face is the demo on this site.
+export const PORTICO_REPO_URL = `${GITHUB_URL}/portico` as const
 export const PORTICO_DEMO_URL =
   'https://matteodante.it/portico-demo/index.html' as const
 export const THERAPIST_REPO_URL = `${GITHUB_URL}/therapist` as const

@@ -62,8 +62,8 @@ iOS AI tutor on the App Store: source-grounded lessons, quizzes and chat. SwiftU
 **[GymTree](https://apps.apple.com/us/app/gymtree-workout-ai-coach/id6761392403?uo=4)**
 Fitness app on the App Store: backend, coach web, mobile app, subscriptions and AI coach. Expo, Hono.
 
-**[Portico](https://matteodante.it/portico-demo/index.html)**
-Library, private for now: runs Direct3D 9 C++ programs in the browser from source, tested against real Direct3D 9. C++, WebGL2.
+**[Portico](https://github.com/matteodante/portico)**
+Open-source library (MPL-2.0): runs Direct3D 9 C++ programs in the browser from source, tested against real Direct3D 9. C++, WebGL2.
 
 **[claude-local-docs](https://github.com/matteodante/claude-local-docs)**
 MCP server for documents and code: hybrid search, reranking and incremental indexing. TypeScript, LanceDB.

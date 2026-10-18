@@ -344,8 +344,8 @@
   "projects.therapist.badge": "experimental",
   "projects.therapist.link": "Open GitHub",
   "projects.portico.title": "Portico",
-  "projects.portico.desc": "Library that runs Direct3D 9 C++ programs in the browser from source, without rewriting them: Direct3D 9 on WebGL2, D3DX and a Win32 subset for Emscripten, tested against real Direct3D 9. Private for now; the demo runs Microsoft's DirectX tutorials unchanged. Extracted from a complete browser port of a Windows MMO client.",
-  "projects.portico.badge": "private",
-  "projects.portico.link": "Open demo",
+  "projects.portico.desc": "Open-source library for running Direct3D 9 C++ programs in the browser from source: Direct3D 9 on WebGL2, D3DX and a Win32 subset for Emscripten, tested against Windows Direct3D 9. MPL-2.0; the demo runs Microsoft's DirectX tutorials unchanged.",
+  "projects.portico.badge": "open source",
+  "projects.portico.link": "Source and docs",
   "home.nav.blog": "Blog"
 }
