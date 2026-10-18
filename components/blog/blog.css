@@ -105,7 +105,6 @@
   column-gap: 64px;
   align-items: end;
   padding-top: 40px;
-  border-top: 1px solid var(--landing-line);
 }
 .blog-entry-text {
   display: grid;
