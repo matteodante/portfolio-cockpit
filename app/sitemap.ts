@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }))
     ),
     // The blog is in English only; its articles come from GitHub and are reached from this page.
-    { url: `${BASE_URL}/en/blog`, lastModified: '2026-10-16' },
+    { url: `${BASE_URL}/en/blog`, lastModified: '2026-10-19' },
     ...locales.map((locale) => ({
       url: `${BASE_URL}${CV_MARKDOWN_PATHS[locale]}`,
       lastModified: '2026-07-08',

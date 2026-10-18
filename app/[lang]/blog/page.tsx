@@ -11,7 +11,7 @@ import '@/components/landing/landing.css'
 import '@/components/blog/blog.css'
 
 // The blog is in English only: /it/blog redirects here. Articles come from GitHub (lib/blog/source.ts), so the
-// list is rebuilt at most once an hour.
+// list revalidates every five minutes.
 export const revalidate = 300
 
 type Props = { params: Promise<{ lang: string }> }

@@ -113,6 +113,13 @@ describe('public search discovery', () => {
 
   test('sitemap contains canonical public destinations and matching images', () => {
     const entries = sitemap()
+    // Date-only revisions follow the author's calendar day, including before midnight UTC.
+    const today = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Rome',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(new Date())
     expect(entries).toHaveLength(15)
     expect(new Set(entries.map((entry) => entry.url)).size).toBe(entries.length)
     for (const entry of entries) {
@@ -122,7 +129,7 @@ describe('public search discovery', () => {
       expect(url.pathname).not.toStartWith('/api/')
       expect(entry.lastModified).toMatch(/^\d{4}-\d{2}-\d{2}$/)
       expect(Date.parse(String(entry.lastModified))).toBeLessThanOrEqual(
-        Date.now()
+        Date.parse(today)
       )
       if (entry.alternates) {
         const locale = url.pathname.split('/')[1] as Locale

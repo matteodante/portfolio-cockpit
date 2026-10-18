@@ -7,11 +7,12 @@ import { getArticle, getArticles } from '@/lib/blog/source'
 import { NAME } from '@/lib/constants/contact'
 import { BASE_URL } from '@/lib/constants/site'
 import { BCP47_LOCALE, isValidLocale, OG_LOCALE } from '@/lib/i18n/config'
+import { socialImages } from '@/lib/seo/social'
 import '@/components/landing/landing.css'
 import '@/components/blog/blog.css'
 
 // The blog is in English only: /it/blog/<slug> redirects here. Articles come from GitHub (lib/blog/source.ts):
-// pages are rebuilt at most once an hour, and an article pushed after the build renders on its first visit.
+// pages revalidate every five minutes, and an article pushed after the build renders on its first visit.
 export const revalidate = 300
 
 type Props = { params: Promise<{ lang: string; slug: string }> }
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${BASE_URL}${articlePath(article.slug)}`
   const images = article.cover
     ? [{ url: article.cover.src, alt: article.cover.alt }]
-    : undefined
+    : socialImages('home', 'en')
   return {
     title: { absolute: `${article.title} · ${NAME}` },
     description: article.subtitle,
