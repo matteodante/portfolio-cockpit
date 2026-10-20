@@ -137,7 +137,7 @@ export const getArticle = cache(
           ? `/en/blog/${other.slug}${other.hash ?? ''}`
           : new URL(href, BLOB_BASE).href
       },
-      asset: (src) => new URL(src, RAW_BASE).href,
+      asset: assetUrl,
     })
     return { ...article.summary, html, hasDiagrams }
   }

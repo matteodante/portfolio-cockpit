@@ -13,7 +13,7 @@ export type LinkResolver = {
   /** A relative link in the article (another article, a file in the repo). */
   link: (href: string) => string
   /** A relative image path in the article. */
-  asset: (src: string) => string
+  asset: (src: string) => string | Promise<string>
 }
 
 const EXTERNAL = /^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i
@@ -53,7 +53,8 @@ function remarkMermaid() {
 
 /** Relative links and images point at the repository; tables scroll on their own on narrow screens. */
 function rehypeArticleLinks(resolve: LinkResolver) {
-  return (tree: HastRoot) => {
+  return async (tree: HastRoot) => {
+    const images: Element[] = []
     visit(tree, 'element', (node: Element, index, parent) => {
       const props = node.properties
       if (node.tagName === 'a' && typeof props.href === 'string') {
@@ -61,9 +62,26 @@ function rehypeArticleLinks(resolve: LinkResolver) {
         else if (/^https?:/i.test(props.href)) props.rel = ['noopener']
       }
       if (node.tagName === 'img' && typeof props.src === 'string') {
-        if (!EXTERNAL.test(props.src)) props.src = resolve.asset(props.src)
+        images.push(node)
         props.loading = 'lazy'
         props.decoding = 'async'
+      }
+      if (node.tagName === 'p') {
+        const content = node.children.filter(
+          (child) => child.type !== 'text' || child.value.trim() !== ''
+        )
+        const imageOnly =
+          content.length > 0 &&
+          content.every(
+            (child) => child.type === 'element' && child.tagName === 'img'
+          )
+        if (imageOnly) {
+          node.tagName = 'figure'
+          props.className = ['article-preview']
+          if (content.length > 1) {
+            props.className.push('article-preview-gallery')
+          }
+        }
       }
       if (node.tagName === 'table' && parent && index !== undefined) {
         parent.children[index] = {
@@ -76,6 +94,14 @@ function rehypeArticleLinks(resolve: LinkResolver) {
       }
       return undefined
     })
+    await Promise.all(
+      images.map(async (node) => {
+        const src = node.properties.src
+        if (typeof src === 'string' && !EXTERNAL.test(src)) {
+          node.properties.src = await resolve.asset(src)
+        }
+      })
+    )
   }
 }
 

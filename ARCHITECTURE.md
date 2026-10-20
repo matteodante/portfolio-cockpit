@@ -359,7 +359,8 @@ private-src/cv-en.tex`) before encrypting.
 - The list, the article pages and the fetches revalidate every five
   minutes (`ARTICLES_REVALIDATE = 300`), so fixes reach readers before
   shared posts spread. `BLOG_LOCAL_DIR=<articles folder>` reads a local
-  checkout to preview before pushing.
+  checkout to preview before pushing, inlining both covers and article
+  images so unpublished assets are visible locally.
 - English only: `/it/blog/...` redirects to the English page. The
   subtitle is the page description and the link preview text.
 - The header's Blog link (`landing-blog-link`) is the one header link
@@ -367,6 +368,9 @@ private-src/cv-en.tex`) before encrypting.
   since it also holds the language switcher.
 - `lib/blog/markdown.ts`: GFM, heading slugs, highlighted code; ```` ```mermaid ````
   blocks become figures drawn in the browser (`MermaidDiagrams`).
+- Image-only Markdown paragraphs become screenshot figures. Put images on
+  consecutive lines in the same paragraph to group them; galleries wrap
+  on narrow screens and preserve complete screenshots without cropping.
 - Keep the slug when an article is renamed, since shared links point to
   it. After a change to the title, description or cover, re-scrape the
   URL in LinkedIn's Post Inspector to refresh the preview.

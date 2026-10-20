@@ -49,6 +49,36 @@ describe('renderMarkdown', () => {
     expect(html).toContain('<div class="article-table"><table>')
   })
 
+  test('waits for local preview assets and preserves external image URLs', async () => {
+    const { html } = await renderMarkdown(
+      '![local](images/app.jpg)\n![remote](https://example.com/app.jpg)',
+      {
+        ...resolve,
+        asset: async () => {
+          await Promise.resolve()
+          return 'data:image/jpeg;base64,cHJldmlldw=='
+        },
+      }
+    )
+    expect(html).toContain('src="data:image/jpeg;base64,cHJldmlldw=="')
+    expect(html).toContain('src="https://example.com/app.jpg"')
+    expect(html).not.toContain('[object Promise]')
+  })
+
+  test('groups standalone screenshots without changing images mixed with prose', async () => {
+    const { html } = await renderMarkdown(
+      '![desktop](images/desktop.jpg)\n\n![first](images/first.jpg)\n![second](images/second.jpg)\n\nText ![inline](images/inline.jpg)',
+      resolve
+    )
+    expect(html).toContain('<figure class="article-preview"><img')
+    expect(html).toContain(
+      '<figure class="article-preview article-preview-gallery"><img'
+    )
+    expect(html).toContain('<p>Text <img')
+    expect(html.match(/<figure/g)).toHaveLength(2)
+    expect(html.match(/loading="lazy"/g)).toHaveLength(4)
+  })
+
   test('does not render raw HTML from the Markdown', async () => {
     const { html } = await renderMarkdown(
       'Hello <img src=x onerror=alert(1)>',
