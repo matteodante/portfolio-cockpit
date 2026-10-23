@@ -46,7 +46,7 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
         heading: 'Visitare il sito',
         body: [
           'Il sito è ospitato da Railway in un data center nell’Unione europea (Paesi Bassi). Per consegnare le pagine e proteggere il servizio, i server ricevono dati tecnici come indirizzo IP, browser e pagina richiesta.',
-          'Per limitare gli abusi, l’indirizzo IP di chi usa la chat, lo sblocco del CV o il modulo dei corsi viene contato per pochi minuti in un archivio temporaneo (Upstash Redis). Base giuridica: legittimo interesse alla sicurezza del sito.',
+          'Per limitare gli abusi, l’indirizzo IP di chi usa la chat, lo sblocco del CV o il modulo dei corsi viene contato per pochi minuti nella memoria del server, senza essere salvato. Base giuridica: legittimo interesse alla sicurezza del sito.',
         ],
       },
       {
@@ -91,7 +91,7 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       {
         heading: 'Fornitori e trasferimenti',
         body: [
-          'I fornitori sono Railway (hosting e database), Upstash (limiti di utilizzo), OpenAI (chat), Google (accesso e, con consenso, statistiche), PostHog (statistiche con consenso) e Cal.com (prenotazioni). Alcuni hanno sede negli Stati Uniti: in quel caso il trasferimento avviene con le garanzie previste dal GDPR, come le clausole contrattuali standard o il Data Privacy Framework.',
+          'I fornitori sono Railway (hosting e database), OpenAI (chat), Google (accesso e, con consenso, statistiche), PostHog (statistiche con consenso) e Cal.com (prenotazioni). Alcuni hanno sede negli Stati Uniti: in quel caso il trasferimento avviene con le garanzie previste dal GDPR, come le clausole contrattuali standard o il Data Privacy Framework.',
           'Non vendo i dati e non li uso per pubblicità.',
         ],
       },
@@ -131,7 +131,7 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
         heading: 'Visiting the site',
         body: [
           'The site is hosted by Railway in a data centre in the European Union (the Netherlands). To deliver pages and protect the service, the servers receive technical data such as IP address, browser and requested page.',
-          'To limit abuse, the IP address of anyone using the chat, the CV unlock or the courses form is counted for a few minutes in a temporary store (Upstash Redis). Legal basis: legitimate interest in the security of the site.',
+          'To limit abuse, the IP address of anyone using the chat, the CV unlock or the courses form is counted for a few minutes in the server’s memory, without being stored. Legal basis: legitimate interest in the security of the site.',
         ],
       },
       {
@@ -176,7 +176,7 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       {
         heading: 'Providers and transfers',
         body: [
-          'The providers are Railway (hosting and database), Upstash (usage limits), OpenAI (chat), Google (sign-in and, with consent, analytics), PostHog (analytics with consent) and Cal.com (bookings). Some are based in the United States: those transfers rely on the safeguards the GDPR provides, such as standard contractual clauses or the Data Privacy Framework.',
+          'The providers are Railway (hosting and database), OpenAI (chat), Google (sign-in and, with consent, analytics), PostHog (analytics with consent) and Cal.com (bookings). Some are based in the United States: those transfers rely on the safeguards the GDPR provides, such as standard contractual clauses or the Data Privacy Framework.',
           'I do not sell data or use it for advertising.',
         ],
       },
