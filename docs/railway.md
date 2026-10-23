@@ -41,7 +41,8 @@ needed.
   code, `matteodante-redirect`, answers every request with a permanent
   redirect (308) to the same path and query on `www`. Its whole
   configuration is this `vercel.json`, deployed with `vercel deploy --prod`
-  from a folder that holds it and an empty `empty/` directory:
+  from a folder that holds it and an empty `empty/` directory. The regex
+  rule also covers the root and trailing slashes, which `/:path*` missed:
 
   ```json
   {
@@ -49,8 +50,7 @@ needed.
     "buildCommand": "",
     "outputDirectory": "empty",
     "redirects": [
-      { "source": "/", "destination": "https://www.matteodante.it/", "permanent": true },
-      { "source": "/:path*", "destination": "https://www.matteodante.it/:path*", "permanent": true }
+      { "source": "/(.*)", "destination": "https://www.matteodante.it/$1", "permanent": true }
     ]
   }
   ```

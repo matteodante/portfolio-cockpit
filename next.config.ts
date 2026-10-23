@@ -42,6 +42,12 @@ const nextConfig: NextConfig = {
       { pathname: '/blog/images/**' },
     ],
   },
+  // The courses page has a different slug per language: a path without a
+  // locale (`/corsi`) gets the browser's locale, so map the other slug too.
+  redirects: async () => [
+    { source: '/en/corsi', destination: '/en/courses', permanent: true },
+    { source: '/it/courses', destination: '/it/corsi', permanent: true },
+  ],
   headers: async () => [
     {
       // Keep direct PDF viewing, but let download links choose the filename.
