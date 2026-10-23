@@ -31,8 +31,8 @@ function getOpenAI(): OpenAI {
 // surface for forged-assistant-turn injection (clients can post arbitrary
 // {role:'assistant'} entries and we don't sign them).
 
-// Primary rate limit: Vercel Firewall rule at the edge (10 req / 60s / IP).
-// This is in-app defense-in-depth — see lib/api/rate-limit.ts comment.
+// 10 req / 60s / IP: Upstash Redis when configured, otherwise in memory in
+// the single Railway instance (lib/api/rate-limit.ts).
 const chatLimiter = createRateLimiter({
   points: 10,
   windowSeconds: 60,

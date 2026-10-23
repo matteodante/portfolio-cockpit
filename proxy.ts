@@ -44,6 +44,6 @@ export const config = {
   // paths like `/.well-known/change-password` that the dotfile rule
   // alone wouldn't match.
   matcher: [
-    '/((?!_next|api|sitemap\\.xml|robots\\.txt|manifest\\.webmanifest|opengraph-image|twitter-image|icon|apple-icon|favicon\\.ico|\\.well-known|.*\\..*).*)',
+    '/((?!_next|api|ingest|sitemap\\.xml|robots\\.txt|manifest\\.webmanifest|opengraph-image|twitter-image|icon|apple-icon|favicon\\.ico|\\.well-known|.*\\..*).*)',
   ],
 }

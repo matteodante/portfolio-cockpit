@@ -231,8 +231,8 @@ The chat backend.
   (prefix `portfolio:chat`); the unlock limiter is 5 req / 60s / IP.
   Uses Upstash Redis when `UPSTASH_REDIS_REST_URL` /
   `UPSTASH_REDIS_REST_TOKEN` are set, in-memory sliding window
-  otherwise. `getClientIp` reads `x-vercel-forwarded-for` (signed by
-  Vercel edge). On Vercel, an edge Firewall rule adds another layer
+  otherwise. `getClientIp` reads `x-real-ip` (written by Railway's edge);
+  `x-vercel-forwarded-for` is trusted only on Vercel
 - Moderates the latest user message via `omni-moderation-latest`.
   Fails open on moderation errors (network/timeout)
 - Calls `openai.responses.create({ stream: true })` and pipes
@@ -352,15 +352,15 @@ private-src/cv-en.tex`) before encrypting.
 ## Blog (`app/[lang]/blog/`, `lib/blog/`)
 
 - Articles are Markdown files with YAML frontmatter (`title`, `subtitle`,
-  `date`, optional `cover`, `coverAlt`, `draft`) in the `articles/` folder
-  of the public profile repository `matteodante/matteodante`, read from
-  GitHub (`lib/blog/source.ts`). Publishing or fixing one is a push
-  there; no deploy of this site.
-- The list, the article pages and the fetches revalidate every five
-  minutes (`ARTICLES_REVALIDATE = 300`), so fixes reach readers before
-  shared posts spread. `BLOG_LOCAL_DIR=<articles folder>` reads a local
-  checkout to preview before pushing, inlining both covers and article
-  images so unpublished assets are visible locally.
+  `date`, optional `cover`, `coverAlt`, `draft`) in `content/blog/`, with
+  their images in `public/blog/images/`. Articles refer to images as
+  `images/<file>` and to each other as `<slug>.md`; `lib/blog/source.ts`
+  maps them to `/blog/images/<file>` and `/en/blog/<slug>`.
+- The build reads the folder and renders the list, every article, the
+  feed and the sitemap as static files, so a change reaches readers with
+  the next deploy. `next.config.ts` traces the folder into the server so an
+  unknown slug still answers 404. `BLOG_LOCAL_DIR=<folder>` reads another
+  folder (the tests' fixtures).
 - English only: `/it/blog/...` redirects to the English page. The
   subtitle is the page description and the link preview text.
 - The header's Blog link (`landing-blog-link`) is the one header link

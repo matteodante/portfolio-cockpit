@@ -21,6 +21,7 @@ import {
   MAESTRO_APP_STORE_URL_IT,
   NAME,
 } from '@/lib/constants/contact'
+import { PRIVACY_PATHS } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
 import { MARKETING_PAGES } from '@/lib/seo/marketing-pages'
 
@@ -375,6 +376,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <Link href="/en/blog" hrefLang="en">
                   {t('home.nav.blog')}
                 </Link>
+                <Link href={PRIVACY_PATHS[locale]}>Privacy</Link>
               </div>
               <Link
                 className="cockpit-invitation"

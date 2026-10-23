@@ -6,6 +6,9 @@ export const BASE_URL = 'https://matteodante.it'
 export const SITE_NAME = 'Matteo Dante'
 export const SITE_TITLE = 'Matteo Dante · Senior Software Engineer'
 
+/** The privacy policy, linked from footers, forms and the cookie panel. */
+export const PRIVACY_PATHS = { it: '/it/privacy', en: '/en/privacy' } as const
+
 export const ICON_PATH = '/icon.png'
 /** Approved natural portrait, shared by the hero and public identity schema. */
 export const PERSON_IMAGE_PATH = '/landing-v2/identity/matteo-polo-v1.webp'

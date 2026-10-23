@@ -3,8 +3,8 @@ import { getArticles } from '@/lib/blog/source'
 import { BASE_URL } from '@/lib/constants/site'
 
 // RSS 2.0 feed of the blog (https://www.rssboard.org/rss-specification), with the self link and permalink guids
-// the RSS profile recommends. Articles come from GitHub, so it revalidates with the blog pages.
-export const revalidate = 300
+// the RSS profile recommends. Built with the blog pages from content/blog/.
+export const dynamic = 'force-static'
 
 const ESCAPES: Record<string, string> = {
   '<': '&lt;',

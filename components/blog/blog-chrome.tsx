@@ -105,7 +105,6 @@ export function ArticleCover({
         fill
         sizes={sizes}
         priority={priority}
-        unoptimized={article.cover.src.startsWith('data:')}
       />
     </div>
   )

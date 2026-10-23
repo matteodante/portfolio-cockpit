@@ -10,9 +10,7 @@ import { socialImages } from '@/lib/seo/social'
 import '@/components/landing/landing.css'
 import '@/components/blog/blog.css'
 
-// The blog is in English only: /it/blog redirects here. Articles come from GitHub (lib/blog/source.ts), so the
-// list revalidates every five minutes.
-export const revalidate = 300
+// The blog is in English only: /it/blog redirects here. The list is built from content/blog/ (lib/blog/source.ts).
 
 type Props = { params: Promise<{ lang: string }> }
 

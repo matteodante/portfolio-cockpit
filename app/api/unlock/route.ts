@@ -14,9 +14,8 @@ const BodySchema = z.object({
   password: z.string().min(1).max(256),
 })
 
-// Defense-in-depth against brute force. Primary guard should be a Vercel
-// Firewall rule at the edge; this limiter activates additionally when
-// Upstash Redis is configured, otherwise an in-memory bucket per instance.
+// Brute-force guard: Upstash Redis when configured, otherwise an in-memory
+// bucket in the single Railway instance.
 const unlockLimiter = createRateLimiter({
   points: 5,
   windowSeconds: 60,

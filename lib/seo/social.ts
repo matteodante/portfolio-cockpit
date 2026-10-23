@@ -40,6 +40,7 @@ export const SOCIAL_PAGES = [
   'apps',
   'ai',
   'piuudito',
+  'courses',
   'cockpit',
 ] as const
 export type SocialPage = (typeof SOCIAL_PAGES)[number]
@@ -52,6 +53,7 @@ export const SOCIAL_COPY = {
     apps: ['App e software', 'Dall’idea al rilascio.'],
     ai: ['Automazioni AI', 'Partiamo dal tuo lavoro.'],
     piuudito: ['PiùUDITO · Caso studio', 'Tre siti per la stessa azienda.'],
+    courses: ['Corsi di AI', 'Uno a uno e piccoli gruppi.'],
     cockpit: ['Il mio CV, da giocare.', 'Esplora il cockpit.'],
   },
   en: {
@@ -60,6 +62,7 @@ export const SOCIAL_COPY = {
     apps: ['Apps & software', 'From idea to release.'],
     ai: ['AI automation', 'Start with your workflow.'],
     piuudito: ['PiùUDITO · Case study', 'Three websites for one business.'],
+    courses: ['AI courses', 'One-to-one and small groups.'],
     cockpit: ['My CV. Your mission.', 'Explore the cockpit.'],
   },
 } as const

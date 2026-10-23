@@ -15,6 +15,8 @@ import {
   trackMarketing,
   trackPage,
 } from '@/lib/analytics/client'
+import { POSTHOG_KEY, setPostHogConsent } from '@/lib/analytics/posthog'
+import { PRIVACY_PATHS } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
 import '@/components/analytics/analytics.css'
 
@@ -37,12 +39,18 @@ export default function MarketingAnalytics({
   const [editing, setEditing] = useState(false)
   const [bannerReady, setBannerReady] = useState(false)
   const it = locale === 'it'
+  // Analytics exist when either tool is configured: Google Analytics (id)
+  // or PostHog (NEXT_PUBLIC_POSTHOG_KEY). Both wait for the same choice.
+  const measured = Boolean(id || POSTHOG_KEY)
+  const tools = [POSTHOG_KEY && 'PostHog', id && 'Google Analytics']
+    .filter(Boolean)
+    .join(it ? ' e ' : ' and ')
   const cookieDescription = it
-    ? 'Con il tuo consenso, Google Analytics usa cookie per misurare le visite e le interazioni. Puoi cambiare scelta in qualsiasi momento.'
-    : 'With your consent, Google Analytics uses cookies to measure visits and interactions. You can change your choice at any time.'
+    ? `Con il tuo consenso, ${tools} misura le visite e le interazioni. Puoi cambiare scelta in qualsiasi momento.`
+    : `With your consent, ${tools} measures visits and interactions. You can change your choice at any time.`
   const necessaryDescription = it
-    ? 'Google Analytics non è attivo. Salviamo solo le preferenze necessarie al funzionamento del sito sul tuo dispositivo.'
-    : 'Google Analytics is not active. We only save preferences needed for the site to work on your device.'
+    ? 'Nessuno strumento di statistica è attivo. Salviamo solo le preferenze necessarie al funzionamento del sito sul tuo dispositivo.'
+    : 'No analytics tool is active. We only save preferences needed for the site to work on your device.'
   const rejectLabel = it ? 'Rifiuta' : 'Reject'
   const acknowledgeLabel = it ? 'Ho capito' : 'Got it'
 
@@ -53,15 +61,17 @@ export default function MarketingAnalytics({
   }, [isMarketingPage, consent, bannerReady])
 
   useEffect(() => {
+    const granted = consent === 'granted' && isMarketingPage
+    setPostHogConsent(granted)
     if (!id) return
-    if (consent === 'granted' && isMarketingPage) {
+    if (granted) {
       enableAnalytics(id)
       trackPage(pathname)
     } else disableAnalytics()
   }, [id, consent, pathname, isMarketingPage])
 
   useEffect(() => {
-    if (!id || consent !== 'granted' || !isMarketingPage) return
+    if (!measured || consent !== 'granted' || !isMarketingPage) return
     const onClick = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return
       const target = event.target.closest<HTMLElement>('[data-track]')
@@ -77,7 +87,7 @@ export default function MarketingAnalytics({
     }
     document.addEventListener('click', onClick)
     return () => document.removeEventListener('click', onClick)
-  }, [id, consent, isMarketingPage])
+  }, [measured, consent, isMarketingPage])
 
   if (consent === undefined || !isMarketingPage) return null
   const choose = (choice: 'granted' | 'denied') => {
@@ -92,7 +102,7 @@ export default function MarketingAnalytics({
           <h2 id="analytics-title">
             {it ? 'Cookie, scegli tu.' : 'Cookies. Your choice.'}
           </h2>
-          <p>{id ? cookieDescription : necessaryDescription}</p>
+          <p>{measured ? cookieDescription : necessaryDescription}</p>
           <details className="analytics-details">
             <summary>
               {it ? 'Dettagli e preferenze' : 'Details and preferences'}
@@ -104,9 +114,19 @@ export default function MarketingAnalytics({
             </p>
             <p>
               {it
-                ? 'Vercel fornisce statistiche e misure di prestazione senza cookie. Cal.com si apre solo quando scegli di prenotare.'
-                : 'Vercel provides cookieless analytics and performance measurements. Cal.com opens only when you choose to book.'}
+                ? 'Cal.com si apre solo quando scegli di prenotare. L’area corsi usa un cookie tecnico per l’accesso con Google.'
+                : 'Cal.com opens only when you choose to book. The course area uses a technical cookie for Google sign-in.'}{' '}
+              <Link href={PRIVACY_PATHS[locale]}>
+                {it ? 'Informativa privacy' : 'Privacy policy'}
+              </Link>
             </p>
+            {POSTHOG_KEY && (
+              <p>
+                {it
+                  ? 'PostHog (UE) facoltativo: visite e clic sui pulsanti, senza registrazioni dello schermo e senza collegarli al tuo account.'
+                  : 'Optional PostHog (EU): visits and button clicks, with no screen recordings and never tied to your account.'}
+              </p>
+            )}
             {id && (
               <p>
                 {it
@@ -124,9 +144,9 @@ export default function MarketingAnalytics({
           </details>
           <div className="analytics-actions">
             <button type="button" onClick={() => choose('denied')}>
-              {id ? rejectLabel : acknowledgeLabel}
+              {measured ? rejectLabel : acknowledgeLabel}
             </button>
-            {id && (
+            {measured && (
               <button type="button" onClick={() => choose('granted')}>
                 {it ? 'Accetta statistiche' : 'Accept analytics'}
               </button>

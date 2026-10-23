@@ -290,3 +290,29 @@ The assistant performs the operational work from the freelance repo, which
 also holds website hosting configuration. "Sushi in Lugano" illustrates the
 method, without selecting the first campaign. This is a product requirement,
 not a claim that batch generation, the new offer design or deployment exists.
+
+## Owner decisions — courses (2026-10-23)
+
+- New offer: live AI courses, one-to-one or in small groups, online, IT/EN.
+  Two tracks: AI for developers (coding agents, apps, LLMs in production)
+  and AI for work (no code). Audience: professionals and small businesses,
+  junior developers and beginners.
+- Launch: a few free pilot places in exchange for honest feedback. The
+  owner's first idea was a free course for a Trustpilot-style review; the
+  page asks for feedback and leaves any public review optional and not
+  required to be positive, because review platforms restrict incentivised
+  reviews. After the pilot, price on request. No price, group size,
+  duration, number of places or outcome is confirmed.
+- Primary action: a pilot-place application stored in the site's database;
+  Cal.com stays the secondary action.
+- Users can sign up freely with Google; they see free courses and those the
+  owner assigns. Lessons may be recorded (only with every participant's
+  agreement) and are stored in a private Railway bucket.
+- The owner chose to move the whole site from Vercel to Railway, domain
+  included, and PostHog replaces Vercel Analytics. Done on 2026-10-23 with
+  his go-ahead: the site answers on www.matteodante.it (DNS stays at
+  GoDaddy, which forwards the bare domain); shutting Vercel down waits a
+  few days and his confirmation (docs/railway.md).
+- Page structure delegated by the owner ("which converts best"): a
+  boarding-pass application in the first viewport, then the visitor's
+  questions as chapters.
