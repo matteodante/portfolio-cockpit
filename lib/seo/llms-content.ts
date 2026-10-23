@@ -57,13 +57,13 @@ ${pageLinks}
 ## Articles
 
 - [Articles](${BASE_URL}/en/blog): long-form notes, in English, on software Matteo has built.
-- [DroneClean: tap the shadow once](${BASE_URL}/en/blog/droneclean-shadow-removal): the shadow-removal web app at droneclean.app, its piece-wise uploads, tracking and inpainting models, and an export that re-encodes only what changed.
-- [Miniform: save the message first, send the email second](${BASE_URL}/en/blog/miniform-self-hosted-form-inbox): a self-hosted form inbox in one Go binary with SQLite, where every notification has its own row, lease and retry.
-- [GymTree: a workout app for the time between sets](${BASE_URL}/en/blog/gymtree-workout-and-coaching): the workout player, a rest timer that survives a locked phone, an ordered offline queue and the permissions behind a coach's programme.
-- [Maestro: from "I want to take better photos" to a lesson](${BASE_URL}/en/blog/maestro-learning-goals-and-practice): URL-gated source search, a structural lesson inspection with repair attempts, and quiz answers kept after the quiz.
-- [Portfolio Cockpit: a CV you fly through](${BASE_URL}/en/blog/portfolio-cockpit-playable-cv): how the Three.js world and the React interface share this site without updating at the same speed.
-- [Filo: teaching an AI conversation to forget Bologna](${BASE_URL}/en/blog/filo-memory): encrypted local memory, corrections and a synthetic evaluation with its limitations. Filo, formerly Therapist, is experimental adult self-reflection software.
-- [Portico: Microsoft's Direct3D 9 tutorials, unchanged, in a browser tab](${BASE_URL}/en/blog/portico-direct3d9-webgl2): the public MPL-2.0 library, generated shaders, JSPI and measured tutorial rendering comparisons.
+- [Why I built an app that erases a drone's own shadow](${BASE_URL}/en/blog/droneclean-shadow-removal): DroneClean, Matteo's web app that removes a drone's own shadow from aerial video with one tap, from a question on his own PC to a free beta, and what he learned.
+- [Miniform: a form inbox that never loses a message](${BASE_URL}/en/blog/miniform-self-hosted-form-inbox): a self-hosted inbox for website forms that saves the message before sending any notification.
+- [GymTree: building for the ninety seconds between sets](${BASE_URL}/en/blog/gymtree-workout-and-coaching): designing a fitness app for the moment between sets, and for the coach on the other side of it.
+- [Maestro: turning "I want to take better photos" into a course](${BASE_URL}/en/blog/maestro-learning-goals-and-practice): an iPhone tutor that writes a course from a goal and calls it finished only when the goal is mastered.
+- [Why my CV is a spaceship](${BASE_URL}/en/blog/portfolio-cockpit-playable-cv): the playable CV on this site, and the rule that keeps it from blocking anyone.
+- [Filo: an AI that remembers you, and learns to forget](${BASE_URL}/en/blog/filo-memory): a self-hosted agent for adult self-reflection, its memory and the study that made it simpler. Filo, formerly Therapist, is experimental software, not therapy.
+- [Portico: old Direct3D programs, unchanged, in a browser tab](${BASE_URL}/en/blog/portico-direct3d9-webgl2): the open-source MPL-2.0 library extracted from a larger browser port, and how its output is checked against real Direct3D 9.
 - [Porting a 400,000-line Windows MMORPG to the browser, multiplayer included](${BASE_URL}/en/blog/porting-a-windows-mmo-client-to-the-browser): a 2000s C++ game client compiled to WebAssembly over an API layer, played against a private test server; the game is not named and nothing of it is distributed.
 
 ## Contact
