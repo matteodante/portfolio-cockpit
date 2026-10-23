@@ -3,8 +3,8 @@
 Mode: Read. Code-led extension of the existing portfolio world, requested by
 the owner on 2026-10-16: an articles index reachable from the homepage, each
 article with title, subtitle and cover image, and a reading page that renders
-Markdown written in the public `matteodante/matteodante` repository
-(`articles/*.md`, YAML frontmatter). The blog and its articles are in English
+Markdown kept in this repository (`content/blog/*.md`, YAML frontmatter;
+moved from the public `matteodante/matteodante` repository on 2026-10-23). The blog and its articles are in English
 only (owner's decision): `/en/blog` and `/en/blog/<slug>`; the `/it` paths
 redirect there, and both homepages link to it as "Blog".
 

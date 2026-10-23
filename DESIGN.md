@@ -990,8 +990,8 @@ inside the frame with a CSS scroll-driven animation, disabled for reduced
 motion. Code, tables, quotes and Mermaid diagrams use the Panel fill and
 Frame Line border; diagrams are drawn in the browser with Mermaid's base
 theme set to the palette. Orange marks only actions, link underlines and
-list markers. Articles, covers and their provenance live in the public
-`matteodante/matteodante` repository; the brief is
+list markers. Articles live in `content/blog/`, covers and screenshots in
+`public/blog/images/`; the brief is
 `.impeccable/surfaces/app-lang-blog-page-tsx.md`.
 
 

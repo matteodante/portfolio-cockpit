@@ -4,22 +4,23 @@ import matter from 'gray-matter'
 import { cache } from 'react'
 import { z } from 'zod'
 import { readingMinutes, renderMarkdown } from '@/lib/blog/markdown'
+import { PORTFOLIO_REPO_URL } from '@/lib/constants/contact'
 
-// Articles are Markdown files in the `articles/` folder of the public profile repository, each starting with
-// YAML frontmatter (see Frontmatter). Publishing one is a push there: pages revalidate every five minutes. The blog and
-// its articles are in English only.
-// BLOG_LOCAL_DIR=<path to that folder> reads a local checkout instead, to preview before pushing.
+// Articles are Markdown files in content/blog/ of this repository, each starting with YAML frontmatter (see
+// Frontmatter); their images are in public/blog/images/. The build reads them from disk and renders every page, so
+// publishing one is a commit here and a deploy. The blog and its articles are in English only. Writing rules:
+// content/blog/AGENTS.md.
+// BLOG_LOCAL_DIR=<folder> reads another folder instead (the tests use it for fixtures).
 
-const OWNER = 'matteodante'
-const REPO = 'matteodante'
-const BRANCH = 'main'
-const DIR = 'articles'
-
-export const ARTICLES_REVALIDATE = 300
-export const ARTICLES_REPO_URL = `https://github.com/${OWNER}/${REPO}/tree/${BRANCH}/${DIR}`
-const RAW_BASE = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${DIR}/`
-const BLOB_BASE = `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/${DIR}/`
-const localDir = () => process.env.BLOG_LOCAL_DIR
+const DIR = 'content/blog'
+const BLOB_BASE = `${PORTFOLIO_REPO_URL}/blob/main/${DIR}/`
+// Paths stay literal so the server bundle traces only this folder (next.config.ts also includes it).
+const inArticles = (file = '') => {
+  const local = process.env.BLOG_LOCAL_DIR
+  return local
+    ? join(/* turbopackIgnore: true */ local, file)
+    : join(process.cwd(), 'content', 'blog', file)
+}
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
@@ -49,50 +50,12 @@ export type ArticleSummary = {
 
 export type Article = ArticleSummary & { html: string; hasDiagrams: boolean }
 
-function github(url: string) {
-  const headers: Record<string, string> = { 'User-Agent': 'matteodante.it' }
-  if (process.env.GITHUB_TOKEN)
-    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`
-  return fetch(url, { headers, next: { revalidate: ARTICLES_REVALIDATE } })
-}
+const readText = (file: string) =>
+  readFile(inArticles(file), 'utf8').catch(() => null)
 
-async function listFiles(): Promise<string[]> {
-  const dir = localDir()
-  if (dir) return readdir(dir)
-  const res = await github(
-    `https://api.github.com/repos/${OWNER}/${REPO}/contents/${DIR}?ref=${BRANCH}`
-  )
-  if (!res.ok)
-    throw new Error(
-      `Listing the articles failed: GitHub answered ${res.status}`
-    )
-  const entries = (await res.json()) as { name: string; type: string }[]
-  return entries
-    .filter((entry) => entry.type === 'file')
-    .map((entry) => entry.name)
-}
-
-async function readText(file: string): Promise<string | null> {
-  const dir = localDir()
-  if (dir) return readFile(join(dir, file), 'utf8').catch(() => null)
-  const res = await github(RAW_BASE + file)
-  if (res.status === 404) return null
-  if (!res.ok)
-    throw new Error(`Reading ${file} failed: GitHub answered ${res.status}`)
-  return res.text()
-}
-
-/** A relative path in the article as a URL the page can load. Local previews inline images. */
-async function assetUrl(path: string) {
-  const dir = localDir()
-  if (!dir) return new URL(path, RAW_BASE).href
-  const bytes = await readFile(join(dir, path))
-  const extension = path.slice(path.lastIndexOf('.') + 1).toLowerCase()
-  const type =
-    { png: 'image/png', webp: 'image/webp', avif: 'image/avif' }[extension] ??
-    'image/jpeg'
-  return `data:${type};base64,${bytes.toString('base64')}`
-}
+/** A path relative to the article (`images/cover.jpg`) as the URL public/blog/ serves it from. */
+const assetUrl = (path: string) =>
+  new URL(path, 'https://matteodante.it/blog/').pathname
 
 const loadArticle = cache(async (slug: string) => {
   if (!SLUG.test(slug)) return null
@@ -108,9 +71,7 @@ const loadArticle = cache(async (slug: string) => {
     subtitle: fm.subtitle,
     date: fm.date.toISOString().slice(0, 10),
     ...(fm.updated && { updated: fm.updated.toISOString().slice(0, 10) }),
-    cover: fm.cover
-      ? { src: await assetUrl(fm.cover), alt: fm.coverAlt }
-      : null,
+    cover: fm.cover ? { src: assetUrl(fm.cover), alt: fm.coverAlt } : null,
     minutes: readingMinutes(content),
     sourceUrl: `${BLOB_BASE}${slug}.md`,
   }
@@ -119,7 +80,7 @@ const loadArticle = cache(async (slug: string) => {
 
 /** Published articles, newest first. Files without valid frontmatter, or marked draft, are not listed. */
 export const getArticles = cache(async (): Promise<ArticleSummary[]> => {
-  const slugs = (await listFiles())
+  const slugs = (await readdir(inArticles()))
     .filter((name) => name.endsWith('.md'))
     .map((name) => name.slice(0, -3))
     .filter((slug) => SLUG.test(slug))
