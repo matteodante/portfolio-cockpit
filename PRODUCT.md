@@ -309,8 +309,10 @@ not a claim that batch generation, the new offer design or deployment exists.
   owner assigns. Lessons may be recorded (only with every participant's
   agreement) and are stored in a private Railway bucket.
 - The owner chose to move the whole site from Vercel to Railway, domain
-  included, and PostHog replaces Vercel Analytics. The move's deploy, DNS
-  and domain steps still need his explicit go-ahead (docs/railway.md).
+  included, and PostHog replaces Vercel Analytics. Done on 2026-10-23 with
+  his go-ahead: the site answers on www.matteodante.it (DNS stays at
+  GoDaddy, which forwards the bare domain); shutting Vercel down waits a
+  few days and his confirmation (docs/railway.md).
 - Page structure delegated by the owner ("which converts best"): a
   boarding-pass application in the first viewport, then the visitor's
   questions as chapters.

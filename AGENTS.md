@@ -108,8 +108,9 @@ Three.js 0.183 vanilla (NOT R3F), Tailwind v4, Zustand, OpenAI Responses
 API. Bun 1.3 (pkg manager + test runner). Biome 2.4. `tsgo` for fast
 typechecks. Node 22. EN/IT. Courses: Better Auth (Google sign-in),
 Drizzle ORM + Postgres, S3-compatible Railway bucket. Hosting: Railway
-(`Dockerfile`, `.railway/railway.ts`, `docs/railway.md`); the move from
-Vercel, domain included, needs the owner's go-ahead at each step.
+(`Dockerfile`, `.railway/railway.ts`, `docs/railway.md`), site on
+`www.matteodante.it`; changes to Railway, DNS or Vercel need the owner's
+go-ahead.
 
 ## Commands
 

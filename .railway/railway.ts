@@ -23,7 +23,11 @@ import {
 } from 'railway/iac'
 
 const REGION = 'europe-west4-drams3a'
-const SITE_URL = 'https://matteodante.it'
+// The site answers on www: the DNS stays at GoDaddy, which cannot point the
+// bare domain at Railway (no CNAME or ALIAS at the root), so GoDaddy forwards
+// matteodante.it to www with a 301. Canonical URLs in the code keep
+// https://matteodante.it (lib/constants/site.ts).
+const SITE_URL = 'https://www.matteodante.it'
 
 export default defineRailway(() => {
   const Postgres = postgres('Postgres', { region: REGION })
@@ -53,12 +57,7 @@ export default defineRailway(() => {
       limitOverride: { containers: { cpu: 1, memoryBytes: 1_000_000_000 } },
     },
     replicas: { [REGION]: 1 },
-    networking: {
-      customDomains: {
-        'matteodante.it': { port: 3000 },
-        'www.matteodante.it': { port: 3000 },
-      },
-    },
+    domains: [{ domain: 'www.matteodante.it', port: 3000 }],
     env: {
       PORT: '3000',
       NEXT_TELEMETRY_DISABLED: '1',
