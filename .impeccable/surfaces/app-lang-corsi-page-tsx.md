@@ -25,9 +25,9 @@ boarding pass first, then the visitor's questions as chapters.
 ## Direction contract
 
 THESIS: The pilot place is a boarding pass the visitor fills in on arrival; it refuses the split hero with a link to a form far below.
-OWN-WORLD: Deep space ground, lunar terrain, Matteo's approved polo portrait, ivory pass with perforated stub, orange squared actions, Unbounded headlines, Space Grotesk fields, JetBrains Mono pass codes.
+OWN-WORLD: Deep space ground, lunar terrain, the learning orbit (Matteo's photo appears only on the home), ivory pass with perforated stub, orange squared actions, Unbounded headlines, Space Grotesk fields, JetBrains Mono pass codes.
 STORY: A free seat exists, it suits me, I apply now or after reading the answers.
-FIRST VIEWPORT: One-line hook left above the pass; the pass (name, email, route, class, goal, Board button) dominates the centre-left over the terrain; Matteo stands right on the horizon. Mobile: hook, pass, portrait strip.
+FIRST VIEWPORT: One-line hook left above the pass; the pass (name, email, route, class, goal, Board button) dominates the centre-left over the terrain; the learning orbit rises right on the horizon. Mobile: hook, pass, orbit.
 FORM: Boarding pass plus question chapters, the dealt lead structure (7 of 7 in my ordered list; the owner delegated the pick by asking which converts best); seed:175932dcb13b65e9.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 

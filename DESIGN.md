@@ -912,7 +912,10 @@ licenses are recorded in `public/social/origin.json`,
 ### Don't:
 
 - **Don't** restore the orbit brand symbol, service-row icons or raw GLB
-  renders as landing artwork.
+  renders as landing artwork. The courses' learning orbit (an animated
+  planet scene the owner asked for on 2026-10-23 in place of his photo on
+  course surfaces) is a separate illustration: it never stands in for the
+  avatar or the brand mark.
 - **Don't** restore the separate Orbitron/Rajdhani interface font system or
   decorative chrome glow, scanlines and metal fasteners. The restored
   emissive 3D sign is an explicit scene exception.
@@ -1007,14 +1010,15 @@ type roles and focus language. The brief is
 **First viewport.** The hero is `min(100svh, 1000px)` tall with 112px top
 padding; its content caps at `min(1320px, calc(100% - 100px))`. The lunar
 landscape sits behind at 0.6 opacity, fading in from 22% to 70% of the
-height. `matteo-polo-cutout-v1.webp` (960×1200), a local alpha matte of the
-approved hero with unchanged RGB pixels, stands on the right horizon at
-`min(88svh, 880px)`; only the cropped waist dissolves into the terrain. Its
-provenance sits beside the raster. Below 1100px the portrait drops to 0.5
-opacity. The headline is Unbounded 700 at `clamp(38px, 3.9vw, 58px)`, 1.06
+height. The learning orbit (`components/shared/learning-orbit.tsx`: a
+lunar planet, three tilted orbits, the orange satellite in front; CSS 3D,
+still with reduced motion or the landing's pause) rises on the right
+horizon at `min(52vw, 72svh, 720px)`. Matteo's photo appears only on the
+home (owner, 2026-10-23); the course pages, the sign-in gate and the home's
+courses section use the orbit. Below 1100px it drops to 0.5 opacity. The headline is Unbounded 700 at `clamp(38px, 3.9vw, 58px)`, 1.06
 line-height, −0.035em tracking and a 17ch cap (`clamp(34px, 9.6vw, 48px)`
 on mobile). The intro is muted 18px/1.6. Below 800px the order is hook,
-pass and then the portrait in normal flow at `min(84%, 420px)`.
+pass and then the orbit in normal flow at `min(84%, 380px)`.
 
 **The pass.** An Ivory Suit main panel and a slightly darker stub
 (`#e4dccc`) carry Deep Space ink. The stub is a 200px column; the pass is

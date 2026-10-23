@@ -20,8 +20,6 @@ export const COURSES_COPY = {
     hero: 'Impara l’AI con chi la porta in produzione.',
     intro:
       'Corsi dal vivo, uno a uno o in piccoli gruppi. I primi posti sono gratuiti: compila il pass e ti rispondo via email.',
-    portraitAlt:
-      'Matteo Dante sorridente, con occhiali e polo nera, sull’orizzonte lunare.',
     pass: {
       label: 'Candidatura al posto pilota',
       title: 'Posto pilota',
@@ -185,8 +183,6 @@ export const COURSES_COPY = {
     hero: 'Learn AI from someone who ships it.',
     intro:
       'Live courses, one-to-one or in small groups. The first places are free: fill in the pass and I will reply by email.',
-    portraitAlt:
-      'Matteo Dante smiling, with glasses and a black polo, on the lunar horizon.',
     pass: {
       label: 'Pilot place application',
       title: 'Pilot place',

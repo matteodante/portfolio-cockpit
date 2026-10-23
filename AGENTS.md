@@ -147,8 +147,10 @@ unlock + gated CV / translations APIs. No CMS; Postgres only for courses.
 
 ## Routing
 
-- `app/[lang]/page.tsx` → server-rendered `LandingPage` with five
-  sections: intro, services, brands, shipped work and contact. All surfaces share
+- `app/[lang]/page.tsx` → server-rendered `LandingPage` with six
+  sections: intro, services, courses (`courses-section.tsx`, the learning
+  orbit and links to the courses page and the course area), brands, shipped
+  work and contact. The header shows Courses and Blog, also on phones. All surfaces share
   Unbounded and Space Grotesk; landing composition styles are scoped in
   `components/landing/landing.css`. `LandingMotion` progressively adds
   a subtle Canvas 2D star field and GSAP ScrollTrigger driving photographic

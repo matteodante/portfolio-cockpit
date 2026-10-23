@@ -1,9 +1,9 @@
 import type { Route } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ACCOUNT_COPY } from '@/components/courses/account-copy'
 import AccountShell from '@/components/courses/account-shell'
 import SignInPanel from '@/components/courses/sign-in-panel'
+import LearningOrbit from '@/components/shared/learning-orbit'
 import {
   devPasswordEnabled,
   getAuth,
@@ -54,15 +54,7 @@ export default async function AccountPage({ params }: Props) {
               </>
             )}
           </div>
-          <Image
-            className="account-gate-portrait"
-            src="/landing-v2/identity/matteo-polo-cutout-v1.webp"
-            alt=""
-            width={960}
-            height={1200}
-            sizes="(max-width: 799px) 60vw, 400px"
-            priority
-          />
+          <LearningOrbit className="account-gate-orbit" />
         </section>
       </AccountShell>
     )

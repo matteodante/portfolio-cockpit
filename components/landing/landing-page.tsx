@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import BrandsSection from '@/components/landing/brands-section'
+import CoursesSection from '@/components/landing/courses-section'
 import HeroIdentity from '@/components/landing/hero-identity'
 import { makeT } from '@/components/landing/i18n'
 import LandingMotion from '@/components/landing/landing-motion'
@@ -23,6 +24,7 @@ import {
 } from '@/lib/constants/contact'
 import { PRIVACY_PATHS } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
+import { COURSES_PATHS } from '@/lib/seo/courses-page'
 import { MARKETING_PAGES } from '@/lib/seo/marketing-pages'
 
 function Arrow() {
@@ -105,12 +107,17 @@ const PROJECTS = [
 
 export default function LandingPage({ locale }: { locale: Locale }) {
   const t = makeT(locale)
-  const sections = ['intro', 'services', 'brands', 'work', 'contact'].map(
-    (id) => ({
-      id,
-      label: t(`home.nav.${id}`),
-    })
-  )
+  const sections = [
+    'intro',
+    'services',
+    'courses',
+    'brands',
+    'work',
+    'contact',
+  ].map((id) => ({
+    id,
+    label: t(`home.nav.${id}`),
+  }))
 
   return (
     <LandingMotion
@@ -141,6 +148,12 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           </Link>
           <Link className="landing-work-link" href="#work">
             {t('home.nav.work')}
+          </Link>
+          <Link
+            className="landing-work-link landing-header-courses"
+            href={COURSES_PATHS[locale]}
+          >
+            {t('home.nav.courses')}
           </Link>
           <Link
             className="landing-work-link landing-blog-link"
@@ -237,6 +250,8 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         </section>
 
         <ServicesSection locale={locale} />
+
+        <CoursesSection locale={locale} />
 
         <BrandsSection locale={locale} />
 

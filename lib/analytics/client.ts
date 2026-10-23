@@ -230,6 +230,7 @@ export function trackMarketing(
     'service_popup',
     'courses_pass',
     'courses_footer',
+    'home_courses',
   ].includes(details.placement ?? '')
     ? details.placement
     : 'page'

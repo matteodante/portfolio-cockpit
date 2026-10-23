@@ -28,15 +28,14 @@
   opacity: 0.6;
   mask-image: linear-gradient(to bottom, transparent 22%, #000 70%);
 }
-.courses-hero-portrait {
+/* The emblem rises over the right horizon, behind the copy and the pass. */
+.courses-hero-orbit {
   position: absolute;
   z-index: -1;
-  right: max(0px, calc((100% - 1440px) / 2));
-  bottom: 0;
-  width: auto;
-  height: min(88svh, 880px);
-  /* A real cut-out: only the cropped waist dissolves into the terrain. */
-  mask-image: linear-gradient(to bottom, #000 86%, transparent);
+  top: 50%;
+  right: max(-40px, calc((100% - 1480px) / 2));
+  width: min(52vw, 72svh, 720px);
+  transform: translateY(-46%);
 }
 .courses-hero-inner {
   width: min(1320px, calc(100% - 100px));
@@ -578,11 +577,8 @@
   gap: 48px;
   align-items: start;
 }
-.courses-teacher-grid > img {
-  display: block;
+.courses-teacher-orbit {
   width: 100%;
-  height: auto;
-  border-radius: 4px;
 }
 .courses-links {
   display: flex;
@@ -604,7 +600,7 @@
   .pilot-pass {
     width: min(880px, 100%);
   }
-  .courses-hero-portrait {
+  .courses-hero-orbit {
     opacity: 0.5;
   }
 }
@@ -629,14 +625,15 @@
     margin-top: 16px;
     font-size: 17px;
   }
-  .courses-hero-portrait {
+  .courses-hero-orbit {
     position: relative;
     order: 2;
+    top: auto;
     right: auto;
     align-self: center;
-    width: min(84%, 420px);
-    height: auto;
-    margin-top: 32px;
+    width: min(84%, 380px);
+    margin: 24px 0 8px;
+    transform: none;
     opacity: 1;
   }
   .pilot-pass {
@@ -753,7 +750,7 @@
   .courses-area-cta {
     width: 100%;
   }
-  .courses-teacher-grid > img {
+  .courses-teacher-orbit {
     width: min(60%, 220px);
   }
   .courses-page .marketing-contact-actions > * {

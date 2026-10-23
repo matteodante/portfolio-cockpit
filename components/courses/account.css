@@ -54,12 +54,10 @@
   line-height: 1.65;
   color: var(--landing-muted);
 }
-.account-gate-portrait {
+.account-gate-orbit {
   width: 100%;
-  max-width: 420px;
-  height: auto;
+  max-width: 440px;
   justify-self: center;
-  mask-image: linear-gradient(to bottom, #000 80%, transparent);
 }
 .account-signin {
   display: grid;
@@ -563,7 +561,7 @@
     gap: 32px;
     min-height: 0;
   }
-  .account-gate-portrait {
+  .account-gate-orbit {
     max-width: 300px;
   }
   .account-google,

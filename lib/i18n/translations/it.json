@@ -347,5 +347,11 @@
   "projects.portico.desc": "Libreria open source per eseguire nel browser programmi C++ Direct3D 9 dal sorgente: Direct3D 9 su WebGL2, D3DX e un sottoinsieme di Win32 per Emscripten, verificata contro Direct3D 9 su Windows. MPL-2.0; la demo esegue i tutorial DirectX di Microsoft senza modificarli.",
   "projects.portico.badge": "open source",
   "projects.portico.link": "Codice e documentazione",
-  "home.nav.blog": "Blog"
+  "home.nav.blog": "Blog",
+  "home.nav.courses": "Corsi",
+  "home.courses.line1": "Corsi di AI,",
+  "home.courses.line2": "uno a uno o in piccoli gruppi.",
+  "home.courses.body": "AI per sviluppatori e AI per il lavoro, online, in italiano o in inglese. Per partire cerco qualche partecipante pilota: il posto è gratuito, in cambio di un feedback onesto.",
+  "home.courses.cta": "Scopri i corsi",
+  "home.courses.area": "Sei già iscritto? Entra nell’area corsi"
 }

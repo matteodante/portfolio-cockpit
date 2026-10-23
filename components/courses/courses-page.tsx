@@ -6,6 +6,7 @@ import PilotPass from '@/components/courses/pilot-pass'
 import BookingPopup from '@/components/landing/booking-popup'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import LanguageSwitcher from '@/components/shared/language-switcher'
+import LearningOrbit from '@/components/shared/learning-orbit'
 import { CAL_BOOKING_URL, EMAIL_HREF, NAME } from '@/lib/constants/contact'
 import { PRIVACY_PATHS } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
@@ -73,15 +74,7 @@ export default function CoursesPage({ locale }: { locale: Locale }) {
               priority
             />
           </div>
-          <Image
-            className="courses-hero-portrait"
-            src="/landing-v2/identity/matteo-polo-cutout-v1.webp"
-            alt={t.portraitAlt}
-            width={960}
-            height={1200}
-            sizes="(max-width: 799px) 70vw, 40vw"
-            priority
-          />
+          <LearningOrbit className="courses-hero-orbit" />
           <div className="courses-hero-inner">
             <nav className="marketing-breadcrumb" aria-label="Breadcrumb">
               <Link href={`/${locale}`}>{t.home}</Link>
@@ -214,13 +207,7 @@ export default function CoursesPage({ locale }: { locale: Locale }) {
           >
             <h2 id="courses-teacher">{t.teacherTitle}</h2>
             <div className="courses-teacher-grid">
-              <Image
-                src="/landing-v2/matteo-services-hero-closeup-v1.webp"
-                alt=""
-                width={560}
-                height={640}
-                sizes="(max-width: 799px) 50vw, 240px"
-              />
+              <LearningOrbit className="courses-teacher-orbit" />
               <div className="marketing-prose">
                 {t.teacherBody.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>

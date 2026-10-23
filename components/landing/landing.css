@@ -2004,3 +2004,71 @@ body:has(.booking-dialog[open]) {
     width: min(34vw, 55svh);
   }
 }
+
+/* Courses on the home (courses-section.tsx): the emblem beside the offer. */
+.courses-home {
+  display: grid;
+  grid-template-columns: minmax(280px, 520px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(48px, 6vw, 120px);
+  width: min(1320px, 100%);
+}
+.courses-home-orbit {
+  width: 100%;
+}
+.courses-home h2 {
+  font-size: clamp(32px, 3vw, 60px);
+}
+.courses-home h2 span {
+  color: var(--landing-accent);
+}
+.courses-home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+  margin-top: 36px;
+}
+.courses-home-area {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--landing-muted);
+  font-size: 14px;
+  text-decoration: underline;
+}
+@media (hover: hover) {
+  .courses-home-area:hover {
+    color: var(--landing-accent);
+  }
+}
+@media (width < 1100px) and (width >= 800px) {
+  .courses-home {
+    grid-template-columns: minmax(240px, 380px) minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+@media (width < 800px) {
+  .courses-home {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .courses-home-orbit {
+    justify-self: center;
+    width: min(72%, 300px);
+  }
+  .courses-home-actions {
+    margin-top: 28px;
+  }
+  .courses-home-actions .booking-link {
+    width: 100%;
+  }
+  /* Courses and Blog are the header links kept on phones. */
+  .landing-header .landing-header-courses {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 6px;
+    font-size: 10px;
+  }
+}
