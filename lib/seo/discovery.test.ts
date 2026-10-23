@@ -33,7 +33,7 @@ function objects(value: unknown): Record<string, unknown>[] {
 // llms.txt, keeps the test offline and checks that every listed article is one the sitemap would serve.
 const ARTICLE_SLUGS = [
   ...LLMS_PUBLIC.matchAll(
-    /\(https:\/\/matteodante\.it\/en\/blog\/(?<slug>[a-z0-9-]+)\)/g
+    /\(https:\/\/www\.matteodante\.it\/en\/blog\/(?<slug>[a-z0-9-]+)\)/g
   ),
 ].flatMap((match) => (match.groups?.slug ? [match.groups.slug] : []))
 

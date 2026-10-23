@@ -15,7 +15,7 @@ export const PORTFOLIO_REPO_URL = `${GITHUB_URL}/portfolio-cockpit` as const
 export const MINIFORM_REPO_URL = `${GITHUB_URL}/miniform` as const
 export const PORTICO_REPO_URL = `${GITHUB_URL}/portico` as const
 export const PORTICO_DEMO_URL =
-  'https://matteodante.it/portico-demo/index.html' as const
+  'https://www.matteodante.it/portico-demo/index.html' as const
 export const THERAPIST_REPO_URL = `${GITHUB_URL}/therapist` as const
 
 const LINKEDIN_SLUG = 'matteo-dante-3705b5164'

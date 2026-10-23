@@ -14,6 +14,16 @@ La verifica tramite GA4 non trovava il tag nella pagina iniziale:
 Analytics viene caricato dopo consenso. Non è stato anticipato il tag per
 superare la verifica. Nessun DNS modificato o accesso assegnato a terzi.
 
+## Passaggio a www (23 ottobre 2026)
+
+Con il trasloco su Railway il sito e i canonical sono su
+`https://www.matteodante.it`; `matteodante.it` reindirizza in modo
+permanente alla stessa pagina su `www` (vedi `docs/railway.md`). Lo stesso
+file di verifica è servito anche su `www`, quindi la proprietà prefisso URL
+`https://www.matteodante.it/` si verifica nello stesso modo; lì va inviata
+la sitemap `https://www.matteodante.it/sitemap.xml`. Da fare dal titolare;
+la proprietà sul dominio senza `www` resta per seguire il passaggio.
+
 ## Risultati iniziali di Google
 
 - Sitemap inviata e letta l'11 settembre: stato **Riuscita**, 14 URL

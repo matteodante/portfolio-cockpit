@@ -11,7 +11,7 @@ import { socialImages } from '@/lib/seo/social'
 
 describe('localized commercial pages', () => {
   test('canonical origin is the public domain even in local previews', () => {
-    expect(BASE_URL).toBe('https://matteodante.it')
+    expect(BASE_URL).toBe('https://www.matteodante.it')
   })
   test('each route has its own canonical and equivalent-language links', () => {
     for (const page of Object.keys(MARKETING_PAGES) as MarketingPage[]) {

@@ -23,10 +23,9 @@ import {
 } from 'railway/iac'
 
 const REGION = 'europe-west4-drams3a'
-// The site answers on www: the DNS stays at GoDaddy, which cannot point the
-// bare domain at Railway (no CNAME or ALIAS at the root), so GoDaddy forwards
-// matteodante.it to www with a 301. Canonical URLs in the code keep
-// https://matteodante.it (lib/constants/site.ts).
+// The site and its canonical URLs live on www: the DNS stays at GoDaddy, which
+// cannot point the bare domain at Railway (no CNAME or ALIAS at the root).
+// matteodante.it redirects to www with its path (docs/railway.md).
 const SITE_URL = 'https://www.matteodante.it'
 
 export default defineRailway(() => {

@@ -1,7 +1,8 @@
 import type { Locale } from '@/lib/i18n/config'
 
 // Previews keep the production canonical instead of publishing localhost URLs.
-export const BASE_URL = 'https://matteodante.it'
+// The site answers on www; the bare domain redirects there (docs/railway.md).
+export const BASE_URL = 'https://www.matteodante.it'
 
 export const SITE_NAME = 'Matteo Dante'
 export const SITE_TITLE = 'Matteo Dante · Senior Software Engineer'
