@@ -18,11 +18,13 @@ superare la verifica. Nessun DNS modificato o accesso assegnato a terzi.
 
 Con il trasloco su Railway il sito e i canonical sono su
 `https://www.matteodante.it`; `matteodante.it` reindirizza in modo
-permanente alla stessa pagina su `www` (vedi `docs/railway.md`). Lo stesso
-file di verifica è servito anche su `www`, quindi la proprietà prefisso URL
-`https://www.matteodante.it/` si verifica nello stesso modo; lì va inviata
-la sitemap `https://www.matteodante.it/sitemap.xml`. Da fare dal titolare;
-la proprietà sul dominio senza `www` resta per seguire il passaggio.
+permanente alla stessa pagina su `www` (vedi `docs/railway.md`). Lo stesso giorno è
+stata aggiunta e verificata la proprietà **Dominio** `matteodante.it`, che
+copre `www` e il dominio senza `www`, con un record TXT
+`google-site-verification` su GoDaddy: va mantenuto. Lì è stata inviata la
+sitemap `https://www.matteodante.it/sitemap.xml` (al primo invio Google può
+mostrare "Impossibile recuperare" prima di leggerla). La proprietà prefisso
+URL sul dominio senza `www` resta per seguire il passaggio.
 
 ## Risultati iniziali di Google
 

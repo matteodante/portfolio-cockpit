@@ -30,6 +30,8 @@ needed.
   the sitemap, structured data, `BETTER_AUTH_URL`) live on
   `https://www.matteodante.it`: a `www` CNAME to the target Railway shows
   for the custom domain, plus the TXT record Railway asks for to verify it.
+  The root also keeps the Google Search Console and OpenAI verification TXT
+  records; there is no mail.
 - GoDaddy cannot point the bare domain at Railway: Railway gives a CNAME
   target, not a fixed IP, and GoDaddy has no CNAME, ALIAS or CNAME
   flattening at the root. GoDaddy's own forwarding was tried and dropped:
