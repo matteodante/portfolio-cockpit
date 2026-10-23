@@ -20,7 +20,6 @@ import {
   project,
   ref,
   service,
-  volume,
 } from 'railway/iac'
 
 const REGION = 'europe-west4-drams3a'
@@ -28,16 +27,13 @@ const SITE_URL = 'https://matteodante.it'
 
 export default defineRailway(() => {
   const Postgres = postgres('Postgres', { region: REGION })
+  // Keep the region postgres() put in deploy. Railway gives the managed
+  // database its own data volume: none is declared here.
   Postgres.deploy = {
+    ...Postgres.deploy,
     limitOverride: { containers: { cpu: 0.5, memoryBytes: 500_000_000 } },
   }
   Postgres.networking = { privateNetworkEndpoint: 'postgres' }
-  const postgresVolume = volume('postgres-volume', {
-    alerts: { usage: { '80': {}, '95': {}, '100': {} } },
-    allowOnlineResize: true,
-    region: REGION,
-    sizeMB: 5000,
-  })
   const recordings = bucket('matteodante-courses', { region: 'ams' })
 
   const web = service('web', {
@@ -73,6 +69,10 @@ export default defineRailway(() => {
       UPSTASH_REDIS_REST_URL: preserve(),
       UPSTASH_REDIS_REST_TOKEN: preserve(),
       GOOGLE_SITE_VERIFICATION: preserve(),
+      // Read-only token for the blog (lib/blog/source.ts): without it the
+      // build shares GitHub's anonymous limit with every Railway builder and
+      // fails with 403.
+      GITHUB_TOKEN: preserve(),
       // Read at build time (public): analytics after consent only.
       NEXT_PUBLIC_GA_MEASUREMENT_ID: preserve(),
       NEXT_PUBLIC_POSTHOG_KEY: preserve(),
@@ -93,6 +93,6 @@ export default defineRailway(() => {
   })
 
   return project('matteodante.it', {
-    resources: [web, Postgres, postgresVolume, recordings],
+    resources: [web, Postgres, recordings],
   })
 })
