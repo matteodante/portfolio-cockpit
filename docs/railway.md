@@ -10,7 +10,7 @@ the owner. Secrets never appear here or in that file.
 
 | Resource | What it is |
 | --- | --- |
-| `web` | This repository, branch `main`, built from the root `Dockerfile` (Next.js `output: 'standalone'`, Bun build, Node runtime). Public, always awake, `matteodante.it` and `www.matteodante.it`. Before each deploy it applies the course migrations (`cd /migrate && bun migrate.ts`). Health check: `/llms.txt`. |
+| `web` | This repository, branch `main`, built from the root `Dockerfile` (Next.js `output: 'standalone'`, Bun build, Node runtime). Public, always awake, `matteodante.it` and `www.matteodante.it`. Before each deploy it applies the course migrations (`bun --cwd /migrate migrate.ts`). Health check: `/llms.txt`. |
 | `Postgres` | Course accounts (Better Auth), courses, lessons, enrolments, progress and pilot applications. Private network only. |
 | `matteodante-courses` | Private bucket for lesson recordings. The site signs every upload and playback URL. |
 
