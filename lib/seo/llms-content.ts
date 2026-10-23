@@ -64,6 +64,7 @@ ${pageLinks}
 - [Portfolio Cockpit: a CV you fly through](${BASE_URL}/en/blog/portfolio-cockpit-playable-cv): how the Three.js world and the React interface share this site without updating at the same speed.
 - [Filo: teaching an AI conversation to forget Bologna](${BASE_URL}/en/blog/filo-memory): encrypted local memory, corrections and a synthetic evaluation with its limitations. Filo, formerly Therapist, is experimental adult self-reflection software.
 - [Portico: Microsoft's Direct3D 9 tutorials, unchanged, in a browser tab](${BASE_URL}/en/blog/portico-direct3d9-webgl2): the public MPL-2.0 library, generated shaders, JSPI and measured tutorial rendering comparisons.
+- [Porting a 400,000-line Windows MMORPG to the browser, multiplayer included](${BASE_URL}/en/blog/porting-a-windows-mmo-client-to-the-browser): a 2000s C++ game client compiled to WebAssembly over an API layer, played against a private test server; the game is not named and nothing of it is distributed.
 
 ## Contact
 

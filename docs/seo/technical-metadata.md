@@ -32,9 +32,13 @@ approved portrait are the source of truth for this revision.
   `X-Robots-Tag: noindex, nofollow`; standalone JSON/provenance records carry
   `noindex`, without blocking portrait or social image indexing.
 - Sitemap lists twelve canonical EN/IT HTML pages, their corresponding
-  social images, reciprocal language alternatives and two public CV
-  Markdown files. Stable content-revision dates are maintained in the sitemap;
-  no build-time freshness dates or guessed schedules. See
+  social images, reciprocal language alternatives, two public CV
+  Markdown files, the blog index and every published article (read from the
+  articles repository; each article's lastmod is its publication date, or its
+  `updated` date after a substantial revision). Stable content-revision dates
+  are maintained for the static pages; no build-time freshness dates or guessed
+  schedules. The blog also has an RSS 2.0 feed at `/feed.xml`, announced on the
+  blog pages with `<link rel="alternate" type="application/rss+xml">`. See
   [the Search Console verification](search-console.md) for current evidence.
 
 ## Sources and limits

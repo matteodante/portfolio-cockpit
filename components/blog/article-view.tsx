@@ -7,6 +7,7 @@ import {
   BLOG_PATH,
   BlogHeader,
   BookCall,
+  FEED_PATH,
 } from '@/components/blog/blog-chrome'
 import MermaidDiagrams from '@/components/blog/mermaid-diagrams'
 import type { Article } from '@/lib/blog/source'
@@ -42,6 +43,7 @@ export default function ArticleView({ article }: { article: Article }) {
           <p className="article-foot-links">
             <Link href={BLOG_PATH}>{BLOG_COPY.back}</Link>
             <a href={article.sourceUrl}>{BLOG_COPY.source}</a>
+            <a href={FEED_PATH}>{BLOG_COPY.feed}</a>
           </p>
           <div className="article-foot-cta">
             <p>{BLOG_COPY.cta}</p>

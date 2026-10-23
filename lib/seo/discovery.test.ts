@@ -1,6 +1,8 @@
-import { describe, expect, test } from 'bun:test'
+import { beforeAll, describe, expect, test } from 'bun:test'
+import { mkdtemp, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import robots from '@/app/robots'
-import sitemap from '@/app/sitemap'
 import { CAL_BOOKING_URL } from '@/lib/constants/contact'
 import { BASE_URL, PERSON_IMAGE_PATH } from '@/lib/constants/site'
 import { BCP47_LOCALE, type Locale } from '@/lib/i18n/config'
@@ -26,6 +28,31 @@ function objects(value: unknown): Record<string, unknown>[] {
   const object = value as Record<string, unknown>
   return [object, ...Object.values(object).flatMap(objects)]
 }
+
+// The sitemap reads the published articles. A temporary articles folder, with one article per blog link in
+// llms.txt, keeps the test offline and checks that every listed article is one the sitemap would serve.
+const ARTICLE_SLUGS = [
+  ...LLMS_PUBLIC.matchAll(
+    /\(https:\/\/matteodante\.it\/en\/blog\/(?<slug>[a-z0-9-]+)\)/g
+  ),
+].flatMap((match) => (match.groups?.slug ? [match.groups.slug] : []))
+
+async function sitemap() {
+  return (await import('@/app/sitemap')).default()
+}
+
+beforeAll(async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'articles-'))
+  await Promise.all(
+    ARTICLE_SLUGS.map((slug, index) =>
+      writeFile(
+        join(dir, `${slug}.md`),
+        `---\ntitle: "${slug}"\nsubtitle: "About ${slug}."\ndate: 2026-10-${String(10 + index).padStart(2, '0')}\n${index === 0 ? 'updated: 2026-10-23\n' : ''}---\n\nBody.\n`
+      )
+    )
+  )
+  process.env.BLOG_LOCAL_DIR = dir
+})
 
 describe('public search discovery', () => {
   test('page metadata agrees across canonical, languages and social formats', () => {
@@ -111,8 +138,8 @@ describe('public search discovery', () => {
     }
   })
 
-  test('sitemap contains canonical public destinations and matching images', () => {
-    const entries = sitemap()
+  test('sitemap contains canonical public destinations and matching images', async () => {
+    const entries = await sitemap()
     // Date-only revisions follow the author's calendar day, including before midnight UTC.
     const today = new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Europe/Rome',
@@ -120,7 +147,17 @@ describe('public search discovery', () => {
       month: '2-digit',
       day: '2-digit',
     }).format(new Date())
-    expect(entries).toHaveLength(15)
+    expect(ARTICLE_SLUGS.length).toBeGreaterThan(0)
+    expect(entries).toHaveLength(15 + ARTICLE_SLUGS.length)
+    for (const slug of ARTICLE_SLUGS) {
+      expect(entries.map((entry) => entry.url)).toContain(
+        `${BASE_URL}/en/blog/${slug}`
+      )
+    }
+    // The blog index is as fresh as its newest article, including a revision date.
+    expect(
+      entries.find((entry) => entry.url === `${BASE_URL}/en/blog`)?.lastModified
+    ).toBe('2026-10-23')
     expect(new Set(entries.map((entry) => entry.url)).size).toBe(entries.length)
     for (const entry of entries) {
       const url = new URL(entry.url)
@@ -142,7 +179,7 @@ describe('public search discovery', () => {
     ).toEqual([socialImageUrl('home', 'it')])
   })
 
-  test('llms.txt has public canonical links, real booking and clear pricing', () => {
+  test('llms.txt has public canonical links, real booking and clear pricing', async () => {
     expect(LLMS_PUBLIC).toStartWith('# Matteo Dante\n\n> ')
     expect(LLMS_PUBLIC).toContain(CAL_BOOKING_URL)
     expect(LLMS_PUBLIC).not.toContain('300')
@@ -152,7 +189,7 @@ describe('public search discovery', () => {
     const links = [
       ...LLMS_PUBLIC.matchAll(/\]\((?<url>https?:\/\/[^)]+)\)/g),
     ].map((match) => match.groups?.url)
-    for (const entry of sitemap()) expect(links).toContain(entry.url)
+    for (const entry of await sitemap()) expect(links).toContain(entry.url)
     for (const section of LLMS_PUBLIC.split('\n## ').slice(1)) {
       const [, ...lines] = section.split('\n')
       for (const line of lines.filter(Boolean)) {

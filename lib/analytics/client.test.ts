@@ -54,6 +54,17 @@ describe('analytics privacy boundary', () => {
       'https://matteodante.it/not-found'
     )
   })
+  test('blog pages are reported by their own path', () => {
+    expect(safePageLocation('https://matteodante.it/en/blog?ref=x')).toBe(
+      'https://matteodante.it/en/blog'
+    )
+    expect(
+      safePageLocation('https://matteodante.it/en/blog/filo-memory#the-study')
+    ).toBe('https://matteodante.it/en/blog/filo-memory')
+    expect(safePageLocation('https://matteodante.it/en/blog/Not_A_Slug')).toBe(
+      'https://matteodante.it/not-found'
+    )
+  })
 })
 
 describe('campaign attribution', () => {

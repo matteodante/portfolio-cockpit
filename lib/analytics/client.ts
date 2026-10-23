@@ -102,10 +102,14 @@ export function saveConsent(choice: AnalyticsConsent) {
   window.dispatchEvent(new Event(CONSENT_EVENT))
 }
 
+// The English-only blog: its index and the article pages (slugs as in lib/blog/source.ts).
+const BLOG_PATHNAME = /^\/en\/blog(?:\/[a-z0-9]+(?:-[a-z0-9]+)*)?$/
+
 export function safePageLocation(url: string): string {
   const parsed = new URL(url)
   const known =
     ['/it', '/en', '/it/cockpit', '/en/cockpit'].includes(parsed.pathname) ||
+    BLOG_PATHNAME.test(parsed.pathname) ||
     resolveMarketingPage(parsed.pathname)
   return `${parsed.origin}${known ? parsed.pathname : '/not-found'}`
 }
