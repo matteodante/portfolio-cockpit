@@ -5,6 +5,7 @@
   --pass-stub: #e4dccc;
   --pass-muted: #5d5a55;
   --pass-line: #05060a33;
+  --pass-error: #a3360b;
   --pass-notch: 11px;
 }
 
@@ -167,7 +168,7 @@
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4.5 6 8.5l4-4' fill='none' stroke='%2305060a' stroke-width='1.5'/%3E%3C/svg%3E");
 }
 .pass-field input::placeholder {
-  color: #77736c;
+  color: #6b6862;
 }
 .pass-field :is(input, select):focus-visible {
   outline: none;
@@ -247,11 +248,11 @@
   outline-offset: 2px;
 }
 .pilot-pass [aria-invalid="true"] {
-  border-color: #c2410c;
+  border-color: var(--pass-error);
 }
 .pass-chips[aria-invalid="true"] legend,
 .pass-field:has([aria-invalid="true"]) > span {
-  color: #b23a0b;
+  color: var(--pass-error);
 }
 .pass-row-goal {
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
@@ -263,9 +264,6 @@
   gap: 12px 24px;
   padding-top: 6px;
 }
-.pass-problem {
-  grid-column: 1 / -1;
-}
 .pass-submit .booking-link {
   cursor: pointer;
   font-family: inherit;
@@ -274,9 +272,10 @@
   outline-color: var(--pass-ink);
 }
 .pass-problem {
+  grid-column: 1 / -1;
   font-size: 14px;
   line-height: 1.5;
-  color: #9a330a;
+  color: var(--pass-error);
 }
 .pass-problem:empty {
   display: none;
@@ -345,7 +344,7 @@
   padding: 8px 16px;
   border: 3px solid var(--landing-accent);
   border-radius: 4px;
-  color: #b23a0b;
+  color: var(--pass-error);
   font-family: var(--font-display), sans-serif;
   font-size: 18px;
   font-weight: 900;
@@ -432,6 +431,7 @@
 }
 .courses-track h3 {
   font-family: var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(22px, 2vw, 28px);
   letter-spacing: -0.02em;
 }
