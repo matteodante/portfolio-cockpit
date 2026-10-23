@@ -34,7 +34,7 @@ const request = (body: unknown) =>
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-vercel-forwarded-for': `test-${sequence++}`,
+      'x-real-ip': `test-${sequence++}`,
     },
     body: JSON.stringify(body),
   })

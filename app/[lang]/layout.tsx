@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import { JetBrains_Mono, Space_Grotesk, Unbounded } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import MarketingAnalytics from '@/components/analytics/marketing-analytics'
-import VercelAnalytics from '@/components/analytics/vercel-analytics'
 import { validMeasurementId } from '@/lib/analytics/client'
 import {
   EMAIL_HREF,
@@ -154,7 +153,6 @@ export default async function RootLayout({ children, params }: LayoutProps) {
             __html: renderNoscriptHtml(locale),
           }}
         />
-        <VercelAnalytics />
         <MarketingAnalytics
           id={validMeasurementId(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID)}
           locale={locale}

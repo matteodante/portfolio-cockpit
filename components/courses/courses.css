@@ -1,0 +1,762 @@
+/* Courses page (/it/corsi, /en/courses): boarding pass + question chapters. */
+.courses-page {
+  --pass-ink: #05060a;
+  --pass-paper: #f2ede3;
+  --pass-stub: #e4dccc;
+  --pass-muted: #5d5a55;
+  --pass-line: #05060a33;
+  --pass-notch: 11px;
+}
+
+/* Hero: hook, pass and Matteo on the lunar horizon */
+.courses-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(100svh, 1000px);
+  padding: 112px 0 88px;
+  overflow: hidden;
+}
+.courses-hero-scene {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.courses-hero-ground {
+  object-fit: cover;
+  object-position: 60% 100%;
+  opacity: 0.6;
+  mask-image: linear-gradient(to bottom, transparent 22%, #000 70%);
+}
+.courses-hero-portrait {
+  position: absolute;
+  z-index: -1;
+  right: max(0px, calc((100% - 1440px) / 2));
+  bottom: 0;
+  width: auto;
+  height: min(88svh, 880px);
+  /* A real cut-out: only the cropped waist dissolves into the terrain. */
+  mask-image: linear-gradient(to bottom, #000 86%, transparent);
+}
+.courses-hero-inner {
+  width: min(1320px, calc(100% - 100px));
+  margin: 0 auto;
+}
+.courses-hero .marketing-breadcrumb {
+  margin-bottom: 24px;
+}
+.courses-hero h1 {
+  max-width: 17ch;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(38px, 3.9vw, 58px);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.courses-intro {
+  max-width: 42rem;
+  margin-top: 16px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--landing-muted);
+}
+
+/* The pass */
+.pilot-pass {
+  scroll-margin-top: 96px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  width: min(900px, 66%);
+  margin-top: 28px;
+  color: var(--pass-ink);
+  filter: drop-shadow(0 30px 48px #000000b3);
+}
+.pass-main,
+.pass-stub {
+  background: var(--pass-paper);
+}
+.pass-main {
+  padding: 22px 30px 24px;
+  border-radius: 6px 0 0 6px;
+  mask:
+    radial-gradient(circle var(--pass-notch) at 100% 0, #0000 97%, #000),
+    radial-gradient(circle var(--pass-notch) at 100% 100%, #0000 97%, #000);
+  mask-composite: intersect;
+}
+.pass-stub {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px 22px;
+  border-left: 2px dashed #05060a40;
+  border-radius: 0 6px 6px 0;
+  background: var(--pass-stub);
+  mask:
+    radial-gradient(circle var(--pass-notch) at 0 0, #0000 97%, #000),
+    radial-gradient(circle var(--pass-notch) at 0 100%, #0000 97%, #000);
+  mask-composite: intersect;
+  transition: transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: 0 100%;
+}
+.pass-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--pass-line);
+}
+.pass-head h2 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.pass-price {
+  padding: 6px 12px;
+  border-radius: 2px;
+  background: var(--landing-accent);
+  font-family: var(--font-display), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pass-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+.pass-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+  align-items: end;
+}
+.pass-field {
+  display: grid;
+  gap: 4px;
+}
+.pass-field > span,
+.pass-chips legend,
+.pass-stub dt {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pass-muted);
+}
+.pass-field :is(input, select) {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid #05060a59;
+  border-radius: 0;
+  background: transparent;
+  color: var(--pass-ink);
+  font: inherit;
+  font-size: 17px;
+}
+.pass-field select {
+  appearance: none;
+  padding-right: 24px;
+  background:
+    no-repeat right 2px center / 12px
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4.5 6 8.5l4-4' fill='none' stroke='%2305060a' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+.pass-field input::placeholder {
+  color: #77736c;
+}
+.pass-field :is(input, select):focus-visible {
+  outline: none;
+  border-bottom: 2px solid var(--landing-accent);
+  margin-bottom: -1px;
+}
+.pass-chips {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.pass-chips legend {
+  margin-bottom: 8px;
+  padding: 0;
+}
+.pass-chips > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pass-chips label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid #05060a40;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  transition:
+    background 160ms ease-out,
+    color 160ms ease-out,
+    border-color 160ms ease-out;
+}
+.pass-chips input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.pass-chips label:has(input:checked) {
+  border-color: var(--pass-ink);
+  background: var(--pass-ink);
+  color: var(--pass-paper);
+}
+.pass-chips label:has(input:focus-visible) {
+  outline: 2px solid var(--landing-accent);
+  outline-offset: 3px;
+}
+.pass-consent {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--pass-muted);
+}
+.pass-consent input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  border: 1.5px solid var(--pass-ink);
+  border-radius: 2px;
+  background: transparent;
+  cursor: pointer;
+}
+.pass-consent input:checked {
+  background:
+    var(--pass-ink)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M4 9.5 7.5 13 14 5.5' fill='none' stroke='%23f2ede3' stroke-width='2'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
+}
+.pass-consent input:focus-visible {
+  outline: 2px solid var(--landing-accent);
+  outline-offset: 2px;
+}
+.pilot-pass [aria-invalid="true"] {
+  border-color: #c2410c;
+}
+.pass-chips[aria-invalid="true"] legend,
+.pass-field:has([aria-invalid="true"]) > span {
+  color: #b23a0b;
+}
+.pass-row-goal {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+}
+.pass-submit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px 24px;
+  padding-top: 6px;
+}
+.pass-problem {
+  grid-column: 1 / -1;
+}
+.pass-submit .booking-link {
+  cursor: pointer;
+  font-family: inherit;
+}
+.pilot-pass .booking-link:focus-visible {
+  outline-color: var(--pass-ink);
+}
+.pass-problem {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #9a330a;
+}
+.pass-problem:empty {
+  display: none;
+}
+.pass-problem a {
+  text-decoration: underline;
+}
+.pass-hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.pass-code {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.pass-stub dl {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+.pass-stub dd {
+  margin: 2px 0 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+.pass-barcode {
+  width: 100%;
+  height: 34px;
+  margin-top: auto;
+  fill: var(--pass-ink);
+}
+
+/* Sent: the stub tears off, the pass is stamped */
+.pilot-pass[data-state="sent"] .pass-stub {
+  transform: translate(26px, 18px) rotate(7deg);
+}
+.pass-sent {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  min-height: 300px;
+  padding: 24px 0;
+}
+.pass-sent-title {
+  font-family: var(--font-display), sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.pass-sent p:last-child {
+  max-width: 30rem;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--pass-muted);
+}
+.pass-stamp {
+  position: absolute;
+  top: 18px;
+  right: 6px;
+  padding: 8px 16px;
+  border: 3px solid var(--landing-accent);
+  border-radius: 4px;
+  color: #b23a0b;
+  font-family: var(--font-display), sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-9deg);
+  animation: pass-stamp 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes pass-stamp {
+  from {
+    opacity: 0;
+    transform: rotate(-9deg) scale(1.6);
+  }
+}
+
+/* Question chapters */
+.courses-main {
+  padding-top: 0;
+}
+.courses-chapter {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr);
+  gap: 48px 96px;
+  padding: 112px 0;
+  border-bottom: 1px solid var(--landing-line);
+}
+.courses-chapter > h2 {
+  align-self: start;
+  position: sticky;
+  top: 128px;
+  font-size: clamp(30px, 3.2vw, 48px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+.courses-lead {
+  max-width: 38rem;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--landing-ink);
+}
+.courses-fit {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.courses-fit li {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: 32px;
+  padding: 26px 0;
+  border-top: 1px solid var(--landing-line);
+}
+.courses-fit li:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+.courses-fit h3,
+.courses-track h3,
+.courses-route h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.courses-fit p,
+.courses-track > p,
+.courses-route p {
+  color: var(--landing-muted);
+  line-height: 1.65;
+}
+.courses-tracks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.courses-track {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding-right: 40px;
+}
+.courses-track + .courses-track {
+  padding: 0 0 0 40px;
+  border-left: 1px solid var(--landing-line);
+}
+.courses-track h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(22px, 2vw, 28px);
+  letter-spacing: -0.02em;
+}
+.courses-track ul {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.courses-track li {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  line-height: 1.55;
+}
+.courses-track li svg,
+.area-mock-frame li svg {
+  margin-top: 3px;
+  color: var(--landing-accent);
+}
+.courses-terms {
+  display: grid;
+  margin: 40px 0 0;
+}
+.courses-terms > div {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--landing-line);
+}
+.courses-terms dt {
+  color: var(--landing-accent);
+  font-weight: 500;
+}
+.courses-terms dd {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--landing-muted);
+}
+.courses-route {
+  position: relative;
+  display: grid;
+  gap: 34px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: leg;
+}
+.courses-route::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 17px;
+  border-left: 1px dashed #ff6b3599;
+}
+.courses-route li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  column-gap: 24px;
+  counter-increment: leg;
+}
+.courses-route li::before {
+  content: counter(leg);
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--landing-accent);
+  border-radius: 50%;
+  background: var(--landing-bg);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 13px;
+  color: var(--landing-accent);
+}
+.courses-route h3 {
+  margin: 6px 0 4px;
+}
+.courses-area-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+.courses-area-cta {
+  margin-top: 32px;
+}
+.courses-area-mock {
+  margin: 0;
+}
+.area-mock-frame {
+  padding: 16px 16px 22px;
+  border: 1px solid var(--landing-line);
+  border-radius: 4px;
+  background: var(--color-cockpit-panel);
+}
+.area-mock-player {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 18px;
+  border-radius: 2px;
+  background:
+    linear-gradient(#05060a66, #05060a99),
+    center 70% / cover url("/landing-v2/lunar-world.webp");
+  color: var(--landing-ink);
+}
+.area-mock-title {
+  font-family: var(--font-display), sans-serif;
+  font-size: 17px;
+}
+.area-mock-lesson {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--landing-muted);
+}
+.area-mock-frame ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+.area-mock-frame li {
+  display: inline-flex;
+  gap: 6px;
+}
+.area-mock-frame li svg {
+  margin-top: 0;
+}
+.courses-area-mock figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--landing-muted);
+}
+.courses-teacher-grid {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+.courses-teacher-grid > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.courses-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  margin-top: 28px;
+}
+.courses-page .marketing-contact-actions .hero-play {
+  min-height: 52px;
+}
+
+@media (hover: hover) {
+  .pass-chips label:hover {
+    border-color: var(--pass-ink);
+  }
+}
+
+@media (max-width: 1099px) {
+  .pilot-pass {
+    width: min(880px, 100%);
+  }
+  .courses-hero-portrait {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 799px) {
+  .courses-hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 100px 0 0;
+  }
+  .courses-hero-inner {
+    width: calc(100% - 32px);
+  }
+  .courses-hero .marketing-breadcrumb {
+    margin-bottom: 24px;
+  }
+  .courses-hero h1 {
+    font-size: clamp(34px, 9.6vw, 48px);
+  }
+  .courses-intro {
+    margin-top: 16px;
+    font-size: 17px;
+  }
+  .courses-hero-portrait {
+    position: relative;
+    order: 2;
+    right: auto;
+    align-self: center;
+    width: min(84%, 420px);
+    height: auto;
+    margin-top: 32px;
+    opacity: 1;
+  }
+  .pilot-pass {
+    grid-template-columns: 1fr;
+    margin-top: 28px;
+  }
+  .pass-main {
+    padding: 22px 20px 24px;
+    border-radius: 6px 6px 0 0;
+    mask:
+      radial-gradient(circle var(--pass-notch) at 0 100%, #0000 97%, #000),
+      radial-gradient(circle var(--pass-notch) at 100% 100%, #0000 97%, #000);
+    mask-composite: intersect;
+  }
+  .pass-stub {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 20px;
+    border-top: 2px dashed #05060a40;
+    border-left: 0;
+    border-radius: 0 0 6px 6px;
+    mask:
+      radial-gradient(circle var(--pass-notch) at 0 0, #0000 97%, #000),
+      radial-gradient(circle var(--pass-notch) at 100% 0, #0000 97%, #000);
+    mask-composite: intersect;
+    transform-origin: 100% 0;
+  }
+  .pass-stub dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+  }
+  .pass-barcode {
+    height: 28px;
+  }
+  .pilot-pass[data-state="sent"] .pass-stub {
+    transform: translate(10px, 18px) rotate(-4deg);
+  }
+  .pass-head h2 {
+    font-size: 22px;
+  }
+  .pass-row {
+    grid-template-columns: 1fr;
+  }
+  .pass-row-goal {
+    grid-template-columns: 1fr;
+  }
+  .pass-submit {
+    grid-template-columns: 1fr;
+  }
+  .pass-submit .booking-link {
+    width: 100%;
+  }
+  .courses-hero-ground {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 18%,
+      #000 42%,
+      #000 58%,
+      transparent 78%
+    );
+  }
+  .pass-sent {
+    min-height: 240px;
+    padding-top: 64px;
+  }
+  .pass-sent-title {
+    font-size: 26px;
+  }
+  .pass-stamp {
+    top: 10px;
+    right: 0;
+    font-size: 15px;
+  }
+  .courses-chapter {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 72px 0;
+  }
+  .courses-chapter > h2 {
+    position: static;
+    font-size: 30px;
+  }
+  .courses-lead {
+    font-size: 17px;
+  }
+  .courses-fit li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 20px 0;
+  }
+  .courses-tracks {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .courses-track,
+  .courses-track + .courses-track {
+    padding: 0;
+    border: 0;
+  }
+  .courses-track + .courses-track {
+    padding-top: 40px;
+    border-top: 1px solid var(--landing-line);
+  }
+  .courses-terms > div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .courses-area-grid,
+  .courses-teacher-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .courses-area-cta {
+    width: 100%;
+  }
+  .courses-teacher-grid > img {
+    width: min(60%, 220px);
+  }
+  .courses-page .marketing-contact-actions > * {
+    width: 100%;
+  }
+}

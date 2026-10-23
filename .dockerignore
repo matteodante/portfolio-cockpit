@@ -1,0 +1,11 @@
+.git
+.next
+node_modules
+.env*
+!.env.example
+private-src
+.private-notes
+.impeccable/review
+.impeccable/mocks
+coverage
+output

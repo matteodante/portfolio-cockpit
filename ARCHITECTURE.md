@@ -231,8 +231,8 @@ The chat backend.
   (prefix `portfolio:chat`); the unlock limiter is 5 req / 60s / IP.
   Uses Upstash Redis when `UPSTASH_REDIS_REST_URL` /
   `UPSTASH_REDIS_REST_TOKEN` are set, in-memory sliding window
-  otherwise. `getClientIp` reads `x-vercel-forwarded-for` (signed by
-  Vercel edge). On Vercel, an edge Firewall rule adds another layer
+  otherwise. `getClientIp` reads `x-real-ip` (written by Railway's edge);
+  `x-vercel-forwarded-for` is trusted only on Vercel
 - Moderates the latest user message via `omni-moderation-latest`.
   Fails open on moderation errors (network/timeout)
 - Calls `openai.responses.create({ stream: true })` and pipes
