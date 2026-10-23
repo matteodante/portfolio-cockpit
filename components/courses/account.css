@@ -189,7 +189,7 @@
 .account-course h2 {
   font-family: var(--font-display), sans-serif;
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25;
 }
 .account-course p {
@@ -240,13 +240,11 @@
   gap: 14px;
 }
 .course-back {
-  font-size: 13px;
-  color: var(--landing-muted);
-}
-.course-back {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-size: 13px;
+  color: var(--landing-muted);
 }
 .course-back:hover,
 .course-lessons a:hover {
@@ -304,7 +302,7 @@
 .lesson-body :is(h2, h3) {
   margin: 1.6em 0 0.5em;
   font-family: var(--font-display), sans-serif;
-  font-weight: 500;
+  font-weight: 400;
 }
 .lesson-body :is(p, ul, ol, pre, blockquote) {
   margin: 0 0 1em;
@@ -575,7 +573,7 @@
   .account-signout {
     min-height: 38px;
     padding: 8px 10px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .account-courses {
     grid-template-columns: 1fr;

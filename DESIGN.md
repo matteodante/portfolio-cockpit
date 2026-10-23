@@ -722,7 +722,8 @@ preferences button sits in normal footer flow and reopens the panel.
 
 No valid ID means no Google tag or consent interface. Google loads only
 after positive consent, and the cockpit is excluded. This is the optional
-GA control, not a universal consent manager for existing Vercel tools.
+GA control. PostHog (EU), when its key is set, follows the same choice
+through the cookie-free `/ingest` proxy; Vercel Analytics was removed.
 Activation in Google's services remains pending owner access and real IDs;
 event meanings and verification limits live in `docs/seo/measurement-plan.md`.
 
@@ -992,3 +993,129 @@ theme set to the palette. Orange marks only actions, link underlines and
 list markers. Articles, covers and their provenance live in the public
 `matteodante/matteodante` repository; the brief is
 `.impeccable/surfaces/app-lang-blog-page-tsx.md`.
+
+
+### Courses and course area — 2026-10-23
+
+`/it/corsi` and `/en/courses` extend the commercial reading surface with a
+boarding pass that is the pilot-place application; `/{locale}/account/**`
+is the signed-in course area. Both reuse the shared header (avatar/name, a
+quiet course-area link, EN/IT and the compact booking control), palette,
+type roles and focus language. The brief is
+`.impeccable/surfaces/app-lang-corsi-page-tsx.md`.
+
+**First viewport.** The hero is `min(100svh, 1000px)` tall with 112px top
+padding; its content caps at `min(1320px, calc(100% - 100px))`. The lunar
+landscape sits behind at 0.6 opacity, fading in from 22% to 70% of the
+height. `matteo-polo-cutout-v1.webp` (960×1200), a local alpha matte of the
+approved hero with unchanged RGB pixels, stands on the right horizon at
+`min(88svh, 880px)`; only the cropped waist dissolves into the terrain. Its
+provenance sits beside the raster. Below 1100px the portrait drops to 0.5
+opacity. The headline is Unbounded 700 at `clamp(38px, 3.9vw, 58px)`, 1.06
+line-height, −0.035em tracking and a 17ch cap (`clamp(34px, 9.6vw, 48px)`
+on mobile). The intro is muted 18px/1.6. Below 800px the order is hook,
+pass and then the portrait in normal flow at `min(84%, 420px)`.
+
+**The pass.** An Ivory Suit main panel and a slightly darker stub
+(`#e4dccc`) carry Deep Space ink. The stub is a 200px column; the pass is
+`min(900px, 66%)` wide, or up to 880px at full width below 1100px. Outer
+corners are 6px. The perforation is a 2px dashed seam, and 11px semicircular
+notches are cut by radial masks where it meets each edge. A soft ambient
+drop shadow (`0 30px 48px #000000b3`) lifts the paper off the terrain. The
+head pairs an Unbounded 700 26px title (22px mobile) with an orange fact
+tag (Unbounded 700, 13px, uppercase, 2px corners). The tag states the free
+place and is not a kicker.
+
+Fields are underline-only: no fill, a 1px ink rule, 44px minimum height
+and 17px text. A focused field's rule becomes a 2px orange underline. Their
+labels, like those on a real pass, are 11px/500 uppercase with 0.08em
+tracking in the pass muted ink (`#5d5a55`). Route and format are pill radio
+chips with 40px minimum height and a 1px translucent ink border. The
+selected chip inverts to an ink fill with ivory text; focus shows a 2px
+orange outline with 3px offset. The consent checkbox is an 18px square with
+2px corners, filled with ink and an ivory check when checked. The submit is
+the standard orange booking control with its arrow; on the ivory, its
+focus outline switches to ink.
+
+The stub carries a JetBrains Mono 12px pass code and echoes the chosen
+route and format live (`aria-live`), followed by the confirmed terms and a
+decorative aria-hidden SVG barcode. On mobile the pass stacks: the
+perforation and notches move to the horizontal seam, stub terms form two
+columns and the submit spans the full width.
+
+**Sent state.** The stub tears away to `translate(26px, 18px)
+rotate(7deg)` (mobile `10px, 18px, −4deg`) over 760ms
+`cubic-bezier(0.16, 1, 0.3, 1)`, and the form becomes a status panel.
+That panel has an Unbounded 700 32px title (26px mobile) and a stamp:
+“Ricevuto” / “Received”, 3px orange border, 4px corners, `#b23a0b` text,
+Unbounded 900 18px uppercase, rotated −9deg. The stamp enters from 1.6×
+scale over 420ms. The global reduced-motion rule turns both into instant
+state changes.
+
+**Question chapters.** The chapters sit in 0.8fr:1.5fr columns with a 96px
+column gap, 112px vertical padding and hairline dividers. Each heading is
+sticky at 128px, in Unbounded 700 at `clamp(30px, 3.2vw, 48px)`, 1.12
+line-height and −0.03em tracking. Below 800px the columns stack, padding
+becomes 72px and headings are static at 30px. Leads use 19px/1.7 (17px
+mobile). The fit list uses divided rows. The two tracks split around a
+hairline, with Unbounded `clamp(22px, 2vw, 28px)` titles and orange SVG
+checks. In the terms list, orange 500 terms sit in a 180px column.
+
+The route is a numbered timeline: a dashed translucent-orange spine joins
+36px circles with orange hairlines and JetBrains Mono 13px numerals on Deep
+Space. The course-area example is an aria-hidden Panel frame with 4px
+corners: a 16:9 player over the darkened lunar image, an outlined SVG play
+mark and orange checks. Its visible caption marks it as an illustrative
+preview. The teacher chapter reuses the services close-up at 220px with 4px
+corners, and the FAQ reuses the commercial FAQ. The close returns to the
+pass with the orange control, and the secondary booking dialog uses the
+dark `hero-play` treatment.
+
+**Course area (Operate).** The main column caps at
+`min(1160px, calc(100% - 100px))`, with 136px top and 120px bottom padding
+(108px and 80px with 16px margins on mobile). Titles use Unbounded 700 at
+`clamp(32px, 3.6vw, 52px)`, 1.1 line-height and −0.03em tracking. In the
+header, the admin link is orange and sign-out is a transparent squared
+hairline control with a 43px minimum height.
+
+- **Sign-in gate:** copy and actions sit in 1:0.8 columns beside the
+  cut-out portrait (max 420px, 300px mobile). Google sign-in is the one
+  inverted control: ivory fill, Deep Space text, 52px minimum height, 2px
+  corners and Space Grotesk 15px/500, lifting 2px on hover.
+- **Course cards:** an auto-fill grid with 320px minimum columns and 20px
+  gaps. Each card has a Panel fill, hairline border, 2px corners and 28px
+  padding (22px mobile), with an Unbounded 22px title. A 4px progress track
+  (`#f2ede31f`) carries an orange bar. On hover the border turns orange and
+  the card lifts 2px. The empty state is a dashed hairline panel.
+- **Lesson view:** a sticky 280px sidebar (top 120px) sits beside the
+  lesson, with a 56px gap. Lessons form a hairline-divided ordered list with
+  20px circular SVG marks that turn orange with a check when done. The
+  current lesson is ivory 500. Video is 16:9 with a hairline border, 2px
+  corners and a black fill. Notes use a 72ch Space Grotesk 17px/1.75
+  column (16px mobile), with orange list markers and underlines and
+  JetBrains Mono code on Panel. “Mark done” is the orange control; once
+  done, it becomes the dark `hero-play` control with an orange border. On
+  mobile the sidebar follows the lesson and a back link appears above the
+  title.
+- **Admin:** sections are separated by hairline tops, with a mono count
+  beside each heading. Tables use 14px type with muted headers, scroll
+  horizontally below 760px and mark new applications in orange. Row actions
+  are underlined 13px text buttons that turn orange on hover. Forms use two
+  columns, stacking on mobile. Fields have a Panel fill, a `#f2ede340`
+  border, 2px corners, a 44px minimum height and 15px text. Selects drop the
+  native chrome for an ivory SVG chevron, and the lesson Markdown field uses
+  JetBrains Mono 14px. Themed checkboxes are 20px squares with a translucent
+  ivory border; checked, they fill orange with a Deep Space check. Every
+  field focuses with a 2px orange outline and 2px offset. Disclosure rows
+  hide the native marker and use an orange SVG plus. Upload progress uses
+  the orange accent.
+
+**The Pass Is Paper Rule.** Ivory paper, ink, perforation notches, the soft
+drop shadow, underline fields and pill chips belong to the boarding pass
+only. Chapters and the course area stay on deep space with flat 2px
+controls and hairlines.
+
+**Pass-local values:** one error ink on the paper (`--pass-error`
+`#a3360b`, 5.8:1 on ivory) and `#ff8a65` for errors on the dark course area;
+the placeholder is `#6b6862` (4.8:1). Display headings use only the loaded
+Unbounded weights (400/700/900).

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T10:43:49.953880+00:00",
+  "generatedAt": "2026-10-23T12:00:00+00:00",
   "title": "Design System: Portfolio Cockpit",
   "extensions": {
     "colorMeta": {
@@ -253,7 +253,13 @@
         "purpose": "JetBrains Mono for instrument values, keyboard codes and telemetry; body copy and commands use Space Grotesk."
       }
     },
-    "shadows": [],
+    "shadows": [
+      {
+        "name": "pass-paper",
+        "value": "filter: drop-shadow(0 30px 48px #000000b3)",
+        "purpose": "Courses boarding pass only: lifts the ivory paper (notched by masks) off the lunar terrain. Controls, cards and course-area panels stay flat."
+      }
+    ],
     "motion": [
       {
         "name": "landing-control",
@@ -324,6 +330,16 @@
         "name": "blog-cover-drift",
         "value": "translate 0 -4.5% → 0 4.5% over the cover's view() timeline, scale 1.1",
         "purpose": "Article covers drift inside their frame while scrolling (CSS scroll-driven animation); off with reduced motion."
+      },
+      {
+        "name": "pass-stub-tear",
+        "value": "transform 760ms cubic-bezier(0.16, 1, 0.3, 1) to translate(26px, 18px) rotate(7deg); mobile translate(10px, 18px) rotate(-4deg)",
+        "purpose": "After a pilot-place application is sent the stub tears away from the pass; the global reduced-motion rule makes it an instant state change."
+      },
+      {
+        "name": "pass-stamp",
+        "value": "420ms cubic-bezier(0.16, 1, 0.3, 1), from opacity 0 and scale 1.6 to rotate(-9deg)",
+        "purpose": "The Ricevuto/Received stamp lands on the sent pass; instant under reduced motion."
       }
     ],
     "breakpoints": [
@@ -498,6 +514,30 @@
       "description": "The English-only blog (/en/blog): a framed 3:2 cover beside date, reading time, Unbounded title and muted subtitle; articles read in a 680px Space Grotesk column with orange link underlines and list markers.",
       "html": "<a class=\"ds-article-entry\" href=\"#\"><span class=\"ds-article-cover\"></span><span class=\"ds-article-text\"><span class=\"ds-article-meta\"><time>16 October 2026</time><span>11-minute read</span></span><strong>Porting a Windows client to the browser</strong><span class=\"ds-article-sub\">The platform layer, the loop that never returns, and what we measured.</span></span></a><p class=\"ds-article-prose\">A paragraph of the reading column with <a href=\"#\">an inline link</a>.</p>",
       "css": ".ds-article-entry { display: grid; grid-template-columns: 1.55fr 1fr; gap: 32px; align-items: end; padding-top: 24px; border-top: 1px solid #f2ede333; color: #f2ede3; text-decoration: none; font-family: var(--font-body), sans-serif; } .ds-article-cover { aspect-ratio: 3 / 2; border: 1px solid #f2ede333; border-radius: 2px; background: linear-gradient(135deg, #14161c, #0c0d11 60%, #ff6b3533); } .ds-article-text { display: grid; gap: 12px; } .ds-article-meta { display: flex; gap: 18px; color: #a7a5a1; font-size: 14px; font-variant-numeric: tabular-nums; } .ds-article-entry strong { font-family: var(--font-display), sans-serif; font-weight: 400; font-size: 28px; line-height: 1.16; letter-spacing: -0.02em; text-decoration: underline 2px transparent; text-underline-offset: 0.18em; transition: text-decoration-color 0.25s ease-out; } .ds-article-entry:hover strong { text-decoration-color: #ff6b35; } .ds-article-entry:focus-visible { outline: 2px solid #ff6b35; outline-offset: 10px; } .ds-article-sub { color: #a7a5a1; font-size: 17px; line-height: 1.6; } .ds-article-prose { max-width: 680px; margin-top: 32px; color: #ddd8ce; font-family: var(--font-body), sans-serif; font-size: 19px; line-height: 1.75; } .ds-article-prose a { color: #f2ede3; text-decoration: underline 1px #ff6b35; text-underline-offset: 0.2em; }"
+    },
+    {
+      "name": "Boarding Pass Application",
+      "kind": "custom",
+      "refersTo": "courses-pass",
+      "description": "The courses page's first-viewport application form: an ivory pass with underline fields, pill route/format chips and the orange submit, joined by a dashed perforation with notches to a stub that echoes the choices in JetBrains Mono and plain terms.",
+      "html": "<section class=\"ds-pass\"><div class=\"ds-pass-main\"><div class=\"ds-pass-head\"><strong>Pilot place</strong><span class=\"ds-pass-tag\">Free</span></div><label class=\"ds-pass-field\"><span>Name</span><input></label><fieldset class=\"ds-pass-chips\"><legend>Route</legend><label><input type=\"radio\" name=\"r\" checked><span>AI for developers</span></label><label><input type=\"radio\" name=\"r\"><span>AI for work</span></label></fieldset><button class=\"ds-pass-submit\">Apply for free <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 8h11M8.5 3.5 13 8l-4.5 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/></svg></button></div><div class=\"ds-pass-stub\"><p class=\"ds-pass-code\">MD · AI · PILOT</p><dl><dt>Route</dt><dd>AI for developers</dd><dt>Cost</dt><dd>€0</dd></dl></div></section>",
+      "css": ".ds-pass { display: grid; grid-template-columns: minmax(0, 1fr) 200px; max-width: 760px; color: #05060a; font-family: var(--font-body), sans-serif; filter: drop-shadow(0 30px 48px #000000b3); } .ds-pass-main, .ds-pass-stub { background: #f2ede3; } .ds-pass-main { display: grid; gap: 14px; padding: 22px 30px 24px; border-radius: 6px 0 0 6px; mask: radial-gradient(circle 11px at 100% 0, #0000 97%, #000), radial-gradient(circle 11px at 100% 100%, #0000 97%, #000); mask-composite: intersect; } .ds-pass-stub { display: grid; align-content: start; gap: 18px; padding: 24px 22px; border-left: 2px dashed #05060a40; border-radius: 0 6px 6px 0; background: #e4dccc; mask: radial-gradient(circle 11px at 0 0, #0000 97%, #000), radial-gradient(circle 11px at 0 100%, #0000 97%, #000); mask-composite: intersect; } .ds-pass-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; border-bottom: 1px solid #05060a33; } .ds-pass-head strong { font-family: var(--font-display), sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; } .ds-pass-tag { padding: 6px 12px; border-radius: 2px; background: #ff6b35; font-family: var(--font-display), sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; } .ds-pass-field { display: grid; gap: 4px; } .ds-pass-field span, .ds-pass-chips legend, .ds-pass-stub dt { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #5d5a55; } .ds-pass-field input { min-height: 44px; padding: 8px 0; border: 0; border-bottom: 1px solid #05060a59; background: transparent; font: inherit; font-size: 17px; color: #05060a; } .ds-pass-field input:focus-visible { outline: none; border-bottom: 2px solid #ff6b35; } .ds-pass-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; border: 0; } .ds-pass-chips legend { margin-bottom: 8px; } .ds-pass-chips label { position: relative; display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid #05060a40; border-radius: 999px; font-size: 14px; cursor: pointer; transition: background 160ms ease-out, color 160ms ease-out; } .ds-pass-chips label:hover { border-color: #05060a; } .ds-pass-chips input { position: absolute; opacity: 0; } .ds-pass-chips label:has(input:checked) { background: #05060a; color: #f2ede3; border-color: #05060a; } .ds-pass-chips label:has(input:focus-visible) { outline: 2px solid #ff6b35; outline-offset: 3px; } .ds-pass-submit { justify-self: end; display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 14px 24px; border: 1px solid #ff6b35; border-radius: 2px; background: #ff6b35; color: #05060a; font: inherit; font-weight: 500; cursor: pointer; transition: background 180ms ease-out, transform 180ms ease-out; } .ds-pass-submit:hover { background: #ff8458; transform: translateY(-2px); } .ds-pass-submit:focus-visible { outline: 2px solid #05060a; outline-offset: 6px; } .ds-pass-code { margin: 0; font-family: var(--font-jetbrains-mono), monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; } .ds-pass-stub dl { display: grid; gap: 4px; margin: 0; } .ds-pass-stub dd { margin: 0 0 8px; font-size: 15px; font-weight: 500; }"
+    },
+    {
+      "name": "Course Card",
+      "kind": "card",
+      "refersTo": "account-course",
+      "description": "A course in the signed-in course area: Panel fill, hairline, 2px corners, Unbounded title, muted meta and an orange progress bar; hover turns the border orange and lifts it 2px.",
+      "html": "<a class=\"ds-course-card\" href=\"#\"><span class=\"ds-course-meta\">AI for developers</span><strong>Claude Code for junior developers</strong><span class=\"ds-course-progress\"><span style=\"width: 50%\"></span></span><span class=\"ds-course-meta\">1 of 2 lessons done</span></a>",
+      "css": ".ds-course-card { display: grid; gap: 10px; max-width: 380px; padding: 28px; border: 1px solid #f2ede333; border-radius: 2px; background: #0c0d11; color: #f2ede3; text-decoration: none; font-family: var(--font-body), sans-serif; transition: border-color 180ms ease-out, transform 180ms ease-out; } .ds-course-card:hover { border-color: #ff6b35; transform: translateY(-2px); } .ds-course-card:focus-visible { outline: 2px solid #ff6b35; outline-offset: 6px; } .ds-course-card strong { font-family: var(--font-display), sans-serif; font-size: 22px; font-weight: 400; line-height: 1.25; } .ds-course-meta { font-size: 13px; color: #a7a5a1; } .ds-course-progress { display: block; height: 4px; margin-top: 10px; border-radius: 2px; background: #f2ede31f; } .ds-course-progress span { display: block; height: 100%; border-radius: inherit; background: #ff6b35; }"
+    },
+    {
+      "name": "Course Admin Field and Checkbox",
+      "kind": "input",
+      "refersTo": "admin-form",
+      "description": "Course-area form controls: Panel-filled fields with a translucent ivory border and 2px corners, a native-free select with an ivory chevron, and a themed checkbox that fills orange when checked; every field focuses with a 2px orange outline.",
+      "html": "<form class=\"ds-admin-form\"><label>Title<input value=\"Coding agents\"></label><label>Visibility<select><option>Free</option><option>Assigned</option></select></label><label class=\"ds-admin-check\"><input type=\"checkbox\" checked>Published</label></form>",
+      "css": ".ds-admin-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; font-family: var(--font-body), sans-serif; font-size: 13px; color: #a7a5a1; } .ds-admin-form label { display: grid; gap: 6px; } .ds-admin-form :is(input:not([type=checkbox]), select) { min-height: 44px; padding: 10px 12px; border: 1px solid #f2ede340; border-radius: 2px; background: #0c0d11; color: #f2ede3; font: inherit; font-size: 15px; } .ds-admin-form select { appearance: none; padding-right: 36px; background: #0c0d11 no-repeat right 12px center / 12px url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4.5 6 8.5l4-4' fill='none' stroke='%23f2ede3' stroke-width='1.5'/%3E%3C/svg%3E\"); } .ds-admin-form :is(input, select):focus-visible { outline: 2px solid #ff6b35; outline-offset: 2px; } .ds-admin-check { display: flex !important; align-items: center; gap: 10px; min-height: 44px; color: #f2ede3; } .ds-admin-check input { appearance: none; width: 20px; height: 20px; margin: 0; border: 1.5px solid #f2ede399; border-radius: 2px; background: transparent; cursor: pointer; } .ds-admin-check input:checked { border-color: #ff6b35; background: #ff6b35 url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M4 9.5 7.5 13 14 5.5' fill='none' stroke='%2305060a' stroke-width='2'/%3E%3C/svg%3E\") center / 15px no-repeat; }"
     }
   ],
   "narrative": {
@@ -530,6 +570,11 @@
         "name": "The Optional Motion Rule",
         "body": "Readable content and usable navigation are\nthe base layer; depth travel enhances them without intercepting scrolling.",
         "section": "elevation & depth"
+      },
+      {
+        "name": "The Pass Is Paper Rule",
+        "body": "Ivory paper, ink, perforation notches, the soft\ndrop shadow, underline fields and pill chips belong to the boarding pass\nonly. Chapters and the course area stay on deep space with flat 2px\ncontrols and hairlines.",
+        "section": "components"
       }
     ],
     "dos": [
