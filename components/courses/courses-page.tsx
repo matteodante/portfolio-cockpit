@@ -7,6 +7,7 @@ import BookingPopup from '@/components/landing/booking-popup'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import LanguageSwitcher from '@/components/shared/language-switcher'
 import { CAL_BOOKING_URL, EMAIL_HREF, NAME } from '@/lib/constants/contact'
+import { PRIVACY_PATHS } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
 import { accountPath, COURSES_PATHS } from '@/lib/seo/courses-page'
 import { MARKETING_PAGES } from '@/lib/seo/marketing-pages'
@@ -298,6 +299,7 @@ export default function CoursesPage({ locale }: { locale: Locale }) {
         <Link href={`/${locale}/cockpit`} prefetch={false}>
           {t.footerCockpit}
         </Link>
+        <Link href={PRIVACY_PATHS[locale]}>Privacy</Link>
       </footer>
     </div>
   )
