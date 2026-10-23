@@ -23,6 +23,12 @@ Shared instructions for Codex and Claude Code in this repo.
   product/design specifications and required asset provenance versioned.
   Document how the project works without copying private assessments or
   conversation history into public docs.
+- Everything committed is public and stays in the history. For hosting,
+  DNS and accounts, document how the setup works and which variables exist,
+  never values: no secrets or access codes, no account or admin email
+  addresses, no provider IDs or tokens, no note of where a secret came from
+  or which other project shares it, and no detail that only helps an
+  attacker. Those stay in the provider's dashboard or `/.private-notes/`.
 - Before committing or pushing, inspect the staged file list and diff for
   local artifacts, private plaintext and secrets. If a working artifact is
   already tracked, preserve a local copy and remove the versioned copy;
