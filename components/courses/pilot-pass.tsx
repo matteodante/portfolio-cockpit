@@ -5,6 +5,7 @@ import { useActionState, useEffect, useRef, useState } from 'react'
 import type { CoursesCopy } from '@/components/courses/courses-copy'
 import { trackMarketing } from '@/lib/analytics/client'
 import { EMAIL, EMAIL_HREF } from '@/lib/constants/contact'
+import { PRIVACY_PATHS } from '@/lib/constants/site'
 import { type ApplyState, submitApplication } from '@/lib/courses/apply'
 import type { Locale } from '@/lib/i18n/config'
 
@@ -179,7 +180,10 @@ export default function PilotPass({
                   required
                   aria-invalid={invalid.has('consent')}
                 />
-                <span>{copy.consent}</span>
+                <span>
+                  {copy.consent}{' '}
+                  <Link href={PRIVACY_PATHS[locale]}>Privacy</Link>
+                </span>
               </label>
               <button className="booking-link" type="submit" disabled={pending}>
                 {pending ? copy.sending : copy.submit}

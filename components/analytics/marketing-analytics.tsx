@@ -16,6 +16,7 @@ import {
   trackPage,
 } from '@/lib/analytics/client'
 import { POSTHOG_KEY, setPostHogConsent } from '@/lib/analytics/posthog'
+import { PRIVACY_PATHS } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
 import '@/components/analytics/analytics.css'
 
@@ -114,7 +115,10 @@ export default function MarketingAnalytics({
             <p>
               {it
                 ? 'Cal.com si apre solo quando scegli di prenotare. L’area corsi usa un cookie tecnico per l’accesso con Google.'
-                : 'Cal.com opens only when you choose to book. The course area uses a technical cookie for Google sign-in.'}
+                : 'Cal.com opens only when you choose to book. The course area uses a technical cookie for Google sign-in.'}{' '}
+              <Link href={PRIVACY_PATHS[locale]}>
+                {it ? 'Informativa privacy' : 'Privacy policy'}
+              </Link>
             </p>
             {POSTHOG_KEY && (
               <p>

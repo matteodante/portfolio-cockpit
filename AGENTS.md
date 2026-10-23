@@ -464,6 +464,10 @@ To update private content: edit files in `private-src/`, run
 - Schema `lib/courses/schema.ts`; after a change run `bun run db:generate`
   and commit `drizzle/`. `bun run db:migrate` applies migrations (Railway
   runs it before each deploy). Without `DATABASE_URL` the page still builds.
+- `/it/privacy` and `/en/privacy` (`components/legal/privacy-copy.ts`) list
+  every data flow above, the chat, the CV cookie and analytics, with their
+  providers. Google's OAuth consent screen links it. When a flow or provider
+  changes, update the policy and its date in the same change.
 
 ## Blog
 
