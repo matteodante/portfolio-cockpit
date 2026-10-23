@@ -105,12 +105,11 @@ Railway reports their default values as empty; applying them is harmless.
 
 ## Vercel
 
-The old `portfolio-cockpit` project on Vercel is switched off: no domains,
-no Git connection (pushes no longer build there) and its remaining
-deployment URLs sit behind Vercel's login. It stays only as a rollback for
-a while; delete it with the owner's go-ahead. Vercel Analytics and Speed
-Insights were removed from the code; PostHog replaces them after consent.
-Only `matteodante-redirect` (see Domain and DNS) serves traffic.
+The old `portfolio-cockpit` project on Vercel, with its deployments and
+variables, was deleted on 2026-10-23 after the site was verified on Railway.
+Vercel Analytics and Speed Insights were removed from the code; PostHog
+replaces them after consent. Only `matteodante-redirect` (see Domain and
+DNS) is left there.
 
 ## Local development
 
