@@ -13,7 +13,7 @@ ARG NEXT_PUBLIC_GA_MEASUREMENT_ID
 ARG NEXT_PUBLIC_POSTHOG_KEY
 RUN bun run build
 # A small self-contained folder for the migrations Railway runs before each
-# deploy (`cd /migrate && bun migrate.ts`).
+# deploy (`bun --cwd /migrate migrate.ts`).
 RUN mkdir /migrate && cp -r drizzle scripts/migrate.ts /migrate/ \
   && cd /migrate \
   && echo '{"private":true,"type":"module"}' > package.json \

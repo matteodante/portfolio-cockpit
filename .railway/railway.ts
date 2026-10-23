@@ -41,7 +41,8 @@ export default defineRailway(() => {
     build: { builder: 'DOCKERFILE', dockerfilePath: 'Dockerfile' },
     deploy: {
       startCommand: 'node server.js',
-      preDeployCommand: ['cd /migrate && bun migrate.ts'],
+      // No shell runs it: bun --cwd replaces 'cd /migrate && ...'.
+      preDeployCommand: ['bun --cwd /migrate migrate.ts'],
       healthcheckPath: '/llms.txt',
       healthcheckTimeout: 60,
       restartPolicyType: 'ON_FAILURE',
