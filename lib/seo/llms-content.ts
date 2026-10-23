@@ -57,8 +57,12 @@ ${pageLinks}
 ## Articles
 
 - [Articles](${BASE_URL}/en/blog): long-form notes, in English, on software Matteo has built.
-- [Building Filo: what an AI conversation should remember](${BASE_URL}/en/blog/filo-memory): encrypted local memory, corrections and a synthetic evaluation with its limitations. Filo, formerly Therapist, is experimental adult self-reflection software.
-- [Portico: running Direct3D 9 C++ programs in the browser](${BASE_URL}/en/blog/portico-direct3d9-webgl2): the public MPL-2.0 library, generated shaders, JSPI and measured tutorial rendering comparisons.
+- [Miniform: save the message first, send the email second](${BASE_URL}/en/blog/miniform-self-hosted-form-inbox): a self-hosted form inbox in one Go binary with SQLite, where every notification has its own row, lease and retry.
+- [GymTree: a workout app for the time between sets](${BASE_URL}/en/blog/gymtree-workout-and-coaching): the workout player, a rest timer that survives a locked phone, an ordered offline queue and the permissions behind a coach's programme.
+- [Maestro: from "I want to take better photos" to a lesson](${BASE_URL}/en/blog/maestro-learning-goals-and-practice): URL-gated source search, a structural lesson inspection with repair attempts, and quiz answers kept after the quiz.
+- [Portfolio Cockpit: a CV you fly through](${BASE_URL}/en/blog/portfolio-cockpit-playable-cv): how the Three.js world and the React interface share this site without updating at the same speed.
+- [Filo: teaching an AI conversation to forget Bologna](${BASE_URL}/en/blog/filo-memory): encrypted local memory, corrections and a synthetic evaluation with its limitations. Filo, formerly Therapist, is experimental adult self-reflection software.
+- [Portico: Microsoft's Direct3D 9 tutorials, unchanged, in a browser tab](${BASE_URL}/en/blog/portico-direct3d9-webgl2): the public MPL-2.0 library, generated shaders, JSPI and measured tutorial rendering comparisons.
 
 ## Contact
 
