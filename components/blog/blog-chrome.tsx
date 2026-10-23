@@ -11,6 +11,8 @@ import { NAME } from '@/lib/constants/contact'
 
 export const BLOG_PATH = '/en/blog' as Route
 export const articlePath = (slug: string) => `/en/blog/${slug}` as Route
+/** The RSS feed (app/feed.xml/route.ts): a file, not a page, so it is linked with a plain anchor. */
+export const FEED_PATH = '/feed.xml'
 
 export const BLOG_COPY = {
   title: 'Articles',
@@ -21,6 +23,7 @@ export const BLOG_COPY = {
   empty: 'No articles yet.',
   back: 'All articles',
   source: 'Read the source on GitHub',
+  feed: 'RSS feed',
   byline: 'Written by Matteo Dante',
   role: 'Senior software engineer in Switzerland: websites, apps and AI in production.',
   cta: 'Want to talk about a project?',

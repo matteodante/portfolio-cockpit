@@ -39,6 +39,11 @@ collegamenti pubblici in llms.txt. I dati strutturati descrivono il contenuto:
 non garantiscono rich result o ranking. Non sono state create pagine locali
 ripetitive o articoli generici solo per aumentare il numero di URL.
 
+Il blog in inglese (`/en/blog` e le pagine degli articoli) è misurato con il
+proprio percorso, come le altre pagine; prima del 23/10/2026 le sue visite
+arrivavano a GA come `/not-found`. Una page_view su un articolo è una visita,
+non la prova di una lettura.
+
 ## Procedura di attivazione Google (storico)
 
 I passaggi di accesso, GA4, deploy, verifica Search Console e invio sitemap

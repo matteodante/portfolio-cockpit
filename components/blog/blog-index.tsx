@@ -5,6 +5,7 @@ import {
   articlePath,
   BLOG_COPY,
   BlogHeader,
+  FEED_PATH,
 } from '@/components/blog/blog-chrome'
 import type { ArticleSummary } from '@/lib/blog/source'
 
@@ -20,6 +21,9 @@ export default function BlogIndex({
         <header className="blog-intro">
           <h1>{BLOG_COPY.title}</h1>
           <p>{BLOG_COPY.lead}</p>
+          <p className="blog-feed">
+            <a href={FEED_PATH}>{BLOG_COPY.feed}</a>
+          </p>
         </header>
         {articles.length === 0 ? (
           <p className="blog-empty">{BLOG_COPY.empty}</p>

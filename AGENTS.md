@@ -437,6 +437,32 @@ skeletal) for the Download CV button.
 To update private content: edit files in `private-src/`, run
 `bun run encrypt:private`, commit the new `.enc` blobs.
 
+## Blog
+
+- Articles are Markdown files in `articles/` of the public profile repository
+  `matteodante/matteodante`, read from GitHub by `lib/blog/source.ts` and
+  revalidated every five minutes. Publishing or fixing an article is a push
+  there, never a deploy here. Writing rules and the one-commit-per-article
+  history live in that repository's `AGENTS.md`.
+- Preview local articles with `BLOG_LOCAL_DIR=<articles folder> bun run dev`,
+  or import `getArticles`/`getArticle` from `@/lib/blog/source` in a script
+  under the ignored `.private-notes/` (the `@/` alias only resolves inside
+  the repository). Inspect each page at 390px and 1440px.
+- `app/feed.xml/route.ts` is the RSS feed and `app/sitemap.ts` lists every
+  published article; both read the same source. The optional `updated`
+  frontmatter date drives `dateModified`, `article:modified_time` and lastmod.
+  Details in `ARCHITECTURE.md`, Blog.
+- When an article is added, renamed or retitled, update in the same change
+  `lib/seo/llms-content.ts` (every published article must be listed: the
+  discovery test builds its sitemap fixture from those links),
+  `lib/ai/landing-context.ts` and the public profile in `app/api/chat/route.ts`.
+  Selected projects in that profile are Matteo's choice.
+- Analytics reports blog pages by their own path (`safePageLocation`); a
+  page_view is a visit, not a read. Mermaid diagrams keep their natural width
+  on phones and scroll inside their figure by design.
+- Merging to `main` deploys production: blog-related site changes go through
+  a draft PR for Matteo.
+
 ## SEO
 
 - `lib/seo/page-metadata.ts` owns shared page metadata construction and

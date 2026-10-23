@@ -86,6 +86,11 @@
   font-size: 19px;
   line-height: 1.6;
 }
+.blog-intro .blog-feed {
+  grid-column: 1 / -1;
+  padding: 0;
+  font-size: 15px;
+}
 .blog-empty {
   color: var(--landing-muted);
   font-size: 18px;
@@ -162,7 +167,8 @@
   font-size: 15px;
 }
 .article-back a,
-.article-foot-links a {
+.article-foot-links a,
+.blog-intro .blog-feed a {
   color: var(--landing-muted);
   text-decoration: underline 1px var(--landing-line);
   transition:
@@ -170,7 +176,8 @@
     text-decoration-color 0.2s ease-out;
 }
 .article-back a:hover,
-.article-foot-links a:hover {
+.article-foot-links a:hover,
+.blog-intro .blog-feed a:hover {
   color: var(--landing-ink);
   text-decoration-color: var(--landing-accent);
 }

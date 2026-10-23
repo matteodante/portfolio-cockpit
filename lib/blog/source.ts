@@ -19,7 +19,7 @@ export const ARTICLES_REVALIDATE = 300
 export const ARTICLES_REPO_URL = `https://github.com/${OWNER}/${REPO}/tree/${BRANCH}/${DIR}`
 const RAW_BASE = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${DIR}/`
 const BLOB_BASE = `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/${DIR}/`
-const LOCAL_DIR = process.env.BLOG_LOCAL_DIR
+const localDir = () => process.env.BLOG_LOCAL_DIR
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
@@ -27,6 +27,8 @@ const Frontmatter = z.object({
   title: z.string().trim().min(1),
   subtitle: z.string().trim().min(1),
   date: z.coerce.date(),
+  // Set only after a substantial revision: it becomes dateModified in the page's metadata and the sitemap.
+  updated: z.coerce.date().optional(),
   cover: z.string().trim().min(1).optional(),
   coverAlt: z.string().trim().default(''),
   draft: z.boolean().default(false),
@@ -38,6 +40,8 @@ export type ArticleSummary = {
   subtitle: string
   /** YYYY-MM-DD */
   date: string
+  /** YYYY-MM-DD, present only after a substantial revision */
+  updated?: string
   cover: { src: string; alt: string } | null
   minutes: number
   sourceUrl: string
@@ -53,7 +57,8 @@ function github(url: string) {
 }
 
 async function listFiles(): Promise<string[]> {
-  if (LOCAL_DIR) return readdir(LOCAL_DIR)
+  const dir = localDir()
+  if (dir) return readdir(dir)
   const res = await github(
     `https://api.github.com/repos/${OWNER}/${REPO}/contents/${DIR}?ref=${BRANCH}`
   )
@@ -68,8 +73,8 @@ async function listFiles(): Promise<string[]> {
 }
 
 async function readText(file: string): Promise<string | null> {
-  if (LOCAL_DIR)
-    return readFile(join(LOCAL_DIR, file), 'utf8').catch(() => null)
+  const dir = localDir()
+  if (dir) return readFile(join(dir, file), 'utf8').catch(() => null)
   const res = await github(RAW_BASE + file)
   if (res.status === 404) return null
   if (!res.ok)
@@ -79,8 +84,9 @@ async function readText(file: string): Promise<string | null> {
 
 /** A relative path in the article as a URL the page can load. Local previews inline images. */
 async function assetUrl(path: string) {
-  if (!LOCAL_DIR) return new URL(path, RAW_BASE).href
-  const bytes = await readFile(join(LOCAL_DIR, path))
+  const dir = localDir()
+  if (!dir) return new URL(path, RAW_BASE).href
+  const bytes = await readFile(join(dir, path))
   const extension = path.slice(path.lastIndexOf('.') + 1).toLowerCase()
   const type =
     { png: 'image/png', webp: 'image/webp', avif: 'image/avif' }[extension] ??
@@ -101,6 +107,7 @@ const loadArticle = cache(async (slug: string) => {
     title: fm.title,
     subtitle: fm.subtitle,
     date: fm.date.toISOString().slice(0, 10),
+    ...(fm.updated && { updated: fm.updated.toISOString().slice(0, 10) }),
     cover: fm.cover
       ? { src: await assetUrl(fm.cover), alt: fm.coverAlt }
       : null,

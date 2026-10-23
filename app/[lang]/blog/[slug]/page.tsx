@@ -2,7 +2,12 @@ import type { Metadata } from 'next'
 import { notFound, permanentRedirect } from 'next/navigation'
 import type { BlogPosting, WithContext } from 'schema-dts'
 import ArticleView from '@/components/blog/article-view'
-import { articlePath } from '@/components/blog/blog-chrome'
+import {
+  articlePath,
+  BLOG_COPY,
+  BLOG_PATH,
+  FEED_PATH,
+} from '@/components/blog/blog-chrome'
 import { getArticle, getArticles } from '@/lib/blog/source'
 import { NAME } from '@/lib/constants/contact'
 import { BASE_URL } from '@/lib/constants/site'
@@ -40,7 +45,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: { absolute: `${article.title} · ${NAME}` },
     description: article.subtitle,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      types: {
+        'application/rss+xml': [
+          { url: `${BASE_URL}${FEED_PATH}`, title: BLOG_COPY.metaTitle },
+        ],
+      },
+    },
     openGraph: {
       type: 'article',
       title: article.title,
@@ -49,6 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: NAME,
       locale: OG_LOCALE.en,
       publishedTime: article.date,
+      ...(article.updated && { modifiedTime: article.updated }),
       authors: [NAME],
       images,
     },
@@ -63,16 +76,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props) {
   const article = await resolve(params)
+  const url = `${BASE_URL}${articlePath(article.slug)}`
+  // The author and publisher point at the Person node the locale layout injects on every page.
   const schema: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    '@id': `${url}#article`,
+    mainEntityOfPage: url,
+    url,
     headline: article.title,
     description: article.subtitle,
-    datePublished: article.date,
+    datePublished: `${article.date}T00:00:00+00:00`,
+    dateModified: `${article.updated ?? article.date}T00:00:00+00:00`,
     inLanguage: BCP47_LOCALE.en,
-    author: { '@type': 'Person', name: NAME, url: BASE_URL },
-    url: `${BASE_URL}${articlePath(article.slug)}`,
-    ...(article.cover && { image: article.cover.src }),
+    author: { '@id': `${BASE_URL}/#person` },
+    publisher: { '@id': `${BASE_URL}/#person` },
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': `${BASE_URL}${BLOG_PATH}#blog`,
+      name: BLOG_COPY.metaTitle,
+      url: `${BASE_URL}${BLOG_PATH}`,
+    },
+    ...(article.cover && { image: [article.cover.src] }),
   }
   return (
     <>

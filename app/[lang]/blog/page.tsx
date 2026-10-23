@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound, permanentRedirect } from 'next/navigation'
-import { BLOG_COPY, BLOG_PATH } from '@/components/blog/blog-chrome'
+import { BLOG_COPY, BLOG_PATH, FEED_PATH } from '@/components/blog/blog-chrome'
 import BlogIndex from '@/components/blog/blog-index'
 import { getArticles } from '@/lib/blog/source'
 import { NAME } from '@/lib/constants/contact'
@@ -26,7 +26,14 @@ export function generateMetadata(): Metadata {
   return {
     title: { absolute: BLOG_COPY.metaTitle },
     description: BLOG_COPY.metaDescription,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      types: {
+        'application/rss+xml': [
+          { url: `${BASE_URL}${FEED_PATH}`, title: BLOG_COPY.metaTitle },
+        ],
+      },
+    },
     openGraph: {
       type: 'website',
       title: BLOG_COPY.metaTitle,

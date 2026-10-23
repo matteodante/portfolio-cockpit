@@ -371,6 +371,11 @@ private-src/cv-en.tex`) before encrypting.
 - Image-only Markdown paragraphs become screenshot figures. Put images on
   consecutive lines in the same paragraph to group them; galleries wrap
   on narrow screens and preserve complete screenshots without cropping.
+- `app/feed.xml/route.ts` is the RSS 2.0 feed, announced on the blog pages
+  through `alternates.types`; `app/sitemap.ts` lists every published article
+  with its date. An optional `updated` frontmatter date, set only after a
+  substantial revision, becomes `dateModified`, `article:modified_time` and the
+  sitemap's lastmod.
 - Keep the slug when an article is renamed, since shared links point to
   it. After a change to the title, description or cover, re-scrape the
   URL in LinkedIn's Post Inspector to refresh the preview.
