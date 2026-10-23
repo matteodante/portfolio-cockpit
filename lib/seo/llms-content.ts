@@ -57,6 +57,7 @@ ${pageLinks}
 ## Articles
 
 - [Articles](${BASE_URL}/en/blog): long-form notes, in English, on software Matteo has built.
+- [DroneClean: tap the shadow once](${BASE_URL}/en/blog/droneclean-shadow-removal): the shadow-removal web app at droneclean.app, its piece-wise uploads, tracking and inpainting models, and an export that re-encodes only what changed.
 - [Miniform: save the message first, send the email second](${BASE_URL}/en/blog/miniform-self-hosted-form-inbox): a self-hosted form inbox in one Go binary with SQLite, where every notification has its own row, lease and retry.
 - [GymTree: a workout app for the time between sets](${BASE_URL}/en/blog/gymtree-workout-and-coaching): the workout player, a rest timer that survives a locked phone, an ordered offline queue and the permissions behind a coach's programme.
 - [Maestro: from "I want to take better photos" to a lesson](${BASE_URL}/en/blog/maestro-learning-goals-and-practice): URL-gated source search, a structural lesson inspection with repair attempts, and quiz answers kept after the quiz.
