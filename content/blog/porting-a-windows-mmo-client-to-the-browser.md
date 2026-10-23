@@ -12,7 +12,7 @@ A few weeks ago I set myself a question: can a 2000s Windows MMORPG client run i
 
 It can. This is how we did it, what broke along the way, and what we measured. "We" is me plus a team of AI coding agents, and that part of the story is in here too.
 
-> The Direct3D 9 layer of this work, **Portico**, runs Direct3D 9 C++ programs in the browser from source. It is [open source under MPL-2.0](https://github.com/matteodante/portico); the [live demo](https://matteodante.it/portico-demo/index.html) runs Microsoft's DirectX tutorials unchanged.
+> The Direct3D 9 layer of this work, **Portico**, runs Direct3D 9 C++ programs in the browser from source. It is [open source under MPL-2.0](https://github.com/matteodante/portico); the [live demo](https://www.matteodante.it/portico-demo/index.html) runs Microsoft's DirectX tutorials unchanged.
 
 > **About this project.** A personal, non-commercial research project on porting legacy software, written up to describe the engineering. The game is not named and is **not distributed in any form**: no source code, no WebAssembly build, no game assets, no installer. Every server in this article is a **private test instance** of the game's server software running on my own PC, with test accounts only: not the official servers, not connected to them and not open to the public. I am not affiliated with the game's developer or publisher, and all rights to the game belong to their owners.
 
@@ -221,7 +221,7 @@ What didn't work as well: parallel lanes sometimes fixed the same thing twice, a
 
 ## What's next
 
-The reusable part of this work is **Portico**, an [open-source library under MPL-2.0](https://github.com/matteodante/portico). Its Direct3D 9 to WebGL2 layer runs Microsoft's open-source DirectX samples unchanged ([live demo](https://matteodante.it/portico-demo/index.html)) and is tested against Windows Direct3D 9. It also includes D3DX math and texture loading and a Win32 subset for Emscripten. Broader Win32 support, MFC, DirectSound, networking and the file installer remain planned modules. If you have an old Win32 or Direct3D 9 program you would like to see in a browser, [get in touch](mailto:matteo.dante659@gmail.com).
+The reusable part of this work is **Portico**, an [open-source library under MPL-2.0](https://github.com/matteodante/portico). Its Direct3D 9 to WebGL2 layer runs Microsoft's open-source DirectX samples unchanged ([live demo](https://www.matteodante.it/portico-demo/index.html)) and is tested against Windows Direct3D 9. It also includes D3DX math and texture loading and a Win32 subset for Emscripten. Broader Win32 support, MFC, DirectSound, networking and the file installer remain planned modules. If you have an old Win32 or Direct3D 9 program you would like to see in a browser, [get in touch](mailto:matteo.dante659@gmail.com).
 
 The game is not distributed in any form, and won't be: not its source code, not the WebAssembly build, not its assets, not an installer, and its servers stay a private test instance. It isn't mine to share, and the point was never this particular game: it was finding out whether twenty-year-old software can simply *run* in the browser.
 
@@ -230,5 +230,5 @@ It can.
 ## Links
 
 - [Portico on GitHub](https://github.com/matteodante/portico): the Direct3D 9 layer of this port, open source under MPL-2.0.
-- [Live demo](https://matteodante.it/portico-demo/index.html): Microsoft's DirectX tutorials running in the browser through Portico.
+- [Live demo](https://www.matteodante.it/portico-demo/index.html): Microsoft's DirectX tutorials running in the browser through Portico.
 - [The Portico story](portico-direct3d9-webgl2.md): why the layer was extracted and how its output is checked.

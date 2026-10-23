@@ -7,7 +7,7 @@ coverAlt: Conceptual illustration of a retro CRT and a glass browser window link
 draft: false
 ---
 
-Open the [demo](https://matteodante.it/portico-demo/index.html) and a textured cylinder turns slowly in a browser tab. The program drawing it is one of Microsoft's own Direct3D 9 tutorials from the early 2000s. Its source has not changed. It still believes it is on Windows, talking to a graphics card through an API that browsers never had.
+Open the [demo](https://www.matteodante.it/portico-demo/index.html) and a textured cylinder turns slowly in a browser tab. The program drawing it is one of Microsoft's own Direct3D 9 tutorials from the early 2000s. Its source has not changed. It still believes it is on Windows, talking to a graphics card through an API that browsers never had.
 
 That little cylinder is the part of a much larger project I am allowed to show. Earlier this year I set out to run a whole 2000s Windows game client, about 400,000 lines of C++, in a browser, essentially unchanged, and play it online against a private test server. It worked, and [the write-up](porting-a-windows-mmo-client-to-the-browser.md) is on this blog. The graphics layer that made it possible is now a library of its own, [Portico](https://github.com/matteodante/portico), open source under MPL-2.0.
 
@@ -45,7 +45,7 @@ If you have an old Direct3D program in a drawer and a copy of its source, I woul
 
 ## Links
 
-- [Live demo](https://matteodante.it/portico-demo/index.html): Microsoft's first five Direct3D 9 tutorials, running in the browser.
+- [Live demo](https://www.matteodante.it/portico-demo/index.html): Microsoft's first five Direct3D 9 tutorials, running in the browser.
 - [Portico on GitHub](https://github.com/matteodante/portico): source, samples and documentation, MPL-2.0.
 - [Porting guide](https://github.com/matteodante/portico/blob/main/docs/porting-guide.md) and [roadmap](https://github.com/matteodante/portico/blob/main/ROADMAP.md).
 - [The bigger port](porting-a-windows-mmo-client-to-the-browser.md): the 400,000-line Windows game client Portico was extracted from.

@@ -9,7 +9,7 @@ draft: false
 
 The astronaut has landed on Earth. The instrument panel reads zero speed, and "Get in touch" is the section within reach. Press dock, and my contact details open.
 
-That is [Portfolio Cockpit](https://matteodante.it/en/cockpit), the playable version of my CV. A toy astronaut, four small planets, each one a section: who I am, what I have built, where I have worked, how to reach me. It sits inside my website next to a perfectly ordinary homepage with project links and a booking button.
+That is [Portfolio Cockpit](https://www.matteodante.it/en/cockpit), the playable version of my CV. A toy astronaut, four small planets, each one a section: who I am, what I have built, where I have worked, how to reach me. It sits inside my website next to a perfectly ordinary homepage with project links and a booking button.
 
 ![The live Portfolio Cockpit in a desktop browser, with the astronaut landed on Earth and the docking and navigation controls visible.](images/portfolio-cockpit-desktop.jpg)
 
@@ -45,10 +45,10 @@ Build the ordinary path first. The homepage with the booking button is where cli
 
 Tests can be tiny and still matter. "A pause does not teleport the player" is one line of intent and it protected me more than once.
 
-[Take off](https://matteodante.it/en/cockpit), in English or Italian, and dock somewhere. If you would rather skip the flight, the menu is right there, and so is my email.
+[Take off](https://www.matteodante.it/en/cockpit), in English or Italian, and dock somewhere. If you would rather skip the flight, the menu is right there, and so is my email.
 
 ## Links
 
-- [Portfolio Cockpit](https://matteodante.it/en/cockpit): the playable CV, in English and Italian.
-- [matteodante.it](https://matteodante.it/en): the homepage, with project links and a booking button.
+- [Portfolio Cockpit](https://www.matteodante.it/en/cockpit): the playable CV, in English and Italian.
+- [matteodante.it](https://www.matteodante.it/en): the homepage, with project links and a booking button.
 - [The code on GitHub](https://github.com/matteodante/portfolio-cockpit): the whole site, including the cockpit and the chat, MIT. Start with the [architecture notes](https://github.com/matteodante/portfolio-cockpit/blob/main/ARCHITECTURE.md).
