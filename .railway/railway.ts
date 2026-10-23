@@ -69,10 +69,6 @@ export default defineRailway(() => {
       UPSTASH_REDIS_REST_URL: preserve(),
       UPSTASH_REDIS_REST_TOKEN: preserve(),
       GOOGLE_SITE_VERIFICATION: preserve(),
-      // Read-only token for the blog (lib/blog/source.ts): without it the
-      // build shares GitHub's anonymous limit with every Railway builder and
-      // fails with 403.
-      GITHUB_TOKEN: preserve(),
       // Read at build time (public): analytics after consent only.
       NEXT_PUBLIC_GA_MEASUREMENT_ID: preserve(),
       NEXT_PUBLIC_POSTHOG_KEY: preserve(),

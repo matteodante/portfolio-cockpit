@@ -16,9 +16,8 @@ import { socialImages } from '@/lib/seo/social'
 import '@/components/landing/landing.css'
 import '@/components/blog/blog.css'
 
-// The blog is in English only: /it/blog/<slug> redirects here. Articles come from GitHub (lib/blog/source.ts):
-// pages revalidate every five minutes, and an article pushed after the build renders on its first visit.
-export const revalidate = 300
+// The blog is in English only: /it/blog/<slug> redirects here. Every article in content/blog/ is rendered at
+// build time (lib/blog/source.ts).
 
 type Props = { params: Promise<{ lang: string; slug: string }> }
 
@@ -97,7 +96,7 @@ export default async function Page({ params }: Props) {
       name: BLOG_COPY.metaTitle,
       url: `${BASE_URL}${BLOG_PATH}`,
     },
-    ...(article.cover && { image: [article.cover.src] }),
+    ...(article.cover && { image: [`${BASE_URL}${article.cover.src}`] }),
   }
   return (
     <>

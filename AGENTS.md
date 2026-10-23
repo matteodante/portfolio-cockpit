@@ -471,15 +471,16 @@ To update private content: edit files in `private-src/`, run
 
 ## Blog
 
-- Articles are Markdown files in `articles/` of the public profile repository
-  `matteodante/matteodante`, read from GitHub by `lib/blog/source.ts` and
-  revalidated every five minutes. Publishing or fixing an article is a push
-  there, never a deploy here. Writing rules and the one-commit-per-article
-  history live in that repository's `AGENTS.md`.
-- Preview local articles with `BLOG_LOCAL_DIR=<articles folder> bun run dev`,
-  or import `getArticles`/`getArticle` from `@/lib/blog/source` in a script
-  under the ignored `.private-notes/` (the `@/` alias only resolves inside
-  the repository). Inspect each page at 390px and 1440px.
+- Articles are Markdown files in `content/blog/`, their images in
+  `public/blog/images/` (moved here from the profile repository
+  `matteodante/matteodante` on 2026-10-23, whose README keeps only the
+  links). `lib/blog/source.ts` reads them from disk at build time: no GitHub
+  call, no token. Publishing or fixing an article is a commit here and a
+  deploy. Writing rules and history: `content/blog/AGENTS.md`.
+- Preview with `bun run dev`, or import `getArticles`/`getArticle` from
+  `@/lib/blog/source` in a script under the ignored `.private-notes/` (the
+  `@/` alias only resolves inside the repository). Inspect each page at
+  390px and 1440px.
 - `app/feed.xml/route.ts` is the RSS feed and `app/sitemap.ts` lists every
   published article; both read the same source. The optional `updated`
   frontmatter date drives `dateModified`, `article:modified_time` and lastmod.

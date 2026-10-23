@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
     '/api/cv/**': ['./private/resume/**'],
     '/api/translations/**': ['./lib/i18n/translations/*.enc'],
     '/api/chat': ['./lib/ai/*.enc'],
+    // Pages are built from these; an unknown slug still reads the folder to answer 404.
+    '/[lang]/blog/**': ['./content/blog/*.md'],
   },
   // Railway runs the self-contained server (Dockerfile).
   output: 'standalone',
@@ -34,14 +36,10 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    localPatterns: [{ pathname: '/landing-v2/**' }, { pathname: '/images/**' }],
-    // Article covers live next to the articles in the public profile repository (lib/blog/source.ts).
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'raw.githubusercontent.com',
-        pathname: '/matteodante/matteodante/main/articles/**',
-      },
+    localPatterns: [
+      { pathname: '/landing-v2/**' },
+      { pathname: '/images/**' },
+      { pathname: '/blog/images/**' },
     ],
   },
   headers: async () => [

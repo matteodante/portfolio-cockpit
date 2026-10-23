@@ -11,9 +11,6 @@ import {
 } from '@/lib/seo/page-metadata'
 import { type SocialPage, socialImageUrl } from '@/lib/seo/social'
 
-// Articles come from GitHub (lib/blog/source.ts): the sitemap revalidates with the blog.
-export const revalidate = 300
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getArticles()
   const pages = [
