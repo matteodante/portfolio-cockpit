@@ -442,8 +442,8 @@ To update private content: edit files in `private-src/`, run
 - Articles are Markdown files in `articles/` of the public profile repository
   `matteodante/matteodante`, read from GitHub by `lib/blog/source.ts` and
   revalidated every five minutes. Publishing or fixing an article is a push
-  there, never a deploy here. Writing rules, image provenance and the
-  one-commit-per-article history live in that repository's `AGENTS.md`.
+  there, never a deploy here. Writing rules and the one-commit-per-article
+  history live in that repository's `AGENTS.md`.
 - Preview local articles with `BLOG_LOCAL_DIR=<articles folder> bun run dev`,
   or import `getArticles`/`getArticle` from `@/lib/blog/source` in a script
   under the ignored `.private-notes/` (the `@/` alias only resolves inside
