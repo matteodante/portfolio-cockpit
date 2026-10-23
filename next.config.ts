@@ -25,6 +25,8 @@ const nextConfig: NextConfig = {
     '/api/translations/**': ['./lib/i18n/translations/*.enc'],
     '/api/chat': ['./lib/ai/*.enc'],
   },
+  // Railway runs the self-contained server (Dockerfile).
+  output: 'standalone',
   devIndicators: false,
   images: {
     minimumCacheTTL: 60 * 60 * 24 * 30,
@@ -44,7 +46,6 @@ const nextConfig: NextConfig = {
   },
   headers: async () => [
     {
-      // Vercel's default filename overrides the dated download attribute.
       // Keep direct PDF viewing, but let download links choose the filename.
       source: '/resume/cv-:locale.pdf',
       headers: [{ key: 'Content-Disposition', value: 'inline' }],

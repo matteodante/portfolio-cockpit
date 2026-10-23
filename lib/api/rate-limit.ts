@@ -124,12 +124,17 @@ export function createRateLimiter({
   return { consume, headers }
 }
 
-/** Vercel-signed client IP. Falls back to x-real-ip, then loopback. */
-export function getClientIp(req: Request): string {
-  const vercelXff = req.headers.get('x-vercel-forwarded-for')
-  if (vercelXff) {
-    const first = vercelXff.split(',')[0]
+/**
+ * The visitor's address as the hosting edge wrote it. Railway sets
+ * x-real-ip and replaces any value a client sends; Vercel signs
+ * x-vercel-forwarded-for. Each header is read only on its own platform, so a
+ * client cannot pick its address by sending the other one. Loopback locally.
+ */
+export function getClientIp(source: Request | Headers): string {
+  const headers = source instanceof Headers ? source : source.headers
+  if (process.env.VERCEL) {
+    const first = headers.get('x-vercel-forwarded-for')?.split(',')[0]
     if (first) return first.trim()
   }
-  return req.headers.get('x-real-ip') ?? '127.0.0.1'
+  return headers.get('x-real-ip') ?? '127.0.0.1'
 }

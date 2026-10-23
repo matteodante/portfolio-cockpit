@@ -1,5 +1,7 @@
 # SEO e misurazione — prima fase
 
+> Aggiornamento 2026-10-23: il sito passa a Railway (`docs/railway.md`). Vercel Web Analytics e Speed Insights sono stati rimossi dal codice; PostHog (UE) li sostituisce dopo il consenso, tramite il proxy `/ingest`. GA4 resta invariato; l'ID va copiato nelle variabili Railway. Le note su Vercel qui sotto descrivono lo stato precedente.
+
 Stato al 2026-09-10: GA4 creato nell'account Google del titolare
 `matteo.dante659@gmail.com` (Google visualizza la forma senza punti).
 Account Analytics esistente `238824806`, proprietà `MatteoDante.it`

@@ -106,7 +106,10 @@ work; implement the requested scope.
 Next.js 16 (App Router), React 19.2 + React Compiler, TypeScript strict,
 Three.js 0.183 vanilla (NOT R3F), Tailwind v4, Zustand, OpenAI Responses
 API. Bun 1.3 (pkg manager + test runner). Biome 2.4. `tsgo` for fast
-typechecks. Node 22. EN/IT.
+typechecks. Node 22. EN/IT. Courses: Better Auth (Google sign-in),
+Drizzle ORM + Postgres, S3-compatible Railway bucket. Hosting: Railway
+(`Dockerfile`, `.railway/railway.ts`, `docs/railway.md`); the move from
+Vercel, domain included, needs the owner's go-ahead at each step.
 
 ## Commands
 
@@ -137,8 +140,9 @@ directly. No Jest, no Vitest layer.
 ## What this is
 
 A space-inspired freelance landing at `/`, three service pages and one
-PiùUDITO case in EN/IT, plus the Three.js cockpit game (the playable CV)
-at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS, no DB.
+PiùUDITO case in EN/IT, the courses page and its signed-in course area,
+plus the Three.js cockpit game (the playable CV) at `/cockpit`. Chat +
+unlock + gated CV / translations APIs. No CMS; Postgres only for courses.
 
 ## Routing
 
@@ -355,9 +359,9 @@ To add a planet:
 - Rate limit via `lib/api/rate-limit.ts` (`createRateLimiter`):
   chat 10/60s/IP, unlock 5/60s/IP. Uses Upstash Redis when
   `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` are set,
-  in-memory sliding window otherwise. `getClientIp` reads
-  `x-vercel-forwarded-for` (signed by Vercel edge). On Vercel, an
-  edge Firewall rule adds another layer.
+  in-memory sliding window otherwise (one Railway instance). `getClientIp`
+  reads `x-real-ip`, which Railway's edge writes and overwrites;
+  `x-vercel-forwarded-for` is trusted only when running on Vercel.
 - Moderates the latest user message via `omni-moderation-latest`.
   Fails open if moderation itself errors.
 - `openai.responses.create({ stream: true })` → pipes
@@ -437,6 +441,30 @@ skeletal) for the Download CV button.
 To update private content: edit files in `private-src/`, run
 `bun run encrypt:private`, commit the new `.enc` blobs.
 
+## Courses
+
+- `/it/corsi` and `/en/courses` (`app/[lang]/corsi`, `app/[lang]/courses`,
+  `components/courses/courses-page.tsx`): Persuade surface. The first
+  viewport is a boarding pass that is the pilot-place application form
+  (`pilot-pass.tsx`, server action `lib/courses/apply.ts`, honeypot and
+  5 per 10 minutes per address). Offer terms confirmed 2026-10-23: 1:1 and
+  small groups, AI for developers and AI for work, free pilot places for
+  honest feedback; a public review is optional, never a condition. No
+  prices, sizes, durations or outcomes are confirmed. Brief and direction
+  contract: `.impeccable/surfaces/app-lang-corsi-page-tsx.md`.
+- `/{locale}/account/**`: the course area, noindex and dynamic. Google
+  sign-in only in production (Better Auth at `app/api/auth/[...all]`,
+  `lib/courses/auth.ts`); `COURSES_DEV_PASSWORD=1` adds email/password
+  outside production for local tests. Courses are `free` (every account)
+  or `assigned` (enrolments). Lessons hold Markdown notes and an optional
+  recording in the private bucket, played through signed URLs.
+- `/{locale}/account/admin`: accounts in `ADMIN_EMAILS` read applications,
+  create courses and lessons, upload recordings straight to the bucket and
+  enrol accounts by email. Every server action re-checks the admin.
+- Schema `lib/courses/schema.ts`; after a change run `bun run db:generate`
+  and commit `drizzle/`. `bun run db:migrate` applies migrations (Railway
+  runs it before each deploy). Without `DATABASE_URL` the page still builds.
+
 ## Blog
 
 - Articles are Markdown files in `articles/` of the public profile repository
@@ -500,7 +528,9 @@ To update private content: edit files in `private-src/`, run
   consent UI; Google loads only after positive consent. With no ID there
   is no Google tag or consent UI. The fixed choice panel gives both
   buttons equal treatment; preferences remain in normal footer flow.
-  The cockpit is excluded. Existing Vercel tools are independent.
+  The cockpit is excluded. PostHog (EU, `NEXT_PUBLIC_POSTHOG_KEY`, via the
+  cookie-free `/ingest` proxy in `app/ingest/`) follows the same consent
+  and replaces Vercel Analytics/Speed Insights, which were removed.
   Live Google activation still needs owner login and real IDs. Keep click
   intent, embed booking creation and confirmed outcomes distinct; consult
   `docs/seo/measurement-plan.md` for event definitions and activation checks.

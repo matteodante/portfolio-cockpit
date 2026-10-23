@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/matteodante/portfolio-cockpit/actions/workflows/ci.yml/badge.svg)](https://github.com/matteodante/portfolio-cockpit/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![Deploy: Vercel](https://img.shields.io/badge/deploy-vercel-black.svg)](https://matteodante.it)
+[![Deploy: Railway](https://img.shields.io/badge/deploy-railway-black.svg)](https://matteodante.it)
 
 Freelance portfolio with two experiences: a cinematic landing for web,
 mobile and AI projects, and a playable 3D cockpit CV. Streaming AI chat
@@ -160,7 +160,7 @@ Gated content (kept locally in `/private-src/`, encrypted in repo):
 
 After editing, run `bun run encrypt:private` and commit the `.enc`
 blobs. Set `CV_ACCESS_PASSWORD`, `CV_ACCESS_SECRET`, `CV_DECRYPT_KEY`
-on your host (Vercel env vars) and share the password with whoever
+on your host (Railway variables, see docs/railway.md) and share the password with whoever
 should see the full CV.
 
 The EN/IT public and full PDFs each fit one A4 page and retain the original
@@ -177,8 +177,7 @@ The cockpit download controls and gated PDF response use
 **5 req / 60s / IP**. Both go through `lib/api/rate-limit.ts`, which
 uses Upstash Redis when `UPSTASH_REDIS_REST_URL` /
 `UPSTASH_REDIS_REST_TOKEN` are set and a per-instance in-memory
-sliding window otherwise. On Vercel, an edge Firewall rule provides
-an additional layer.
+sliding window otherwise (the site runs as one Railway instance).
 
 ## Credits
 

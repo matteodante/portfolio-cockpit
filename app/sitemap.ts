@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getArticles } from '@/lib/blog/source'
 import { BASE_URL, CV_MARKDOWN_PATHS } from '@/lib/constants/site'
 import { locales } from '@/lib/i18n/config'
+import { COURSES_PATHS } from '@/lib/seo/courses-page'
 import { MARKETING_PAGES } from '@/lib/seo/marketing-pages'
 import {
   COCKPIT_PATHS,
@@ -22,6 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       paths: page.paths,
       lastModified: id === 'websites' ? '2026-10-14' : '2026-09-09',
     })),
+    { id: 'courses', paths: COURSES_PATHS, lastModified: '2026-10-23' },
     { id: 'cockpit', paths: COCKPIT_PATHS, lastModified: '2026-09-10' },
   ]
   // Dates reflect published content revisions, not builds (see
