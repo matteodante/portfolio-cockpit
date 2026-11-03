@@ -148,7 +148,7 @@ describe('public search discovery', () => {
       day: '2-digit',
     }).format(new Date())
     expect(ARTICLE_SLUGS.length).toBeGreaterThan(0)
-    expect(entries).toHaveLength(15 + ARTICLE_SLUGS.length)
+    expect(entries).toHaveLength(17 + ARTICLE_SLUGS.length)
     for (const slug of ARTICLE_SLUGS) {
       expect(entries.map((entry) => entry.url)).toContain(
         `${BASE_URL}/en/blog/${slug}`

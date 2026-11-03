@@ -14,7 +14,7 @@ import { stripEventUrls } from '@/lib/analytics/posthog-url'
  * - Events go to this site's own /ingest (app/ingest), passed on without the
  *   visitor's cookies, so the course session never leaves the site.
  * - Page views and our named events under a random browser id, never tied to
- *   a signed-in identity (no `identify`). No autocapture, recordings, surveys or
+ *   a course account (no `identify`). No autocapture, recordings, surveys or
  *   flags; addresses lose their query strings.
  */
 export const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim() ?? ''

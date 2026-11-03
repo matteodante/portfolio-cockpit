@@ -17,6 +17,7 @@ import {
 } from '@/lib/constants/contact'
 import { PRIVACY_PATHS } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
+import { COURSES_PATHS } from '@/lib/seo/courses-page'
 import { MARKETING_PAGES, type MarketingPage } from '@/lib/seo/marketing-pages'
 
 export default function MarketingPageContent({
@@ -274,6 +275,9 @@ export default function MarketingPageContent({
           ))}
         <Link href={`/${locale}/cockpit`} prefetch={false}>
           {locale === 'it' ? 'Gioca al mio CV' : 'Play my CV'}
+        </Link>
+        <Link href={COURSES_PATHS[locale]}>
+          {locale === 'it' ? 'Corsi di AI' : 'AI courses'}
         </Link>
         <Link href={PRIVACY_PATHS[locale]}>Privacy</Link>
       </footer>
