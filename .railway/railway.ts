@@ -1,7 +1,8 @@
 /**
  * matteodante.it on Railway, as code (Railway's Infrastructure as Code).
- * One public Next.js service in EU West. Once connected, pushing to main
- * deploys the site.
+ * One public Next.js service in EU West, a
+ * Postgres database for course accounts and a private bucket for lesson
+ * recordings. Once connected, pushing to main deploys the site.
  *
  * Secrets are never written here: preserve() keeps the value set in Railway.
  *
@@ -10,16 +11,41 @@
  *
  * Migration steps from Vercel, domain included: docs/railway.md.
  */
-import { defineRailway, github, preserve, project, service } from 'railway/iac'
+import {
+  bucket,
+  defineRailway,
+  github,
+  postgres,
+  preserve,
+  project,
+  ref,
+  service,
+} from 'railway/iac'
 
 const REGION = 'europe-west4-drams3a'
+// The site and its canonical URLs live on www: the DNS stays at GoDaddy, which
+// cannot point the bare domain at Railway (no CNAME or ALIAS at the root).
+// matteodante.it redirects to www with its path (docs/railway.md).
+const SITE_URL = 'https://www.matteodante.it'
+
 export default defineRailway(() => {
+  const Postgres = postgres('Postgres', { region: REGION })
+  // Keep the region postgres() put in deploy. Railway gives the managed
+  // database its own data volume: none is declared here.
+  Postgres.deploy = {
+    ...Postgres.deploy,
+    limitOverride: { containers: { cpu: 0.5, memoryBytes: 500_000_000 } },
+  }
+  Postgres.networking = { privateNetworkEndpoint: 'postgres' }
+  const recordings = bucket('matteodante-courses', { region: 'ams' })
+
   const web = service('web', {
     source: github('matteodante/portfolio-cockpit', { branch: 'main' }),
     build: { builder: 'DOCKERFILE', dockerfilePath: 'Dockerfile' },
     deploy: {
       startCommand: 'node server.js',
-      preDeployCommand: [],
+      // No shell runs it: bun --cwd replaces 'cd /migrate && ...'.
+      preDeployCommand: ['bun --cwd /migrate migrate.ts'],
       healthcheckPath: '/llms.txt',
       healthcheckTimeout: 60,
       restartPolicyType: 'ON_FAILURE',
@@ -45,10 +71,23 @@ export default defineRailway(() => {
       // Read at build time (public): analytics after consent only.
       NEXT_PUBLIC_GA_MEASUREMENT_ID: preserve(),
       NEXT_PUBLIC_POSTHOG_KEY: preserve(),
+      // Courses: accounts, Google sign-in, admin and recordings.
+      DATABASE_URL: Postgres.env.DATABASE_URL,
+      BETTER_AUTH_URL: SITE_URL,
+      BETTER_AUTH_SECRET: preserve(),
+      GOOGLE_CLIENT_ID: preserve(),
+      GOOGLE_CLIENT_SECRET: preserve(),
+      ADMIN_EMAILS: preserve(),
+      STORAGE_ENDPOINT: ref(recordings, 'ENDPOINT'),
+      STORAGE_REGION: ref(recordings, 'REGION'),
+      STORAGE_BUCKET: ref(recordings, 'BUCKET'),
+      STORAGE_ACCESS_KEY_ID: ref(recordings, 'ACCESS_KEY_ID'),
+      STORAGE_SECRET_ACCESS_KEY: ref(recordings, 'SECRET_ACCESS_KEY'),
+      STORAGE_FORCE_PATH_STYLE: 'false',
     },
   })
 
   return project('matteodante.it', {
-    resources: [web],
+    resources: [web, Postgres, recordings],
   })
 })

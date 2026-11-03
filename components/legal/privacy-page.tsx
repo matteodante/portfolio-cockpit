@@ -5,6 +5,7 @@ import LanguageSwitcher from '@/components/shared/language-switcher'
 import { NAME } from '@/lib/constants/contact'
 import { PRIVACY_PATHS } from '@/lib/constants/site'
 import type { Locale } from '@/lib/i18n/config'
+import { COURSES_PATHS } from '@/lib/seo/courses-page'
 
 export default function PrivacyPage({ locale }: { locale: Locale }) {
   const t = PRIVACY_COPY[locale]
@@ -46,6 +47,9 @@ export default function PrivacyPage({ locale }: { locale: Locale }) {
         <Link href={`/${locale}`}>{NAME}</Link>
         <Link href={`/${locale}/cockpit`} prefetch={false}>
           {locale === 'it' ? 'Gioca al mio CV' : 'Play my CV'}
+        </Link>
+        <Link href={COURSES_PATHS[locale]}>
+          {locale === 'it' ? 'Corsi di AI' : 'AI courses'}
         </Link>
       </footer>
     </div>

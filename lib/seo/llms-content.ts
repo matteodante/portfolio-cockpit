@@ -36,6 +36,8 @@ The detailed CV requires an access code. This file contains public information o
 - [Homepage — Italiano](${BASE_URL}/it): servizi, progetti realizzati e contatti.
 - [Homepage — English](${BASE_URL}/en): services, shipped projects and contact.
 ${pageLinks}
+- [Corsi di AI — Italiano](${BASE_URL}/it/corsi): corsi di AI uno a uno e in piccoli gruppi, con posti pilota gratuiti.
+- [AI courses — English](${BASE_URL}/en/courses): one-to-one and small-group AI courses, with free pilot places.
 
 
 ## Client work — three websites for PiùUDITO

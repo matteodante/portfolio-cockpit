@@ -114,8 +114,8 @@ export default function MarketingAnalytics({
             </p>
             <p>
               {it
-                ? 'Cal.com si apre solo quando scegli di prenotare.'
-                : 'Cal.com opens only when you choose to book.'}{' '}
+                ? 'Cal.com si apre solo quando scegli di prenotare. L’area corsi usa un cookie tecnico per l’accesso con Google.'
+                : 'Cal.com opens only when you choose to book. The course area uses a technical cookie for Google sign-in.'}{' '}
               <Link href={PRIVACY_PATHS[locale]}>
                 {it ? 'Informativa privacy' : 'Privacy policy'}
               </Link>

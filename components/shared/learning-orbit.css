@@ -1,0 +1,147 @@
+/* The courses' emblem (learning-orbit.tsx). The scene is a tilted plane:
+   rings turn in it, the planet and the satellites turn back towards the
+   viewer so they stay round, and preserve-3d lets the far half of each orbit
+   pass behind the planet. */
+.learning-orbit {
+  --orbit-tilt: 68deg;
+  --orbit-turn: -18deg;
+  --orbit-ink: #f2ede3;
+  --orbit-accent: #ff6b35;
+  position: relative;
+  aspect-ratio: 1;
+  perspective: 1400px;
+  pointer-events: none;
+}
+.learning-orbit-stars {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 22%, #f2ede3cc 0 1px, transparent 1.5px),
+    radial-gradient(circle at 84% 14%, #f2ede399 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 82%, #f2ede3aa 0 1px, transparent 1.5px),
+    radial-gradient(circle at 24% 76%, #f2ede377 0 1px, transparent 1.5px),
+    radial-gradient(circle at 92% 54%, #f2ede366 0 1px, transparent 1.5px),
+    radial-gradient(circle at 6% 52%, #f2ede355 0 1px, transparent 1.5px);
+  animation: learning-orbit-twinkle 5.5s ease-in-out infinite alternate;
+}
+.learning-orbit-scene {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--orbit-tilt)) rotateZ(var(--orbit-turn));
+}
+.learning-orbit-planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 30%, #f2ede3 0 6%, transparent 40%),
+    radial-gradient(circle at 62% 58%, #0000001f 0 9%, transparent 10%),
+    radial-gradient(circle at 40% 66%, #0000001a 0 6%, transparent 7%),
+    radial-gradient(circle at 36% 32%, #d9d4ca, #6f6c68 58%, #1b1c22 100%);
+  box-shadow:
+    inset -10px -8px 22px #05060acc,
+    inset 4px 3px 0 -2px #ff6b3566,
+    0 0 60px #ff6b3526;
+  transform: translate(-50%, -50%) rotateZ(calc(var(--orbit-turn) * -1))
+    rotateX(calc(var(--orbit-tilt) * -1));
+}
+.learning-orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 1;
+  border: 1.5px solid #f2ede359;
+  border-radius: 50%;
+  box-shadow: 0 0 18px #05060a99;
+  transform-style: preserve-3d;
+  animation: learning-orbit-turn var(--orbit-period) linear infinite;
+  animation-delay: var(--orbit-delay);
+}
+.learning-orbit-ring.is-inner {
+  --orbit-period: 16s;
+  --orbit-delay: -3s;
+  width: 52%;
+}
+.learning-orbit-ring.is-middle {
+  --orbit-period: 26s;
+  --orbit-delay: -15s;
+  width: 74%;
+  border-style: dashed;
+  border-color: #f2ede34d;
+}
+.learning-orbit-ring.is-outer {
+  --orbit-period: 40s;
+  --orbit-delay: -29s;
+  width: 96%;
+  border-color: #ff6b358c;
+}
+.learning-orbit-satellite {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4.5%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--orbit-ink);
+  box-shadow: 0 0 14px #f2ede380;
+  animation: learning-orbit-face var(--orbit-period) linear infinite;
+  animation-delay: var(--orbit-delay);
+}
+.is-inner .learning-orbit-satellite {
+  width: 3.4%;
+  background: #a7a5a1;
+  box-shadow: none;
+}
+.is-outer .learning-orbit-satellite {
+  width: 4%;
+  background: var(--orbit-accent);
+  box-shadow:
+    0 0 0 6px #ff6b351f,
+    0 0 22px #ff6b35b3;
+}
+
+/* The ring turns; its satellite turns back by the same angle, then undoes
+   the scene's tilt, so it always faces the viewer. */
+@keyframes learning-orbit-turn {
+  from {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+@keyframes learning-orbit-face {
+  from {
+    transform: translate(-50%, -50%) rotateZ(0deg)
+      rotateZ(calc(var(--orbit-turn) * -1))
+      rotateX(calc(var(--orbit-tilt) * -1));
+  }
+  to {
+    transform: translate(-50%, -50%) rotateZ(-360deg)
+      rotateZ(calc(var(--orbit-turn) * -1))
+      rotateX(calc(var(--orbit-tilt) * -1));
+  }
+}
+@keyframes learning-orbit-twinkle {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Reduced motion and the landing's pause button keep one composed frame
+   (the negative delays above choose it). */
+@media (prefers-reduced-motion: reduce) {
+  .learning-orbit * {
+    animation-play-state: paused;
+  }
+}
+.landing[data-interactive="true"]:not([data-cinema="true"]) .learning-orbit * {
+  animation-play-state: paused;
+}

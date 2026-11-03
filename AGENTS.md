@@ -112,7 +112,8 @@ work; implement the requested scope.
 Next.js 16 (App Router), React 19.2 + React Compiler, TypeScript strict,
 Three.js 0.183 vanilla (NOT R3F), Tailwind v4, Zustand, OpenAI Responses
 API. Bun 1.3 (pkg manager + test runner). Biome 2.4. `tsgo` for fast
-typechecks. Node 22. EN/IT. Hosting: Railway
+typechecks. Node 22. EN/IT. Courses: Better Auth (Google sign-in),
+Drizzle ORM + Postgres, S3-compatible Railway bucket. Hosting: Railway
 (`Dockerfile`, `.railway/railway.ts`, `docs/railway.md`), site on
 `www.matteodante.it` (the bare domain redirects there through a small
 Vercel project); changes to Railway, DNS or Vercel need the owner's
@@ -147,15 +148,16 @@ directly. No Jest, no Vitest layer.
 ## What this is
 
 A space-inspired freelance landing at `/`, three service pages and one
-PiùUDITO case in EN/IT, plus the Three.js cockpit game (the playable CV)
-at `/cockpit`. Chat + unlock + gated CV / translations APIs. No CMS or
-application database.
+PiùUDITO case in EN/IT, the courses page and its signed-in course area,
+plus the Three.js cockpit game (the playable CV) at `/cockpit`. Chat +
+unlock + gated CV / translations APIs. No CMS; Postgres only for courses.
 
 ## Routing
 
-- `app/[lang]/page.tsx` → server-rendered `LandingPage` with five
-  sections: intro, services, brands, shipped work and contact. The header
-  shows Blog, also on phones. All surfaces share
+- `app/[lang]/page.tsx` → server-rendered `LandingPage` with six
+  sections: intro, services, courses (`courses-section.tsx`, the learning
+  orbit and links to the courses page and the course area), brands, shipped
+  work and contact. The header shows Courses and Blog, also on phones. All surfaces share
   Unbounded and Space Grotesk; landing composition styles are scoped in
   `components/landing/landing.css`. `LandingMotion` progressively adds
   a subtle Canvas 2D star field and GSAP ScrollTrigger driving photographic
@@ -448,6 +450,34 @@ skeletal) for the Download CV button.
 
 To update private content: edit files in `private-src/`, run
 `bun run encrypt:private`, commit the new `.enc` blobs.
+
+## Courses
+
+- `/it/corsi` and `/en/courses` (`app/[lang]/corsi`, `app/[lang]/courses`,
+  `components/courses/courses-page.tsx`): Persuade surface. The first
+  viewport is a boarding pass that is the pilot-place application form
+  (`pilot-pass.tsx`, server action `lib/courses/apply.ts`, honeypot and
+  5 per 10 minutes per address). Offer terms confirmed 2026-10-23: 1:1 and
+  small groups, AI for developers and AI for work, free pilot places for
+  honest feedback; a public review is optional, never a condition. No
+  prices, sizes, durations or outcomes are confirmed. Brief and direction
+  contract: `.impeccable/surfaces/app-lang-corsi-page-tsx.md`.
+- `/{locale}/account/**`: the course area, noindex and dynamic. Google
+  sign-in only in production (Better Auth at `app/api/auth/[...all]`,
+  `lib/courses/auth.ts`); `COURSES_DEV_PASSWORD=1` adds email/password
+  outside production for local tests. Courses are `free` (every account)
+  or `assigned` (enrolments). Lessons hold Markdown notes and an optional
+  recording in the private bucket, played through signed URLs.
+- `/{locale}/account/admin`: accounts in `ADMIN_EMAILS` read applications,
+  create courses and lessons, upload recordings straight to the bucket and
+  enrol accounts by email. Every server action re-checks the admin.
+- Schema `lib/courses/schema.ts`; after a change run `bun run db:generate`
+  and commit `drizzle/`. `bun run db:migrate` applies migrations (Railway
+  runs it before each deploy). Without `DATABASE_URL` the page still builds.
+- `/it/privacy` and `/en/privacy` (`components/legal/privacy-copy.ts`) list
+  every data flow above, the chat, the CV cookie and analytics, with their
+  providers. Google's OAuth consent screen links it. When a flow or provider
+  changes, update the policy and its date in the same change.
 
 ## Blog
 

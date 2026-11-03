@@ -6,6 +6,7 @@ import { BookingLink } from '@/components/landing/landing-page'
 import BrandAvatar from '@/components/shared/brand-avatar'
 import type { ArticleSummary } from '@/lib/blog/source'
 import { NAME } from '@/lib/constants/contact'
+import { COURSES_PATHS } from '@/lib/seo/courses-page'
 
 // The blog is in English only (owner's decision, 2026-10-16): it lives under /en, and /it/blog redirects there.
 
@@ -48,6 +49,12 @@ export function BlogHeader() {
           className="landing-header-links"
           aria-label={t('home.header.label')}
         >
+          <Link
+            className="landing-work-link landing-header-courses"
+            href={COURSES_PATHS.en}
+          >
+            {t('home.nav.courses')}
+          </Link>
           <Link
             className="landing-work-link landing-blog-link blog-nav-current"
             href={BLOG_PATH}

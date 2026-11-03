@@ -1,4 +1,5 @@
 import { capturePostHog } from '@/lib/analytics/posthog'
+import { COURSES_PATHS } from '@/lib/seo/courses-page'
 import { resolveMarketingPage } from '@/lib/seo/marketing-pages'
 
 export type AnalyticsConsent = 'granted' | 'denied'
@@ -19,6 +20,8 @@ export const TRACKED_EVENTS = [
   'service_opened',
   'case_study_opened',
   'project_opened',
+  'application_opened',
+  'application_sent',
 ] as const
 export type MarketingEvent = (typeof TRACKED_EVENTS)[number]
 
@@ -109,7 +112,13 @@ const BLOG_PATHNAME = /^\/en\/blog(?:\/[a-z0-9]+(?:-[a-z0-9]+)*)?$/
 export function safePageLocation(url: string): string {
   const parsed = new URL(url)
   const known =
-    ['/it', '/en', '/it/cockpit', '/en/cockpit'].includes(parsed.pathname) ||
+    [
+      '/it',
+      '/en',
+      '/it/cockpit',
+      '/en/cockpit',
+      ...Object.values(COURSES_PATHS),
+    ].includes(parsed.pathname) ||
     BLOG_PATHNAME.test(parsed.pathname) ||
     resolveMarketingPage(parsed.pathname)
   return `${parsed.origin}${known ? parsed.pathname : '/not-found'}`
@@ -219,6 +228,9 @@ export function trackMarketing(
     'case_body',
     'service_footer',
     'service_popup',
+    'courses_pass',
+    'courses_footer',
+    'home_courses',
   ].includes(details.placement ?? '')
     ? details.placement
     : 'page'

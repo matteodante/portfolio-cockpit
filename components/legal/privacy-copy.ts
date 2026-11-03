@@ -3,7 +3,8 @@ import type { Locale } from '@/lib/i18n/config'
 
 /**
  * The privacy policy, written from what the code actually does: hosting and
- * rate limits, the chat, the CV unlock and analytics after consent. Change it together with the data
+ * rate limits, the chat, the CV unlock, course applications and accounts,
+ * recordings, and analytics after consent. Change it together with the data
  * flows it describes.
  */
 export type PrivacySection = { heading: string; body: readonly string[] }
@@ -45,7 +46,7 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
         heading: 'Visitare il sito',
         body: [
           'Il sito è ospitato da Railway in un data center nell’Unione europea (Paesi Bassi). Per consegnare le pagine e proteggere il servizio, i server ricevono dati tecnici come indirizzo IP, browser e pagina richiesta.',
-          'Per limitare gli abusi, l’indirizzo IP di chi usa la chat o lo sblocco del CV viene contato per pochi minuti nella memoria del server, senza essere salvato. Base giuridica: legittimo interesse alla sicurezza del sito.',
+          'Per limitare gli abusi, l’indirizzo IP di chi usa la chat, lo sblocco del CV o il modulo dei corsi viene contato per pochi minuti nella memoria del server, senza essere salvato. Base giuridica: legittimo interesse alla sicurezza del sito.',
         ],
       },
       {
@@ -61,9 +62,23 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
         ],
       },
       {
+        heading: 'Candidature ai corsi',
+        body: [
+          'Il modulo della pagina corsi raccoglie nome, email, argomento, formato, livello, obiettivo e lingua. Uso questi dati solo per risponderti e organizzare i corsi pilota. Base giuridica: la tua richiesta (misure precontrattuali). Restano nel database del sito finché servono a questo scopo o finché non chiedi di cancellarli.',
+        ],
+      },
+      {
+        heading: 'Area corsi e accesso con Google',
+        body: [
+          'Se accedi all’area corsi con Google, il sito riceve da Google nome, email, immagine del profilo e l’identificativo del tuo account. Salva anche la sessione di accesso (con indirizzo IP e browser, per 60 giorni), i corsi a cui sei iscritto e le lezioni completate. Base giuridica: fornirti il servizio che hai richiesto.',
+          'Le registrazioni delle lezioni si fanno solo con l’accordo di tutti i partecipanti. Sono conservate in uno spazio privato (Railway, Paesi Bassi) e visibili solo agli iscritti a quel corso tramite link temporanei.',
+          'L’account resta attivo finché non chiedi di cancellarlo: alla cancellazione vengono rimossi anche iscrizioni, progressi e sessioni.',
+        ],
+      },
+      {
         heading: 'Statistiche, solo con il tuo consenso',
         body: [
-          'Se scegli “Accetta statistiche”, PostHog (server nell’Unione europea) e, se attivo, Google Analytics misurano visite e clic sui pulsanti. PostHog non registra lo schermo. La misurazione pubblicitaria di Google è disattivata. Base giuridica: il tuo consenso, che puoi revocare in qualsiasi momento da “Preferenze cookie”.',
+          'Se scegli “Accetta statistiche”, PostHog (server nell’Unione europea) e, se attivo, Google Analytics misurano visite e clic sui pulsanti. PostHog non registra lo schermo e non collega i dati al tuo account dei corsi. La misurazione pubblicitaria di Google è disattivata. Base giuridica: il tuo consenso, che puoi revocare in qualsiasi momento da “Preferenze cookie”.',
           'Se rifiuti, nessuno di questi strumenti viene caricato. La tua scelta resta salvata sul dispositivo per 180 giorni.',
         ],
       },
@@ -76,7 +91,7 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       {
         heading: 'Fornitori e trasferimenti',
         body: [
-          'I fornitori sono Railway (hosting), OpenAI (chat), Google (statistiche con consenso), PostHog (statistiche con consenso) e Cal.com (prenotazioni). Alcuni hanno sede negli Stati Uniti: in quel caso il trasferimento avviene con le garanzie previste dal GDPR, come le clausole contrattuali standard o il Data Privacy Framework.',
+          'I fornitori sono Railway (hosting e database), OpenAI (chat), Google (accesso e, con consenso, statistiche), PostHog (statistiche con consenso) e Cal.com (prenotazioni). Alcuni hanno sede negli Stati Uniti: in quel caso il trasferimento avviene con le garanzie previste dal GDPR, come le clausole contrattuali standard o il Data Privacy Framework.',
           'Non vendo i dati e non li uso per pubblicità.',
         ],
       },
@@ -116,7 +131,7 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
         heading: 'Visiting the site',
         body: [
           'The site is hosted by Railway in a data centre in the European Union (the Netherlands). To deliver pages and protect the service, the servers receive technical data such as IP address, browser and requested page.',
-          'To limit abuse, the IP address of anyone using the chat or the CV unlock is counted for a few minutes in the server’s memory, without being stored. Legal basis: legitimate interest in the security of the site.',
+          'To limit abuse, the IP address of anyone using the chat, the CV unlock or the courses form is counted for a few minutes in the server’s memory, without being stored. Legal basis: legitimate interest in the security of the site.',
         ],
       },
       {
@@ -132,9 +147,23 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
         ],
       },
       {
+        heading: 'Course applications',
+        body: [
+          'The form on the courses page collects name, email, topic, format, level, goal and language. I use these details only to reply and to organise the pilot courses. Legal basis: your request (pre-contractual steps). They stay in the site’s database as long as they serve this purpose or until you ask me to delete them.',
+        ],
+      },
+      {
+        heading: 'Course area and Google sign-in',
+        body: [
+          'If you sign in to the course area with Google, the site receives your name, email, profile picture and account identifier from Google. It also stores your sign-in session (with IP address and browser, for 60 days), the courses you are enrolled in and the lessons you completed. Legal basis: providing the service you asked for.',
+          'Lessons are recorded only with every participant’s agreement. Recordings are kept in private storage (Railway, the Netherlands) and shown only to that course’s participants through temporary links.',
+          'Your account stays active until you ask me to delete it; deletion also removes enrolments, progress and sessions.',
+        ],
+      },
+      {
         heading: 'Analytics, only with your consent',
         body: [
-          'If you choose “Accept analytics”, PostHog (servers in the European Union) and, when enabled, Google Analytics measure visits and button clicks. PostHog makes no screen recordings. Google’s advertising measurement is disabled. Legal basis: your consent, which you can withdraw at any time from “Cookie preferences”.',
+          'If you choose “Accept analytics”, PostHog (servers in the European Union) and, when enabled, Google Analytics measure visits and button clicks. PostHog makes no screen recordings and never ties the data to your course account. Google’s advertising measurement is disabled. Legal basis: your consent, which you can withdraw at any time from “Cookie preferences”.',
           'If you reject, none of these tools loads. Your choice is saved on your device for 180 days.',
         ],
       },
@@ -147,7 +176,7 @@ export const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       {
         heading: 'Providers and transfers',
         body: [
-          'The providers are Railway (hosting), OpenAI (chat), Google (analytics with consent), PostHog (analytics with consent) and Cal.com (bookings). Some are based in the United States: those transfers rely on the safeguards the GDPR provides, such as standard contractual clauses or the Data Privacy Framework.',
+          'The providers are Railway (hosting and database), OpenAI (chat), Google (sign-in and, with consent, analytics), PostHog (analytics with consent) and Cal.com (bookings). Some are based in the United States: those transfers rely on the safeguards the GDPR provides, such as standard contractual clauses or the Data Privacy Framework.',
           'I do not sell data or use it for advertising.',
         ],
       },
